@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+ng-sidebar-container {
+    height: 100vh;
+}
+
+::ng-deep .ng-sidebar {
+    background-color: #f4f4f4;
+    width: 275px;
+    padding: 1em 1em;
+}
+
+.posicionar-izq-der {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+ 

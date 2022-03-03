@@ -1,0 +1,57 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title">Dividendos Percibidos</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <fieldset class="linea-caja">
+        <form [formGroup]="registerForm" class="form-horizontal mt-2">
+            <div class="form-group row">
+                <label class="control-label col-sm-6">RUC del pagador del Dividendo</label>
+                <div class="col-sm-6">
+                    <input formControlName="txtRUC" type="text" class="form-control" name="txtRUC" placeholder="Ingresar" (change)="obtenerNombre()" (input)="validarEspacio($event.target.value)" [ngClass]="{ 'is-invalid': (f.txtRUC.dirty || submitted) && f.txtRUC.errors }">
+                    <div>{{txtrazsoc}}</div>
+                    <div *ngIf="(f.txtRUC.dirty || submitted) && f.txtRUC.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtRUC.errors.required">{{mensaje998.CUS05_EX03}}</div>
+                        <div *ngIf="registerForm.getError('{excepccion01}', 'txtRUC') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">Monto</label>
+                <div class="col-sm-6">
+                    <rentas-textbox formControlName="txtMonto" [tipoFormato]="FORMATO_MONTO" [maxlength]="11" [isInvalid]="(f.txtMonto.dirty || submitted) && f.txtMonto.errors"></rentas-textbox>
+                    <div *ngIf="(f.txtMonto.dirty || submitted) && f.txtMonto.errors" class="error-message">
+                        <div *ngIf="f.txtMonto.errors.required">{{mensaje998.CUS05_EX01}}</div>
+                        <div *ngIf="registerForm.getError('{excepccion01}', 'txtMonto') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-6">Fecha de Pago</label>
+                <div class="input-group col-sm-6">
+                    <input formControlName="txtfechaPago" class="form-control" name="txtfechaPago" placeholder="DD/MM/AAAA" readonly ngbDatepicker #d1="ngbDatepicker" [ngClass]="{ 'is-invalid': submitted && f.txtfechaPago.errors }" />
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-dark calendar" (click)="d1.toggle()" type="button"><i
+                                class="far fa-calendar-alt"></i></button>
+                    </div>
+                    <div *ngIf="submitted && f.txtfechaPago.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtfechaPago.errors.required">{{mensaje998.CUS05_EX01}}</div>
+                        <div *ngIf="registerForm.getError('excepccion01', 'txtfechaPago') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close()">Cancelar</button>
+    <button (click)="metodo()" type="button" class="btn btn-primary">Guardar</button>
+</div>

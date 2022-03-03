@@ -1,0 +1,151 @@
+<ul class="col-sm-12 list-group list-group-flush">
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-sm-6">
+                <label class="col-form-label">{{ casilla516.descripcion }}</label>
+            </div>
+            <div class="col-sm-6">
+                <!-- <div class="form-check">
+                    <input class="form-check-input" type="radio" name="rdtDecla" [(ngModel)]="rdtDeclaOriginal" value="1" disabled />
+                    <label class="form-check-label" for="rdtDeclaOriginal">Original</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="rdtDecla" [(ngModel)]="rdtDeclaOriginal" value="2" disabled />
+                    <label class="form-check-label" for="rdtDeclaSusti">Sustitutoria/Rectificatoria</label>
+                </div> -->
+                <rentas-radiobutton [lista]="listaOpcionesDeclaracion" [(ngModel)]="rdtDeclaOriginal" [name]="'rdtDecla'" [valorSeleccionado]="rdtDeclaOriginal" [isDisabled]="true"></rentas-radiobutton>
+            </div>
+        </div>
+    </li>
+
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-sm-6">
+                <label class="col-form-label">{{ descripcionTipoRenta }}</label>
+            </div>
+            <div class="col-sm-6">
+                <!-- <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="chkTipoRenta" id="chkTipoRentaPCategoria" [checked]="chkTipoRentaPCategoria" [(ngModel)]="chkTipoRentaPCategoria" (change)="checkPreDeclarativa($event)" />
+                    <label class="form-check-label" for="chkTipoRentaPCategoria">Renta de Capital Primera
+                        Categoría</label>
+                </div> -->
+                <rentas-checkbox [idCheck]="'chkTipoRentaPCategoria'" [desCasilla]="descripcionRentaPrimera" [isChecked]="chkTipoRentaPCategoria" [(ngModel)]="chkTipoRentaPCategoria" (change)="checkPreDeclarativa($event)"></rentas-checkbox>
+                <!-- <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="chkTipoRenta" id="chkTipoRentaSCategoria" [checked]="chkTipoRentaSCategoria" [(ngModel)]="chkTipoRentaSCategoria" (change)="checkPreDeclarativa($event)" />
+                    <label class="form-check-label" for="chkTipoRentaSCategoria">Renta de Capital Segunda
+                        Categoría</label>
+                </div> -->
+                <rentas-checkbox [idCheck]="'chkTipoRentaSCategoria'" [desCasilla]="descripcionRentaSegunda" [isChecked]="chkTipoRentaSCategoria" [(ngModel)]="chkTipoRentaSCategoria" (change)="checkPreDeclarativa($event)"></rentas-checkbox>
+                <!-- <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="chkTipoRenta" id="chkTipoRentaFteExt" [checked]="chkTipoRentaFteExt" [(ngModel)]="chkTipoRentaFteExt" (change)="checkPreDeclarativa($event)" />
+                    <label class="form-check-label" for="chkTipoRentaFteExt">Renta de Trabajo y/o Fuente
+                        Extranjera</label>
+                </div> -->
+                <rentas-checkbox [idCheck]="'chkTipoRentaFteExt'" [desCasilla]="descripcionRentaTrabajo" [isChecked]="chkTipoRentaFteExt" [(ngModel)]="chkTipoRentaFteExt" (change)="checkPreDeclarativa($event)"></rentas-checkbox>
+            </div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-sm-6">
+                <label class="col-form-label">{{casilla552.descripcion}}</label>
+            </div>
+            <div class="col-sm-6">
+                <!-- <div class="form-check">
+                    <input class="form-check-input" type="radio" name="rdtTipoDeclara" (change)="enabledSociedadConyugal(1)" [(ngModel)]="rdtTipoDeclara" id="rdtTipoDeclaraPersonal" [value]="1" [checked]="rdtTipoDeclara == 1" />
+                    <label class="form-check-label" for="rdtTipoDeclaraPersonal">Personal</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="rdtTipoDeclara" (change)="enabledSociedadConyugal(2)" [(ngModel)]="rdtTipoDeclara" id="rdtTipoDeclaraConyugal" [value]="2" [checked]="rdtTipoDeclara == 2" />
+                    <label class="form-check-label" for="rdtTipoDeclaraConyugal">Sociedad Conyugal(atribuida a uno de
+                        los C&oacute;nyuges - Art 16° L IRenta)
+                    </label>
+                </div> -->
+                <rentas-radiobutton [lista]="listaTiposDeclaracion" [(ngModel)]="rdtTipoDeclara" [name]="'rdtTipoDeclara'" [valorSeleccionado]="rdtTipoDeclara" (selectedOptionChange)="enabledSociedadConyugal($event)"></rentas-radiobutton>
+            </div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-sm-6">
+                <label class="col-form-label">{{casilla601.descripcion}}</label>
+            </div>
+            <div class="col-sm-6">
+                <!-- <div class="form-check">
+                    <input class="form-check-input" type="radio" name="rdtIncluyeSociedadConyugal" #ngModelDir1="ngModel" (change)="enabledConyuge(ngModelDir1)" [(ngModel)]="rdtIncluyeSociedadConyugal" id="rdtIncluyeSociedadConyugalSi" [value]="1" [checked]="rdtIncluyeSociedadConyugal == 1"
+                    />
+                    <label class="form-check-label" for="rdtIncluyeSociedadConyugalSi">Si</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="rdtIncluyeSociedadConyugal" #ngModelDir2="ngModel" (change)="enabledConyuge(ngModelDir2)" [(ngModel)]="rdtIncluyeSociedadConyugal" id="rdtIncluyeSociedadConyugalNo" [value]="0" [checked]="rdtIncluyeSociedadConyugal == 0"
+                    />
+                    <label class="form-check-label" for="rdtIncluyeSociedadConyugalNo">No</label>
+                </div> -->
+                <rentas-radiobutton 
+                    [lista]="listaOpcionesSiNo" 
+                    [(ngModel)]="rdtIncluyeSociedadConyugal" 
+                    [name]="'rdtIncluyeSociedadConyugal'" 
+                    [valorSeleccionado]="rdtIncluyeSociedadConyugal" 
+                    (selectedOptionChange)="enabledConyuge($event)">
+                </rentas-radiobutton>
+            </div>
+        </div>
+    </li>
+
+    <form [formGroup]="tipodeclaraForm">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-sm-6">
+                    <label class="col-form-label">{{casilla235.descripcion}}</label>
+                </div>
+                <div class="col-sm-3">
+                    <rentas-combobox 
+                        formControlName="cmbTipoDocumentoConyuge" 
+                        [dataCasilla]="casilla235" 
+                        [isScrolling]="true"
+                        [lista]="tipoDocumentos"
+                        (change)="validarDocumento()">
+                    </rentas-combobox>
+                </div>
+            </div>
+        </li>        
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-sm-6">
+                    <label class="col-form-label">{{casilla236.descripcion}}</label>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <rentas-textbox formControlName="txtNumDoc" [maxlength]="maxLengthCas236" (change)="agregar()" (keypress)="keyPress($event)" (input)="validarEspacio($event.target.value)" aria-label="" aria-describedby="txtNroDocumentoConyuge" [dataCasilla]="casilla236"
+                            [isInvalid]="(f.txtNumDoc.dirty || submitted) && f.txtNumDoc.errors" ></rentas-textbox>
+                        <div *ngIf="(f.txtNumDoc.dirty || submitted) && f.txtNumDoc.errors" class="error-message">
+                            <div *ngIf="f.txtNumDoc.errors.required">{{mensajeExcepcion.CUS01_VALIDAR_03}}</div>
+                            <div *ngIf="tipodeclaraForm.getError('{excepccion01}', 'txtNumDoc') as error">
+                                {{error}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item" *ngIf="habilitarCasItan()">
+            <div class="row">
+                <div class="col-sm-6">
+                    <label class="col-form-label">{{casilla700.descripcion}}</label>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <rentas-textbox formControlName="txtNombreConyuge" [pattern]="mobNumberPattern" [maxlength]="maxLengthCas700" (change)="agregar_2()" aria-label="" aria-describedby="txtNombreConyuges" [dataCasilla]="casilla700"
+                            [isInvalid]="(f.txtNombreConyuge.dirty || submitted) && f.txtNombreConyuge.errors"></rentas-textbox>
+                        <div *ngIf="(f.txtNombreConyuge.dirty || submitted) && f.txtNombreConyuge.errors" class="error-message">
+                            <div *ngIf="f.txtNombreConyuge.errors.pattern">{{mensajeExcepcion.CUS01_VALIDAR_05}}</div>
+                            <div *ngIf="tipodeclaraForm.getError('{excepccion01}', 'txtNombreConyuge') as error">
+                                {{error}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </form>
+</ul>

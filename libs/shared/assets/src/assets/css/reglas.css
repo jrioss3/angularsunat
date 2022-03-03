@@ -1,0 +1,184 @@
+.nav-tabs>li>a {
+    background-color: #F4F4F4;
+    margin-right: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #DDD;
+}
+.nav-tabs>li>a:hover {
+    background-color: #F4F4F4;
+    border-bottom: 1px solid #DDD;
+}
+.nav-tabs>li.active>a {
+    font-weight: bold;
+}
+.nav-tabs>li.active>a:hover {
+    font-weight: bold;
+    background-color: white;
+}
+.nuevo-pago {
+    margin: 0;
+    padding: 10px;
+    font-size: 20px;
+    color: #357EBD;
+    float: left;
+}
+#divMetodo01 {
+    position: relative;
+}
+.btn-default-2 {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.btn-default-2.active {
+    background-color: #D9EDF7 !important;
+    border-color: #357EBD !important;
+    color: #357ebd !important;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+.btn-default-2.active::before {
+    border-left: 10px solid #357EBD !important;
+}
+.btn-default-2.active::after {
+    border-left: 10px solid #D9EDF7 !important;
+}
+.lead {
+    font-size: 16px;
+}
+.linea-caja legend {
+    color: #0063AE;
+    font-size: 1em;
+    text-align: left;
+    width: auto;
+    padding: 0 10px;
+    border-bottom: none;
+}
+.linea-caja legend.ligero {
+    margin-bottom: 0px !important;
+}
+.lista-pagos {
+    height: 124px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.btn-round {
+    border-radius: 40px;
+}
+.btn-switch {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 15px;
+}
+.btn-switch > input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    left: -100%;
+    top: -100%;
+}
+.btn-switch > input[type="checkbox"] + .btn {
+    background-color: transparent;
+    border: 2px solid #00A6CC;
+    color: #00A6CC;
+    position: relative;
+}
+.btn-switch > input[type="checkbox"] + .btn > i {
+    display: inline-block;
+    border-radius: 50%;
+    padding: 2px;
+    margin: 0 4px 0 0;
+    top: 0;
+    font-size: 10px;
+    text-align: center;
+    background-color: #D9EDF7;
+    width: 20px;
+    height: 20px;
+    margin-bottom: -5px;
+    border: 1px solid;
+}
+.btn-switch_activo {
+    background-color: #00A6CC !important;
+    color: #fff !important;
+}
+#check.glyphicon.glyphicon-ok {
+    top: -1px;
+    padding-top: 4px;
+    background-color: #fff;
+    color: #00A6CC;
+}
+.footer-wizard {
+    background-color: #A7A7A7;
+    border: 0 none;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding: 0px;
+    -webkit-border-bottom-left-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    -moz-border-bottom-left-radius: 4px;
+    -moz-border-bottom-right-radius: 4px;
+}
+.footer-wizard span {
+    color: #FFF;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    float: left;
+    margin: 15px 15px 0px;
+}
+.footer-wizard ul {
+    margin-left: 10px;
+}
+.footer-wizard ul li {
+    height: 10px;
+    width: 10px;
+    background-color: #D2D2D2;
+    border-radius: 50%;
+    margin: 20px 5px;
+}
+.footer-wizard ul li.activo {
+    background-color: #0063AE;
+}
+.footer-wizard .btn-primary {
+    background-color: #0063AE;
+    border: 0 none;
+    letter-spacing: 0.5px;
+    border-radius: 0;
+    padding: 15px;
+}
+.footer-wizard .btn-default {
+    background-color: transparent;
+    border: 0 none;
+    color: rgba(255, 255, 255, 0.77);
+    letter-spacing: 0.5px;
+}
+.btn-cargando {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    border: none !important;
+}
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+@-webkit-keyframes spin2 {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+    to {
+        transform: scale(1) rotate(360deg);
+    }
+}

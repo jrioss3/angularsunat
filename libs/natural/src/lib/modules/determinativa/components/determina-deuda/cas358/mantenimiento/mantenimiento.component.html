@@ -1,0 +1,82 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title">Casilla 358 - Pago directo de Impuesto de Segunda Categor&iacute;a</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal mt-2" [formGroup]="frmCasilla358">
+        <fieldset class="linea-caja"><br>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">Periodo</label>
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <month-date-picker formControlName="periodo" [classValid]="(this.f.periodo.hasError('invalid') && submitted)" name="periodo" [disabled]="disabled" [minYear]='anio' [maxYear]='anio'></month-date-picker>
+                        <div *ngIf="(this.f.periodo.hasError('invalid') && submitted)">
+                            <div *ngIf="this.f.periodo.hasError('invalid')" class="date-invalid-feedback">{{mensaje358.CUS21_EX01}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-6">N&uacute;mero de formulario</label>
+                <div class="form-group col-sm-6">
+                    <select formControlName="numFormulario" name="numFormulario" #numFormulario class="form-control col-sm-12" [ngClass]="{ 'is-invalid': (f.numFormulario.dirty || submitted) && f.numFormulario.errors }">
+            <option value="" selected>--Seleccionar--</option>
+            <option *ngFor="let item of listaFormularios" value="{{item.val}}">{{item.desc}}</option>
+          </select>
+                    <div *ngIf="(f.numFormulario.dirty || submitted) && f.numFormulario.errors" class="invalid-feedback">
+                        <div *ngIf="f.numFormulario.errors.required">{{mensaje358.CUS21_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">N&uacute;mero de orden o de operaci&oacute;n</label>
+                <div class="col-sm-6">
+                    <input formControlName="numOrden" name="numOrden" type="text" class="form-control" maxlength="10" placeholder="Ingresar" [ngClass]="{ 'is-invalid': (f.numOrden.dirty || submitted) && f.numOrden.errors }" />
+                    <div *ngIf="(f.numOrden.dirty || submitted) && f.numOrden.errors" class="invalid-feedback">
+                        <div *ngIf="f.numOrden.errors.required">{{mensaje358.CUS21_EX01}}</div>
+                        <div *ngIf="frmCasilla358.getError('{excepccion01}', 'numOrden') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">Fecha de Pago(DD/MM/AAAA)</label>
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <input formControlName="fechaPago" readonly name="fechaPago" ngbDatepicker #d1="ngbDatepicker" placeholder="DD/MM/AAAA" class="form-control" [ngClass]="{ 'is-invalid': (f.fechaPago.dirty || submitted) && f.fechaPago.errors }">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-dark calendar" (click)="d1.toggle()" type="button"><i
+                  class="fas fa-calendar-alt"></i></button>
+                        </div>
+                        <div *ngIf="(f.fechaPago.dirty || submitted) && f.fechaPago.errors" class="invalid-feedback">
+                            <div *ngIf="f.fechaPago.errors.required">{{mensaje358.CUS21_EX01}}</div>
+                            <div *ngIf="frmCasilla358.getError('excepccion01', 'fechaPago') as error">
+                                {{error}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">Pago sin intereses</label>
+                <div class="col-sm-6">
+                    <rentas-textbox formControlName="pagoSinInteres" [tipoFormato]="FORMATO_MONTO" [cantidadDecimales]="2" [maxlength]="11" [isInvalid]="(f.pagoSinInteres.dirty || submitted) && f.pagoSinInteres.errors"></rentas-textbox>
+                    <div *ngIf="(f.pagoSinInteres.dirty || submitted) && f.pagoSinInteres.errors" class="error-message">
+                        <div *ngIf="f.pagoSinInteres.hasError('required')"> {{mensaje358.CUS21_EX01}}</div>
+                        <div *ngIf="f.pagoSinInteres.hasError('min')"> {{mensaje358.CUS21_EX01}}</div>
+                        <div *ngIf="frmCasilla358.getError('{excepccion01}', 'pagoSinInteres') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="metodo()">Guardar</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,38 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title" id="modal-basic-title"> {{tipoReporte}}</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <button [useExistingCss]="false" printSectionId="contentToConvert" class="btn btn-outline-secondary"
+    style="margin: 20px 0;" ngxPrint><i aria-hidden="true" class="fa fa-print"
+      style="margin-right: 10px;"></i>IMPRIMIR</button>
+
+  <div id="contentToConvert" style="font-family:Helvetica">
+    <div style="position:relative">
+      <!--HEADER-->
+      <rentas-reporte-cuerpo 
+        [preDeclaracion]="preDeclaracion" 
+        [tipoReporte]="tipoReporte" 
+        [fechaPresentacion]="fechaPresentacion"
+        [numOrden]="numOrden"
+      >
+      </rentas-reporte-cuerpo>
+      <!--RENTAS DE CAPITAL DE PRIMERA CATEGORIA-->
+      <rentas-reporte-primera-renta [preDeclaracion]="preDeclaracion" [tipoReporte]="tipoReporte">
+      </rentas-reporte-primera-renta>
+      <!--RENTAS DE CAPITAL DE SEGUNDA CATEGORIA-->
+      <rentas-reporte-segunda-renta [preDeclaracion]="preDeclaracion" [tipoReporte]="tipoReporte">
+      </rentas-reporte-segunda-renta>
+      <!--RENTAS DE TRABAJO Y/O FUENTE EXTRANJERA-->
+      <rentas-reporte-trabajo-renta [preDeclaracion]="preDeclaracion" [tipoReporte]="tipoReporte">
+      </rentas-reporte-trabajo-renta>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="close()">Cancelar</button>
+  <button type="button" class="btn btn-primary" (click)="guardar()">Guardar</button>
+  <button type="button" class="btn btn-primary" (click)="enviar()">Enviar</button>
+</div>

@@ -1,0 +1,358 @@
+<div class="print-button">
+  <button [useExistingCss]="false" printSectionId="contentToConvert" class="btn btn-outline-secondary"
+    style="margin: 20px 0;top: -87px;position: absolute;" ngxPrint><i aria-hidden="true" class="fa fa-print"
+      style="margin-right: 10px;"></i>IMPRIMIR</button>
+</div>
+<div id="contentToConvert" style="font-family:Helvetica;">
+  <rentas-reporte-marca-agua [esPreliminar]="esPreliminar"></rentas-reporte-marca-agua>
+  <div>
+    <div class="row">
+      <div class="col-md-12">
+        <p><img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAAArCAMAAADBjdN+AAAApVBMVEUAAAAAY60AY60AY60AY60AY60gWaAAY60AY60AY60AY60AY60AY60AY60AY60AY60AY62tDEEmVp0AY60AY60AY60AY60AY60AY60AY60AY62tDEEAY60AY60AY60AY60AY62tDEGtDEEAY60AY60AY60AY62tDEEAY62tDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEEAY62tDEHSoCIOAAAANXRSTlMA8SChwDAC/ECtN8sP49xaFfQF9tTqxpZRLAsLSBq5gGM2vo2EbiZNd+fXaEKqyH4sHxaVPz1ejGsAAAPMSURBVFjDzZfbeqIwFEY3CnI+FFQOgqKoY9vpcSa8/6ONkZCEBGa4me/Luilp0mblJ9lRkNi9tS+foDa7U9u2z0dQmbsj5kllS+youiV2VN0SO6puuXtvW9UtY5Ijs/wNyvHRijz9BMXYPbXqW/5o27mWXuWtYEgRA8+KDYjJI+uCIauFY+UFzOK1nWNZhMu1ie4kgX1zyPTXbYLQJqUyWXAfENT4sdncH/0L8F2mawDD2SBM2i1/r0n4IVB+t/+2jG8a4vFvjwTSruUAwX80NaxPBtbDLhsYLhli4cYFjeBLe1K2/EGHRFvEwQJY9tMQyEoAwCDDzGzQpQOlxG36uwaNQQeH0Uc7AbXcIwl7niQyrQlJvG72Im5jjhoQ6gBWp39YWoiw1l2/e0rymZJIM0YlS+ayB4DFBskcyNgbjmT36++WZyL2mK4KbRMlJcyVRJurKMmCZFEWC0xIdsCjEQH00zf45/HtacqSuWgVYLDnAuZLoqASJGmQLErCAj1Y8oUKn84LOT4/Pt5O7y/PouwXO8RIW4ZXWm7mS6K1J0qSIBOfRDktGT/mOIsX0PH1xEcpLFvbNmE0T5KxLZgkH+RlYZIopyQLm/ydzPGF1qFv3LbREL2OZ0t2FlFCJ2NBbor+PzgTkp6OOjKQ+X7GhvQ7T9yYYp0tZ0mudWF1g3JxoOP2gqRU+5I6nrornz+BcE2FGmFmTLKclDzE+zHJTj2JmIYxLmlysTRltYIBn9jx5Ys/Zc7FDvjNWVDJsB9idj2cJHiuIMmC1MIsy0gpssclt0IyfrDW7aYmxeULO36DSFQe6KQlLaAp6XXIO+YlIQokSR3JGKOSVYBGcR9v/9i27zuWYrgM6Z6oEc0v5K8fWO3ZFEwSFr4gaaERbEFSsJQ1r3hPnjhH/Fr9s9FtiYwdOC8hL+62iKNsy+x5Sci1oaSOxjAEyUlLdpH9eouBckbERbfTZa+SeKTMiwSxIAlOwktaaBR7XBKi9VSWq1f+IEmLoZdA5CMR0wJREkqTk9T7Qk7ol2DIktOWrKiwJGWW3SryjegYgiwJIZN0SN4shZRGySTnWKYwwFgmwoao+zkqe/gOHFJXSVxAuFCRjH1kJ5C7cYt9us4G5ljuQaDIGlfry6odFsDIz9uux3RTi+ZzCEy0sT2glve2puf4E4NvIj+NgVGvTZS41uPR9bXArmCO5RLGiHLHcnIPJFbV1cirGP4H05YZKIbnSo7rFaiGZKnloB6CpeaAiniu+o7YUn1HznKjriNAoXeOKp4Z3lJ9R4DCNteKOf4Bb3e5wdVmJREAAAAASUVORK5CYII=">
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container theme-showcase">
+    <rentas-reporte-header [tipoReporte]="tipoReporte" [numOrden]="numOrden" [fechaPresentacion]="fechaPresentacion"
+      [preDeclaracion]="preDeclaracion" [texto]="'IMPUESTO Y DETERMINACIÓN DE DEUDA'">
+    </rentas-reporte-header>
+
+    <div>
+      <table class="table table-bordered" cellspacing="0">
+        <colgroup>
+          <col style="width: 15%" />
+          <col style="width: 40%" />
+          <col style="width: 5%" />
+          <col style="width: 5%" />
+        </colgroup>
+        <thead class="well">
+          <tr>
+            <th colspan="2" style="border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;font-family:Helvetica;padding:6px 5px;">
+              IMPUESTO A LA RENTA</th>
+            <th colspan="2" style="border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;font-family:Helvetica;padding:6px 5px;">
+              IMPORTE</th>
+          </tr>
+        </thead>
+        <tbody style="border:0">
+          <tr>
+            <th rowspan="13"
+              style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;vertical-align: middle;">
+              Impuesto a la Renta</th>
+            <td style="padding:1px 5px;border: 1px solid #000;font-family:Helvetica;vertical-align: middle;">
+              {{casilla100.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla100.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (impuestoRtaEmpresa.mtoCas100 || 0.00) | number: '1.0-0' | addParentesis: casilla100 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla101.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla101.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (impuestoRtaEmpresa.mtoCas101 || 0.00) | number: '1.0-0' | addParentesis: casilla101 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla103.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla103.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (impuestoRtaEmpresa.mtoCas103 || 0.00) | number: '1.0-0' | addParentesis: casilla103 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla105.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla105.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (impuestoRtaEmpresa.mtoCas105 || 0.00) | number: '1.0-0' | addParentesis: casilla105 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla106.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla106.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (impuestoRtaEmpresa.mtoCas106 || 0.00) | number: '1.0-0' | addParentesis: casilla106 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla107.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla107.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (impuestoRtaEmpresa.mtoCas107 || 0.00) | number: '1.0-0' | addParentesis: casilla107 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla120.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla120.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (impuestoRtaEmpresa.mtoCas120 || 0.00) | number: '1.0-0' | addParentesis: casilla120 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla108.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla108.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (impuestoRtaEmpresa.mtoCas108 || 0.00) | number: '1.0-0' | addParentesis: casilla108 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla110.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla110.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (impuestoRtaEmpresa.mtoCas110 || 0.00) | number: '1.0-0' | addParentesis: casilla110 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla113.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla113.numCas}}</td>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right">
+              {{ (impuestoRtaEmpresa.mtoCas113 || 0.00) | number: '1.0-0' | addParentesis: casilla113 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla111.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center">
+              {{casilla111.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (impuestoRtaEmpresa.mtoCas111 || 0.00) | number: '1.0-0' | addParentesis: casilla111 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla686.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla686.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (impuestoRtaEmpresa.mtoCas686 || 0.00) | addParentesis: casilla686 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla610.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla610.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (impuestoRtaEmpresa.mtoCas610 || 0.00) | addParentesis: casilla610 }}
+            </td>
+          </tr>
+        </tbody>
+        <tbody style="border:0">
+          <tr>
+            <th style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;vertical-align: middle;"
+              rowspan="6">
+              Cr&eacute;ditos sin devoluci&oacute;n</th>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla123.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla123.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (credImprenta.mtoCas123 || 0.00) | number: '1.0-0' | addParentesis: casilla123 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla136.descripcion}}</td>
+            <td style="border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla136.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (credImprenta.mtoCas136 || 0.00) | number: '1.0-0' | addParentesis: casilla136 }}
+            </td>
+          </tr>
+          <tr *ngIf="casilla134.numCas">
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla134.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla134.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (credImprenta.mtoCas134 || 0.00) | number: '1.0-0' | addParentesis: casilla134 }}
+            </td>
+          </tr>
+          <tr *ngIf="casilla126.numCas">
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla126.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla126.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (credImprenta.mtoCas126 || 0.00) | number: '1.0-0' | addParentesis: casilla126 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla125.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla125.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (credImprenta.mtoCas125 || 0.00) | number: '1.0-0' | addParentesis: casilla125 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla504.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla504.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (credImprenta.mtoCas504 || 0.00) | number: '1.0-0' | addParentesis: casilla504 }}
+            </td>
+          </tr>
+        </tbody>
+        <tbody style="border:0">
+          <tr>
+            <th style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;vertical-align: middle;"
+              rowspan="6 ">
+              Cr&eacute;ditos con devoluci&oacute;n</th>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla127.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000;background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla127.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (credImprenta.mtoCas127 || 0.00) | number: '1.0-0' | addParentesis: casilla127 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla128.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000;background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla128.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (credImprenta.mtoCas128 || 0.00) | number: '1.0-0' | addParentesis: casilla128 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla130.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla130.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (credImprenta.mtoCas130 || 0.00) | number: '1.0-0' | addParentesis: casilla130 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla129.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla129.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (credImprenta.mtoCas129 || 0.00) | number: '1.0-0' | addParentesis: casilla129 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla506.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla506.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (credImprenta.mtoCas506 || 0.00) | number: '1.0-0' | addParentesis: casilla506 }}
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla131.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla131.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (credImprenta.mtoCas131 || 0.00) | number: '1.0-0' | addParentesis: casilla131 }}
+            </td>
+          </tr>
+        </tbody>
+        <tbody style="border:0">
+          <tr>
+            <th style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;vertical-align: middle;" rowspan="2">
+              Otros</th>
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla279.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000;background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla279.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              {{ (credImprenta.mtoCas279 || 0.00) | number: '1.0-0' | addParentesis: casilla279 }}
+            </td>
+          </tr>
+          <tr *ngIf="habilitarCasItan()">
+            <td style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;font-family:Helvetica;">
+              {{casilla783.descripcion}}</td>
+            <td style="vertical-align: middle;border: 1px solid #000;background-color:#969696;outline: none;color-adjust: exact;
+                      -webkit-print-color-adjust: exact;text-align:center;font-family:Helvetica;">
+              {{casilla783.numCas}}</td>
+            <td
+              style="vertical-align: middle;padding:1px 5px;border: 1px solid #000;text-align:right;font-family:Helvetica;">
+              <label class="control-label">{{mtoCas783 == null ? "" : mtoCas783}}</label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

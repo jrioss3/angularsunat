@@ -1,0 +1,43 @@
+<div class="form-group" ngbDropdown #calendarPanel="ngbDropdown" style="margin-bottom: 0px;">
+  <div class="input-group">
+    <input type="text" [ngClass]="{ 
+          'is-invalid': classValid,
+          'date-read-only-disable': disabled,
+          'date-read-only-enable': !disabled 
+        }" class="form-control" id="data" name="data" [(ngModel)]="dataTxt" [placeholder]="mask" #item
+      (input)="change(item.value)" readonly>
+    <div class="input-group-append">
+
+      <button class="btn btn-outline-secondary dropdown-toggle-split" style="min-width: 64px !important;"
+        ngbDropdownToggle [disabled]="disabled">
+        <i class="fas fa-calendar-alt"></i>
+      </button>
+    </div>
+  </div>
+  <div ngbDropdownMenu class="dropdown-menu">
+    <div class="row">
+
+      <button class="btn btn-link col-4" (click)="addYear($event,-1)" [disabled]='obtenerMinYearPermitido()'>
+        <span class="ngb-dp-navigation-arrow left"></span>
+      </button>
+
+      <button [disabled]='true' *ngIf="!isyear" class="btn btn-link col-4"
+        (click)="showYear($event,true)">{{anioSelect}}</button>
+      <button [disabled]='true' *ngIf="isyear" class="btn btn-link col-4"
+        (click)="showYear($event,false)">{{incr+1}}-{{incr+10}}</button>
+
+      <button class="btn btn-link col-4" (click)="addYear($event,+1)" [disabled]='obtenerMaxYearPermitido()'>
+        <span class="ngb-dp-navigation-arrow right"></span>
+      </button>
+
+      <div *ngFor="let month of months; let i = index; let first = first; let last = last" class="col-4"
+        (click)="selectYearMonth($event,i)">
+        <div [ngClass]="{'select': !isyear?(i+1)==data.month:(i+incr)==data.year,'outrange':isyear && (first || last)}"
+          class="card-body">
+          <span *ngIf="!isyear">{{month}}</span>
+          <span *ngIf="isyear">{{i+incr}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

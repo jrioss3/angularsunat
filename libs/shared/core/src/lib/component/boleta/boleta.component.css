@@ -1,0 +1,10 @@
+:host {
+  display: block;
+}
+
+p.mensaje-cont {
+  margin-bottom: 0px;
+  margin-bottom: 12px;
+  margin-top: 12px;
+  font-weight: 500;
+}

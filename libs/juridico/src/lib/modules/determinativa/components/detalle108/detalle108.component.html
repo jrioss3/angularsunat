@@ -1,0 +1,93 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title">Detalle de la Casilla 108</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="container-fluid" style="padding: 0px;">
+    <div class="card">
+      <div class="card-body">
+        <div class="form-group row">
+          <label for="cboEjercicio" class="col-sm-12 col-form-label text-center font-weight-bold">DETERMINACI&Oacute;N
+            DE LA P&Eacute;RDIDA COMPENSABLE </label>
+          <label for="cboEjercicio" class="col-sm-12 col-form-label text-center">Sistema de Arrastre de
+            P&eacute;rdidas del periodo anterior</label>
+          <div class="col-sm-12 text-center">
+            <div class="custom-control custom-radio custom-control-inline col-sm-2">
+              <input type="radio" id="rdDetalleCasA" name="rdDetalle" class="custom-control-input"
+                #ngModelDir1="ngModel" (change)="cambiarArrastre(ngModelDir1)" value={{arrastreA}}
+                [(ngModel)]="rdtArrastrePeriodoAnterior">
+              <label class="custom-control-label font-weight-bold" for="rdDetalleCasA">A</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="rdDetalleCasB" name="rdDetalle" class="custom-control-input"
+                #ngModelDir2="ngModel" (change)="cambiarArrastre(ngModelDir2)" value={{arrastreB}}
+                [(ngModel)]="rdtArrastrePeriodoAnterior">
+              <label class="custom-control-label font-weight-bold" for="rdDetalleCasB">B</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group mt-4">
+          <button (click)="agregaroEditar()" [disabled]="exedeRegistros" class="btn btn-primary ml-2">Agregar</button>
+        </div>
+        <div class="row mt-3 form-group">
+          <div class="card  border-0" style="width: 100%;">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover ">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th></th>
+                      <th>Ejercicio</th>
+                      <th>Saldo de Pérdidas al 31/12/{{anio}}</th>
+                      <th>Compensación de Pérdidas</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let saldo of saldos; let i = index">
+                      <td>
+                        <a (click)="agregaroEditar(saldo,i)" title="Editar" class="text-dark">
+                          <i class="fas fa-pen"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <a (click)="eliminar(i)" title="Eliminar" class="text-dark">
+                          <i class="fas fa-trash"></i>
+                        </a>
+                      </td>
+                      <td>{{saldo.casillaPerdidas.desValLiteral}}</td>
+                      <td class="column-right">{{saldo.casillaPerdidas.mtoLiteral | currency : "S/ " : true : ".0"}}
+                      </td>
+                      <td class="column-right">{{saldo.casillaCompensacion.mtoLiteral | currency : "S/ " : true : ".0"}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3 form-group">
+          <div class="col-sm-4">
+            <label class="control-label">Total</label>
+          </div>
+          <div class="col-sm-4">
+            <rentas-textbox [tipoRenta]="casillaCalculada" [(ngModel)]="casillaSP"></rentas-textbox>
+          </div>
+          <div class="col-sm-4">
+            <rentas-textbox [tipoRenta]="casillaCalculada" [(ngModel)]="casillaCP"></rentas-textbox>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+  <button type="button" class="btn btn-primary" (click)="grabar()">Guardar</button>
+</div>
+
+<ngx-spinner bdColor="rgba(255,255,255,0.45)" color="rgba(28,27,27,0.64)"></ngx-spinner>

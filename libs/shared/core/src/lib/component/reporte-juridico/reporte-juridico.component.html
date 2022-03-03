@@ -1,0 +1,48 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title" id="modal-basic-title">{{tipoReporte}}</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body" style="overflow:hidden">
+    <div class="container-buttons">
+        <button type="button" class="btn btn-primary button-previous" *ngIf="previousButton"
+            (click)="previousReport()">&#60;</button>
+        <div></div>
+        <button type="button" class="btn btn-primary button-next" *ngIf="nextButton"
+            (click)="nextReport()">&#62;</button>
+    </div>
+    <div>
+        <div *ngIf="report.reporte0">
+            <rentas-reporte-identificacion [preDeclaracion]="preDeclaracion" [tipoReporte]="tipoReporte"
+                [fechaPresentacion]="fechaPresentacion" [numOrden]="numOrden">
+            </rentas-reporte-identificacion>
+        </div>
+        <div *ngIf="report.reporte1">
+            <rentas-reporte-informacion-complementaria [preDeclaracion]="preDeclaracion" [tipoReporte]="tipoReporte"
+                [fechaPresentacion]="fechaPresentacion" [numOrden]="numOrden">
+            </rentas-reporte-informacion-complementaria>
+        </div>
+        <div *ngIf="report.reporte2">
+            <rentas-reporte-estados-financieros [preDeclaracion]="preDeclaracion" [tipoReporte]="tipoReporte"
+                [fechaPresentacion]="fechaPresentacion" [numOrden]="numOrden">
+            </rentas-reporte-estados-financieros>
+        </div>
+        <div *ngIf="report.reporte3">
+            <rentas-reporte-determinacion-deuda [preDeclaracion]="preDeclaracion" [tipoReporte]="tipoReporte"
+                [fechaPresentacion]="fechaPresentacion" [numOrden]="numOrden">
+            </rentas-reporte-determinacion-deuda>
+
+        </div>
+        <div *ngIf="report.reporte4">
+            <rentas-reporte-impuesto-determinacion-deuda [preDeclaracion]="preDeclaracion" [tipoReporte]="tipoReporte"
+                [fechaPresentacion]="fechaPresentacion" [numOrden]="numOrden">
+            </rentas-reporte-impuesto-determinacion-deuda>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="guardar()">Guardar</button>
+    <button type="button" class="btn btn-primary" (click)="enviar()">Enviar</button>
+</div>

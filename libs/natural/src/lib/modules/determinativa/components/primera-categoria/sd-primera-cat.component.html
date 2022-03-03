@@ -1,0 +1,80 @@
+<div class="card border-left-0 border-0 mt-0">
+    <div class="card-body">
+        <div class="form-group row">
+            <ul class="col-sm-12 list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="row">
+                        <label class="col-sm-6 col-form-label">{{casilla100.descripcion}}</label>
+                        <div class="col-sm-3">
+                            <rentas-textbox [dataCasilla]="casilla100" [(ngModel)]="montoCasilla100" (abrirAsistente)="openAsistenteCasilla100($event)"></rentas-textbox>
+                            <!-- <rentas-textbox [tipo]="2" [(ngModel)]="montoCasilla100" (abrirAsistente)="openAsistenteCasilla100($event)" [numCasilla]="casilla100.numero" [textoPopover]="casilla100.descripcionAyuda" [parentesis]="false">
+                            </rentas-textbox> -->
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <label class="col-sm-6 col-form-label">{{casilla557.descripcion}}</label>
+                        <div class="col-sm-3">
+                            <rentas-textbox [dataCasilla]="casilla557" [(ngModel)]="montoCasilla557" (ngModelChange)="calcularCasilla102()"></rentas-textbox>
+                            <!-- <rentas-textbox [tipo]="0" [(ngModel)]="montoCasilla557" [numCasilla]="casilla557.numero" [textoPopover]="casilla557.descripcionAyuda" [maxvalue]="casilla557.longitudMaxima" [minvalue]="casilla557.longitudMinima" (ngModelChange)="calcularCasilla102()"
+                                [parentesis]="false">
+                            </rentas-textbox> -->
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <label class="col-sm-6 col-form-label">{{casilla558.descripcion}}</label>
+                        <div class="col-sm-3">
+                            <rentas-textbox [dataCasilla]="casilla558" [(ngModel)]="montoCasilla558" (ngModelChange)="calcularCasilla102()"></rentas-textbox>
+                            <!-- <rentas-textbox [tipo]="0" [(ngModel)]="montoCasilla558" [numCasilla]="casilla558.numero" [textoPopover]="casilla558.descripcionAyuda" [maxvalue]="casilla558.longitudMaxima" [minvalue]="casilla558.longitudMinima" (ngModelChange)="calcularCasilla102()"
+                                [parentesis]="false">
+                            </rentas-textbox> -->
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <label class="col-sm-6 col-form-label">{{casilla102.descripcion}}</label>
+                        <div class="col-sm-3">
+                            <rentas-textbox [dataCasilla]="casilla102" [(ngModel)]="montoCasilla102"></rentas-textbox>
+                            <!-- <rentas-textbox [tipo]="1" [(ngModel)]="montoCasilla102" [numCasilla]="casilla102.numero" [textoPopover]="casilla102.descripcionAyuda" [parentesis]="false">
+                            </rentas-textbox> -->
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <label class="col-sm-6 col-form-label">{{casilla501.descripcion}}</label>
+                        <div class="col-sm-3">
+                            <rentas-textbox [dataCasilla]="casilla501" [(ngModel)]="montoCasilla501"></rentas-textbox>
+                            <!-- <rentas-textbox [tipo]="1" [(ngModel)]="montoCasilla501" [numCasilla]="casilla501.numero" [textoPopover]="casilla501.descripcionAyuda" [parentesis]="false">
+                            </rentas-textbox> -->
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <label class="col-sm-6 col-form-label">{{casilla502.descripcion}}</label>
+                        <div class="col-sm-3">
+                            <rentas-textbox [dataCasilla]="casilla502" [(ngModel)]="montoCasilla502"></rentas-textbox>
+                            <!-- <rentas-textbox [tipo]="1" [(ngModel)]="montoCasilla502" [numCasilla]="casilla502.numero" [textoPopover]="casilla502.descripcionAyuda" [parentesis]="true">
+                            </rentas-textbox> -->
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <label class="col-sm-6 col-form-label">{{casilla515.descripcion}}</label>
+                        <div class="col-sm-3">
+                            <rentas-textbox [dataCasilla]="casilla515" [(ngModel)]="montoCasilla515"></rentas-textbox>
+                            <!-- <rentas-textbox [tipo]="1" [(ngModel)]="montoCasilla515" [numCasilla]="casilla515.numero" [textoPopover]="casilla515.descripcionAyuda" [parentesis]="false">
+                            </rentas-textbox> -->
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

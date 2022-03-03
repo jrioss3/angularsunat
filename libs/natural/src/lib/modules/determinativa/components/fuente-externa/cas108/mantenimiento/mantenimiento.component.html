@@ -1,0 +1,79 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title">Identificaci&oacute;n del pago de otras rentas de cuarta categor&iacute;a</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+    <fieldset class="linea-caja">
+        <form class="form-horizontal mt-2" [formGroup]="frmCasilla108">
+            <div class="form-group row">
+                <label class="control-label col-sm-5">Tipo de Documento</label>
+                <div class="form-group col-sm-7">
+                    <select formControlName="cmbTipoDocumento" name="cmbTipoDocumento" class="form-control col-sm-12" (change)="validacionTipoDoc()" [ngClass]="{ 'is-invalid': ( f.cmbTipoDocumento.dirty || submitted) && f.cmbTipoDocumento.errors}">
+						<option value="" selected>--Seleccionar--</option>
+						<option *ngFor="let item of listTipDoc" value="{{item.val}}">{{item.desc}}</option>
+					</select>
+                    <div *ngIf="(f.cmbTipoDocumento.dirty || submitted) && f.cmbTipoDocumento.errors" class="invalid-feedback">
+                        <div *ngIf="f.cmbTipoDocumento.errors.required">{{mensaje108.CUS13_EX01}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-5">N&uacute;mero</label>
+                <div class="col-sm-7">
+                    <input type="text" formControlName="txtNum" class="form-control" name="txtNum" maxlength={{tamanioNroDoc}} (change)="ObtenerRazSoc()" placeholder="Ingresar" (input)="validarEspacio($event.target.value)" [ngClass]="{ 'is-invalid': (f.txtNum.dirty || submitted) && f.txtNum.errors}"
+                    />
+                    <div *ngIf="(f.txtNum.dirty || submitted) && f.txtNum.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtNum.errors.required">{{mensaje108.CUS13_EX02}}</div>
+                        <div *ngIf="frmCasilla108.getError('{excepccion01}', 'txtNum') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-5">Raz&oacute;n Social/Nombre</label>
+                <div class="col-sm-7">
+                    <input type="text" formControlName="txtRazSoc" class="form-control" name="txtRazSoc" placeholder={{placeholder}} [ngClass]="{ 'is-invalid': ( f.txtRazSoc.dirty || submitted) && f.txtRazSoc.errors }" />
+                    <div *ngIf="(f.txtRazSoc.dirty || submitted) && f.txtRazSoc.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtRazSoc.errors.required">{{mensaje108.CUS13_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-5">Periodo</label>
+                <div class="col-sm-7">
+                    <div class="input-group">
+                        <month-date-picker formControlName="periodo" name="periodo" [classValid]="(f.periodo.hasError('invalid') && submitted)" [disabled]="disabled" [minYear]='annio' [maxYear]='annio'></month-date-picker>
+                        <div *ngIf="(f.periodo.hasError('invalid') && submitted)">
+                            <div *ngIf="f.periodo.hasError('invalid')" class="date-invalid-feedback">
+                                {{mensaje108.CUS13_EX01}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-5">Ingreso atribuido</label>
+                <div class="col-sm-7">
+                    <rentas-textbox formControlName="txtIngresoAtri" [tipoFormato]="FORMATO_MONTO" [cantidadDecimales]="2" [isDisabled]="f.txtIngresoAtri.disabled" [isInvalid]="(f.txtIngresoAtri.dirty || submitted) && f.txtIngresoAtri.errors"></rentas-textbox>
+                    <!-- <input type="text" class="form-control text-right" formControlName="txtIngresoAtri"
+						name="txtIngresoAtri" placeholder="S/ 0.00"
+						[ngClass]="{ 'is-invalid': (f.txtIngresoAtri.dirty || submitted) && f.txtIngresoAtri.errors}" /> -->
+                    <div *ngIf="(f.txtIngresoAtri.dirty || submitted) && f.txtIngresoAtri.errors" class="error-message">
+                        <div *ngIf="f.txtIngresoAtri.errors.required">{{mensaje108.CUS13_EX01}}</div>
+                        <div *ngIf="frmCasilla108.getError('{excepccion01}', 'txtIngresoAtri') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+    <button type="button" (click)="metodo()" class="btn btn-primary">Guardar</button>
+</div>

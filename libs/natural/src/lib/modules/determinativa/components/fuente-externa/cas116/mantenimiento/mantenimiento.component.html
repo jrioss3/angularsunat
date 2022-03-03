@@ -1,0 +1,148 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title">Identificaci&oacute;n del pagador de la renta</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="frmCasilla116" class="form-horizontal mt-2 mt-4">
+        <fieldset class="linea-caja" *ngIf="mantenimiento">
+            <div class="mt-2">
+                Si declara rentas netas pasivas atribuidas bajo el R&eacute;gimen de Transparencia Fiscal Internacional,
+                tener en cuenta...
+                <button type="button" class="btn btn-link" (click)="mostrar()">Ver m&aacute;s</button>
+            </div><br>
+            <div class="form-group row ">
+                <label for="TipoRenta" class="control-label col-sm-6">Tipo de Renta</label>
+                <div class="col-sm-6">
+                    <rentas-combobox formControlName="TipoRenta" [lista]="listTipoRenta" (change)="tipoRenta()"
+                        [isDisabled]="f.TipoRenta.disabled"
+                        [isInvalid]="(f.TipoRenta.touched || submitted) && f.TipoRenta.errors"></rentas-combobox>
+                    <div *ngIf="(f.TipoRenta.touched || submitted) && f.TipoRenta.errors" class="error-message">
+                        <div *ngIf="f.TipoRenta.errors.required">{{mensaje116.CUS30_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="RTFI" class="control-label col-sm-6">Tipo de Renta RTFI(R&eacute;gimen de Transparencia
+                    Fiscal Internacional)</label>
+                <div class="col-sm-6">
+                    <rentas-combobox formControlName="RTFI" [lista]="listRTFI" [isDisabled]="f.RTFI.disabled"
+                        [isInvalid]="(f.RTFI.touched || submitted) && f.RTFI.errors"></rentas-combobox>
+                    <div *ngIf="(f.RTFI.touched || submitted) && f.RTFI.errors" class="error-message">
+                        <div *ngIf="f.RTFI.errors.required">{{mensaje116.CUS30_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Pais" class="control-label col-sm-6">Pa&iacute;s</label>
+                <div class="col-sm-6">
+                    <rentas-combobox formControlName="Pais" [lista]="listPais" (change)="changePais()"
+                        [isDisabled]="f.Pais.disabled" [isInvalid]="(f.Pais.touched || submitted) && f.Pais.errors">
+                    </rentas-combobox>
+                    <div *ngIf="(f.Pais.touched || submitted) && f.Pais.errors" class="error-message">
+                        <div *ngIf="f.Pais.errors.required">{{mensaje116.CUS30_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="BeneficioDI" class="control-label col-sm-6">Aplica Beneficios para evitar Doble
+                    Imposici&oacute;n</label>
+                <div class="col-sm-6">
+                    <select class="form-control" id="BeneficioDI" formControlName="BeneficioDI" name="BeneficioDI"
+                        (change)="changeBeneficioDI()" [ngClass]="{ 'is-invalid': submitted && f.BeneficioDI.errors }">
+                        <option value="">--Seleccionar--</option>
+                        <option *ngFor="let item of listBene" value="{{item.val}}">{{item.desc}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.BeneficioDI.errors" class="invalid-feedback">
+                        <div *ngIf="f.BeneficioDI.errors.required">{{mensaje116.CUS30_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="CDI" class="control-label col-sm-6">Opci&oacute;n CDI</label>
+                <div class="col-sm-6">
+                    <rentas-combobox formControlName="CDI" [lista]="listCDI" [isDisabled]="f.CDI.disabled"
+                        [isInvalid]="(f.CDI.touched || submitted) && f.CDI.errors"></rentas-combobox>
+                    <div *ngIf="(f.CDI.touched || submitted) && f.CDI.errors" class="error-message">
+                        <div *ngIf="f.CDI.errors.required">{{mensaje116.CUS30_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-6">Nombre o Raz&oacute;n social</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control " name="txtRazon" placeholder={{placeholderNombre}}
+                        formControlName="txtRazon" name="txtRazon" maxlength="50"
+                        [ngClass]="{ 'is-invalid': submitted && f.txtRazon.errors }" />
+                    <div *ngIf="submitted && f.txtRazon.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtRazon.errors.required">{{mensaje116.CUS30_EX02}}</div>
+                        <div *ngIf="f.txtRazon.errors.maxlength">{{mensaje116.CUS30_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="TipDoc" class="control-label col-sm-6">Tipo de Documento del Pagador de la Renta</label>
+                <div class="col-sm-6">
+                    <rentas-combobox formControlName="TipDoc" [lista]="listTiDoc" (change)="validarDocumento()"
+                        [isDisabled]="f.TipDoc.disabled"
+                        [isInvalid]="(f.TipDoc.touched || submitted) && f.TipDoc.errors"></rentas-combobox>
+                    <div *ngIf="(f.TipDoc.touched || submitted) && f.TipDoc.errors" class="error-message">
+                        <div *ngIf="f.TipDoc.errors.required">{{mensaje116.CUS30_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="txtNumDoc" class="control-label col-sm-6">N&uacute;mero de documento</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control " name="txtNumDoc" placeholder={{placeholderNroDoc}}
+                        formControlName="txtNumDoc" (input)="validarEspacio($event.target.value)"
+                        maxlength={{tamanioNroDoc}} (change)="obtenerNombre()"
+                        [ngClass]="{ 'is-invalid': (f.txtNumDoc.dirty || submitted) && f.txtNumDoc.errors }" />
+                    <div *ngIf="(f.txtNumDoc.dirty || submitted) && f.txtNumDoc.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtNumDoc.errors.required">{{mensaje116.CUS30_EX02}}</div>
+                        <div *ngIf="frmCasilla116.getError('{excepccion01}', 'txtNumDoc') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-sm-6">Renta Neta Percibida</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control text-right" name="txtRentaNetaP"
+                        placeholder={{placeholderRentaNeta}} formControlName="txtRentaNetaP" name="txtRentaNetaP"
+                        [ngClass]="{ 'is-invalid': (f.txtRentaNetaP.dirty || submitted) && f.txtRentaNetaP.errors }" />
+                    <div *ngIf="(f.txtRentaNetaP.dirty || submitted) && f.txtRentaNetaP.errors"
+                        class="invalid-feedback">
+                        <div *ngIf="frmCasilla116.getError('excepccion01', 'txtRentaNetaP') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ngx-spinner bdColor="rgba(255,255,255,0.45)" color="rgba(28,27,27,0.64)"></ngx-spinner>
+        </fieldset>
+        <fieldset class="linea-caja" *ngIf="parrafo">
+            <div class="mt-2">
+                <p>Si declara rentas netas pasivas atribuidas bajo el R&eacute;gimen de Transparencia Fiscal
+                    Internacional, tener en cuenta:</p>
+                <p>1. Si la renta neta pasiva atribuida corresponde exclusivamente a un concepto indicado en el rubro
+                    “Tipo de Renta”, seleccione dicho tipo de renta.</p>
+                <p> 2. Si la renta neta pasiva atribuida corresponde a más de un concepto indicado en el rubro “Tipo de
+                    Renta” o corresponde a un concepto no indicado expresamente, seleccione “Otras Rentas”.</p>
+                <p>En ambos casos, en el rubro “Tipo de Renta RTFI (Régimen de Transparencia Fiscal Internacional)”,
+                    seleccione la opción “Renta Neta proveniente de Transparencia Fiscal Internacional."</p>
+                <p>Seguidamente, continúe con el llenado de los demás rubros.
+            </div>
+        </fieldset>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')"
+                *ngIf="mantenimiento">Cancelar</button>
+            <button type="button" (click)="metodo()" class="btn btn-primary" *ngIf="mantenimiento">Guardar</button>
+            <button type="button" class="btn btn-outline-secondary" (click)="ocultar()" *ngIf="parrafo">Cerrar</button>
+        </div>
+    </form>
+</div>

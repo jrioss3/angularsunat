@@ -1,0 +1,17 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title" id="modal-basic-title"> {{modal.titulo}}</p>
+    <button *ngIf="nameTab != 'aceptar' " type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+<div class="modal-body" [innerHTML]="modal.mensaje">    
+
+</div>
+
+<div class="modal-footer">
+
+    <button *ngIf="nameTab != '' && nameTab != 'aceptar' " type="button" class="btn btn-outline-secondary" (click)="cancelar()">{{texto2}}</button>
+    
+    <button type="button" class="btn btn-primary" (click)="aceptar()">{{texto}}</button>
+
+</div>

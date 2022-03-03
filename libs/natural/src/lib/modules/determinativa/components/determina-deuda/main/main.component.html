@@ -1,0 +1,293 @@
+<div class="card border-left-0 border-0 mt-0">
+    <div class="card-body">
+        <div class="form-group row">
+            <ul class="col-sm-12 list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <label class="col-sm-3 col-form-label text-center" *ngIf="refcasilla523 == 1">Renta de Capital
+							de Primera Categor&iacute;a </label>
+                        <label class="col-sm-3 col-form-label text-center" *ngIf="refcasilla524 == 1">Renta de Capital
+							de Segunda Categor&iacute;a </label>
+                        <label class="col-sm-3 col-form-label text-center" *ngIf="refcasilla525 == 1">Renta de Trabajo
+							y/o Fte. Extranj. </label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">{{casilla153.descripcion}}</label>
+                        <div class="col-sm-3" *ngIf="refcasilla523 == 1">
+                            <rentas-textbox [dataCasilla]="casilla153" [(ngModel)]="montoCasilla153"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3" *ngIf="refcasilla524 == 1">
+                            <rentas-textbox [dataCasilla]="casilla357" [(ngModel)]="montoCasilla357"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3" *ngIf="refcasilla525 == 1">
+                            <rentas-textbox [dataCasilla]="casilla120" [(ngModel)]="montoCasilla120"></rentas-textbox>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">{{casilla122.descripcion}}</label>
+                        <div class="col-sm-3" *ngIf="refcasilla523 == 1"></div>
+                        <div class="col-sm-3" *ngIf="refcasilla524 == 1"></div>
+                        <div class="col-sm-3" *ngIf="refcasilla525 == 1">
+                            <rentas-textbox [dataCasilla]="casilla122" [(ngModel)]="montoCasilla122" (abrirAsistente)="abrirCas122($event)"></rentas-textbox>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">{{casilla158.descripcion}}</label>
+                        <div class="col-sm-3" *ngIf="refcasilla523 == 1"></div>
+                        <div class="col-sm-3" *ngIf="refcasilla524 == 1"></div>
+                        <div class="col-sm-3" *ngIf="refcasilla525 == 1">
+                            <rentas-textbox [dataCasilla]="casilla158" [(ngModel)]="montoCasilla158"></rentas-textbox>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">{{casilla367.descripcion}}</label>
+                        <div class="col-sm-3" *ngIf="refcasilla523 == 1">
+                            <rentas-textbox [dataCasilla]="casilla367" [(ngModel)]="montoCasilla367"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3" *ngIf="refcasilla524 == 1"></div>
+                        <div class="col-sm-3" *ngIf="refcasilla525 == 1">
+                            <rentas-textbox [dataCasilla]="casilla167" [(ngModel)]="montoCasilla167"></rentas-textbox>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item" *ngIf="esAnioEjercicio2019">
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">{{casilla368.descripcion}}</label>
+                        <div class="col-sm-3" *ngIf="refcasilla523 == 1">
+                            <rentas-textbox [dataCasilla]="casilla368" [(ngModel)]="montoCasilla368" (ngModelChange)="calcularCasilla156()"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3" *ngIf="refcasilla524 == 1"></div>
+                        <div class="col-sm-3" *ngIf="refcasilla525 == 1">
+                            <rentas-textbox [dataCasilla]="casilla563" [(ngModel)]="montoCasilla563" (ngModelChange)="calcularCasilla125()"></rentas-textbox>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item" *ngIf="esAnioEjercicio2019">
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">{{casilla369.descripcion}}</label>
+                        <div class="col-sm-3" *ngIf="refcasilla523 == 1">
+                            <rentas-textbox [dataCasilla]="casilla369" [(ngModel)]="montoCasilla369" (ngModelChange)="calcularCasilla156()"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3" *ngIf="refcasilla524 == 1"></div>
+                        <div class="col-sm-3" *ngIf="refcasilla525 == 1">
+                            <rentas-textbox [dataCasilla]="casilla564" [(ngModel)]="montoCasilla564" (ngModelChange)="calcularCasilla125()"></rentas-textbox>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item" *ngIf="esAnioEjercicio2019">
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">{{casilla370.descripcion}}</label>
+                        <div class="col-sm-3" *ngIf="refcasilla523 == 1">
+                            <rentas-textbox [dataCasilla]="casilla370" [(ngModel)]="montoCasilla370" (ngModelChange)="calcularCasilla156()"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3" *ngIf="refcasilla524 == 1"></div>
+                        <div class="col-sm-3" *ngIf="refcasilla525 == 1">
+                            <rentas-textbox [dataCasilla]="casilla565" [(ngModel)]="montoCasilla565" (ngModelChange)="calcularCasilla125()"></rentas-textbox>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">{{casilla156.descripcion}}</label>
+                        <div class="col-sm-3" *ngIf="refcasilla523 == 1">
+                            <rentas-textbox [dataCasilla]="casilla156" [(ngModel)]="montoCasilla156" (ngModelChange)="calcularCasilla159y161()"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3" *ngIf="refcasilla524 == 1">
+                            <rentas-textbox [dataCasilla]="casilla388" [(ngModel)]="montoCasilla388" (ngModelChange)="calcularCasillas360y362()"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3" *ngIf="refcasilla525 == 1">
+                            <rentas-textbox [dataCasilla]="casilla125" [(ngModel)]="montoCasilla125" (ngModelChange)="calcularCasilla141y142()"></rentas-textbox>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">{{casilla133.descripcion}}</label>
+                        <div class="col-sm-3" *ngIf="refcasilla523 == 1">
+                            <rentas-textbox [dataCasilla]="casilla133" [(ngModel)]="montoCasilla133"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3 " *ngIf="refcasilla524==1 ">
+                            <rentas-textbox [dataCasilla]="casilla358" [(ngModel)]="montoCasilla358" (abrirAsistente)="abrirCas358($event) "></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3 " *ngIf="refcasilla525==1 ">
+                            <rentas-textbox [dataCasilla]="casilla127" [(ngModel)]="montoCasilla127" (abrirAsistente)="abrirCas127($event) "></rentas-textbox>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item ">
+                    <div class="row ">
+                        <label class="col-sm-3 col-form-label ">{{casilla128.descripcion}}</label>
+                        <div class="col-sm-3 " *ngIf="refcasilla523==1 "></div>
+                        <div class="col-sm-3 " *ngIf="refcasilla524==1 "></div>
+                        <div class="col-sm-3 " *ngIf="refcasilla525==1 ">
+                            <rentas-textbox [dataCasilla]="casilla128" [(ngModel)]="montoCasilla128" (abrirAsistente)="abrirCas128($event) "></rentas-textbox>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item ">
+                    <div class="row ">
+                        <label class="col-sm-3 col-form-label ">{{casilla359.descripcion}}</label>
+                        <div class="col-sm-3 " *ngIf="refcasilla523==1 "></div>
+                        <div class="col-sm-3 " *ngIf="refcasilla524==1 ">
+                            <rentas-textbox [dataCasilla]="casilla359" [(ngModel)]="montoCasilla359" (abrirAsistente)="abrirCas359($event) "></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3 " *ngIf="refcasilla525==1 ">
+                            <rentas-textbox [dataCasilla]="casilla130" [(ngModel)]="montoCasilla130" (abrirAsistente)="abrirCas130($event) "></rentas-textbox>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item ">
+                    <div class="row ">
+                        <label class="col-sm-3 col-form-label ">{{casilla131.descripcion}}</label>
+                        <div class="col-sm-3 " *ngIf="refcasilla523==1 "></div>
+                        <div class="col-sm-3 " *ngIf="refcasilla524==1 "></div>
+                        <div class="col-sm-3 " *ngIf="refcasilla525==1 ">
+                            <rentas-textbox [dataCasilla]="casilla131" [(ngModel)]="montoCasilla131" (abrirAsistente)="abrirCas131($event) "></rentas-textbox>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item ">
+                    <div class="row ">
+                        <label class="col-sm-3 col-form-label ">{{casilla159.descripcion}}</label>
+                        <div class="col-sm-3 " *ngIf="refcasilla523==1 ">
+                            <rentas-textbox [dataCasilla]="casilla159" [(ngModel)]="montoCasilla159"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3 " *ngIf="refcasilla524==1 ">
+                            <rentas-textbox [dataCasilla]="casilla360" [(ngModel)]="montoCasilla360"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3 " *ngIf="refcasilla525==1 ">
+                            <rentas-textbox [dataCasilla]="casilla141" [(ngModel)]="montoCasilla141"></rentas-textbox>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item ">
+                    <div class="row ">
+                        <label class="col-sm-3 col-form-label ">{{casilla160.descripcion}}</label>
+                        <div class="col-sm-3 " *ngIf="refcasilla523==1">
+                            <rentas-radiobutton 
+                                [lista]="listaDevolucionAplicacion" 
+                                [isDisabled]="disabledCasilla160" 
+                                [(ngModel)]="montoCasilla160" 
+                                [name]="'devolucionAplicacion1'"
+                                [valorSeleccionado]="montoCasilla160" 
+                                (selectedOptionChange)="seleccionarPrimera($event)">
+                            </rentas-radiobutton>
+                        </div>
+
+                        <div class="col-sm-3 " *ngIf="refcasilla524==1">
+                            <rentas-radiobutton 
+                                [lista]="listaDevolucionAplicacion" 
+                                [isDisabled]="disabledCasilla361" 
+                                [(ngModel)]="montoCasilla361" 
+                                [name]="'devolucionAplicacion2'"
+                                [valorSeleccionado]="montoCasilla361" 
+                                (selectedOptionChange)="seleccionarSegunda($event)">
+                            </rentas-radiobutton>
+                        </div>
+
+                        <div class="col-sm-3 " *ngIf="refcasilla525==1">
+                            <rentas-radiobutton 
+                                [lista]="listaDevolucionAplicacion" 
+                                [isDisabled]="disabledCasilla140" 
+                                [(ngModel)]="montoCasilla140" 
+                                [name]="'devolucionAplicacion3'"
+                                [valorSeleccionado]="montoCasilla140" 
+                                (selectedOptionChange)="seleccionarTrabajo($event)">
+                            </rentas-radiobutton>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li class="list-group-item ">
+                    <div class="row ">
+                        <label class="col-sm-3 col-form-label ">{{casilla161.descripcion}}</label>
+                        <div class="col-sm-3 " *ngIf="refcasilla523==1 ">
+                            <rentas-textbox [dataCasilla]="casilla161" [(ngModel)]="montoCasilla161"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3 " *ngIf="refcasilla524==1 ">
+                            <rentas-textbox [dataCasilla]="casilla362" [(ngModel)]="montoCasilla362"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3 " *ngIf="refcasilla525==1 ">
+                            <rentas-textbox [dataCasilla]="casilla142" [(ngModel)]="montoCasilla142"></rentas-textbox>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item ">
+                    <div class="row ">
+                        <label class="col-sm-3 col-form-label ">{{casilla162.descripcion}}</label>
+                        <div class="col-sm-3 " *ngIf="refcasilla523==1 ">
+                            <rentas-textbox [dataCasilla]="casilla162" [(ngModel)]="montoCasilla162" (abrirAsistente)="abrirCas162($event)"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3 " *ngIf="refcasilla524==1 ">
+                            <rentas-textbox [dataCasilla]="casilla363" [(ngModel)]="montoCasilla363" (abrirAsistente)="abrirCas363($event)"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3 " *ngIf="refcasilla525==1 ">
+                            <rentas-textbox [dataCasilla]="casilla144" [(ngModel)]="montoCasilla144" (abrirAsistente)="abrirCas144($event)"></rentas-textbox>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item ">
+                    <div class="row ">
+                        <label class="col-sm-3 col-form-label ">{{casilla163.descripcion}}</label>
+                        <div class="col-sm-3 " *ngIf="refcasilla523==1 ">
+                            <rentas-textbox [dataCasilla]="casilla163" [(ngModel)]="montoCasilla163" (ngModelChange)="calcularCasilla164()"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3 " *ngIf="refcasilla524==1 ">
+                            <rentas-textbox [dataCasilla]="casilla364" [(ngModel)]="montoCasilla364" (ngModelChange)="calcularCasilla365()"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3 " *ngIf="refcasilla525==1 ">
+                            <rentas-textbox [dataCasilla]="casilla145" [(ngModel)]="montoCasilla145" (ngModelChange)="calcularCasilla146()"></rentas-textbox>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item ">
+                    <div class="row ">
+                        <label class="col-sm-3 col-form-label ">{{casilla164.descripcion}}</label>
+                        <div class="col-sm-3 " *ngIf="refcasilla523==1 ">
+                            <rentas-textbox [dataCasilla]="casilla164" [(ngModel)]="montoCasilla164"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3 " *ngIf="refcasilla524==1 ">
+                            <rentas-textbox [dataCasilla]="casilla365" [(ngModel)]="montoCasilla365"></rentas-textbox>
+                        </div>
+                        <div class="col-sm-3 " *ngIf="refcasilla525==1 ">
+                            <rentas-textbox [dataCasilla]="casilla146" [(ngModel)]="montoCasilla146"></rentas-textbox>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item ">
+                    <div class="row ">
+                        <label class="col-sm-3 col-form-label ">{{casilla166.descripcion}}</label>
+                        <div class="col-sm-3 " *ngIf="refcasilla523==1 ">
+                            <rentas-textbox [dataCasilla]="casilla166" [(ngModel)]="montoCasilla166" (ngModelChange)="changecasilla166()" [sinCero]="true"></rentas-textbox>
+                            <label class="tributoPagado " *ngFor="let tributoPagado of listaTributosPagados | filtroPorTributos: '3072' ">
+								Usted tiene pagos realizados para este tributo: {{tributoPagado.codTributo}} – {{tributoPagado.desTributo}}  S/{{tributoPagado.montoPagado}} 
+							</label>
+                        </div>
+                        <div class="col-sm-3 " *ngIf="refcasilla524==1 ">
+                            <rentas-textbox [dataCasilla]="casilla366" [(ngModel)]="montoCasilla366" (ngModelChange)="changecasilla366()" [sinCero]="true"></rentas-textbox>
+                            <label class="tributoPagado " *ngFor="let tributoPagado of listaTributosPagados | filtroPorTributos: '3074' ">
+								Usted tiene pagos realizados para este tributo: {{tributoPagado.codTributo}} – {{tributoPagado.desTributo}}.  S/{{tributoPagado.montoPagado}} 
+							</label>
+                        </div>
+                        <div class="col-sm-3 " *ngIf="refcasilla525==1 ">
+                            <rentas-textbox [dataCasilla]="casilla168" [(ngModel)]="montoCasilla168" (ngModelChange)="changecasilla168()" [sinCero]="true"></rentas-textbox>
+                            <label class="tributoPagado " *ngFor="let tributoPagado of listaTributosPagados | filtroPorTributos: '3073' ">
+								Usted tiene pagos realizados para este tributo: {{tributoPagado.codTributo}} – {{tributoPagado.desTributo}}  S/{{tributoPagado.montoPagado}} 
+							</label>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

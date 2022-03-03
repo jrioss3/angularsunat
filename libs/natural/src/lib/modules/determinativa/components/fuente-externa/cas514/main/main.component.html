@@ -1,0 +1,76 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title">Casilla 514 - Conceptos deducibles (L&iacute;mite 3 UIT)</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+    <div class="card  border-0">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Conceptos deducibles (L&iacute;mite 3 UIT)</th>
+                            <th class="column-right">Monto</th>
+                            <th>Ver detalle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="existeCodFilaAsistente(TipoGastoAlquiler)">
+                            <!-- <td>Alquiler de bienes inmuebles</td> -->
+                            <td>{{getDescripcionFilaAsistente(TipoGastoAlquiler)}}</td>
+                            <td class="column-right">{{alquilerTotal | currency: 'S/ '}}</td>
+                            <td>
+                                <a title="Editar" class="text-dark" (click)="openBienes()"><i class="fas fa-pen"></i></a>
+                            </td>
+                        </tr>
+                        <tr *ngIf="existeCodFilaAsistente(TipoGastoMedicos)">
+                            <!-- <td>M&eacute;dicos y odont&oacute;logos y servicios de independientes</td> -->
+                            <td>{{getDescripcionFilaAsistente(TipoGastoMedicos)}}</td>
+                            <td class="column-right">{{medicototal | currency: 'S/ '}}</td>
+                            <td>
+                                <a title="Editar" class="text-dark" (click)="openMedicos()"><i class="fas fa-pen"></i></a>
+                            </td>
+                        </tr>
+                        <tr *ngIf="existeCodFilaAsistente(TipoGastoAportaciones)">
+                            <!-- <td>Aportaciones a EsSalud de trabajadores del hogar</td> -->
+                            <td>{{getDescripcionFilaAsistente(TipoGastoAportaciones)}}</td>
+                            <td class="column-right">{{aportacionTotal | currency: 'S/ '}}</td>
+                            <td>
+                                <a title="Editar" class="text-dark" (click)="openAportes()"><i class="fas fa-pen"></i></a>
+                            </td>
+                        </tr>
+                        <tr *ngIf="existeCodFilaAsistente(TipoGastoHoteles)">
+                            <!-- <td>Hoteles y restaurantes</td> -->
+                            <td>{{getDescripcionFilaAsistente(TipoGastoHoteles)}}</td>
+                            <td class="column-right">{{hotelTotal | currency: 'S/ '}}</td>
+                            <td>
+                                <a title="Editar" class="text-dark" (click)="openHoteles()"><i class="fas fa-pen"></i></a>
+                            </td>
+                        </tr>
+                        <tr *ngIf="anioEjercicio == 2021">
+                            <td>Artesanias y Turismo</td>
+                            <td class="column-right">{{artesaniaTotal | currency: 'S/ '}}</td>
+                            <td>
+                                <a title="Editar" class="text-dark" (click)="openArtesanias()"><i class="fas fa-pen"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group col-sm-12">
+        <div class="form-group text-right pr-0">
+            <label class="control-label text-right">Total del Monto a Deducir:</label>
+            <label class="control-label ml-1">{{total514 | currency: 'S/ ' : true : '.0'}}</label>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="file" (click)="exportar()"  href="" class="btn btn-primary">Exportar</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+</div>

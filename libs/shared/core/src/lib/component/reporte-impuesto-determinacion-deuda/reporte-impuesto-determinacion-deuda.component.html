@@ -1,0 +1,135 @@
+<div class="print-button">
+    <button [useExistingCss]="false" printSectionId="contentToConvert" class="btn btn-outline-secondary" style="margin: 20px 0;top: -87px;position: absolute;" ngxPrint><i aria-hidden="true" class="fa fa-print"
+      style="margin-right: 10px;"></i>IMPRIMIR</button>
+</div>
+<div id="contentToConvert" style="font-family:Helvetica">
+    <rentas-reporte-marca-agua [esPreliminar]="esPreliminar"></rentas-reporte-marca-agua>
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAAArCAMAAADBjdN+AAAApVBMVEUAAAAAY60AY60AY60AY60AY60gWaAAY60AY60AY60AY60AY60AY60AY60AY60AY60AY62tDEEmVp0AY60AY60AY60AY60AY60AY60AY60AY62tDEEAY60AY60AY60AY60AY62tDEGtDEEAY60AY60AY60AY62tDEEAY62tDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEEAY62tDEHSoCIOAAAANXRSTlMA8SChwDAC/ECtN8sP49xaFfQF9tTqxpZRLAsLSBq5gGM2vo2EbiZNd+fXaEKqyH4sHxaVPz1ejGsAAAPMSURBVFjDzZfbeqIwFEY3CnI+FFQOgqKoY9vpcSa8/6ONkZCEBGa4me/Luilp0mblJ9lRkNi9tS+foDa7U9u2z0dQmbsj5kllS+youiV2VN0SO6puuXtvW9UtY5Ijs/wNyvHRijz9BMXYPbXqW/5o27mWXuWtYEgRA8+KDYjJI+uCIauFY+UFzOK1nWNZhMu1ie4kgX1zyPTXbYLQJqUyWXAfENT4sdncH/0L8F2mawDD2SBM2i1/r0n4IVB+t/+2jG8a4vFvjwTSruUAwX80NaxPBtbDLhsYLhli4cYFjeBLe1K2/EGHRFvEwQJY9tMQyEoAwCDDzGzQpQOlxG36uwaNQQeH0Uc7AbXcIwl7niQyrQlJvG72Im5jjhoQ6gBWp39YWoiw1l2/e0rymZJIM0YlS+ayB4DFBskcyNgbjmT36++WZyL2mK4KbRMlJcyVRJurKMmCZFEWC0xIdsCjEQH00zf45/HtacqSuWgVYLDnAuZLoqASJGmQLErCAj1Y8oUKn84LOT4/Pt5O7y/PouwXO8RIW4ZXWm7mS6K1J0qSIBOfRDktGT/mOIsX0PH1xEcpLFvbNmE0T5KxLZgkH+RlYZIopyQLm/ydzPGF1qFv3LbREL2OZ0t2FlFCJ2NBbor+PzgTkp6OOjKQ+X7GhvQ7T9yYYp0tZ0mudWF1g3JxoOP2gqRU+5I6nrornz+BcE2FGmFmTLKclDzE+zHJTj2JmIYxLmlysTRltYIBn9jx5Ys/Zc7FDvjNWVDJsB9idj2cJHiuIMmC1MIsy0gpssclt0IyfrDW7aYmxeULO36DSFQe6KQlLaAp6XXIO+YlIQokSR3JGKOSVYBGcR9v/9i27zuWYrgM6Z6oEc0v5K8fWO3ZFEwSFr4gaaERbEFSsJQ1r3hPnjhH/Fr9s9FtiYwdOC8hL+62iKNsy+x5Sci1oaSOxjAEyUlLdpH9eouBckbERbfTZa+SeKTMiwSxIAlOwktaaBR7XBKi9VSWq1f+IEmLoZdA5CMR0wJREkqTk9T7Qk7ol2DIktOWrKiwJGWW3SryjegYgiwJIZN0SN4shZRGySTnWKYwwFgmwoao+zkqe/gOHFJXSVxAuFCRjH1kJ5C7cYt9us4G5ljuQaDIGlfry6odFsDIz9uux3RTi+ZzCEy0sT2glve2puf4E4NvIj+NgVGvTZS41uPR9bXArmCO5RLGiHLHcnIPJFbV1cirGP4H05YZKIbnSo7rFaiGZKnloB6CpeaAiniu+o7YUn1HznKjriNAoXeOKp4Z3lJ9R4DCNteKOf4Bb3e5wdVmJREAAAAASUVORK5CYII=">
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container theme-showcase">
+        <rentas-reporte-header [tipoReporte]="tipoReporte"
+        [numOrden]="numOrden" [fechaPresentacion]="fechaPresentacion" 
+        [preDeclaracion]="preDeclaracion" [texto]="'IMPUESTO Y DETERMINACIÓN DE DEUDA'">
+        </rentas-reporte-header>
+        <div>
+            <table class="table table-bordered" cellspacing="0">
+                <tr>
+                    <td colspan="9" style="border:1px solid #000; background-color:#969696;outline: none;color-adjust: exact;
+                    -webkit-print-color-adjust: exact;font-family:Helvetica;padding:3px 5px" align="center">
+                        DETERMINACION DE DEUDA
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="2" style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px; vertical-align: middle;">
+                        SALDO A REGULARIZAR
+                    </td>
+                    <td colspan="2" style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px; vertical-align: middle;">
+                        A FAVOR DEL CONTRIBUYENTE
+                    </td>
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px; vertical-align:middle;">
+                        1. Devolución<br> 2. Aplicación
+                    </td>
+                    <th style="border: 1px solid #000;background-color:#969696;outline: none;color-adjust: exact;
+                    -webkit-print-color-adjust: exact;font-family:Helvetica;padding:3px 5px;text-align:center">
+                        137</th>
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;text-align:right;min-width: 40px;">
+                        {{(casDetDeudaPJ.mtoCas137 == null || casDetDeudaPJ.mtoCas137 == 0)? '' : casDetDeudaPJ.mtoCas137}}
+                    </td>
+                    <th style="border: 1px solid #000;background-color:#969696;outline: none;color-adjust: exact;
+                    -webkit-print-color-adjust: exact;font-family:Helvetica;padding:3px 5px;text-align:center">
+                        {{casilla138.numCas}}</th>
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;text-align:right;min-width: 40px;">
+                        {{ (casDetDeudaPJ.mtoCas138 || 0.00) | number: '1.0-0' | addParentesis: casilla138 }}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px; vertical-align: middle;" colspan="3">
+                        {{casilla139.descripcion}}
+                    </td>
+                    <th style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px; background-color:#969696;outline: none;color-adjust: exact;
+                    -webkit-print-color-adjust: exact;text-align:center">
+                        {{casilla139.numCas}}</th>
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;text-align:right" colspan="3">
+                        {{ (casDetDeudaPJ.mtoCas139 || 0.00) | number: '1.0-0' | addParentesis: casilla139 }}
+                    </td>
+                </tr>
+                <tr *ngIf="casilla142.numCas">
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px" colspan="4">Actualizacion de Saldo
+                    </td>
+                    <th style="border: 1px solid #000;background-color:#969696;outline: none;color-adjust: exact;
+                    -webkit-print-color-adjust: exact;text-align:center">
+                        142</th>
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;text-align:right" colspan="3">
+                        {{ (casDetDeudaPJ.mtoCas142 || 0.00) | number: '1.0-0' | addParentesis: casilla142 }}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px" colspan="4">
+                        {{casilla505.descripcion}}</td>
+                    <th style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;background-color:#969696;outline: none;color-adjust: exact;
+                    -webkit-print-color-adjust: exact;text-align:center">
+                        {{casilla505.numCas}}</th>
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;text-align:right" colspan="3">
+                        {{ (casDetDeudaPJ.mtoCas505 || 0.00) | number: '1.0-0' | addParentesis: casilla505 }}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px" colspan="4">
+                        {{casilla141.descripcion}}</td>
+                    <th style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;background-color:#969696;outline: none;color-adjust: exact;
+                    -webkit-print-color-adjust: exact;text-align:center">
+                        {{casilla141.numCas}}</th>
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;text-align:right" colspan="3">
+                        {{ (casDetDeudaPJ.mtoCas141 || 0.00) | number: '1.0-0' | addParentesis: casilla141 }}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px" colspan="4">
+                        {{casilla144.descripcion}}</td>
+                    <th style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;background-color:#969696;outline: none;color-adjust: exact;
+                    -webkit-print-color-adjust: exact;text-align:center">
+                        {{casilla144.numCas}}</th>
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;text-align:right" colspan="3">
+                        {{ (casDetDeudaPJ.mtoCas144 || 0.00) | number: '1.0-0' | addParentesis: casilla144 }}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px" colspan="4">
+                        {{casilla145.descripcion}}</td>
+                    <th style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;background-color:#969696;outline: none;color-adjust: exact;
+                    -webkit-print-color-adjust: exact;text-align:center">
+                        {{casilla145.numCas}}</th>
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;text-align:right" colspan="3">
+                        {{ (casDetDeudaPJ.mtoCas145 || 0.00) | number: '1.0-0' | addParentesis: casilla145 }}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;vertical-align: middle;" colspan="4">
+                        {{casilla146.descripcion}} (Cas505 - 141 - 144 +145) </td>
+                    <th style="border: 1px solid #000;background-color:#969696;outline: none;color-adjust: exact;
+                    -webkit-print-color-adjust: exact;text-align:center">
+                        {{casilla146.numCas}}</th>
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;text-align:right" colspan="3">
+                        {{ (casDetDeudaPJ.mtoCas146 || 0.00) | number: '1.0-0' | addParentesis: casilla146 }}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px" colspan="4">
+                        {{casilla180.descripcion}}</td>
+                    <th style="border: 1px solid #000;background-color:#969696;outline: none;color-adjust: exact;
+                    -webkit-print-color-adjust: exact;text-align:center">
+                        {{casilla180.numCas}}</th>
+                    <td style="border: 1px solid #000;font-family:Helvetica;padding:3px 5px;text-align:right" colspan="3">
+                        {{ (casDetDeudaPJ.mtoCas180 || 0.00) | number: '1.0-0' | addParentesis: casilla180 }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>

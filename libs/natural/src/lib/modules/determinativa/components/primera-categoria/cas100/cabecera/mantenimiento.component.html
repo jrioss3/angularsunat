@@ -1,0 +1,191 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title">Detalle de Pago Directo del Impuesto a la Renta de Primera Categor&iacute;a (Casilla 100)</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="registerForm" class="form-horizontal mt-2">
+        <fieldset class="linea-caja">
+            <legend class="text-primary">Datos del Arrendatario</legend>
+            <div class="form-group row">
+                <label class="control-label col-sm-3">Tipo de documento</label>
+                <div class="form-group col-sm-3">
+                    <select name="tipoDocumento" formControlName="tipoDocumento" (change)="cambiarTipoDocumento()"
+                        class="form-control col-sm-12"
+                        [ngClass]="{ 'is-invalid': (f.tipoDocumento.touched || submitted) && f.tipoDocumento.errors }">
+                        <option value="">--Seleccionar--</option>
+                        <option *ngFor="let obj of listatipoDoc" value="{{obj.val}}">{{obj.desc}}</option>
+                    </select>
+                    <div *ngIf=" (f.tipoDocumento.touched || submitted) && f.tipoDocumento.errors"
+                        class="invalid-feedback">
+                        <div *ngIf="f.tipoDocumento.errors.required">{{mensajeErrorCasilla100.CUS19_EX09}}</div>
+                    </div>
+                </div>
+                <label for="" class="control-label col-sm-3">N&uacute;mero de documento</label>
+                <div class="col-sm-3">
+                    <input type="text" formControlName="nroDocumento" class="form-control" name="nroDocumento"
+                        (change)="validarPadron()" placeholder="Ingresar" [maxLength]="max"
+                        [ngClass]="{ 'is-invalid': (f.nroDocumento.touched || submitted) && f.nroDocumento.errors }" />
+                    <div *ngIf=" (f.nroDocumento.touched || submitted) && f.nroDocumento.errors"
+                        class="invalid-feedback">
+                        <div *ngIf="f.nroDocumento.errors.required">{{mensajeErrorCasilla100.CUS19_EX10}}</div>
+                        <div *ngIf="registerForm.getError('{excepccion01}', 'nroDocumento') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-3">Nombre o Raz&oacute;n Social</label>
+                <div class="form-group col-sm-4">
+                    <input type="text" class="form-control" formControlName="txtRazonSocial"  name="txtRazonSocial" [maxLength]="maxNomRazonSocial" 
+                    [ngClass]="{ 'is-invalid': (f.txtRazonSocial.dirty || submitted) && f.txtRazonSocial.errors }" />
+                    <div *ngIf="(f.txtRazonSocial.dirty || submitted) && f.txtRazonSocial.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtRazonSocial.errors.pattern">{{mensajeErrorCasilla100.CUS19_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="linea-caja">
+            <legend class="text-primary">Datos del Bien</legend>
+            <div class="form-group row">
+                <label class="control-label col-sm-3">Tipo Bien</label>
+                <div class="form-group col-sm-3">
+                    <select name="cmbTipoBien" formControlName="cmbTipoBien" (change)="cambiarTipoBien()"
+                        class="form-control col-sm-12"
+                        [ngClass]="{ 'is-invalid': (f.cmbTipoBien.touched || submitted) && f.cmbTipoBien.errors }">
+                        <option value="">--Seleccionar--</option>
+                        <option *ngFor="let tipoBien of listTipoBien" [value]="tipoBien.val">{{tipoBien.desc}}</option>
+                    </select>
+                    <div *ngIf="(f.cmbTipoBien.touched || submitted) && f.cmbTipoBien.errors" class="invalid-feedback">
+                        <div *ngIf="f.cmbTipoBien.errors.required">{{mensajeErrorCasilla100.CUS19_EX06}}</div>
+                    </div>
+                </div>
+                <label class="control-label col-sm-3">Seleccione Identificaci&oacute;n del Bien</label>
+                <div class="form-group col-sm-3">
+                    <select name="cmbIdentBien" formControlName="cmbIdentBien" (change)="cambiarIdentificacionBien()"
+                        class="form-control col-sm-12"
+                        [ngClass]="{ 'is-invalid': (f.cmbIdentBien.touched || submitted) && f.cmbIdentBien.errors }">
+                        <option value="">--Seleccionar--</option>
+                        <option *ngFor="let obj of arrIdentBien" [value]="obj.val">
+                            {{ obj.desc }}
+                        </option>
+                    </select>
+                    <div *ngIf="(f.cmbIdentBien.touched || submitted) && f.cmbIdentBien.errors"
+                        class="invalid-feedback">
+                        <div *ngIf="f.cmbIdentBien.errors.required">{{mensajeErrorCasilla100.CUS19_EX07}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-3">Identificaci&oacute;n del Bien</label>
+                <div class="form-group col-sm-3">
+                    <select name="cmbIdentBien2" formControlName="cmbIdentBien2" class="form-control col-sm-12"
+                        (change)="seleccionarIdenBien()">
+                        <option value=""></option>
+                        <option *ngFor="let obj of arr2IdentBien" [value]="obj.val">
+                            {{obj.desc}}
+                        </option>
+                    </select>
+                </div>
+                <label for="" class="control-label col-sm-3">Nro Placa / Matricula / Concesi&oacute;n Minera /
+                    otros</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" formControlName="nroPlaca" name="nroPlaca"
+                        placeholder={{placeholder}}
+                        [ngClass]="{ 'is-invalid': (f.nroPlaca.touched || submitted) && f.nroPlaca.errors }" />
+                    <div *ngIf="(f.nroPlaca.touched || submitted) && f.nroPlaca.errors" class="invalid-feedback">
+                        <div *ngIf="f.nroPlaca.errors.required">{{mensajeErrorCasilla100.CUS19_EX08}}</div>
+                        <div *ngIf="registerForm.getError('{excepccion01}', 'nroPlaca') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-3">N&uacute;mero de Partida Registral</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" name="txtNumPart" formControlName="txtNumPart"
+                        placeholder="Ingresar"
+                        [ngClass]="{ 'is-invalid': (f.txtNumPart.touched || submitted) && f.txtNumPart.errors }" />
+                    <div *ngIf="(f.txtNumPart.touched || submitted) && f.txtNumPart.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtNumPart.errors.pattern">{{mensajeErrorCasilla100.CUS19_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-group mt-4">
+            <button type="button" (click)="metodo()" class="btn btn-primary ml-2" [disabled]="btnDisableCabecera">Grabar
+                datos de
+                cabecera</button>
+        </div>
+        <fieldset class="linea-caja">
+            <div class="card  border-0">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th>Periodo</th>
+                                    <th>N&deg; Formulario</th>
+                                    <th>Nro orden/operaci&oacute;n</th>
+                                    <th>Fecha de Pago</th>
+                                    <th>Pago sin intereses</th>
+                                    <th>Monto Gravado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let detalle100 of lisCas100Detalles;let indice=index">
+                                    <td>
+                                        <a (click)="agregaroActualizar(detalle100, indice)" title="Editar"
+                                            class="text-dark">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a (click)="eliminar(indice)" title="Eliminar" class="text-dark">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                    <td *ngIf="detalle100.indAceptado == '1' && detalle100.indArchPers == '1'"><input
+                                            type="checkbox" enabled checked
+                                            (change)="checkDetalleRentaPrimera($event,indice)" /></td>
+                                    <td *ngIf="detalle100.indAceptado == '0' && detalle100.indArchPers == '1'"><input
+                                            type="checkbox" enabled
+                                            (change)="checkDetalleRentaPrimera($event, indice)" /></td>
+                                    <td *ngIf="detalle100.indAceptado == '1' && detalle100.indArchPers == '0'"><input
+                                            type="checkbox" disabled checked /></td>
+                                    <td *ngIf="detalle100.indAceptado == '0' && detalle100.indArchPers == '0'"><input
+                                            type="checkbox" disabled /></td>
+                                    <td>{{obtenerPeriodo(detalle100.perPago)}}</td>
+                                    <td>{{detalle100.numFormulario}}</td>
+                                    <td>{{detalle100.numOrdOpe}}</td>
+                                    <td>{{detalle100.fecPago.substring(0,10) | date : 'dd/MM/yyyy' }}</td>
+                                    <td>{{detalle100.mtoPagSInt | currency: 'S/ ': true : '.0'}}</td>
+                                    <td class="column-right"> {{detalle100.mtoGravado | currency: 'S/ ' : true : '.0' }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row col-sm-12">
+                <div class="form-group col-sm-12 text-right pr-0">
+                    <label class="col-sm-9 col-form-label text-right">Total Pago sin intereses:</label>
+                    <label class="control-label ml-1">{{montoPagoSinInteres| currency: 'S/ ': true: '.0'}}</label><br>
+                    <label class="col-sm-9 col-form-label text-right">Total Monto Gravado:</label>
+                    <label class="control-label ml-1">{{montoGravado | currency: 'S/ ': true: '.0'}}</label><br>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+    <button type="button" (click)="agregaroActualizar()" class="btn btn-primary ml-2">Agregar</button>
+</div>

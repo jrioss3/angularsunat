@@ -1,0 +1,131 @@
+<h4 class="nombre-f mt-4" style="margin:0">
+  Resumen de Transacciones
+</h4>
+
+<div class="row mt-4">
+  <div class="col-sm-12">
+    <fieldset class="linea-caja ">
+      <legend class="text-primary">Datos Generales</legend>
+      <div class="form-group mt-2">
+        <label class="font-weight-bold mr-2"> {{ getEtiquetaRuc() }} </label>
+        <label> {{ getValueRuc() }}</label>
+        <br>
+        <label class="font-weight-bold mr-2"> {{getEtiquetaRazonSocial()}}</label>
+        <label>{{ rasonSocial }}</label>
+        <br>
+        <label class="font-weight-bold mr-2">Fecha de presentaci&oacute;n:</label>
+        <label>{{ fechaProcesoPresentacion }}</label>
+        <br>
+      </div>
+    </fieldset>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <fieldset class="linea-caja ">
+      <div class="card border-0">
+        <div class="card-body">
+
+          <div class="table-responsive mt-4">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Form</th>
+                  <th>Descripci&oacute;n</th>
+                  <th>N&deg; Orden</th>
+                  <th>Periodo</th>
+                  <th>Tributo</th>
+                  <th class="text-center">Monto de pago</th>
+                  <th class="text-center"><!--ver detalle --></th>
+                  <th class="text-center"><!-- ver constancia --></th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <ng-container *ngFor="let item of listConstancias">
+                  <tr>
+                    <td>{{item.codigoFormulario}}</td>
+                    <td>{{item.descripcionFormulario}}</td>
+                    <td>{{item.numeroOrden}}</td>
+                    <td>{{item.periodoTributario}}</td>
+                    <td>{{item.descripcionTributo}}</td>
+                    <td class="text-center">{{item.montoPago | currency:'S/ '}}
+                    </td>
+                    <td class="text-center">
+                      <a *ngIf="!item.esBoleta" class="nav-link" title="ver detalle" (click)="verDetalle(item)"
+                        class="text-primary" style="cursor: pointer;">
+                        Ver<br> detalle
+                      </a>
+                    </td>
+                    <td class="text-center">
+                      <a title="ver constancia" (click)="verConstancia(item)" class="text-primary"
+                        style="cursor: pointer;">
+                        Ver<br> constancia
+                      </a>
+                    </td>
+                  </tr>
+                </ng-container>
+
+
+                <!-- cantidad formilario -->
+                <tr>
+                  <td colspan="5"></td>
+                  <td class="text-right pt-4"> Cantidad de formularios </td>
+                  <td class="text-center pt-4"> {{ listConstancias.length }} </td>
+                  <td class="text-center text-primary">
+                    <a style="cursor: pointer;" (click)="verTodasLasConstancias()">
+                      Ver todas las <br>
+                      constancias </a>
+                  </td>
+                </tr>
+
+                <!-- monto de pago total -->
+                <tr>
+                  <td colspan="5"></td>
+                  <td class="text-right pt-4"> Monto pagado </td>
+                  <td class="text-center pt-4">
+                    {{ totalMontoPagado | currency:'S/ ':true:'.0' }}
+                  </td>
+                  <td></td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+      </div>
+    </fieldset>
+  </div>
+</div>
+
+<div class="alert alert-warning text-center" role="alert">
+  <label class="font-weight-bold">Sr. Contribuyente</label> las constancias de cada uno de los
+  formularios podr&aacute; ser consultado en la web SUNAT.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <i class="fas fa-check fa-1x "></i>
+  </button>
+</div>
+
+<div class="row" *ngIf="esPagoBanco">
+  <div class="col-sm-12">
+    <fieldset class="linea-caja ">
+      <legend class="text-primary">Detalle de Pago</legend>
+      <div class="form-group mt-2">
+        <label class="font-weight-bold mr-2">N&uacute;mero de Operaci&oacute;n: </label> <label>
+          {{ numeroOperacion }} </label> <br>
+        <label class="font-weight-bold mr-2">Medio de Pago:</label> <label>
+          {{constanciaRespuesta.resultadoPago.desMedPag}} </label> <br>
+        <label class="font-weight-bold mr-2"> Banco: </label>
+        <label>{{ constanciaRespuesta.resultadoPago.descripcionBanco || '' }}</label>
+        <br>
+        <label class="font-weight-bold mr-2">Fecha de Pago: </label> <label>
+          {{constanciaRespuesta.resultadoPago.fechaOperacionBancaria }}</label> <br>
+        <label class="font-weight-bold mr-2">Fecha de Operaci&oacute;n:</label> <label>
+          {{constanciaRespuesta.resultadoPago.fechaOperacionBancaria }} </label> <br>
+      </div>
+    </fieldset>
+  </div>
+</div>

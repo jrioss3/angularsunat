@@ -1,0 +1,60 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title">Detalle Aportaciones a EsSalud de Trabajadores del Hogar</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="card  border-0">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table datatable class="table table-hover" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" #tabla>
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th>Fecha pago</th>
+              <th>Nombre</th>
+              <th>Aportaci&oacute;n</th>
+              <th>Monto a deducir</th>
+              <th>Documento trabajador</th>
+              <th>Período</th>
+              <th>N&deg; documento trabajador</th>
+              <th>Formulario</th>
+              <th>N&deg; formulario</th>              
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of aportacion514; let i = index">
+              <td><a (click)="actualizarAportes(item,i)" title="Editar" class="text-dark"><i class="fas fa-pen"></i></a>
+              </td>
+              <td><a (click)="eliminarAportes(i)" title="Eliminar" class="text-dark"><i class="fas fa-trash"></i></a>
+              </td>
+              <td>{{item.fecPago ? (item.fecPago | date : 'dd/MM/yyyy')  : ''}}</td>
+              <td>{{item.desNomEmisor ? item.desNomEmisor : ''}}</td>
+              <td class="column-right">{{item.mtoComprob | currency : 'S/ ' }}</td>
+              <td class="column-right">{{item.mtoDeduccion | currency : 'S/ ' }}</td>
+              <td>{{item.codDocEmisor ? ObtenerDecripcionDocumento(item.codDocEmisor ): ''}}</td>
+              <td>{{ item.numPartidaReg==null?"":item.numPartidaReg.substring(4,6) +"/"+item.numPartidaReg.substring(0, 4)}} </td>
+              <td>{{item.numDocEmisor ? item.numDocEmisor : ''}}</td>
+              <td>{{item.codFor ? item.codFor : ''}}</td>
+              <td>{{item.numFor ? item.numFor : ''}}</td>              
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+  <div class="form-group col-sm-12">
+    <div class="form-group text-right pr-0">
+      <label class="control-label text-right">Total Monto a deducir:</label>
+      <label class="control-label ml-1">{{aportacionTotalS | currency : 'S/ '}}</label>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="close()">Cancelar</button>
+  <button type="button" class="btn btn-primary" (click)="nuevoAportes()">Agregar</button>
+</div>

@@ -1,0 +1,96 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title">{{modal.titulo}}</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="frmCasilla514" class="form-horizontal mt-2">
+    <fieldset class="linea-caja"><br>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Tipo de documento del trabajador</label>
+        <div class="form-group col-sm-6">
+          <select formControlName="codTipComprob" name="codTipComprob" class="form-control col-sm-12">
+            <option *ngFor="let item of listaTipDoc" value="{{item.val}}">{{item.desc}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">N&uacute;mero de documento del trabajador</label>
+        <div class="col-sm-6">
+          <input type="text" formControlName="numDocEmisor" class="form-control" name="numDocEmisor" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Nombre</label>
+        <div class="col-sm-6">
+          <input type="text" formControlName="desNomEmisor" class="form-control" name="desNomEmisor" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Formulario</label>
+        <div class="col-sm-6">
+          <input type="text" formControlName="numFor" class="form-control" name="numFor" placeholder="Ingresar" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">N&uacute;mero de formulario</label>
+        <div class="col-sm-6">
+          <input type="text" maxlength="20" formControlName="numFormulario" class="form-control" name="numFormulario"
+            (change)="changeNumeroFormulario()" placeholder="Ingresar"
+            [ngClass]="{ 'is-invalid': (f.numFormulario.dirty || submitted) && f.numFormulario.errors }" />
+          <div *ngIf="(f.numFormulario.dirty || submitted) && f.numFormulario.errors" class="invalid-feedback">
+            <div *ngIf="f.numFormulario.errors.required">{{mensaje514.Ex215}}</div>
+            <div *ngIf="f.numFormulario.errors.pattern">{{mensaje514.Ex214}}</div>
+            <div *ngIf="frmCasilla514.getError('{excepccion01}', 'numFormulario') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Fecha de pago</label>
+        <div class="input-group col-sm-6">
+          <input class="form-control" formControlName="fecPago" name="fecPago" placeholder="DD/MM/AAAA" readonly
+            ngbDatepicker #d1="ngbDatepicker" placeholder="DD/MM/AAAA" />
+          <div class="input-group-append">
+            <button [disabled]="true" class="btn btn-outline-dark calendar" (click)="d1.toggle()" type="button">
+              <i class="far fa-calendar-alt"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="control-label col-sm-6">Aportaci&oacute;n</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control text-right" formControlName="mtoComprob" name="mtoComprob"
+            placeholder={{placeholder}} (change)="calculoMontoDeduccion()"
+            [ngClass]="{ 'is-invalid': (f.mtoComprob.dirty || submitted) && f.mtoComprob.errors }" />
+          <div *ngIf="(f.mtoComprob.dirty || submitted) && f.mtoComprob.errors" class="invalid-feedback">
+            <div *ngIf="f.mtoComprob.errors.required">{{mensaje514.Ex214}}</div>
+            <div *ngIf="frmCasilla514.getError('{excepccion01}', 'mtoComprob') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="control-label col-sm-6">Monto a deducir</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control text-right" formControlName="mtoDeduccion" name="mtoDeduccion" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="control-label col-sm-6">Periodo</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control text-right" formControlName="periodo" name="periodo" />
+        </div>
+      </div>
+      <ngx-spinner bdColor="rgba(255,255,255,0.45)" color="rgba(28,27,27,0.64)"></ngx-spinner>
+    </fieldset>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary"
+        (click)="activeModal.close('Close click')">Cancelar</button>
+      <button type="button" class="btn btn-primary" (click)="metodo()">Guardar</button>
+    </div>
+  </form>

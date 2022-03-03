@@ -1,0 +1,44 @@
+<!--<div class="modal-header bg-primary text-white">
+  <button type="button" class="close text-white" aria-label="Close" (click)="cerrar()">
+    <span aria-hidden="true" style="color: black;">&times;</span>
+  </button>
+</div> -->
+<div class="modal-body">
+    <div class="alert alert-warning" role="alert">
+      Sr. Contribuyente, al presionar el botón Enviar se enviará al correo electrónico la Constancia de presentación.
+    </div>
+
+    <div class="input-group">
+      <input type="email" class="form-control" name="email"
+       placeholder="escribir un correo" 
+       [formControl]="controlCorreo" 
+       [ngClass]="{ 'is-invalid': controlCorreo.invalid && controlCorreo.dirty }"
+      aria-label="escribir un correo">
+      <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon2">@</span>
+      </div>
+    </div>
+    <div *ngIf="!!respuestaCorreo" class="help-block m-1 text-success">
+      <small>Correo enviado correctamente</small>
+    </div>
+
+    <div *ngIf="controlCorreo.invalid && controlCorreo.dirty" >
+      <div *ngIf="isErrorRequired" class="invalid-correo">
+          correo es requerido
+      </div>
+      <div *ngIf="isErrorMail" class="invalid-correo">
+        correo no es valido.
+      </div>
+      <div *ngIf="isErrormaxLength" class="invalid-correo">
+        máximo 50 caracteres
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button id="cancel" name="cancel" class="btn btn-outline-secondary" type="button" value="Cancela"
+      (click)="cerrar()">Cerrar</button>
+
+    <button [disabled]="controlCorreo.invalid" 
+      class="btn btn-primary" (click)="enviarCorreo()">Enviar</button>
+  </div>

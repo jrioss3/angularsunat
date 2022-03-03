@@ -1,0 +1,96 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title">Datos del Cond&oacute;mino</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <fieldset class="linea-caja">
+        <form [formGroup]="registerForm" class="form-horizontal mt-2">
+            <div class="form-group row">
+                <label class="control-label col-sm-6">Tipo de Documento</label>
+                <div class="form-group col-sm-6">
+                    <select formControlName="cmbTipoDocumento" #cmbTipoDocumento name="cmbTipoDocumento"
+                        class="form-control col-sm-12" (change)='validarDocumento(cmbTipoDocumento.value)'
+                        [ngClass]="{ 'is-invalid': (f.cmbTipoDocumento.dirty || submitted) && f.cmbTipoDocumento.errors }">
+                        <option value="">--Seleccionar--</option>
+                        <option *ngFor="let item of listaTipoDoc" value="{{item.val}}">{{item.desc}}</option>
+                    </select>
+                    <div *ngIf="(f.cmbTipoDocumento.dirty || submitted) && f.cmbTipoDocumento.errors"
+                        class="invalid-feedback">
+                        <div *ngIf="f.cmbTipoDocumento.errors.required">{{mensajeExcepcion.CUS03_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">N&uacute;mero de Documento</label>
+                <div class="col-sm-6">
+                    <input type="text" formControlName="txtNumDoc" class="form-control" name="txtNumDoc"
+                        (blur)="validarPadron()" placeholder="Ingresar" maxlength={{length}}
+                        [ngClass]="{ 'is-invalid': (f.txtNumDoc.dirty || submitted) && f.txtNumDoc.errors }" />
+                    <div *ngIf="(f.txtNumDoc.dirty || submitted) && f.txtNumDoc.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtNumDoc.errors.required">{{mensajeExcepcion.CUS03_EX05}}</div>
+                        <div *ngIf="registerForm.getError('{excepccion01}', 'txtNumDoc') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">Nombre o Raz&oacute;n Social</label>
+                <div class="col-sm-6">
+                    <input type="text" formControlName="txtRazSoc" class="form-control" [disabled]="true"
+                        name="txtRazSoc" placeholder={{placholder}}
+                        [ngClass]="{ 'is-invalid': (f.txtRazSoc.dirty || submitted) && f.txtRazSoc.errors }" />
+                    <div *ngIf="(f.txtRazSoc.dirty || submitted) && f.txtRazSoc.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtRazSoc.errors.required">{{mensajeExcepcion.CUS03_EX20}}</div>
+                        <div *ngIf="f.txtRazSoc.errors.pattern">{{mensajeExcepcion.CUS03_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">% Participaci&oacute;n</label>
+                <div class="col-sm-6">
+                    <input type="text" formControlName="txtPorcentaje" class="form-control" id="txtPorcentaje"
+                        name="txtPorcentaje" placeholder="Ingresar"
+                        [ngClass]="{ 'is-invalid': (f.txtPorcentaje.dirty || submitted) && f.txtPorcentaje.errors }" />
+                    <div *ngIf="(f.txtPorcentaje.dirty || submitted) && f.txtPorcentaje.errors"
+                        class="invalid-feedback">
+                        <div *ngIf="f.txtPorcentaje.errors.required">{{mensajeExcepcion.CUS03_EX01}}</div>
+                        <div *ngIf="registerForm.getError('{excepccion01}', 'txtPorcentaje') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-6">Partida Registral</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" formControlName="txtPartida" name="txtPartida"
+                        placeholder="Ingresar" [ngClass]="{ 'is-invalid': f.txtPartida.errors }" />
+                    <div *ngIf="(f.txtPartida.dirty || submitted) &&  f.txtPartida.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtPartida.errors.pattern">{{mensajeExcepcion.CUS03_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">Valor del Bien (Autovalúo {{anioEjercicio}})</label>
+                <div class="col-sm-6">
+                    <rentas-textbox formControlName="txtValorBien" [tipoFormato]="FORMATO_MONTO" [maxlength]="10"
+                        [isInvalid]="(f.txtValorBien.dirty || submitted) && f.txtValorBien.errors"></rentas-textbox>
+                    <div *ngIf="(f.txtValorBien.dirty || submitted) &&  f.txtValorBien.errors" class="error-message">
+                        <div *ngIf="f.txtValorBien.errors.required">{{mensajeExcepcion.CUS03_EX01}}</div>
+                        <div *ngIf="registerForm.getError('{excepccion01}', 'txtValorBien') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+    <button (click)="metodo()" type="button" class="btn btn-primary">Guardar</button>
+</div>

@@ -1,0 +1,91 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title" id="modal-basic-title  ">Monto aplicado contra deudas distintas a los pagos a cuenta (Art. 40.
+    Código Tributario)</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="card">
+    <div class="card-body">
+      <div class="card  border-0" style="width: 100%;">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover ">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th class="text-center">Mes en que efectuó la aplicación</th>
+                  <th class="text-center">Periodo Tributario</th>
+                  <th class="text-center">Valor o Saldo Deudor</th>
+                  <th class="text-center">Número de Valor</th>
+                  <th *ngIf="mostrarCabeceras.habilitarCasillasITAN()" class="text-center">Formulario de la Declaración
+                    Jurada</th>
+                  <th *ngIf="mostrarCabeceras.habilitarCasillasITAN()" class="text-center">Número de orden de la
+                    Declaración Jurada</th>
+                  <th *ngIf="mostrarCabeceras.habilitarCasillasITAN()" class="text-center">Número de la resolución de
+                    Compensación</th>
+                  <th class="text-center">Código de Tributo</th>
+                  <th class="text-center">Monto Aplicado S/</th>
+                  <th class="text-center">Fuente</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let deuda of filtrarLista()">
+                  <td>
+                    <a (click)="eliminar(deuda)" title="Eliminar" class="text-dark">
+                      <i class="fas fa-trash"></i>
+                    </a>
+                  </td>
+                  <td class="text-center">{{deuda.numPerPagoCta | formatoListaDeuda : 'periodo'}}</td>
+                  <td class="text-center">{{deuda.numPerAplica | formatoListaDeuda : 'periodo'}}</td>
+                  <td class="text-center">{{deuda.numVal | formatoListaDeuda : 'valor'}}</td>
+                  <td class="text-center">{{deuda.numVal | formatoListaDeuda : 'numValor'}}</td>
+                  <td *ngIf="mostrarCabeceras.habilitarCasillasITAN()" class="text-center">{{deuda.codFor }}</td>
+                  <td *ngIf="mostrarCabeceras.habilitarCasillasITAN()" class="text-center">{{deuda.numDoc }}</td>
+                  <td *ngIf="mostrarCabeceras.habilitarCasillasITAN()" class="text-center">{{deuda.numRes}}</td>
+                  <td class="text-center">{{deuda.codTri | formatoListaDeuda : 'tributo'}}</td>
+                  <td class="text-center">{{deuda.mtoImpuesto}}</td>
+                  <td class="text-center">{{deuda.codOrigen | formatoListaDeuda : 'fuente'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+
+        </div>
+        <label class="col-sm-9 col-form-label text-right">Total Casilla 297 :
+          {{total | currency : "S/ " : true : ".0"}}
+        </label>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal-footer">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-6">
+            <button type="button" (click)="agregar()" class="btn btn-primary">Agregar</button>
+          </div>
+          <div class="col-md-6 text-right">
+            <button type="button" (click)="activeModal.close('Close click')"
+              class="btn btn-outline-secondary">Cancelar</button>
+            <button type="button" (click)="guardar()" class="btn btn-primary ml-3">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

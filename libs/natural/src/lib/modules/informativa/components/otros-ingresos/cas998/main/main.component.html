@@ -1,0 +1,54 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title">Dividendos Percibidos</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="card  border-0">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th>RUC de pagador del Dividendo</th>
+              <th>Monto</th>
+              <th>Fecha de pago</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let dividendo of listaDividendos; let i = index">
+              <td>
+                <a (click)="agregarOactualizar(dividendo,i)" title="Editar" class="text-dark">
+                  <i class="fas fa-pen"></i>
+                </a>
+              </td>
+              <td>
+                <a (click)="eliminar(i)" title="Eliminar" class="text-dark">
+                  <i class="fas fa-trash"></i>
+                </a>
+              </td>
+              <td>{{dividendo.numRuc}}</td>
+              <td class="column-right" style='width: 150px;'>{{dividendo.mtoPerci | currency : 'S/ ' }}</td>
+              <td>{{dividendo.fecPago | date : 'dd/MM/yyyy'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+  <div class="form-group col-sm-12">
+    <div class="form-group text-right pr-0">
+      <label class="control-label text-right">Total:</label>
+      <label class="control-label ml-1">{{total | currency: 'S/ ' : true: '.0'}}</label>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close()">Cancelar</button>
+  <button type="button" class="btn btn-primary" (click)="agregarOactualizar()">Agregar</button>
+</div>

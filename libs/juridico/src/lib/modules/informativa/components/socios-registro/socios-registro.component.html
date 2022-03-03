@@ -1,0 +1,140 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title">Registro de Principales Socios</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <fieldset class="linea-caja">
+    <form [formGroup]="registroSociosForm.getForm" class="form-horizontal mt-2">
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Tipo de Socio</label>
+        <div class="form-group col-sm-6">
+          <select formControlName="tipoSocio" name="cmbTipoSocio" class="form-control col-sm-12"
+            (change)='validarOpcion()'
+            [ngClass]="{ 'is-invalid': submitted && registroSociosForm.fieldTipoSocio.errors }">
+            <option [ngValue]="null">--Seleccionar--</option>
+            <option *ngFor="let tipoSocio of tipoSocios" [value]="tipoSocio.val">
+              {{tipoSocio.desc}}
+            </option>
+          </select>
+          <div *ngIf="submitted && registroSociosForm.fieldTipoSocio.errors" class="invalid-feedback">
+            <div *ngIf="registroSociosForm.fieldTipoSocio.errors.required">{{mensaje.CUS5_EX03}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Tipo de Documento</label>
+        <div class="form-group col-sm-6">
+          <select formControlName="tipoDocumento" name="cmbTipoDocu" class="form-control col-sm-12" (change)='tipoDoc()'
+            [ngClass]="{ 'is-invalid': submitted && registroSociosForm.fieldTipoDoc.errors }">
+            <option [ngValue]="null">--Seleccionar--</option>
+            <option *ngFor="let tipoDocumento of tipoDocumentos" [value]="tipoDocumento.val">
+              {{tipoDocumento.desc}}
+            </option>
+          </select>
+          <div *ngIf="submitted && registroSociosForm.fieldTipoDoc.errors" class="invalid-feedback">
+            <div *ngIf="registroSociosForm.fieldTipoDoc.errors.required">{{mensaje.CUS5_EX03}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">N&uacute;mero de Documento</label>
+        <div class="form-group col-sm-6">
+          <input formControlName="nroDocu" type="text" class="form-control" name="txtNumDoc" placeholder="Ingresar"
+            (change)="obtenerNombre()"
+            [ngClass]="{ 'is-invalid': submitted && registroSociosForm.fieldNroDoc.errors}" />
+          <div *ngIf="submitted && registroSociosForm.fieldNroDoc.errors" class="invalid-feedback">
+            <div *ngIf="registroSociosForm.fieldNroDoc.errors.required">{{mensaje.CUS5_EX04}}</div>
+            <div *ngIf="registroSociosForm.getForm.getError('excepccion01', 'nroDocu') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Nombre o Raz&oacute;n Social</label>
+        <div class="col-sm-6">
+          <input type="text" formControlName="nomOraz" class="form-control" name="txtNom" placeholder="Ingresar"
+            [ngClass]="{ 'is-invalid': submitted && registroSociosForm.fieldRazSoc.errors}" />
+          <div *ngIf="submitted && registroSociosForm.fieldRazSoc.errors" class="invalid-feedback">
+            <div *ngIf="registroSociosForm.fieldRazSoc.errors.required">{{mensaje.CUS5_EX04}}</div>
+            <div *ngIf="registroSociosForm.getForm.getError('excepccion01', 'nomOraz') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Fecha de Nacimiento</label>
+        <div class="input-group col-sm-6">
+          <input formControlName="fecNac" placeholder="DD/MM/AAAA" class="form-control" name="dp" ngbDatepicker
+            #d1="ngbDatepicker" [ngClass]="{ 'is-invalid': submitted && registroSociosForm.fieldFecNac.errors}" />
+          <div class="input-group-append">
+            <button [disabled]="registroSociosForm.fieldFecNac.disabled" class="btn btn-outline-secondary calendar"
+              (click)="d1.toggle()" type="button">
+              <i class="fas fa-calendar-alt"></i>
+            </button>
+          </div>
+          <div *ngIf="submitted && registroSociosForm.fieldFecNac.errors" class="invalid-feedback">
+            <div *ngIf="registroSociosForm.fieldFecNac.errors.required"> {{mensaje.CUS5_EX03}}</div>
+            <div *ngIf="registroSociosForm.getForm.getError('excepccion01', 'fecNac') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Pa&iacute;s de Residencia</label>
+        <div class="form-group col-sm-6">
+          <select formControlName="paisNac" name="cmbPais" class="form-control col-sm-12"
+            [ngClass]="{ 'is-invalid': submitted && registroSociosForm.fieldPaisNac.errors}">
+            <option [ngValue]="null">--Seleccionar--</option>
+            <option *ngFor="let listaPais of listaPaises" [value]="listaPais.val">
+              {{listaPais.desc}}
+            </option>
+          </select>
+          <div *ngIf="submitted && registroSociosForm.fieldPaisNac.errors" class="invalid-feedback">
+            <div *ngIf="registroSociosForm.fieldPaisNac.errors.required">{{mensaje.CUS5_EX03}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Porcentaje de Participaci&oacute;n</label>
+        <div class="col-sm-6">
+          <input formControlName="porcPar" type="text" [textMask]="{mask: config, guide: false}"
+            [ngClass]="{ 'is-invalid': submitted && registroSociosForm.fieldPorPar.errors}"
+            class="form-control text-right" id="montoDesde" />
+          <div *ngIf="submitted && registroSociosForm.fieldPorPar.errors" class="invalid-feedback">
+            <div *ngIf="registroSociosForm.fieldPorPar.errors.required">{{mensaje.CUS5_EX03}}</div>
+            <div *ngIf="registroSociosForm.fieldPorPar.errors.max">{{mensaje.CUS5_EX06}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Fecha en que se constituye como socio</label>
+        <div class="input-group col-sm-6">
+          <input formControlName="fecCons" placeholder="DD/MM/AAAA" class="form-control" name="dp" ngbDatepicker
+            #d2="ngbDatepicker" [ngClass]="{ 'is-invalid': submitted && registroSociosForm.fieldFecCons.errors}" />
+          <div class="input-group-append">
+            <button [disabled]="registroSociosForm.fieldFecCons.disabled" style="height: 33.5px;"
+              class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button">
+              <i class="fas fa-calendar-alt"></i>
+            </button>
+          </div>
+          <div *ngIf="submitted && registroSociosForm.fieldFecCons.errors" class="invalid-feedback">
+            <div *ngIf="registroSociosForm.fieldFecCons.errors.required">{{mensaje.CUS5_EX03}}</div>
+            <div *ngIf="registroSociosForm.getForm.getError('excepccion01', 'fecCons') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <ngx-spinner bdColor="rgba(255,255,255,0.45)" color="rgba(28,27,27,0.64)"></ngx-spinner>
+    </form>
+  </fieldset>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+  <button type="button" (click)="metodo()" class="btn btn-primary">Guardar</button>
+</div>

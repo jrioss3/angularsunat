@@ -1,0 +1,51 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title">Detalle del Asistente de la Casilla 108</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <fieldset class="linea-caja">
+    <form [formGroup]="detalle108Form.getForm" class="form-horizontal mt-2">
+
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Ejercicio</label>
+        <div class="form-group col-sm-6">
+          <select formControlName="ejercicio" name="cboEjercicio" (change)="setearAnioSelec()"
+            class="form-control col-sm-12"
+            [ngClass]="{ 'is-invalid': submitted && detalle108Form.fieldEjercicio.errors}">
+            <option [ngValue]="null">--Seleccionar--</option>
+            <option *ngFor="let ejercicio of ejercicios" [value]="ejercicio.val">
+              {{ejercicio.desc}}
+            </option>
+          </select>
+          <div *ngIf="submitted && detalle108Form.fieldEjercicio.errors" class="invalid-feedback">
+            <div *ngIf="detalle108Form.fieldEjercicio.errors.required">{{mensajes.CUS22_EX01}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="" class="control-label col-sm-6">Saldo de Pérdidas del {{anioSeleccionado}}</label>
+        <div class="col-sm-6">
+          <rentas-textbox formControlName="saldoPerdida" [maxlength]="12" [tipoFormato]="FORMATO_MONTO">
+          </rentas-textbox>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="" class="control-label col-sm-6">Compensación de Pérdidas</label>
+        <div class="col-sm-6">
+          <rentas-textbox formControlName="saldoCompensa" [maxlength]="12" [tipoFormato]="FORMATO_MONTO"
+            [isDisabled]="detalle108Form.fieldSaldoCompensa.disabled"></rentas-textbox>
+        </div>
+      </div>
+      
+    </form>
+
+  </fieldset>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+  <button type="button" (click)="guardar()" class="btn btn-primary">Guardar</button>
+</div>

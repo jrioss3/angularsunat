@@ -1,0 +1,134 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title">Datos de Empresa/personas a qui&eacute;n se prest&oacute; el servicio</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <fieldset class="linea-caja">
+        <form class="form-horizontal mt-2" [formGroup]="frmCasilla107">
+            <div class="form-group row">
+                <label class="control-label col-sm-5">Tipo de Documento</label>
+                <div class="form-group col-sm-7">
+                    <select formControlName="cmbTipoDocumento" (change)="cambiarTipoDoc()" name="cmbTipoDocumento" class="form-control col-sm-12" [ngClass]="{ 'is-invalid': (f.cmbTipoDocumento.dirty || submitted) && f.cmbTipoDocumento.errors }">
+                        <option selected value="">--Seleccionar--</option>
+                        <option *ngFor="let item of listaTipDoc" value="{{item.val}}">{{item.desc}}</option>
+                    </select>
+                    <div *ngIf="(f.cmbTipoDocumento.dirty || submitted) && f.cmbTipoDocumento.errors" class="invalid-feedback">
+                        <div *ngIf="f.cmbTipoDocumento.errors.required">{{mensajes107.CUS12_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-5">N&uacute;mero</label>
+                <div class="col-sm-7">
+                    <input type="text" formControlName="txtNum" class="form-control" name="txtNum" placeholder={{textoNumDoc}} (change)="ObtenerRazSoc()" maxlength={{tamanioNroDoc}} (input)="validarEspacio($event.target.value)" [ngClass]="{ 'is-invalid': (f.txtNum.dirty || submitted) && f.txtNum.errors }"
+                    />
+                    <div *ngIf="(f.txtNum.dirty || submitted) && f.txtNum.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtNum.errors.noFound">{{mensajes107.CUS12_EX03}}</div>
+                        <div *ngIf="frmCasilla107.getError('{excepccion01}', 'txtNum') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-5">Raz&oacute;n Social/Nombre</label>
+                <div class="col-sm-7">
+                    <input type="text" formControlName="txtRazSoc" class="form-control" name="txtRazSoc" placeholder={{placholder}} [ngClass]="{ 'is-invalid': (f.txtRazSoc.dirty || submitted) && f.txtRazSoc.errors }" />
+                    <div *ngIf="(f.txtRazSoc.dirty || submitted) && f.txtRazSoc.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtRazSoc.errors.required">{{mensajes107.CUS12_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-5">Periodo</label>
+                <div class="input-group col-sm-7">
+                    <div class="input-group" style="width: 100%;">
+                        <month-date-picker [disabled]="condicionPeriodo" formControlName="periodo" [classValid]="(this.f.periodo.hasError('invalid') && submitted)" name="periodo" [minYear]='annio' [maxYear]='annio' (click)="verificarFecha()">
+                        </month-date-picker>
+                        <div *ngIf="(this.f.periodo.hasError('invalid') && submitted)">
+                            <div *ngIf="this.f.periodo.hasError('invalid')" class="date-invalid-feedback">
+                                {{mensajes107.CUS12_EX01}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-5">Tipo de Comprobante</label>
+                <div class="form-group col-sm-7">
+                    <select name="cmbTipoComprobante" formControlName="cmbTipoComprobante" class="form-control col-sm-12" [ngClass]="{ 'is-invalid': (f.cmbTipoComprobante.dirty || submitted) && f.cmbTipoComprobante.errors}">
+                        <option selected value="">--Seleccionar--</option>
+                        <option *ngFor="let item of listaTipComp" value="{{item.val}}">{{item.desc}}</option>
+                    </select>
+                    <div *ngIf="(f.cmbTipoComprobante.dirty || submitted) && f.cmbTipoComprobante.errors" class="invalid-feedback">
+                        <div *ngIf="f.cmbTipoComprobante.errors.required">{{mensajes107.CUS12_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-5">Serie</label>
+                <div class="col-sm-7">
+                    <input type="text" formControlName="txtSerie" (change)="insertarCerosSerie()" maxlength="4" class="form-control" name="txtSerie" placeholder={{texto}} [ngClass]="{ 'is-invalid': ( f.txtSerie.dirty || submitted) && f.txtSerie.errors}" />
+                    <div *ngIf="(f.txtSerie.dirty || submitted) && f.txtSerie.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtSerie.errors.required">{{mensajes107.CUS12_EX02}}</div>
+                        <div *ngIf="frmCasilla107.getError('{excepccion01}', 'txtSerie') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-5">N&uacute;mero de Comprobante</label>
+                <div class="col-sm-7">
+                    <input type="text" formControlName="txtNumComprobante" (change)="insertarCerosComprobante()" maxlength="8" class="form-control" name="txtNumComprobante" placeholder={{texto}} [ngClass]="{ 'is-invalid': ( f.txtNumComprobante.dirty || submitted) && f.txtNumComprobante.errors}"
+                    />
+                    <div *ngIf="(f.txtNumComprobante.dirty || submitted) && f.txtNumComprobante.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtNumComprobante.errors.required">{{mensajes107.CUS12_EX02}}</div>
+                        <div *ngIf="frmCasilla107.getError('{excepccion01}', 'txtNumComprobante') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-5">Fecha de Emisi&oacute;n</label>
+                <div class=" input-group col-sm-7">
+                    <input class="form-control" formControlName="txtFechaEmi" name="txtFechaEmi" ngbDatepicker #d1="ngbDatepicker" placeholder="dd/mm/aaaa" placement="bottom-right" maxlength="10" [ngClass]="{ 'is-invalid': (f.txtFechaEmi.dirty || submitted) && f.txtFechaEmi.errors}">
+                    <div class="input-group-append">
+                        <button [disabled]="condition" class="btn btn-outline-dark calendar" (click)="d1.toggle()" type="button"><i class="fas fa-calendar-alt"></i></button>
+                    </div>
+                    <div *ngIf="(f.txtFechaEmi.dirty || submitted) && f.txtFechaEmi.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtFechaEmi.errors.required">{{mensajes107.CUS12_EX01}}</div>
+                        <div *ngIf="frmCasilla107.getError('excepccion01', 'txtFechaEmi') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-5">Ingreso Atribuido</label>
+                <div class="col-sm-7">
+                    <rentas-textbox formControlName="txtIngresoAtri" [tipoFormato]="FORMATO_MONTO" [cantidadDecimales]="2" [isDisabled]="f.txtIngresoAtri.disabled" [isInvalid]="(f.txtIngresoAtri.touched || submitted) && f.txtIngresoAtri.errors"></rentas-textbox>
+                    <!-- <input type="text " formControlName="txtIngresoAtri"
+                        [ngClass]="{ 'is-invalid': (f.txtIngresoAtri.dirty || submitted) && f.txtIngresoAtri.errors}"
+                        name="txtIngresoAtri" class="form-control text-right" placeholder="S/ 0.00" /> -->
+                    <div *ngIf="(f.txtIngresoAtri.touched || submitted) && f.txtIngresoAtri.errors" class="error-message">
+                        <div *ngIf="f.txtIngresoAtri.errors.required">{{mensajes107.CUS12_EX01}}</div>
+                        <div *ngIf="frmCasilla107.getError('{excepccion01}', 'txtIngresoAtri') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <ngx-spinner bdColor="rgba(255,255,255,0.45)" color="rgba(28,27,27,0.64)"></ngx-spinner>
+    </fieldset>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+    <button type="button" (click)="metodo()" class="btn btn-primary">Guardar</button>
+</div>

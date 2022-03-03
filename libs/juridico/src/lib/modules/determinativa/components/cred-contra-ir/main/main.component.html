@@ -1,0 +1,170 @@
+<div class="card border-0 mt-2">
+  <div class="card-body pb-0 pl-0">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group mb-0">
+          <label for="" class="col-sm-6 col-form-label font-weight-bold">CR&Eacute;DITOS CONTRA EL IMPUESTO A
+            LA
+            RENTA</label><br>
+          <label for="" class="col-sm-6 col-form-label font-weight-bold">CR&Eacute;DITOS SIN
+            DEVOLUCI&Oacute;N</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card border-0">
+  <div class="card-body pt-0">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group row">
+          <ul class="col-sm-12 list-group list-group-flush">
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6  col-form-label">{{fs.casilla123.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla123" [(ngModel)]="fs.credImprenta.mtoCas123"
+                    (ngModelChange)="fs.calcularSUBTOTALCredSinDevolucion()"></rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6  col-form-label">{{fs.casilla136.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla136" [(ngModel)]="fs.credImprenta.mtoCas136"
+                    (ngModelChange)="fs.calcularSUBTOTALCredSinDevolucion()"></rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li *ngIf="fs.casilla134.numCas" class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6  col-form-label">{{fs.casilla134.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla134" [(ngModel)]="fs.credImprenta.mtoCas134"
+                    (ngModelChange)="fs.calcularSUBTOTALCredSinDevolucion()"></rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li *ngIf="fs.casilla126.numCas" class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6  col-form-label">{{fs.casilla126.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla126" [(ngModel)]="fs.credImprenta.mtoCas126"
+                    (abrirAsistente)="asistenteCasilla126()"></rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6  col-form-label">{{fs.casilla125.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla125" [(ngModel)]="fs.credImprenta.mtoCas125"
+                    (ngModelChange)="fs.calcularSUBTOTALCredSinDevolucion()"></rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6  col-form-label">{{fs.casilla504.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla504" [(ngModel)]="fs.credImprenta.mtoCas504">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <label for="" class="col-form-label font-weight-bold">CR&Eacute;DITOS CON
+                DEVOLUCI&Oacute;N</label>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6  col-form-label">{{fs.casilla127.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla127" [(ngModel)]="fs.credImprenta.mtoCas127"
+                    (abrirAsistente)="asistenteCasilla127()"></rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6  col-form-label">{{fs.casilla128.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla128" [(ngModel)]="fs.credImprenta.mtoCas128"
+                    (abrirAsistente)="asistenteCasilla128()"></rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6  col-form-label">{{fs.casilla130.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla130" [(ngModel)]="fs.credImprenta.mtoCas130"
+                    (abrirAsistente)="asistenteCasilla130()"></rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6  col-form-label">{{fs.casilla129.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla129" [(ngModel)]="fs.credImprenta.mtoCas129"
+                    (ngModelChange)="fs.calcularSUBTOTALCredConDevolucion()"></rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6  col-form-label">{{fs.casilla506.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla506" [(ngModel)]="fs.credImprenta.mtoCas506"
+                    [negativoPositivo]="fs.casilla506.indFormatoNegativo"></rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6  col-form-label">{{fs.casilla131.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla131" [(ngModel)]="fs.credImprenta.mtoCas131"
+                    (abrirAsistente)="asistenteCasilla131()"></rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <label for="" class="col-form-label font-weight-bold">OTROS</label>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6  col-form-label">{{fs.casilla279.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla279" [(ngModel)]="fs.credImprenta.mtoCas279"
+                    [negativoPositivo]="fs.casilla279.indFormatoNegativo" (ngModelChange)="cambiarArrastre()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li *ngIf="fs.credImprenta.mtoCas279 > 0 && fs.habilitarItan.habilitarCasillasITAN()"
+              class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6  col-form-label">{{fs.casilla783.descripcion}}</label>
+                <div class="col-sm-3">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="rdSi" name="rdSi" [(ngModel)]="fs.credImprenta.mtoCas783"
+                      (change)="cambiarArrastre()" class="custom-control-input" value={{valorSi}}>
+                    <label class="custom-control-label font-weight-bold" for="rdSi">SI</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="rdNo" name="rdNo" [(ngModel)]="fs.credImprenta.mtoCas783"
+                      (change)="cambiarArrastre()" class="custom-control-input" value={{valorNo}}>
+                    <label class="custom-control-label font-weight-bold" for="rdNo">NO</label>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

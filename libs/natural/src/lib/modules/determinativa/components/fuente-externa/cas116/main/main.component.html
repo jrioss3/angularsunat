@@ -1,0 +1,73 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title">Detalle de Rentas Neta de Fuente Extranjera(casilla 116)</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <fieldset class="linea-caja">
+    <div class="card  border-0">
+      <div class="card-body">
+        <div class="table-responsive  mt-4">
+          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th>Tipo de Renta</th>
+                <th>Tipo de Renta RTFI</th>
+                <th>Pa&iacute;s de la Fuente</th>
+                <th>Aplica Beneficios para evitar Doble Imposici&oacute;n Opci&oacute;n</th>
+                <th>Opci&oacute;n CDI</th>
+                <th>Nombre o Raz&oacute;n Social</th>
+                <th>Tipo de Documento</th>
+                <th>N&uacute;mero de Documento</th>
+                <th>Renta Neta Percibida</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let casilla116 of lista116; let i = index">
+                <td>
+                  <a (click)="agregarOActualizar(casilla116,i)" title="Editar" class="text-dark">
+                    <i class="fas fa-pen"></i>
+                  </a>
+                </td>
+                <td>
+                  <a (click)="Eliminar(i)" title="Eliminar" class="text-dark">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </td>
+                <td>{{ObtenerRenta(casilla116.codTipRenta) | uppercase}}</td>
+                <td>{{obtenerModalidad(casilla116.codTipRentaRtfi) | uppercase}}</td>
+                <td>{{casilla116.desPais}}</td>
+                <td>{{obtenerBeneficios(casilla116.codBenef) | uppercase }}</td>
+                <td>{{obtenerCDI(casilla116.codCdi) | uppercase }}</td>
+                <td>{{casilla116.desPagador}}</td>
+                <td>{{obtenerTipoDoc(casilla116.codTipDocPagador) | uppercase}}</td>
+                <td>{{casilla116.numDocPagador}}</td>
+                <td class="column-right" style="width: 120px">{{casilla116.mtoImpuesto | monedaCustom}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="form-group row col-sm-12">
+    <div class="form-group col-sm-8">
+      <button type="button" (click)="exportar()" class="btn btn-primary">Exportar</button>
+    </div>
+    <div class="form-group col-sm-4 text-right pr-0">
+      <label class="control-label text-right">Total de la Renta Neta Percibida </label>
+      <label class="control-label ml-1"> {{total116 | monedaCustom}}</label>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary mb-2 mr-2"
+    (click)="activeModal.close('Close click')">Cancelar</button>
+  <button class="btn btn-primary mb-2 mr-2" (click)="agregarOActualizar()">Agregar</button>
+</div>

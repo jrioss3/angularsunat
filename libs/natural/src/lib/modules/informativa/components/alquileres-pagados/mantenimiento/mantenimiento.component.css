@@ -1,0 +1,6 @@
+.error-message {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 11.2px !important;
+    color: #dc3545;
+}

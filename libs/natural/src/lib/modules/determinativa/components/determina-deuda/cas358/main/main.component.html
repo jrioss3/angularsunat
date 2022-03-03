@@ -1,0 +1,62 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title" id="modal-basic-title  ">Detalle de pago directo del Impuesto a la renta de Segunda
+    Categor&iacute;a (Casilla 358)</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="card border-0" style="width: 100%;">
+    <div class="card-body">
+      <div class="table-responsive mt-4">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th>Periodo</th>
+              <th>N&deg; Formulario</th>
+              <th>Nro. orden/operaci&oacute;n</th>
+              <th>Fecha de pago</th>
+              <th>Pago sin intereses</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let casilla358 of listaCasilla358; let i = index">
+              <td>
+                <a (click)="agregarOactualizar(casilla358, i)" title="Editar" class="text-dark">
+                  <i class="fas fa-pen"></i>
+                </a>
+              </td>
+              <td>
+                <a (click)="eliminar(i)" title="Eliminar" class="text-dark">
+                  <i class="fas fa-trash"></i>
+                </a>
+              </td>
+              <td>{{obtenerPeriodo(casilla358.perPago)}}</td>
+              <td>{{casilla358.numFormulario}}</td>
+              <td>{{casilla358.numOrdOpe}}</td>
+              <td>{{casilla358.fecPago.substring(0, 10) | date: 'dd/MM/yyyy'}}</td>
+              <td class="column-right">{{casilla358.mtoPagSInt | currency : "S/ " : true}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="form-group row col-sm-12">
+      <div class="form-group col-sm-8">
+        <button type="button" (click)="exportar()" class="btn btn-primary">Exportar</button>
+      </div>
+      <div class="form-group col-sm-4 text-right pr-0">
+        <label class="control-label text-right">Total Pago Sin Intereses:</label>
+        <label class="control-label ml-1">{{total | currency : "S/ " : true : ".0"}}</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button id="cancel" name="cancel" class="btn btn-outline-secondary" type="button" value="Cancelar"
+    (click)="activeModal.close('Close click')">Cancelar</button>
+  <button (click)="agregarOactualizar()" class="btn btn-primary">Agregar</button>
+</div>

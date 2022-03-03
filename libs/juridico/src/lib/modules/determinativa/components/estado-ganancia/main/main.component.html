@@ -1,0 +1,243 @@
+<div class="card border-0 mt-4">
+	<div class="card-body">
+		<div class="form-group row">
+			<label for="cboEjercicio" class="col-sm-6 col-form-label">II. Estado de Resultados del 01/01
+				al 31/12 del {{anioEjercicio}}</label>
+			<div class="col-sm-6">
+				<button (click)="importar()" class="btn btn-primary">Importar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="card border-left-0 border-0 border-bottom-0 mt-0">
+	<div class="card-body">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group row">
+					<ul class="col-sm-12 list-group list-group-flush">
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla461.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla461" [(ngModel)]="fs.ganancia.mtoCas461"
+										(ngModelChange)="fs.calcularVentasNetas()"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla462.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla462" [(ngModel)]="fs.ganancia.mtoCas462"
+										(ngModelChange)="fs.calcularVentasNetas()"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla463.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla463" [(ngModel)]="fs.ganancia.mtoCas463"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla464.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla464" [(ngModel)]="fs.ganancia.mtoCas464"
+										(ngModelChange)="fs.calcularResultadoBrutoUtilidad()"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla466.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla466" [(ngModel)]="fs.ganancia.mtoCas466"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla467.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla467" [(ngModel)]="fs.ganancia.mtoCas467"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla468.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla468" [(ngModel)]="fs.ganancia.mtoCas468"
+										(ngModelChange)="fs.calcularResultadoOperUtilidad()"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla469.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla469" [(ngModel)]="fs.ganancia.mtoCas469"
+										(ngModelChange)="fs.calcularResultadoOperUtilidad()"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla470.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla470" [(ngModel)]="fs.ganancia.mtoCas470"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla471.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla471" [(ngModel)]="fs.ganancia.mtoCas471"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group row">
+					<ul class="col-sm-12 list-group list-group-flush">
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla472.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla472" [(ngModel)]="fs.ganancia.mtoCas472"
+										(ngModelChange)="fs.calcularResultadoAntesParUtilidad()"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla473.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla473" [(ngModel)]="fs.ganancia.mtoCas473"
+										(abrirAsistente)="asistenteCasillas(473)"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla475.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla475" [(ngModel)]="fs.ganancia.mtoCas475"
+										(ngModelChange)="fs.calcularResultadoAntesParUtilidad()"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla476.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla476" [(ngModel)]="fs.ganancia.mtoCas476"
+										(ngModelChange)="fs.calcularResultadoAntesParUtilidad()"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla477.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla477" [(ngModel)]="fs.ganancia.mtoCas477"
+										(abrirAsistente)="asistenteCasillas(477)"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla478.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla478" [(ngModel)]="fs.ganancia.mtoCas478"
+										(ngModelChange)="fs.calcularResultadoAntesParUtilidad()"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla480.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla480" [(ngModel)]="fs.ganancia.mtoCas480"
+										(ngModelChange)="fs.calcularResultadoAntesParUtilidad()"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla484.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla484" [(ngModel)]="fs.ganancia.mtoCas484"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla485.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla485" [(ngModel)]="fs.ganancia.mtoCas485"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla486.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla486" [(ngModel)]="fs.ganancia.mtoCas486"
+										(ngModelChange)="fs.calcularResultadoAntesImpUtilidad()"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla487.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla487" [(ngModel)]="fs.ganancia.mtoCas487"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item border-top-0">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla489.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla489" [(ngModel)]="fs.ganancia.mtoCas489"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item border-top-0">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla490.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla490" [(ngModel)]="fs.ganancia.mtoCas490"
+										(ngModelChange)="fs.calcularResultadoEjercicioUtil()"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla492.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla492" [(ngModel)]="fs.ganancia.mtoCas492"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item border-top-0">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla493.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla493" [(ngModel)]="fs.ganancia.mtoCas493"></rentas-textbox>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

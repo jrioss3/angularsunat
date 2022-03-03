@@ -1,0 +1,45 @@
+<div class="input-group mb-1">
+    <div *ngIf="dataCasilla?.numCas" class="input-group-prepend">
+        <label class="input-group-text">{{ dataCasilla?.numCas }}</label>
+    </div>
+
+    <!-- [disabled]="setDisabled()" -->
+    <select #mySelect class="form-control col-sm-12" [disabled]="isDisabled" [ngClass]="{ 'is-invalid': isInvalid }"
+        [class.selectpicker]="isScrolling">
+        <option value="">--Seleccionar--</option>
+        <option *ngFor="let item of _lista; let i=index;" [value]="item.val"> {{item.desc}}</option>
+    </select>
+
+    <div *ngIf="dataCasilla?.descAyuda" class="input-group-append">
+        <ng-template #popContent>
+            <div class="text-justify">{{ subTextoPopover }}
+                <span class="pointer" *ngIf="superaLimite " (click)="openScrollableContent(longContent)">...
+                    <br />
+                    <i class="fa fa-plus-circle"></i><span class="vermas">Ver mas</span>
+                </span>
+            </div>
+        </ng-template>
+        <button class="input-group-text" [ngbPopover]="popContent">
+            <i class="fas fa-question-circle"></i>
+        </button>
+    </div>
+</div>
+<ng-template #longContent let-modal>
+    <div class="modal-header bg-primary">
+        <h4 class="modal-title" id="modal-basic-title" class="modal-title">Ayuda Casilla {{ dataCasilla?.numCas }}
+        </h4>
+        <button type="button" class="close text-white" aria-label="Close" (click)="modal.dismiss( 'Cross click')">
+            <span aria-hidden="true ">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body text-justify">
+        <div class="row">
+            <div class="col-md-12">
+                {{ dataCasilla?.descAyuda }}
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="modal.close( 'Close click')">Cerrar</button>
+    </div>
+</ng-template>

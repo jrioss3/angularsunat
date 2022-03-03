@@ -1,0 +1,69 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title">Detalle de donaciones (Casilla 519)</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="card  border-0">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>Tipo Donaci&oacute;n</th>
+                            <th>Modalidad Donaci&oacute;n</th>
+                            <th>Tipo de documento del donatario</th>
+                            <th>N&uacute;mero de identificaci&oacute;n donatario</th>
+                            <th>Nombre o denominaci&oacute;n donatario</th>
+                            <th>Fecha Donaci&oacute;n</th>
+                            <th>Monto Donaci&oacute;n</th>
+                            <th>Monto Deducci&oacute;n</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let casilla519 of lista519; let i = index">
+                            <td>
+                                <a (click)="agregarOActualizar(casilla519, i)" title="Editar" class="text-dark">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a (click)="Eliminar(i)" title="Eliminar" class="text-dark">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                            <td>{{casilla519.desTipDona}}</td>
+                            <td>{{casilla519.desModDona}}</td>
+                            <td>{{ObtenerDescripcion(casilla519.codTipDoc)}}</td>
+                            <td>{{casilla519.numDoc}}</td>
+                            <td>{{casilla519.desRazSoc}}</td>
+                            <td>{{casilla519.fecDonacion.substring(0,10) | date : 'dd/MM/yyyy'}}</td>
+                            <td class="column-right" style="width: 120px">{{casilla519.mtoDonacion | currency: 'S/ '}}
+                            </td>
+                            <td class="column-right" style="width: 120px">{{casilla519.mtoDonacion | currency: 'S/ '}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row col-sm-12">
+        <div class="form-group col-sm-8">
+            <button type="button" (click)="exportar()" class="btn btn-primary">Exportar</button>
+        </div>
+        <div class="form-group col-sm-4 text-right pr-0">
+            <label class="control-label text-right">Total monto de la donaci&oacute;n:</label>
+            <label class="control-label ml-1">{{total519 | currency: 'S/ ': true : '.0'}}</label>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="agregarOActualizar()">Agregar</button>
+</div>

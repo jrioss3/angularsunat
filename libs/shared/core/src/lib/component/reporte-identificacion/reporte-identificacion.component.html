@@ -1,0 +1,256 @@
+<div class="print-button">
+  <button [useExistingCss]="false" printSectionId="contentToConvert" class="btn btn-outline-secondary"
+    style="margin: 20px 0;top: -87px;position: absolute;" ngxPrint>
+    <i aria-hidden="true" class="fa fa-print" style="margin-right: 10px;"></i>
+    IMPRIMIR
+  </button>
+</div>
+<div id="contentToConvert" style="font-family:Helvetica;">
+  <!-- <app-marca-agua [esPreliminar]="esPreliminar"></app-marca-agua> -->
+  <rentas-reporte-marca-agua 
+    [esPreliminar]="esPreliminar"
+    ></rentas-reporte-marca-agua>
+  <div style="position: relative;">
+    <div class="row">
+      <div class="col-md-12">
+        <p><img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAAArCAMAAADBjdN+AAAApVBMVEUAAAAAY60AY60AY60AY60AY60gWaAAY60AY60AY60AY60AY60AY60AY60AY60AY60AY62tDEEmVp0AY60AY60AY60AY60AY60AY60AY60AY62tDEEAY60AY60AY60AY60AY62tDEGtDEEAY60AY60AY60AY62tDEEAY62tDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEEAY62tDEHSoCIOAAAANXRSTlMA8SChwDAC/ECtN8sP49xaFfQF9tTqxpZRLAsLSBq5gGM2vo2EbiZNd+fXaEKqyH4sHxaVPz1ejGsAAAPMSURBVFjDzZfbeqIwFEY3CnI+FFQOgqKoY9vpcSa8/6ONkZCEBGa4me/Luilp0mblJ9lRkNi9tS+foDa7U9u2z0dQmbsj5kllS+youiV2VN0SO6puuXtvW9UtY5Ijs/wNyvHRijz9BMXYPbXqW/5o27mWXuWtYEgRA8+KDYjJI+uCIauFY+UFzOK1nWNZhMu1ie4kgX1zyPTXbYLQJqUyWXAfENT4sdncH/0L8F2mawDD2SBM2i1/r0n4IVB+t/+2jG8a4vFvjwTSruUAwX80NaxPBtbDLhsYLhli4cYFjeBLe1K2/EGHRFvEwQJY9tMQyEoAwCDDzGzQpQOlxG36uwaNQQeH0Uc7AbXcIwl7niQyrQlJvG72Im5jjhoQ6gBWp39YWoiw1l2/e0rymZJIM0YlS+ayB4DFBskcyNgbjmT36++WZyL2mK4KbRMlJcyVRJurKMmCZFEWC0xIdsCjEQH00zf45/HtacqSuWgVYLDnAuZLoqASJGmQLErCAj1Y8oUKn84LOT4/Pt5O7y/PouwXO8RIW4ZXWm7mS6K1J0qSIBOfRDktGT/mOIsX0PH1xEcpLFvbNmE0T5KxLZgkH+RlYZIopyQLm/ydzPGF1qFv3LbREL2OZ0t2FlFCJ2NBbor+PzgTkp6OOjKQ+X7GhvQ7T9yYYp0tZ0mudWF1g3JxoOP2gqRU+5I6nrornz+BcE2FGmFmTLKclDzE+zHJTj2JmIYxLmlysTRltYIBn9jx5Ys/Zc7FDvjNWVDJsB9idj2cJHiuIMmC1MIsy0gpssclt0IyfrDW7aYmxeULO36DSFQe6KQlLaAp6XXIO+YlIQokSR3JGKOSVYBGcR9v/9i27zuWYrgM6Z6oEc0v5K8fWO3ZFEwSFr4gaaERbEFSsJQ1r3hPnjhH/Fr9s9FtiYwdOC8hL+62iKNsy+x5Sci1oaSOxjAEyUlLdpH9eouBckbERbfTZa+SeKTMiwSxIAlOwktaaBR7XBKi9VSWq1f+IEmLoZdA5CMR0wJREkqTk9T7Qk7ol2DIktOWrKiwJGWW3SryjegYgiwJIZN0SN4shZRGySTnWKYwwFgmwoao+zkqe/gOHFJXSVxAuFCRjH1kJ5C7cYt9us4G5ljuQaDIGlfry6odFsDIz9uux3RTi+ZzCEy0sT2glve2puf4E4NvIj+NgVGvTZS41uPR9bXArmCO5RLGiHLHcnIPJFbV1cirGP4H05YZKIbnSo7rFaiGZKnloB6CpeaAiniu+o7YUn1HznKjriNAoXeOKp4Z3lJ9R4DCNteKOf4Bb3e5wdVmJREAAAAASUVORK5CYII=">
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container theme-showcase">
+    <rentas-reporte-header 
+      [preDeclaracion]="preDeclaracion" 
+      [fechaPresentacion]="fechaPresentacion"
+      [numOrden]="numOrden"
+      [tipoReporte]="tipoReporte"
+      [texto]="'IDENTIFICACIÓN'">
+    </rentas-reporte-header>
+    
+    <div>
+      
+
+      <table style="width: 100%!important;" cellspacing="0">
+        <tr>
+          <td style="padding: 10px;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;">
+            Tipo de Declaración</td>
+          <td
+            style="padding: 10px;border: 1px solid #000;border-radius: 0!important;width: 120px;text-align: center;font-family:Helvetica;">
+            {{indRectificatoria == null? "" : indRectificatoria}}</td>
+        </tr>
+        <tr *ngIf="mostrarArrastre">
+          <td style="padding: 10px;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;">
+            Sistema
+            de arrastre de pérdidas del ejercicio {{numEjercicio}}</td>
+          <td
+            style="padding: 10px;border: 1px solid #000;border-radius: 0!important;width: 120px;text-align: center;font-family:Helvetica;">
+            {{impuestoRtaEmpresa.mtoCas880 == '0' ? 'A' : 'B'}}</td>
+        </tr>
+      </table>
+
+      <div class="row "><br></div>
+      <div class="row ">
+        <div class="col-sm-12 ">
+          <div class="panel panel-default ">
+            <div class="panel-heading ">
+              <h3 class="panel-title text-center" style="font-family:Helvetica;font-size:16px">
+                <label>EXONERACIONES</label></h3>
+            </div>
+            <div class="panel-body ">
+              <table class="" cellspacing="0" style="width: 100%!important;">
+                <tbody cellspacing="0">
+                  <tr class="" cellspacing="0">
+                    <td class="col-md-12 theader-nformat" colspan="3"
+                      style="background-color:#969696;outline: none;color-adjust: exact;
+                              -webkit-print-color-adjust: exact;font-weight: 800;padding: 10px;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;">
+                      <label class="control-label">Exoneraciones</label>
+                    </td>
+                  </tr>
+                  <tr style="padding: 0;border:0">
+                    <td
+                      style="padding:0;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;width:100%"
+                      colspan="3">
+                      <table style="width:100%" cellspacing="0">
+                        <tr style="padding:0px;width:100%">
+                          <td colspan="2"
+                            style="padding: 10px;border-right: 1px solid #000;border-radius: 0!important;font-family:Helvetica;">
+                            ¿Está exonerado totalmente del Impuesto a la Renta por alguna
+                            norma legal?
+                          </td>
+                          <td
+                            style="padding: 10px;border-left: 1px solid #000;border-radius: 0!important;font-family:Helvetica;width: 120px;text-align:center">
+                            <label class="control-label">{{mtoCas803 == null ? "" : mtoCas803}}</label>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      style="padding: 10px;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;width:100%"
+                      colspan="3">
+                      <table style="width:100%" cellspacing="0">
+                        <tr style="width:100%">
+                          <td style="width:30%;"> Base Legal</td>
+                          <td style="width:70%;" colspan="2">
+                            <div class="input-group"
+                              style="position: relative;display: flex;flex-wrap: wrap;align-items: stretch;width: 100%;">
+                              <span class="input-group-addon"
+                                style="border: 1px solid #000;padding: 6px 8px;text-align:center;display: flex;align-items: center;">210</span>
+                              <label class="form-control "
+                                style="border: 1px solid #000;margin-left:20px;position: relative;flex: 1 1 auto;width: 1%;margin-bottom: 0;padding:5px 6px;height: auto;">
+                                {{obtenerValorExo(casInformativa.mtoCas210)}}</label>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="3"
+                      style="padding: 10px;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;width:100%">
+                      <table style="width:100%" cellspacing="0">
+                        <tr style="padding:0px;width:100%">
+                          <td style="width:30%;"> Otros - Especificar</td>
+                          <td style="width:70%;" colspan="2 ">
+                            <div class="input-group "
+                              style="position: relative;display: flex;flex-wrap: wrap;align-items: stretch;width: 100%;">
+                              <span class="input-group-addon "
+                                style="border: 1px solid #000;padding: 6px 8px;text-align:center;display: flex;align-items: center;">216</span>
+                              <label class="form-control "
+                                style="border: 1px solid #000;margin-left:20px;position: relative;flex: 1 1 auto;width: 1%;margin-bottom: 0;padding:5px 6px;height:auto;">
+                                {{casInformativa.mtoCas216}}</label>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr class="" cellspacing="0">
+                    <td class="col-md-12 theader-nformat" colspan="3"
+                      style="background-color:#969696;outline: none;color-adjust: exact;
+                              -webkit-print-color-adjust: exact;font-weight: 800;padding: 10px;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;">
+                      <label class="control-label ">Inafectaci&oacute;n</label>
+                    </td>
+                  </tr>
+                  <tr style="padding: 0;border:0">
+                    <td
+                      style="padding:0;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;width:100%"
+                      colspan="3">
+                      <table style="width:100%" cellspacing="0">
+                        <tr style="padding:0px;width:100%">
+                          <td colspan="2"
+                            style="padding: 10px;border-right: 1px solid #000;border-radius: 0!important;font-family:Helvetica;">
+                            ¿Está inafecto al Impuesto a la Renta por alguna norma legal?
+                          </td>
+                          <td class="text-center "
+                            style="padding: 10px;border-left: 1px solid #000;text-align:center;border-radius: 0!important;font-family:Helvetica;width: 120px;">
+                            <label class="control-label ">{{mtoCas217 == null? "" : mtoCas217}}</label>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr style="padding: 0;border:0">
+                    <td
+                      style="padding: 10px;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;width:100%"
+                      colspan="3">
+                      <table style="width:100%" cellspacing="0">
+                        <tr style="padding:0px;width:100%">
+                          <td style="width:30%;"> Base Legal</td>
+                          <td style="width:70%;" colspan="2 ">
+                            <div class="input-group "
+                              style="position: relative;display: flex;flex-wrap: wrap;align-items: stretch;width: 100%;">
+                              <span class="input-group-addon "
+                                style="border: 1px solid #000;padding: 6px 8px;display: flex;align-items: center;">221</span>
+                              <label class="form-control "
+                                style="border: 1px solid #000;margin-left:20px;position: relative;flex: 1 1 auto;width: 1%;margin-bottom: 0;padding:5px 6px;height: auto;">
+                                {{obtenerValorIna(casInformativa.mtoCas221)}}</label>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                  <tr style="padding: 0;border:0">
+                    <td
+                      style="padding: 10px;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;width:100%"
+                      colspan="3">
+                      <table style="width:100%" cellspacing="0">
+                        <tr style="padding:0px;width:100%">
+                          <td style="width:30%;"> Otros - Especificar</td>
+                          <td style="width:70%;" colspan="2 ">
+                            <div class="input-group "
+                              style="position: relative;display: flex;flex-wrap: wrap;align-items: stretch;width: 100%;">
+                              <span class="input-group-addon "
+                                style="border: 1px solid #000;padding: 6px 8px;display: flex;align-items: center;">222</span>
+                              <label class="form-control "
+                                style="border: 1px solid #000;margin-left:20px;position: relative;flex: 1 1 auto;width: 1%;margin-bottom: 0;padding:5px 6px;height: auto;">
+                                {{casInformativa.mtoCas222}}</label>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                  <tr class="" cellspacing="0">
+                    <td class="col-md-12 theader-nformat" colspan="3"
+                      style="background-color:#969696;outline: none;color-adjust: exact;
+                              -webkit-print-color-adjust: exact;font-weight: 800;padding: 10px;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;">
+                      <label class="control-label ">Donaciones</label>
+                    </td>
+                  </tr>
+                  <tr style="padding: 0;border:0">
+                    <td
+                      style="padding:0;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;width:100%"
+                      colspan="3">
+                      <table style="width:100%" cellspacing="0">
+                        <tr>
+                          <td colspan="2"
+                            style="padding: 10px;border-right: 1px solid #000;border-radius: 0!important;font-family:Helvetica;">
+                            ¿Está deduciendo gastos por concepto de donaciones según las
+                            normas
+                            vigentes?
+                          </td>
+                          <td class="text-center "
+                            style="padding: 10px;border-left: 1px solid #000;text-align:center;border-radius: 0!important;font-family:Helvetica;width: 120px;">
+                            <label class="control-label ">{{mtoCas819 == null ? "" : mtoCas819}}</label>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr style="padding: 0;border:0">
+                    <td
+                      style="padding: 10px;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;width:100%"
+                      colspan="3">
+                      <table style="width:100%" cellspacing="0">
+                        <td style="width:60%">Información - Donaciones</td>
+                        <td style="width:40%">
+                          <div class="input-group "
+                            style="position: relative;display: flex;flex-wrap: wrap;align-items: stretch;width: 100%;">
+                            <span class="input-group-addon "
+                              style="border: 1px solid #000;padding: 6px 8px;display: flex;align-items: center;">227</span>
+                            <label class="form-control "
+                              style="border: 1px solid #000;text-align:right;margin-left:20px;position: relative;flex: 1 1 auto;width: 1%;margin-bottom: 0;padding:5px 6px;height: auto;">
+                              {{ casInformativa.mtoCas227 || 0.00 | number: '1.0-0' }}
+                              <!-- {{casInformativa.mtoCas227 == null? (0.00 | currency: ' ' : true: '.0') : (casInformativa.mtoCas227 | currency: ' ' : true: '.0')}} --></label>
+                          </div>
+                        </td>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

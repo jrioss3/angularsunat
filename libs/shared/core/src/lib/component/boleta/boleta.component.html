@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-sm-12">
+      <fieldset class="linea-caja" style="margin: 0px; padding-bottom:0px;">
+        <legend class="text-primary">Identificación de la Transacción:</legend>
+        <div class="form-group mt-2">
+          <label class="font-weight-bold mr-2"> Número de Formulario: </label>
+          <label> {{ rowConstnacia.codigoFormulario }}</label>
+          <br>
+          <label class="font-weight-bold mr-2">Número de Orden:
+          </label> {{rowConstnacia.numeroOrden}} <label>
+          </label>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <fieldset class="linea-caja" style="margin: 0px; padding-bottom:0px;">
+        <legend class="text-primary">Datos Generales:</legend>
+        <div class="form-group mt-2">
+          <label class="font-weight-bold mr-2"> {{ getEtiquetaRuc() }} </label>
+          <label> {{ getValueRuc() }}</label>
+          <br>
+          <label class="font-weight-bold mr-2">{{getEtiquetaRazonSocial()}}</label>
+          <label>{{rowConstnacia.resultado.razonSocial}}</label>
+          <br>
+          <label class="font-weight-bold mr-2">Periodo:</label>
+          <label>
+            {{rowConstnacia.periodoTributario}}
+            <!-- | date:'dd/MM/yyyy' -->
+          </label><br>
+          <label class="font-weight-bold mr-2">Tributo:</label>
+          <label>
+            {{rowConstnacia.codigoTributo + ' - ' + rowConstnacia.descripcionTributo }}
+          </label><br>
+          <label class="font-weight-bold mr-2">Código de Declaración Jurada Asociada:</label>
+          <label>
+            {{ rowConstnacia.codFormularioAsociado }}
+          </label><br>
+          <label class="font-weight-bold mr-2">Número de Orden de la Declaración Jurada
+            Asociada:</label>
+          <label>
+            {{ rowConstnacia.numOrdAsociado }}
+          </label><br>
+          <label class="font-weight-bold mr-2">Importe Pagado:</label>
+          <label>
+            {{ rowConstnacia.montoPago }}
+          </label><br>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <fieldset class="linea-caja" style="margin: 0px; padding-bottom:0px;">
+        <legend class="text-primary">Detalle de Pago:</legend>
+        <div class="form-group mt-2">
+          <label class="font-weight-bold mr-2"> Número de Operación SUNAT: </label>
+          <label> {{ rowConstnacia.resultadoPago.numeroOperacionSunat }} </label>
+          <br>
+          <label class="font-weight-bold mr-2">Medio de Pago:
+          </label>{{rowConstnacia.resultadoPago.desMedPag}}<label>
+          </label> <br>
+          <label class="font-weight-bold mr-2">Banco:</label>
+          <label>
+            {{rowConstnacia.resultadoPago.nomEntFin}}
+          </label><br>
+          <label class="font-weight-bold mr-2">Número de Operación:</label>
+          <label>
+            {{rowConstnacia.resultadoPago.numeroOperacionBancaria}}
+          </label><br>
+          <label class="font-weight-bold mr-2">Fecha de Pago:</label>
+          <label>
+            {{ rowConstnacia.resultadoPago.fecOpe }}
+          </label><br>
+
+        </div>
+      </fieldset>
+    </div>
+  </div>

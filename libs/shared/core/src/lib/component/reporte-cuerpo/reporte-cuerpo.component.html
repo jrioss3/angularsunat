@@ -1,0 +1,61 @@
+<div style="position:relative">
+  <rentas-reporte-marca-agua [esPreliminar]="esPreliminar"></rentas-reporte-marca-agua>
+    <table class="table table-report table-bordered" cellspacing="0">
+      <thead>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="5" class="tcenter w140" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+            <h4 class="black">SUNAT</h4>
+            <p>DECLARACIÓN PAGO</p>
+            <strong class="black">{{cabecera.numFormulario}}</strong>
+          </td>
+          <td colspan="3" class="tcenter black" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+            RENTA ANUAL OTRAS
+            RENTAS</td>
+          <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">Copia para el
+            Contribuyente</td>
+        </tr>
+        <tr *ngIf="no20">
+          <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">RUC</td>
+          <td colspan="3" class="bold" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">{{numRuc}}
+          </td>
+        </tr>
+        <tr *ngIf="!no20">
+          <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">DNI</td>
+          <td colspan="3" class="bold" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">{{numDni}}
+          </td>
+        </tr>
+        <tr>
+          <td *ngIf="no20" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+            Razón Social</td>
+          <td *ngIf="!no20" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+            Nombre Contribuyente</td>
+          <td class="bold" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+            {{userData.nombreCompleto}}</td>
+          <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">Período</td>
+          <td class="bold" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+            {{preDeclaracion.perTri}}</td>
+        </tr>
+        <tr *ngIf='!esPreliminar'>
+          <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">Número de Orden
+          </td>
+          <td class="bold" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+            {{numOrden}}</td>
+          <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">Fecha de Presentación</td>
+          <td class="bold" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+            {{fechaPresentacion}}</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">Tipo de
+            Declaración</td>
+          <td class="bold" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;word-break: break-all;">
+            {{tipoDeclaracion}}</td>
+          <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">Tipo de Moneda
+          </td>
+          <td class="bold" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+            Soles</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

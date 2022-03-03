@@ -1,0 +1,24 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title" id="modal-basic-title"> Mensaje </p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="cerrar()">
+        <span aria-hidden="true" style="color: black;">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+
+    <p *ngIf="!isPagoCero">
+        Una vez que se confirme el pago con su entidad bancaria se le estará registrando el pago
+        de su declaración, excepto si usted elige como medio de pago NPS. ¿Confirma que desea
+        presentar/pagar el formulario?
+    </p>
+    <p *ngIf="isPagoCero">
+        La bandeja solamente contiene formularios con monto
+        a pagar igual a cero. Por favor presione aceptar para continuar con el proceso de presentación de formularios
+    </p>
+
+</div>
+<div class="modal-footer">
+    <button id="cancel" name="cancel" class="btn btn-outline-secondary" type="button" value="Cancela"
+        (click)="cerrar()">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="aceptar()">Aceptar</button>
+</div>

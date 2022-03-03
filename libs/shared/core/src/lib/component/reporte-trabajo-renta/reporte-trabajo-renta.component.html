@@ -1,0 +1,308 @@
+<div style="page-break-before:always;position:relative">
+    <rentas-reporte-marca-agua [esPreliminar]="esPreliminar"></rentas-reporte-marca-agua>
+    <table class="table table-report table-bordered" cellspacing="0">
+        <thead>
+            <tr>
+                <th colspan="4" class="black" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">RENTAS DE TRABAJO Y/O FUENTE EXTRANJERA Y DETERMINACIÓN DE LA DEUDA</th>
+            </tr>
+            <tr>
+                <th colspan="2" class="tcenter black" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    RENTAS DE TRABAJO Y/O FUENTE EXTRANJERA</th>
+                <th colspan="2" class="tcenter w200 black" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;width:150px">
+                    IMPORTE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla107.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;width:50px">
+                    {{casilla107.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;width:100px">
+                    {{ resumenTrabajo.mtoCas107 || 0.00 | number: '1.0-0' | addParentesis: casilla107 }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla507.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla507.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas507 || 0.00 | number: '1.0-0' | addParentesis: casilla507 }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla508.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla508.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas508 || 0.00 | number: '1.0-0' | addParentesis: casilla508 }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla108.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla108.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas108 || 0.00 | number: '1.0-0' | addParentesis: casilla108 }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="bold black" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla509.descripcion.toUpperCase()}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla509.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas509 || 0.00 | number: '1.0-0' | addParentesis: casilla509 }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla111.descripcion.toUpperCase()}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla111.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas111 || 0.00 | number: '1.0-0' | addParentesis: casilla111 }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="bold black" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla510.descripcion.toUpperCase()}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla510.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas510 || 0.00 | number: '1.0-0' | addParentesis: casilla510 }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla511.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla511.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas511 || 0.00 | number: '1.0-0' | addParentesis: casilla511 }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla514.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla514.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas514 || 0.00 | number: '1.0-0' | addParentesis: casilla514 }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="bold black" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla512.descripcion.toUpperCase()}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla512.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas512 || 0.00 | number: '1.0-0' | addParentesis: casilla512 }}
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    Deducciones</td>
+                <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">{{casilla522.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla522.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas522 || 0.00 | number: '1.0-0' | addParentesis: casilla522 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">{{casilla519.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla519.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas519 || 0.00 | number: '1.0-0' | addParentesis: casilla519 }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla513.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla513.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas513 || 0.00 | number: '1.0-0' | addParentesis: casilla513 }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla116.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla116.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas116 || 0.00 | number: '1.0-0' | addParentesis: casilla116 }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="bold black" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla517.descripcion.toUpperCase()}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla517.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas517 || 0.00 | number: '1.0-0' | addParentesis: casilla517 }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div style="page-break-before:always;position:relative;overflow:hidden">
+    <rentas-reporte-marca-agua [esPreliminar]="esPreliminar"></rentas-reporte-marca-agua>
+    <table class="table table-report table-bordered" cellspacing="0">
+        <thead>
+            <tr>
+                <th colspan="4" class="black" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">RENTAS DE TRABAJO Y/O FUENTE EXTRANJERA Y DETERMINACIÓN DE LA DEUDA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th colspan="2" class="tcenter black" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    DETERMINACIÓN DE LA DEUDA</th>
+                <th colspan="2" class="tcenter black" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;width:150px">
+                    IMPORTE</th>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla120.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;width:50px;text-align:center">
+                    {{casilla120.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;width:100px;text-align:right">
+                    {{ resumenTrabajo.mtoCas120 || 0.00 | number: '1.0-0' | addParentesis: casilla120 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">Crédito sin Derecho a Devolución</td>
+                <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">{{casilla122.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla122.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas122 || 0.00 | number: '1.0-0' | addParentesis: casilla122 }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla158.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla158.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas158 || 0.00 | number: '1.0-0' | addParentesis: casilla158 }}
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="5" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    Crédito con Derecho a Devolución</td>
+                <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">{{casilla125.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla125.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas125 || 0.00 | number: '1.0-0' | addParentesis: casilla125 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">{{casilla127.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla127.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas127 || 0.00 | number: '1.0-0' | addParentesis: casilla127 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">{{casilla128.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla128.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas128 || 0.00 | number: '1.0-0' | addParentesis: casilla128 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">{{casilla130.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla130.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas130 || 0.00 | number: '1.0-0' | addParentesis: casilla130 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">{{casilla131.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla131.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas131 || 0.00 | number: '1.0-0' | addParentesis: casilla131 }}
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="3" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">Saldo por Regularizar</td>
+                <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla141.descripcion.toUpperCase()}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla141.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas141 || 0.00 | number: '1.0-0' | addParentesis: casilla141 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica; vertical-align:middle">
+                    <ol style="margin-bottom:0">
+                        <li>Devolución</li>
+                        <li>Aplicación</li>
+                    </ol>
+                </td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    140</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas140 || 0.00 | number: '1.0-0' | addParentesis: casilla140}}
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla142.descripcion.toUpperCase()}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla142.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas142 || 0.00 | number: '1.0-0' | addParentesis: casilla142 }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla144.descripcion}} realizados antes de la presentación de este formulario </td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla144.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas144 || 0.00 | number: '1.0-0' | addParentesis: casilla144 }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla145.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla145.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas145 || 0.00 | number: '1.0-0' | addParentesis: casilla145 }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla146.descripcion}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla146.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas146 || 0.00 | number: '1.0-0' | addParentesis: casilla146 }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla168.descripcion.toUpperCase()}}</td>
+                <td class="tcenter" style="text-align:center;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{casilla168.numCas}}</td>
+                <td class="tright" style="text-align:right;border: 1px solid #000;padding: 6px 8px;font-family:Helvetica;">
+                    {{ resumenTrabajo.mtoCas168 || 0.00 | number: '1.0-0' | addParentesis: casilla168 }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

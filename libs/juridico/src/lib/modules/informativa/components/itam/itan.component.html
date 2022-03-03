@@ -1,0 +1,27 @@
+<div class="row mt-4">
+  <div class="col-sm-12">
+    <form [formGroup]="itanForm.getForm" class="form-horizontal mt-2">
+      <div class="form-group row mt-4">
+        <label class="control-label col-sm-6">{{casilla824.descripcion}}</label>
+        <div class="col-sm-6">
+          <div class="row">
+            <div class="custom-control custom-radio custom-control-inline">
+              <label class="control-label" for="rptSi">
+                <input formControlName="respuesta" value="1" type="radio" id="rptSi" (change)="seleccionarRespuesta()"
+                  name="respuesta">Si
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="custom-control custom-radio custom-control-inline">
+              <label class="control-label" for="rptNo">
+                <input formControlName="respuesta" value="0" type="radio" id="rptNo" (change)="seleccionarRespuesta()"
+                  name="respuesta">No
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <ngx-spinner bdColor="rgba(255,255,255,0.45)" color="rgba(28,27,27,0.64)"></ngx-spinner>
+
+    <rentas-sub-cabecera 
+        (eventoDescargar)="descargarPd()"
+        (eventoReportePreliminar)="abrirSelTipoReporPreliminar()"
+        (eventoResetear)="resetearPd()" 
+        [mostrarBotones]="true" 
+        [paso]="1" 
+    ></rentas-sub-cabecera>
+
+    <br />
+    <h4 class="nombre-f" style="margin:0">
+        {{formularioCabecera.descripcion}} {{anioRenta}} - Secci&oacute;n Informativa
+        <a style="color:white; cursor:pointer; text-decoration:none;" target="_blank" id="urlArchivoAyuda" href="{{linkAyuda}}">
+            <i class="fas fa-question-circle"></i>
+        </a>
+    </h4>
+    <div class="card">
+        <div class="card-body">
+            <ul class="nav nav-tabs row no-gutters">
+                <li class="nav-item col-sm-6">
+                    <a class="nav-link active" id="tabInformativa">Secci&oacute;n Informativa</a>
+                </li>
+                <li class="nav-item col-sm-6 bg-light">
+                    <a class="nav-link" (click)="validateTab()" id="tabDeclarativa">Secci&oacute;n Determinativa</a>
+                </li>
+            </ul>
+            <ngb-tabset #tab="ngbTabset" (tabChange)=beforeChange($event)>
+                <ngb-tab id="tabTipoDeclaracion" title="Tipo de Declaración">
+                    <ng-template ngbTabContent>
+                        <app-tipo-declaracion (enviarData)=enabledTabCondomino($event)></app-tipo-declaracion>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab id="tabCondominios" title="Condóminos" [disabled]="disabledTabCondomino">
+                    <ng-template ngbTabContent>
+                        <app-scmain></app-scmain>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab id="tabAlquileresPagados" title="Alquileres pagados" [disabled]="disabledTabAlquilerPagados">
+                    <ng-template ngbTabContent>
+                        <app-samain></app-samain>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab id="tabAtribucionGastos" title="Atribución de Gastos" [disabled]="disabledTabGastos">
+                    <ng-template ngbTabContent>
+                        <app-satrmain></app-satrmain>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab id="tabOtrosIngresos" title="Otros ingresos" [disabled]="disabledTabOtros">
+                    <ng-template ngbTabContent>
+                        <app-sogmain></app-sogmain>
+                    </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+
+            <div class="col-sm-12 text-center">
+                <button class="btn btn-outline-secondary" (click)="clickAnterior()" *ngIf="mostrarBtnanterior">
+                    <i class="fas fa-chevron-left"></i> Anterior
+                </button>
+                <button class="btn btn-primary ml-3" (click)="clickSiguiente()">Siguiente
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <ngx-spinner bdColor="rgba(255,255,255,0.45)" color="rgba(28,27,27,0.64)"></ngx-spinner>
+</div>

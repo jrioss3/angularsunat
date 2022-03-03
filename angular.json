@@ -1,0 +1,590 @@
+{
+  "version": 1,
+  "projects": {
+    "integrador": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/integrador",
+      "sourceRoot": "apps/integrador/src",
+      "prefix": "rentas",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "allowedCommonJsDependencies": [
+              "jquery", "js-sha1",
+              "js-base64", "file-saver",
+              "jspdf", "xlsx", "crypto-js",
+              "angular2-text-mask"
+            ],
+            "outputPath": "dist/apps/integrador",
+            "index": "apps/integrador/src/index.html",
+            "main": "apps/integrador/src/main.ts",
+            "polyfills": "apps/integrador/src/polyfills.ts",
+            "tsConfig": "apps/integrador/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/integrador/src/favicon.ico",
+              "apps/integrador/src/assets",
+              {
+                "glob": "**/*",
+                "input": "libs/shared/assets/src/assets",
+                "output": "assets"
+              }
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css",
+              "node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css",
+              "node_modules/bootstrap-select/dist/css/bootstrap-select.min.css",
+              "apps/integrador/src/styles.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "node_modules/datatables.net-responsive/js/dataTables.responsive.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/bootstrap-select/dist/js/bootstrap-select.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "libs/shared/environments/src/lib/environment.ts",
+                  "with": "libs/shared/environments/src/lib/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "integrador:build",
+            "proxyConfig": "apps/integrador/proxy.conf.calidad.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "integrador:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "integrador:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/integrador/tsconfig.app.json",
+              "apps/integrador/tsconfig.spec.json",
+              "apps/integrador/tsconfig.editor.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/integrador/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/integrador/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "integrador-e2e": {
+      "root": "apps/integrador-e2e",
+      "sourceRoot": "apps/integrador-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/integrador-e2e/cypress.json",
+            "tsConfig": "apps/integrador-e2e/tsconfig.e2e.json",
+            "devServerTarget": "integrador:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "integrador:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/integrador-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/integrador-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "juridico": {
+      "projectType": "library",
+      "root": "libs/juridico",
+      "sourceRoot": "libs/juridico/src",
+      "prefix": "rentas",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/juridico/tsconfig.lib.json",
+              "libs/juridico/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/juridico/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/juridico/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "shared-assets": {
+      "root": "libs/shared/assets",
+      "sourceRoot": "libs/shared/assets/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {}
+    },
+    "shared-environments": {
+      "root": "libs/shared/environments",
+      "sourceRoot": "libs/shared/environments/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/environments/tsconfig.lib.json",
+              "libs/shared/environments/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/environments/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/environments/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "natural": {
+      "projectType": "library",
+      "root": "libs/natural",
+      "sourceRoot": "libs/natural/src",
+      "prefix": "rentas",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/natural/tsconfig.lib.json",
+              "libs/natural/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/natural/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/natural/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "cabecera": {
+      "projectType": "library",
+      "root": "libs/cabecera",
+      "sourceRoot": "libs/cabecera/src",
+      "prefix": "rentas",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/cabecera/tsconfig.lib.json",
+              "libs/cabecera/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/cabecera/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/cabecera/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "menu": {
+      "projectType": "library",
+      "root": "libs/menu",
+      "sourceRoot": "libs/menu/src",
+      "prefix": "rentas",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/menu/tsconfig.lib.json",
+              "libs/menu/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/menu/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/menu/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "shared-constantes": {
+      "root": "libs/shared/constantes",
+      "sourceRoot": "libs/shared/constantes/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/constantes/tsconfig.lib.json",
+              "libs/shared/constantes/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/constantes/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/constantes/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "casillas": {
+      "projectType": "library",
+      "root": "libs/casillas",
+      "sourceRoot": "libs/casillas/src",
+      "prefix": "rentas",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/casillas/tsconfig.lib.json",
+              "libs/casillas/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/casillas/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/casillas/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "shared-types": {
+      "root": "libs/shared/types",
+      "sourceRoot": "libs/shared/types/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/types/tsconfig.lib.json",
+              "libs/shared/types/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/types/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/types/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-core": {
+      "projectType": "library",
+      "root": "libs/shared/core",
+      "sourceRoot": "libs/shared/core/src",
+      "prefix": "rentas",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/core/tsconfig.lib.json",
+              "libs/shared/core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/core/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/core/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "lista-errores": {
+      "projectType": "library",
+      "root": "libs/lista-errores",
+      "sourceRoot": "libs/lista-errores/src",
+      "prefix": "rentas",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/lista-errores/tsconfig.lib.json",
+              "libs/lista-errores/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/lista-errores/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/lista-errores/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "constancia": {
+      "projectType": "library",
+      "root": "libs/constancia",
+      "sourceRoot": "libs/constancia/src",
+      "prefix": "rentas",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/constancia/tsconfig.lib.json",
+              "libs/constancia/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/constancia/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/constancia/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "shared-utils": {
+      "root": "libs/shared/utils",
+      "sourceRoot": "libs/shared/utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/utils/tsconfig.lib.json",
+              "libs/shared/utils/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/utils/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "consultas": {
+      "projectType": "library",
+      "root": "libs/consultas",
+      "sourceRoot": "libs/consultas/src",
+      "prefix": "rentas",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/consultas/tsconfig.lib.json",
+              "libs/consultas/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/consultas/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/consultas/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "pasarela": {
+      "projectType": "library",
+      "root": "libs/pasarela",
+      "sourceRoot": "libs/pasarela/src",
+      "prefix": "rentas",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pasarela/tsconfig.lib.json",
+              "libs/pasarela/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pasarela/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pasarela/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "shared-iu": {
+      "projectType": "library",
+      "root": "libs/shared/iu",
+      "sourceRoot": "libs/shared/iu/src",
+      "prefix": "rentas",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/iu/tsconfig.lib.json",
+              "libs/shared/iu/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/iu/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/iu/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "analytics": false
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "integrador"
+}

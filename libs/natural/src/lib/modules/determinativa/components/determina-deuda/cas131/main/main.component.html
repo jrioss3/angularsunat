@@ -1,0 +1,70 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title">Detalle de impuesto retenido de Quinta Categor&iacute;a (Casilla 131)</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="card  border-0">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th>Tipo Documento</th>
+              <th>N&deg; Documento</th>
+              <th>Nombre/Raz&oacute;n Social pagador</th>
+              <th>Periodo</th>
+              <th>Monto Retenido</th>
+              <th>Monto Devuelto</th>
+              <th>Formulario</th>
+              <th>N&deg; Orden</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let casilla131 of listaCasilla131; let i = index">
+              <td>
+                <a (click)="agregarOActualizar(casilla131, i)" title="Editar" class="text-dark">
+                  <i class="fas fa-pen"></i>
+                </a>
+              </td>
+              <td>
+                <a (click)="eliminar(i)" title="Eliminar" class="text-dark">
+                  <i class="fas fa-trash"></i>
+                </a>
+              </td>
+              <td>{{ObtenerDescripcionDocumento(casilla131.codTipDoc)}}</td>
+              <td>{{casilla131.numDoc}}</td>
+              <td>{{casilla131.desRazSoc}}</td>
+              <td>{{obtenerPeriodo(casilla131.perImpReten)}}</td>
+              <td class="column-right">{{casilla131.mtoRetenido | currency: 'S/ '}}</td>
+              <td class="column-right">{{casilla131.mtoDevolQuinta | currency: 'S/ '}}</td>
+              <td>{{casilla131.numFormulQuinta}}</td>
+              <td>{{casilla131.numOrdenQuinta}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row col-sm-12">
+    <div class="form-group col-sm-8">
+      <button type="button" (click)='exportar()' class="btn btn-primary">Exportar</button>
+    </div>
+    <div class="form-group col-sm-4 text-right pr-0">
+      <label class="control-label text-right">Total Monto retenido:</label>
+      <label class="control-label ml-1">{{montoRetenido | currency: 'S/ ': true: '.0'}}</label><br>
+      <label class="control-label text-right">Total Monto devuelto:</label>
+      <label class="control-label ml-1">{{montoDevuelto | currency: 'S/ ': true: '.0'}}</label><br>
+      <label class="control-label text-right font-weight-bold">Total Retenci&oacute;n Neta:</label>
+      <label class="control-label ml-1">{{totalMontoCasilla131 | currency: 'S/ ': true: '.0'}}</label>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+  <button type="button" class="btn btn-primary" (click)="agregarOActualizar()">Agregar</button>
+</div>

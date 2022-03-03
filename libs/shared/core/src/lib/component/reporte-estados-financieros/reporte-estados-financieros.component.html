@@ -1,0 +1,815 @@
+<div class="print-button">
+    <button [useExistingCss]="false" printSectionId="contentToConvert" class="btn btn-outline-secondary" style="margin: 20px 0;top: -87px;position: absolute;" ngxPrint><i aria-hidden="true" class="fa fa-print"
+      style="margin-right: 10px;"></i>IMPRIMIR</button>
+</div>
+<div id="contentToConvert" style="font-family:Helvetica;">
+    <rentas-reporte-marca-agua [esPreliminar]="esPreliminar"></rentas-reporte-marca-agua>
+    <div style="z-index: 2;position: relative;">
+        <div class="row">
+            <div class="col-md-12">
+                <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAAArCAMAAADBjdN+AAAApVBMVEUAAAAAY60AY60AY60AY60AY60gWaAAY60AY60AY60AY60AY60AY60AY60AY60AY60AY62tDEEmVp0AY60AY60AY60AY60AY60AY60AY60AY62tDEEAY60AY60AY60AY60AY62tDEGtDEEAY60AY60AY60AY62tDEEAY62tDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEEAY62tDEHSoCIOAAAANXRSTlMA8SChwDAC/ECtN8sP49xaFfQF9tTqxpZRLAsLSBq5gGM2vo2EbiZNd+fXaEKqyH4sHxaVPz1ejGsAAAPMSURBVFjDzZfbeqIwFEY3CnI+FFQOgqKoY9vpcSa8/6ONkZCEBGa4me/Luilp0mblJ9lRkNi9tS+foDa7U9u2z0dQmbsj5kllS+youiV2VN0SO6puuXtvW9UtY5Ijs/wNyvHRijz9BMXYPbXqW/5o27mWXuWtYEgRA8+KDYjJI+uCIauFY+UFzOK1nWNZhMu1ie4kgX1zyPTXbYLQJqUyWXAfENT4sdncH/0L8F2mawDD2SBM2i1/r0n4IVB+t/+2jG8a4vFvjwTSruUAwX80NaxPBtbDLhsYLhli4cYFjeBLe1K2/EGHRFvEwQJY9tMQyEoAwCDDzGzQpQOlxG36uwaNQQeH0Uc7AbXcIwl7niQyrQlJvG72Im5jjhoQ6gBWp39YWoiw1l2/e0rymZJIM0YlS+ayB4DFBskcyNgbjmT36++WZyL2mK4KbRMlJcyVRJurKMmCZFEWC0xIdsCjEQH00zf45/HtacqSuWgVYLDnAuZLoqASJGmQLErCAj1Y8oUKn84LOT4/Pt5O7y/PouwXO8RIW4ZXWm7mS6K1J0qSIBOfRDktGT/mOIsX0PH1xEcpLFvbNmE0T5KxLZgkH+RlYZIopyQLm/ydzPGF1qFv3LbREL2OZ0t2FlFCJ2NBbor+PzgTkp6OOjKQ+X7GhvQ7T9yYYp0tZ0mudWF1g3JxoOP2gqRU+5I6nrornz+BcE2FGmFmTLKclDzE+zHJTj2JmIYxLmlysTRltYIBn9jx5Ys/Zc7FDvjNWVDJsB9idj2cJHiuIMmC1MIsy0gpssclt0IyfrDW7aYmxeULO36DSFQe6KQlLaAp6XXIO+YlIQokSR3JGKOSVYBGcR9v/9i27zuWYrgM6Z6oEc0v5K8fWO3ZFEwSFr4gaaERbEFSsJQ1r3hPnjhH/Fr9s9FtiYwdOC8hL+62iKNsy+x5Sci1oaSOxjAEyUlLdpH9eouBckbERbfTZa+SeKTMiwSxIAlOwktaaBR7XBKi9VSWq1f+IEmLoZdA5CMR0wJREkqTk9T7Qk7ol2DIktOWrKiwJGWW3SryjegYgiwJIZN0SN4shZRGySTnWKYwwFgmwoao+zkqe/gOHFJXSVxAuFCRjH1kJ5C7cYt9us4G5ljuQaDIGlfry6odFsDIz9uux3RTi+ZzCEy0sT2glve2puf4E4NvIj+NgVGvTZS41uPR9bXArmCO5RLGiHLHcnIPJFbV1cirGP4H05YZKIbnSo7rFaiGZKnloB6CpeaAiniu+o7YUn1HznKjriNAoXeOKp4Z3lJ9R4DCNteKOf4Bb3e5wdVmJREAAAAASUVORK5CYII=">
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container theme-showcase">
+        <rentas-reporte-header
+        [tipoReporte]="tipoReporte"
+         [numOrden]="numOrden" [fechaPresentacion]="fechaPresentacion"
+        [preDeclaracion]="preDeclaracion"  [texto]="'ESTADOS FINANCIEROS'">
+        </rentas-reporte-header>
+        <div>
+            <table class="table table-bordered" cellspacing="0">
+                <colgroup>
+                    <col style="width: 30%" />
+                    <col style="width: 5%" />
+                    <col style="width: 10%" />
+                    <col style="width: 30%" />
+                    <col style="width: 5%" />
+                    <col style="width: 10%" />
+                </colgroup>
+                <thead class="">
+                    <tr>
+                        <th colspan="6" style="text-align: center; border: 1px solid #000;font-family:Helvetica;background-color:#969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;">
+                            Estado de Situación Financiera
+                            <br>(Valor Hist&oacute;rico al 31 de Dic. {{cabecera.numEjercicio}})<br>
+                        </th>
+
+                    </tr>
+                </thead>
+                <thead class="">
+                    <tr>
+                        <th colspan="3" style="text-align: center; border: 1px solid #000;font-family:Helvetica;background-color:#969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;">
+                            ACTIVO</th>
+                        <th colspan="3" style="text-align: center; border: 1px solid #000;font-family:Helvetica;background-color:#969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;">
+                            PASIVO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla359.descripcion}}
+                        </td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla359.numCas}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas359 || 0.00) | number: '1.0-0' | addParentesis: casilla359 }}
+                        </td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla401.descripcion}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla401.numCas}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas401 || 0.00) | number: '1.0-0' | addParentesis: casilla401 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla360.descripcion}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla360.numCas}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas360 || 0.00) | number: '1.0-0' | addParentesis: casilla360 }}
+                        </td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla402.descripcion}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla402.numCas}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas402 || 0.00) | number: '1.0-0' | addParentesis: casilla402 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla361.descripcion}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla361.numCas}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas361 || 0.00) | number: '1.0-0' | addParentesis: casilla361 }}
+                        </td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla403.descripcion}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla403.numCas}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas403 || 0.00) | number: '1.0-0' | addParentesis: casilla403 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla362.descripcion}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla362.numCas}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas362 || 0.00) | number: '1.0-0' | addParentesis: casilla362 }}
+                        </td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla404.descripcion}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla404.numCas}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas404 || 0.00) | number: '1.0-0' | addParentesis: casilla404 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla363.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla363.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas363 || 0.00) | number: '1.0-0' | addParentesis: casilla363 }}
+                        </td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla405.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla405.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas405 || 0.00) | number: '1.0-0' | addParentesis: casilla405 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla364.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla364.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas364 || 0.00) | number: '1.0-0' | addParentesis: casilla364 }}
+                        </td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla406.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla406.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas406 || 0.00) | number: '1.0-0' | addParentesis: casilla406 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla365.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla365.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas365 || 0.00) | number: '1.0-0' | addParentesis: casilla365 }}
+                        </td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla407.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla407.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+
+                            {{ (pasivoPatrEmp.mtoCas407 || 0.00) | number: '1.0-0' | addParentesis: casilla407 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla366.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla366.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas366 || 0.00) | number: '1.0-0' | addParentesis: casilla366 }}
+                        </td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla408.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla408.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas408 || 0.00) | number: '1.0-0' | addParentesis: casilla408 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla367.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla367.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas367 || 0.00) | number: '1.0-0' | addParentesis: casilla367 }}
+                        </td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla409.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla409.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas409 || 0.00) | number: '1.0-0' | addParentesis: casilla409 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla368.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla368.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas368 || 0.00) | number: '1.0-0' | addParentesis: casilla368 }}
+                        </td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla410.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla410.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas410 || 0.00) | number: '1.0-0' | addParentesis: casilla410 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla369.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla369.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas369 || 0.00) | number: '1.0-0' | addParentesis: casilla369 }}
+                        </td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla411.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla411.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas411 || 0.00) | number: '1.0-0' | addParentesis: casilla411 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla370.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla370.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{(activoEmp.mtoCas370 || 0.00) | number: '1.0-0' | addParentesis: casilla370}}
+                        </td>
+                        <th style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px" rowspan="2">
+                            {{casilla412.descripcion}}</th>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700" rowspan="2" class="">
+                            {{casilla412.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right" rowspan="2">
+                            {{ (pasivoPatrEmp.mtoCas412 || 0.00) | number: '1.0-0' | addParentesis: casilla412 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla371.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla371.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas371 || 0.00) | number: '1.0-0' | addParentesis: casilla371 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla372.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla372.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas372 || 0.00) | number: '1.0-0' | addParentesis: casilla372 }}
+                        </td>
+                        <th style="text-align: center; vertical-align: middle; border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px" colspan="3" rowspan="3" class="">PATRIMONIO</th>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla373.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla373.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas373 || 0.00) | number: '1.0-0' | addParentesis: casilla373 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla374.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla374.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas374 || 0.00) | number: '1.0-0' | addParentesis: casilla374 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla375.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla375.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas375 || 0.00) | number: '1.0-0' | addParentesis: casilla375 }}
+                        </td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla414.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla414.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas414 || 0.00) | number: '1.0-0' | addParentesis: casilla414 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla376.descripcion}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla376.numCas}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas376 || 0.00) | number: '1.0-0' | addParentesis: casilla376 }}
+                        </td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla415.descripcion}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla415.numCas}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas415 || 0.00) | number: '1.0-0' | addParentesis: casilla415 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla377.descripcion}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla377.numCas}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas377 || 0.00) | number: '1.0-0' | addParentesis: casilla377 }}
+                        </td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla416.descripcion}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla416.numCas}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas416 || 0.00) | number: '1.0-0' | addParentesis: casilla416 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla378.descripcion}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla378.numCas}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas378 || 0.00) | number: '1.0-0' | addParentesis: casilla378 }}
+                        </td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla417.descripcion}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla417.numCas}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas417 || 0.00) | number: '1.0-0' | addParentesis: casilla417 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla379.descripcion}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla379.numCas}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas379 || 0.00) | number: '1.0-0' | addParentesis: casilla379 }}
+                        </td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla418.descripcion}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla418.numCas}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas418 || 0.00) | number: '1.0-0' | addParentesis: casilla418 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla380.descripcion}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla380.numCas}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas380 || 0.00) | number: '1.0-0' | addParentesis: casilla380 }}
+                        </td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla419.descripcion}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla419.numCas}}</td>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas419 || 0.00) | number: '1.0-0' | addParentesis: casilla419 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla381.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla381.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas381 || 0.00) | number: '1.0-0' | addParentesis: casilla381 }}
+                        </td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla420.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla420.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas420 || 0.00) | number: '1.0-0' | addParentesis: casilla420 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla382.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla382.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas382 || 0.00) | number: '1.0-0' | addParentesis: casilla382 }}
+                        </td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla421.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla421.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas421 || 0.00) | number: '1.0-0' | addParentesis: casilla421 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla383.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla383.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas383 || 0.00) | number: '1.0-0' | addParentesis: casilla383 }}
+                        </td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla422.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla422.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas422 || 0.00) | number: '1.0-0' | addParentesis: casilla422 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla384.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla384.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas384 || 0.00) | number: '1.0-0' | addParentesis: casilla384 }}
+                        </td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla423.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla423.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas423 || 0.00) | number: '1.0-0' | addParentesis: casilla423 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla385.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla385.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas385 || 0.00) | number: '1.0-0' | addParentesis: casilla385 }}
+                        </td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla424.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla424.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (pasivoPatrEmp.mtoCas424 || 0.00) | number: '1.0-0' | addParentesis: casilla424 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla386.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla386.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right;vertical-align: middle;">
+                            {{ (activoEmp.mtoCas386 || 0.00) | number: '1.0-0' | addParentesis: casilla386 }}
+                        </td>
+                        <th style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;vertical-align: middle;" rowspan="2">{{casilla425.descripcion}}</th>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;vertical-align: middle;" class="" rowspan="2">{{casilla425.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right;vertical-align: middle;" rowspan="2">
+                            {{ (pasivoPatrEmp.mtoCas425 || 0.00) | number: '1.0-0' | addParentesis: casilla425 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla387.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla387.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas387 || 0.00) | number: '1.0-0' | addParentesis: casilla387 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla388.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla388.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas388 || 0.00) | number: '1.0-0' | addParentesis: casilla388 }}
+                        </td>
+                        <th style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; vertical-align: middle;" rowspan="3">{{casilla426.descripcion}}</th>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700; vertical-align: middle;" class="" rowspan="3">{{casilla426.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right; vertical-align: middle;" rowspan="3">
+                            {{ (pasivoPatrEmp.mtoCas426 || 0.00) | number: '1.0-0' | addParentesis: casilla426 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px">
+                            {{casilla389.descripcion}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700;" class="">
+                            {{casilla389.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas389 || 0.00) | number: '1.0-0' | addParentesis: casilla389 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;">
+                            {{casilla390.descripcion}}</th>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px;background-color:#969696;outline: none;
+            color-adjust: exact;-webkit-print-color-adjust: exact;text-align:center;font-weight: 700" class="">
+                            {{casilla390.numCas}}</td>
+                        <td style="border: 1px solid #000;font-family:Helvetica;font-size:12px;padding:3px 5px; text-align:right;text-align:right">
+                            {{ (activoEmp.mtoCas390 || 0.00) | number: '1.0-0' | addParentesis: casilla390 }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container theme-showcase" style="page-break-before:always;margin-top:30px;position:relative">
+        <rentas-reporte-marca-agua [esPreliminar]="esPreliminar"></rentas-reporte-marca-agua>
+        <table class="table table-bordered" style="margin:auto; width:80%;position:relative;z-index:2" cellspacing="0">
+            <thead class="">
+                <tr>
+                    <th colspan="3" style="text-align: center; border: 1px solid #000;font-family:Helvetica;background-color:#969696;outline: none;
+                    color-adjust: exact;-webkit-print-color-adjust: exact;padding:6px 5px;">
+                        Estado de Resultados<br> Del 01/01 al 31/12 de {{anio}}
+                    </th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="col-md-9" style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">
+                    {{casilla461.descripcion}}</td>
+                <th class="col-md-1" style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla461.numCas}}</th>
+                <td class="col-md-2" style="font-family:Helvetica;border:1px solid #000;text-align:right;width:83px;min-width: 83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas461 || 0.00) | number: '1.0-0' | addParentesis: casilla461 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla462.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla462.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas462 || 0.00) | number: '1.0-0' | addParentesis: casilla462 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla463.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla463.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas463 || 0.00) | number: '1.0-0' | addParentesis: casilla463 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla464.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla464.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas464 || 0.00) | number: '1.0-0' | addParentesis: casilla464 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla466.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla466.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas466 || 0.00) | number: '1.0-0' | addParentesis: casilla466 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla467.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla467.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas467 || 0.00) | number: '1.0-0' | addParentesis: casilla467 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla468.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla468.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas468 || 0.00) | number: '1.0-0' | addParentesis: casilla468 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla469.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla469.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas469 || 0.00) | number: '1.0-0' | addParentesis: casilla469 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla470.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla470.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas470 || 0.00) | number: '1.0-0' | addParentesis: casilla470 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla471.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla471.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas471 || 0.00) | number: '1.0-0' | addParentesis: casilla471 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla472.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla472.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas472 || 0.00) | number: '1.0-0' | addParentesis: casilla472 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla473.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla473.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas473 || 0.00) | number: '1.0-0' | addParentesis: casilla473 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla475.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla475.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas475 || 0.00) | number: '1.0-0' | addParentesis: casilla475 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla476.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla476.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas476 || 0.00) | number: '1.0-0' | addParentesis: casilla476 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla477.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla477.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas477 || 0.00) | number: '1.0-0' | addParentesis: casilla477 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla478.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla478.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas478 || 0.00) | number: '1.0-0' | addParentesis: casilla478 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla480.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla480.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas480 || 0.00) | number: '1.0-0' | addParentesis: casilla480 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla484.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla484.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas484 || 0.00) | number: '1.0-0' | addParentesis: casilla484 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla485.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla485.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas485 || 0.00) | number: '1.0-0' | addParentesis: casilla485 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla486.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla486.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas486 || 0.00) | number: '1.0-0' | addParentesis: casilla486 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla487.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla487.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas487 || 0.00) | number: '1.0-0' | addParentesis: casilla487 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla489.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla489.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas489 || 0.00) | number: '1.0-0' | addParentesis: casilla489 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla490.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla490.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas490 || 0.00) | number: '1.0-0' | addParentesis: casilla490 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla492.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla492.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas492 || 0.00) | number: '1.0-0' | addParentesis: casilla492 }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Helvetica;border:1px solid #000;padding:6px 5px;">{{casilla493.descripcion}}</td>
+                <th style="font-family:Helvetica;background-color: #969696;outline: none;color-adjust: exact;
+                -webkit-print-color-adjust: exact;border:1px solid #000;text-align:center">
+                    {{casilla493.numCas}}</th>
+                <td style="font-family:Helvetica;border:1px solid #000; text-align:right;width:83px;padding:6px 5px;">
+                    {{ (ganancia.mtoCas493 || 0.00) | number: '1.0-0' | addParentesis: casilla493 }}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>

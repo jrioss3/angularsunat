@@ -1,0 +1,76 @@
+<div class="container-fluid">
+    
+    <!--<lib-cabecera-renta 
+    [mostrarBotones]="true" 
+    [paso]="1" 
+    (eventoSalir)="salir()" 
+    (eventoResetear)="resetearPd()" 
+    (eventoReportePreliminar)="abrirSelTipoReporPreliminar()"
+    ></lib-cabecera-renta> -->
+    
+    <rentas-sub-cabecera 
+        (eventoDescargar)="descargarPd()"
+        (eventoReportePreliminar)="abrirSelTipoReporPreliminar()"
+        (eventoResetear)="resetearPd()" 
+        [mostrarBotones]="true" 
+        [paso]="1"
+    ></rentas-sub-cabecera>
+
+    <br />
+    <h4 class="nombre-f" style="margin:0">
+        {{formularioCabecera.descripcion}} {{anioRenta}} - Secci&oacute;n Determinativa
+        <a style="color:white; cursor:pointer; text-decoration:none;" target="_blank" id="urlArchivoAyuda" href="{{linkAyuda}}"><i class="fas fa-question-circle"></i></a>
+    </h4>
+    <div class="card">
+        <div class="card-body">
+            <ul class="nav nav-tabs row no-gutters">
+                <li class="nav-item col-sm-6 bg-light">
+                    <a class="nav-link" [routerLink]="[pathInformativa]" id="tabInformativa">Secci&oacute;n Informativa</a>
+                </li>
+                <li class="nav-item col-sm-6">
+                    <a class="nav-link active" href="javascript:void(0);" id="tabDeterminativa">Secci&oacute;n Determinativa</a>
+                </li>
+            </ul>
+
+            <ngb-tabset #tab="ngbTabset" (tabChange)="beforeChange($event)">
+                <ngb-tab id="tabRentaPrimeraCategoria" title="Rentas de Capital Primera Categoría" [disabled]="!rentas.rentaP">
+                    <ng-template ngbTabContent>
+                        <app-sd-primera-cat></app-sd-primera-cat>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab id="tabRentaSegundaCategoria" title="Rentas de Capital Segunda Categoría" [disabled]="!rentas.rentaS">
+                    <ng-template ngbTabContent>
+                        <app-sscmain></app-sscmain>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab id="tabFuenteExtranjera" title="Rentas de Trabajo y/o Fuente Extranjera" [disabled]="!rentas.rentaT">
+                    <ng-template ngbTabContent>
+                        <app-sfmain></app-sfmain>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab id="tabDeterminacion" title="Determinación de la Deuda">
+                    <ng-template ngbTabContent>
+                        <app-sddmain></app-sddmain>
+                    </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+
+            <div class="col-sm-12 text-center">
+                <button class="btn btn-outline-secondary" (click)="clickAnterior()" *ngIf="mostrarBtnAnterior">
+                        <i class="fas fa-chevron-left"></i> Anterior
+                    </button>
+                <button class="btn btn-primary ml-3" (click)="clickSiguiente()" *ngIf="mostrarBtnSiguiente">
+                        Siguiente <i class="fas fa-chevron-right"></i>
+                    </button>
+
+                <button class="btn btn-primary ml-3" (click)="clickValidar()" *ngIf="mostrarBtnValidar">
+                        <i class="fas fa-copy"></i> Validar</button>
+                <button class="btn btn-primary ml-3" *ngIf="mostrarBtnPresentarPagar" (click)="presentar()">
+                        <i class="fas fa-copy"></i> Presente/Pague
+                    </button>
+            </div>
+
+        </div>
+    </div>
+    <ngx-spinner bdColor="rgba(255,255,255,0.45)" color="rgba(28,27,27,0.64)"></ngx-spinner>
+</div>

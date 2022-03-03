@@ -1,0 +1,101 @@
+<div class="container-fluid">
+
+	<div class="alert alert-warning" role="alert">
+		<span><strong>Sr. Contribuyente,</strong> esta consulta mostrará información desde el ejercicio 2019.<br>
+			Para consultas de ejercicios anteriores deberá ingresar al enlace: <a target="_blank"
+				href="https://e-menu.sunat.gob.pe/cl-ti-itmenu/MenuInternet.htm?pestana=*&agrupacion=*&exe=12.8.1.1.1">Consulta
+				de declaraciones de periodos anteriores</a>
+		</span>
+	</div>
+
+	<h4 class="nombre-f" style="margin:0">
+		Consulta de Declaraciones y Pagos de Renta Anual
+	</h4>
+	<div class="card">
+		<div class="card-body">
+
+			<form [formGroup]="registerForm" class="form-horizontal mt-2">
+				<div class="form-group row">
+					<label class="control-label col-sm-6">Número de formulario:</label>
+					<div class="form-group col-sm-6">
+						<select formControlName="formulario" class="form-control col-sm-6">
+							<option *ngFor="let item of listaFormularios" [value]="item.val">
+								{{item.desc}}
+							</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="control-label col-sm-6">Ejercicio:</label>
+					<div class="form-group col-sm-6">
+						<select formControlName="ejercicio" class="form-control col-sm-6">
+							<option *ngFor="let item of listaAnioEjercicio" [value]="item.codigo">
+								{{item.valor}}
+							</option>
+						</select>
+					</div>
+				</div>
+			</form>
+
+			<div class="text-center">
+				<button type="button" class="btn btn-primary btn-sm mr-2" (click)="buscar()">
+					<i class="fas fa-search"></i> Buscar
+				</button>
+
+				<button type="button" class="btn btn-warning btn-sm" (click)="limpiar()">
+					<i class="fa fa-eraser"></i> Limpiar
+				</button>
+			</div>
+
+			<br>
+
+			<diV>
+				<h4 class="nombre-f" style="margin:0; background-color: #2a5fa8 !important;">
+					Listado de declaraciones
+				</h4>
+			</diV>
+			<div class="card  border-0" style="width: 100%;">
+				<div class="card-body">
+					<div class="table-responsive">
+						<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover ">
+							<thead>
+								<tr>
+									<th class="text-center" style="width: 20%;">Formulario</th>
+									<th class="text-center">Ejercicio</th>
+									<th class="text-center">Tipo de Declaración</th>
+									<th class="text-center">Fecha de Presentación</th>
+									<th class="text-center">Medio de pago</th>
+									<th class="text-center">Monto pagado S/ </th>
+									<th class="text-center" style="width: 5%;">Detalle</th>
+									<th class="text-center" style="width: 5%;">Constancia</th>
+									<th class="text-center" style="width: 5%;">Descargar</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let declaracion of declaraciones; let i = index">
+									<td class="text-center">FV {{declaracion.desFor}}</td>
+									<td class="text-center">{{declaracion.ejercicio}}</td>
+									<td class="text-center">{{declaracion.desTipoDeclaracion}}</td>
+									<td class="text-center">{{declaracion.fecDeclaracion}}</td>
+									<td class="text-center">{{declaracion.desMedPago}}</td>
+									<td class="text-center">{{declaracion.mtoPag | currency : "S/ "}}</td>
+									<td class="text-center"><a class="pointer" [hidden]="!declaracion.web"
+											(click)="abrirDetalle(declaracion)"><i class="fas fa-search"></i></a></td>
+									<td class="text-center"><a class="pointer" [hidden]="!declaracion.web"
+											(click)="abrirConstancia(declaracion)"><i class="far fa-file-alt"></i></a></td>
+									<td class="text-center"><a class="pointer" (click)="descargar(declaracion)"><i
+												class="fa fa-download"></i></a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+
+<ngx-spinner bdColor="rgba(255,255,255,0.45)" color="rgba(28,27,27,0.64)"></ngx-spinner>

@@ -1,0 +1,158 @@
+<div class="modal-header bg-primary text-white">
+	<p class="modal-title">Sociedad Conyugal</p>
+	<button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+	<form [formGroup]="frmConyugal">
+		<div class="card">
+			<div class="card-body">
+				<div class="form-group row">
+					<label class="control-label col-sm-6">Tipo de Gasto</label>
+					<div class="col-sm-6">
+						<select formControlName="cmbTipoGast" name="cmbTipoGast" class="form-control" disabled>
+							<option value="">--Seleccionar--</option>
+							<option *ngFor="let gasto of listaTipoGasto" value="{{gasto.val}}">{{gasto.desc}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="control-label col-sm-6">Tipo de V&iacute;nculo</label>
+					<div class="form-group col-sm-6">
+						<select formControlName="cmbTipoVinculo" name="cmbTipoVinculo" #cmbTipoVinculo
+							(change)="cargarTipoDocumentoSustentaVinculo(cmbTipoVinculo.value)"
+							class="form-control col-sm-12"
+							[ngClass]="{ 'is-invalid': (f.cmbTipoVinculo.dirty || submitted) && f.cmbTipoVinculo.errors }">
+							<option value="">--Seleccionar--</option>
+							<option *ngFor="let vinculo of listaTipoVinculo" value="{{vinculo.val}}">{{vinculo.desc}}
+							</option>
+						</select>
+						<div *ngIf="(f.cmbTipoVinculo.dirty || submitted) && f.cmbTipoVinculo.errors"
+							class="invalid-feedback">
+							<div *ngIf="f.cmbTipoVinculo.errors.required">{{mensajeConyugal.CUS34_EX01}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="control-label col-sm-6">Tipo de Documento que sustenta el V&iacute;nculo</label>
+					<div class="form-group col-sm-6">
+						<select formControlName="cmbTipoDocVinculo" name="cmbTipoDocVinculo" #cmbTipoDocVinculo
+							(change)="loadOtrosVinculos(cmbTipoDocVinculo.value)" class="form-control col-sm-12"
+							[ngClass]="{ 'is-invalid': (f.cmbTipoDocVinculo.dirty || submitted) && f.cmbTipoDocVinculo.errors }">
+							<option value="">--Seleccionar--</option>
+							<option *ngFor="let documento of listaTipoDocumentoVinculo" value="{{documento.val}}">
+								{{documento.desc}}</option>
+						</select>
+						<div *ngIf="(f.cmbTipoDocVinculo.dirty || submitted) && f.cmbTipoDocVinculo.errors"
+							class="invalid-feedback">
+							<div *ngIf="f.cmbTipoDocVinculo.errors.required">{{mensajeConyugal.CUS34_EX01}}</div>
+						</div>
+					</div>
+				</div>
+				<div *ngIf="statusOtrosVinculos" class="form-group row">
+					<label class="control-label col-sm-6">Especifique documento “Otros”</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control " formControlName="txtOtroVinculo" name="txtOtroVinculo"
+							placeholder="Ingresar" maxlength="25"
+							[ngClass]="{ 'is-invalid': (f.txtOtroVinculo.dirty || submitted) && f.txtOtroVinculo.errors }" />
+						<div class="invalid-feedback"
+							*ngIf="(f.txtOtroVinculo.dirty || submitted) && f.txtOtroVinculo.errors">
+							<div *ngIf="f.txtOtroVinculo.errors.required">{{mensajeConyugal.CUS34_EX04}}</div>
+							<div *ngIf="f.txtOtroVinculo.errors.pattern">{{mensajeConyugal.CUS34_EX01}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="" class="control-label col-sm-6">Nro. de documento que sustenta el
+						V&iacute;nculo</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" formControlName="txtNumDocVinculo"
+							name="txtNumDocVinculo" placeholder="Ingresar" maxlength="25"
+							[ngClass]="{ 'is-invalid': (f.txtNumDocVinculo.dirty || submitted) && f.txtNumDocVinculo.errors }" />
+						<div *ngIf="(f.txtNumDocVinculo.dirty || submitted) && f.txtNumDocVinculo.errors"
+							class="invalid-feedback">
+							<div *ngIf="f.txtNumDocVinculo.errors.required">{{mensajeConyugal.CUS34_EX04}}</div>
+							<div *ngIf="f.txtNumDocVinculo.errors.pattern">{{mensajeConyugal.CUS34_EX01}}</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="control-label col-sm-6">Tipo de Documento</label>
+					<div class="form-group col-sm-6">
+						<select formControlName="cmbTipoDoc" name="cmbTipoDoc" class="form-control col-sm-12"
+							#cmbTipoDoc (change)="habilitarCampo()"
+							[ngClass]="{ 'is-invalid': (f.cmbTipoDoc.dirty || submitted) && f.cmbTipoDoc.errors }">
+							<option value="">--Seleccionar--</option>
+							<option *ngFor="let documento of listaTipoDocumento" value="{{documento.val}}">
+								{{documento.desc}}</option>
+						</select>
+						<div *ngIf="(f.cmbTipoDoc.dirty || submitted) && f.cmbTipoDoc.errors" class="invalid-feedback">
+							<div *ngIf="f.cmbTipoDoc.errors.required">{{mensajeConyugal.CUS34_EX01}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="" class="control-label col-sm-6">N&uacute;mero de Documento</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" formControlName="txtNumDoc" name="txtNumDoc"
+							maxlength={{length}} placeholder="Ingresar" #txtNumDoc (change)="obtenerNombreRazonSocial()"
+							(input)="validarEspacio($event.target.value)"
+							[ngClass]="{ 'is-invalid': (f.txtNumDoc.dirty || submitted) && f.txtNumDoc.errors }" />
+						<div *ngIf="(f.txtNumDoc.dirty || submitted) && f.txtNumDoc.errors" class="invalid-feedback">
+							<div *ngIf="f.txtNumDoc.errors.required">{{mensajeConyugal.CUS34_EX04}}</div>
+							<div *ngIf="frmConyugal.getError('{excepccion01}', 'txtNumDoc') as error">
+								{{error}}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="control-label col-sm-6">Apellidos y Nombres</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" formControlName="txtApellidosNombres"
+							name="txtApellidosNombres" placeholder="Ingresar" #txtApellidosNombres maxlength="100"
+							[ngClass]="{ 'is-invalid': (f.txtApellidosNombres.dirty || submitted) && f.txtApellidosNombres.errors }" />
+						<div *ngIf="(f.txtApellidosNombres.dirty || submitted) && f.txtApellidosNombres.errors"
+							class="invalid-feedback">
+							<div *ngIf="f.txtApellidosNombres.errors.required">{{mensajeConyugal.CUS34_EX04}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="control-label col-sm-6">Fecha de inicio de la relaci&oacute;n</label>
+					<div class="input-group col-sm-6">
+						<input class="form-control" placeholder="DD/MM/AAAA" formControlName="dpFechaInicio"
+							name="dpFechaInicio" ngbDatepicker #d1="ngbDatepicker"
+							[ngClass]="{ 'is-invalid': (f.dpFechaInicio.dirty || submitted) && f.dpFechaInicio.errors }" />
+						<div class="input-group-append">
+							<button class="btn btn-outline-dark calendar" (click)="d1.toggle()" type="button">
+								<i class="far fa-calendar-alt"></i>
+							</button>
+						</div>
+						<div *ngIf="(f.dpFechaInicio.dirty || submitted) && f.dpFechaInicio.errors"
+							class="invalid-feedback">
+							<div *ngIf="f.dpFechaInicio.errors.required">{{mensajeConyugal.CUS34_EX04}}</div>
+							<div *ngIf="frmConyugal.getError('excepccion01', 'dpFechaInicio') as error">
+								{{error}}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="" class="control-label col-sm-6">Porcentaje de Atribuci&oacute;n</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" formControlName="txtPorcentajeAttr"
+							name="txtPorcentajeAttr" placeholder="Ingresar" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-outline-secondary"
+				(click)="activeModal.close('Close click')">Cancelar</button>
+			<button type="button" (click)="metodo()" class="btn btn-primary">Guardar</button>
+		</div>
+	</form>
+</div>

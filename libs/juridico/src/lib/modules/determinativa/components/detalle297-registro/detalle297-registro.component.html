@@ -1,0 +1,154 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title">Detalle Casilla 297</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <fieldset class="linea-caja">
+    <form [formGroup]="detalle297Form.getForm" class="form-horizontal mt-2">
+
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Mes en que se efectuo la aplicación</label>
+        <div class="form-group col-sm-6">
+          <select formControlName="mesApli" class="form-control col-sm-12"
+            [ngClass]="{ 'is-invalid': submitted && detalle297Form.fieldMesApli.errors}">
+            <option [ngValue]='null'>--Seleccionar--</option>
+            <option *ngFor="let mes of meses" [value]="mes.val">
+              {{mes.desc}}
+            </option>
+          </select>
+          <div *ngIf="submitted && detalle297Form.fieldMesApli.errors" class="invalid-feedback">
+            <div *ngIf="detalle297Form.fieldMesApli.errors.required">{{mensaje.CUS23_EX01}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Periodo Tributario</label>
+        <div class="input-group col-sm-6">
+          <div class="input-group">
+            <month-date-picker formControlName="periodo" name="periodo"
+              [classValid]="(detalle297Form.fieldPeriodo.hasError('invalid') || detalle297Form.fieldPeriodo.hasError('errorPeriodo')) && submitted"
+              [minYear]='1990' [periodoFull]='true' [maxYear]='anioEjercicio'></month-date-picker>
+            <div *ngIf="(detalle297Form.fieldPeriodo.hasError('invalid') && submitted)">
+              <div *ngIf="detalle297Form.fieldPeriodo.hasError('invalid')" class="date-invalid-feedback">
+                {{mensaje.CUS23_EX02}}</div>
+            </div>
+            <div *ngIf="(detalle297Form.fieldPeriodo.hasError('errorPeriodo') && submitted)">
+              <div *ngIf="detalle297Form.fieldPeriodo.hasError('errorPeriodo')" class="date-invalid-feedback">
+                {{mensaje.CUS23_EX08}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Valor o Saldo Deudor</label>
+        <div class="form-group col-sm-6">
+          <select formControlName="valSalDeudor" (change)="activarNumValor()" class="form-control col-sm-12"
+            [ngClass]="{ 'is-invalid': submitted && detalle297Form.fieldValSalDeudor.errors }">
+            <option [ngValue]="null">--Seleccionar--</option>
+            <option *ngFor="let valor of valores" [value]="valor.val">
+              {{valor.desc}}
+            </option>
+          </select>
+          <div *ngIf="submitted && detalle297Form.fieldValSalDeudor.errors" class="invalid-feedback">
+            <div *ngIf="detalle297Form.fieldValSalDeudor.errors.required">{{mensaje.CUS23_EX03}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Número de Valor</label>
+        <div class="col-sm-6">
+          <input type="text" formControlName="numValor" class="form-control" placeholder="Ingresar" maxlength="17"
+            [ngClass]="{ 'is-invalid': submitted && detalle297Form.fieldNumValor.errors }" />
+          <div *ngIf="submitted && detalle297Form.fieldNumValor.errors" class="invalid-feedback">
+            <div *ngIf="detalle297Form.fieldNumValor.errors.required">{{mensaje.CUS23_EX04}}</div>
+            <div *ngIf="detalle297Form.getForm.getError('excepccion01', 'numValor') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="detalle297Form.getMostrarNuevosCampos()">
+        <div class="form-group row">
+          <label class="control-label col-sm-6">Declaración Jurada</label>
+          <div class="col-sm-6">
+            <input type="text" formControlName="formDecJurada" class="form-control" placeholder="Ingresar" maxlength="4"
+              [ngClass]="{ 'is-invalid': submitted && detalle297Form.fieldFormDecJurada.errors }" />
+            <div *ngIf="submitted && detalle297Form.fieldFormDecJurada.errors" class="invalid-feedback">
+              <div *ngIf="detalle297Form.fieldFormDecJurada.errors.required">{{mensaje.CUS23_EX14}}</div>
+              <div *ngIf="detalle297Form.getForm.getError('excepccion01', 'formDecJurada') as error">
+                {{error}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="control-label col-sm-6">Número de la Declaración Jurada</label>
+          <div class="col-sm-6">
+            <input type="text" formControlName="numOrdDecJurada" class="form-control" placeholder="Ingresar"
+              [ngClass]="{ 'is-invalid': submitted && detalle297Form.fieldNumOrdDecJurada.errors }" />
+            <div *ngIf="submitted && detalle297Form.fieldNumOrdDecJurada.errors" class="invalid-feedback">
+              <div *ngIf="detalle297Form.fieldNumOrdDecJurada.errors.required">{{mensaje.CUS23_EX15}}</div>
+              <div *ngIf="detalle297Form.getForm.getError('excepccion01', 'numOrdDecJurada') as error">
+                {{error}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="control-label col-sm-6">Número de RI de Compensación</label>
+          <div class="col-sm-6">
+            <input type="text" formControlName="numResCom" class="form-control" placeholder="Ingresar" maxlength="17"
+              [ngClass]="{ 'is-invalid': submitted && detalle297Form.fieldNumResCom.errors }" />
+            <div *ngIf="submitted && detalle297Form.fieldNumResCom.errors" class="invalid-feedback">
+              <div *ngIf="detalle297Form.fieldNumResCom.errors.required">{{mensaje.CUS23_EX16}}</div>
+              <div *ngIf="detalle297Form.getForm.getError('excepccion01', 'numResCom') as error">
+                {{error}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Código de Tributo</label>
+        <div class="col-sm-6">
+          <input type="text" formControlName="codTributo" class="form-control" placeholder="Ingresar" maxlength="4"
+            [ngClass]="{ 'is-invalid': submitted && detalle297Form.fieldCodTributo.errors }" />
+          <div *ngIf="submitted && detalle297Form.fieldCodTributo.errors" class="invalid-feedback">
+            <div *ngIf="detalle297Form.fieldCodTributo.errors.required">{{mensaje.CUS23_EX05}}</div>
+            <div *ngIf="detalle297Form.getForm.getError('excepccion01', 'codTributo') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Monto Aplicado</label>
+        <div class="col-sm-6">
+          <rentas-textbox formControlName="montoApli" [tipoFormato]="FORMATO_MONTO" [maxlength]="11"
+            [isInvalid]="submitted && detalle297Form.fieldMontoApli.errors">
+          </rentas-textbox>
+          <div *ngIf="submitted && detalle297Form.fieldMontoApli.errors" class="error-message">
+            <div *ngIf="detalle297Form.fieldMontoApli.errors.required">{{mensaje.CUS23_EX06}}</div>
+            <div *ngIf="detalle297Form.fieldMontoApli.errors.min">{{mensaje.CUS23_EX06}}</div>
+          </div>
+        </div>
+      </div>
+
+    </form>
+
+  </fieldset>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+  <button type="button" (click)="guardar()" class="btn btn-primary">Guardar</button>
+</div>

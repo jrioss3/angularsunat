@@ -1,0 +1,144 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title">Registro de Alquileres Pagados</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <fieldset class="linea-caja">
+    <form [formGroup]="registroAlquileresForm.getForm" class="form-horizontal mt-2">
+      <div class="form-group my-1">
+        <label for="" class="control-label">Documento de identidad de la Persona que Alquil&oacute; el Bien</label>
+      </div>
+
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Tipo de Documento</label>
+        <div class="form-group col-sm-6">
+          <select formControlName="tipoDocumento" (change)='tipoDoc()' name="cmbTipoDocu" class="form-control col-sm-12"
+            [ngClass]="{ 'is-invalid': submitted && registroAlquileresForm.fieldTipoDoc.errors}">
+            <option [ngValue]="null">--Seleccionar--</option>
+            <option *ngFor="let tipoDocumento of tipoDocumentos" [value]="tipoDocumento.val">
+              {{tipoDocumento.desc}}
+            </option>
+          </select>
+          <div *ngIf="submitted && registroAlquileresForm.fieldTipoDoc.errors" class="invalid-feedback">
+            <div *ngIf="registroAlquileresForm.fieldTipoDoc.errors.required">{{mensaje.CUS6_EX07}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">N&uacute;mero de Documento</label>
+        <div class="form-group col-sm-6">
+          <input formControlName="nroDocu" type="text" class="form-control" name="txtNumDoc" placeholder="Ingresar"
+            (change)="obtenerNombre()" (keypress)="keyPress($event)"
+            [ngClass]="{ 'is-invalid': submitted && registroAlquileresForm.fieldNroDoc.errors}" />
+          <div *ngIf="submitted && registroAlquileresForm.fieldNroDoc.errors" class="invalid-feedback">
+            <div *ngIf="registroAlquileresForm.fieldNroDoc.errors.required">{{mensaje.CUS6_EX10}}</div>
+            <div *ngIf="registroAlquileresForm.getForm.getError('excepccion01', 'nroDocu') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Nombre o Raz&oacute;n Social</label>
+        <div class="col-sm-6">
+          <input formControlName="nomOrazAlq" type="text" class="form-control" name="txtNomDoc" placeholder="Ingresar"
+            [ngClass]="{ 'is-invalid': submitted && registroAlquileresForm.fieldRazSoc.errors}" />
+          <div *ngIf="submitted && registroAlquileresForm.fieldRazSoc.errors" class="invalid-feedback">
+            <div *ngIf="registroAlquileresForm.fieldRazSoc.errors.required">{{mensaje.CUS6_EX03}}</div>
+            <div *ngIf="registroAlquileresForm.getForm.getError('excepccion01', 'nomOrazAlq') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="control-label col-sm-6">Monto Anual de Alquiler</label>
+        <div class="col-sm-6">
+          <rentas-textbox formControlName="montoAlq" [tipoFormato]="FORMATO_MONTO" [maxlength]="9"
+            [isInvalid]="submitted && registroAlquileresForm.fieldMtoAlq.errors">
+          </rentas-textbox>
+          <div *ngIf="submitted && registroAlquileresForm.fieldMtoAlq.errors" class="error-message">
+            <div *ngIf="registroAlquileresForm.fieldMtoAlq.errors.required">{{mensaje.CUS6_EX04}}</div>
+            <div *ngIf="registroAlquileresForm.fieldMtoAlq.errors.min">{{mensaje.CUS6_EX04}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="control-label col-sm-6">&iquest;Qu&eacute; tipo de bien le han alquilado?</label>
+        <div class="form-group col-sm-6">
+          <div class="form-check">
+            <input value="{{BIEN_MUEBLE}}" formControlName="tipoBien" class="form-check-input" type="radio"
+              name="tipoBien" id="bienMueble" (click)="seleccionarBien(BIEN_MUEBLE)"
+              [ngClass]="{ 'is-invalid': submitted && registroAlquileresForm.fieldTipoBien.errors}">
+            <label for="bienMueble" class="form-check-label">
+              BIEN MUEBLE
+            </label>
+          </div>
+          <div class="form-check">
+            <input value="{{BIEN_INMUEBLE}}" formControlName="tipoBien" class="form-check-input" type="radio"
+              name="tipoBien" id="bienInMueble" (click)="seleccionarBien(BIEN_INMUEBLE)"
+              [ngClass]="{ 'is-invalid': submitted && registroAlquileresForm.fieldTipoBien.errors}">
+            <label for="bienInMueble" class="form-check-label">
+              BIEN INMUEBLE (PREDIOS)
+            </label>
+          </div>
+          <div class="form-check">
+            <input value="{{BIEN_INMUEBLE_DISTINTOS_DE_PREDIOS}}" formControlName="tipoBien" class="form-check-input"
+              type="radio" name="tipoBien" id="bienInmuebleDis"
+              (click)="seleccionarBien(BIEN_INMUEBLE_DISTINTOS_DE_PREDIOS)"
+              [ngClass]="{ 'is-invalid': submitted && registroAlquileresForm.fieldTipoBien.errors}">
+            <label for="bienInmuebleDis" class="form-check-label">
+              BIEN INMUEBLE DISTINTOS DE PREDIOS
+            </label>
+            <div *ngIf="submitted && registroAlquileresForm.fieldTipoBien.errors" class="invalid-feedback">
+              <div *ngIf="registroAlquileresForm.fieldTipoBien.errors.required">{{mensaje.CUS6_EX06}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" [hidden]="registroAlquileresForm.fieldBienMueble.disabled">
+        <div class="form-group row">
+          <label class="control-label col-sm-6">Seleccionar el bien</label>
+          <div class="col-sm-6">
+            <select formControlName="bienMueble" name="bienMueble" class="form-control col-sm-12"
+              (change)='seleccionarTipoBien()'
+              [ngClass]="{ 'is-invalid': submitted && registroAlquileresForm.fieldBienMueble.errors}">
+              <option [ngValue]="null"></option>
+              <option *ngFor="let bienMueble of listaBienMuebles" [value]="bienMueble.val">
+                {{bienMueble.desc}}
+              </option>
+            </select>
+            <div *ngIf="submitted && registroAlquileresForm.fieldBienMueble.errors" class="invalid-feedback">
+              <div *ngIf="registroAlquileresForm.fieldBienMueble.errors.required">{{mensaje.CUS6_EX08}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row" [hidden]="registroAlquileresForm.fieldBienMuebleDesc.disabled">
+          <label class="control-label col-sm-6">{{texto}}</label>
+          <div class="form-group col-sm-6">
+            <input formControlName="bienMuebledesc" type="text" class="form-control" name="descTipo"
+              placeholder="Ingresar"
+              [ngClass]="{ 'is-invalid': submitted && registroAlquileresForm.fieldBienMuebleDesc.errors}" />
+            <div *ngIf="submitted && registroAlquileresForm.fieldBienMuebleDesc.errors" class="invalid-feedback">
+              <div *ngIf="registroAlquileresForm.fieldBienMuebleDesc.errors.required">{{mensaje.CUS6_EX09}}</div>
+              <div *ngIf="registroAlquileresForm.getForm.getError('excepccion01', 'bienMuebledesc') as error">
+                {{error}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ngx-spinner bdColor="rgba(255,255,255,0.45)" color="rgba(28,27,27,0.64)"></ngx-spinner>
+    </form>
+  </fieldset>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+  <button type="button" (click)="metodo()" class="btn btn-primary">Guardar</button>
+</div>

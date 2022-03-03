@@ -1,0 +1,47 @@
+<ul class="Bread-Crumb" id="Bread-Crumb-Pasos">
+    <li>
+        <a [ngClass]="{'btnPaso': true, 'current': paso1, 'btn-is-disabled': !paso1}" href="#">
+            <span class="visible-xs">Complete</span>
+        </a>
+    </li>
+    <li>
+        <a [ngClass]="{'btnPaso': true, 'current': paso2, 'btn-is-disabled': !paso2}" href="#">
+            <span class="visible-xs">Presente/Pague</span>
+        </a>
+    </li>
+    <li>
+        <a [ngClass]="{'btnPaso': true, 'current': paso3, 'btn-is-disabled': !paso3}" href="#">
+            <span class="visible-xs">Constancia</span>
+        </a>
+    </li>
+</ul>
+
+<div class="navbar-fixed-top box-float mt-4">
+    <div class="row">
+        <div class="col-sm-7">
+            <p class="titulo-step">
+                <STRONG class="hidden-xs">Paso {{ paso }}:</STRONG> {{ textoPaso }}
+            </p>
+        </div>
+        <div class="col-sm-5 text-right">
+            <button (click)="ejecutarMetodoDescargar()" class="btn btn-primary ml-3 btn-bar" *ngIf="mostrarBotonDescargar">
+				<i class="fas fa-download"></i> Descargar Archivo Personalizado
+			</button>
+            <button (click)="ejecutarMetodoResetear()" class="btn btn-primary ml-3 btn-bar" *ngIf="mostrarBotonResetear">
+				<i class="fas fa-undo"></i> Restablecer Personalizado
+			</button>
+            <button (click)="ejecutarMetodoReportePreliminar()" class="btn btn-primary ml-3 btn-bar" *ngIf="mostrarBotonReportePreliminar">
+				<i class="fas fa-print"></i> Reporte Preliminar
+			</button>
+            <button (click)="ejecutarMetodoGuardar()" class="btn btn-primary ml-3 btn-bar" *ngIf="mostrarBotonGuardar">
+				<i class="fas fa-download"></i> Guardar
+			</button>
+            <button (click)="ejecutarMetodoImprimir()" class="btn btn-primary ml-3 btn-bar" *ngIf="mostrarBotonImprimir">
+				<i class="fas fa-print"></i> Imprimir
+			</button>
+            <button (click)="ejecutarMetodoEnviar()" class="btn btn-primary ml-3 btn-bar" *ngIf="mostrarBotonEnviar">
+				<i class="fas fa-envelope"></i> Enviar
+			</button>
+        </div>
+    </div>
+</div>

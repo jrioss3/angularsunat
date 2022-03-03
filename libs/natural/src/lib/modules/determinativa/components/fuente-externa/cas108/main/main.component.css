@@ -1,0 +1,10 @@
+.ul {
+  list-style-type: none;
+  font-size: 100%;
+  padding-right: 10px;
+}
+
+.label-contador { 
+  font-size: 100%;
+  padding-right: 10px;
+}

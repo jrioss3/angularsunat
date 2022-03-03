@@ -1,0 +1,10 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title" id="modal-basic-title"> {{modal.titulo}}</p>
+</div>
+<div class="modal-body">
+  {{modal.mensaje}}
+</div>
+<div class="modal-footer">
+  <button type="button" class={{claseCancelar}} (click)="cancelar()">{{textoCancelar}}</button>
+  <button type="button" class="btn btn-primary" (click)="aceptar()">{{textoAceptar}}</button>
+</div>

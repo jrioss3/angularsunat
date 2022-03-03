@@ -1,0 +1,81 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title">Identificaci&oacute;n del pagador de la renta</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <fieldset class="linea-caja">
+        <form [formGroup]="frmCasilla111" class="form-horizontal mt-2">
+            <div class="form-group row">
+                <label class="control-label col-sm-6">Tipo de Documento</label>
+                <div class="form-group col-sm-6">
+                    <select formControlName="cmbTipoDocumento" (change)="cambiarTipoDoc()" name="cmbTipoDocumento" class="form-control col-sm-12" [ngClass]="{ 'is-invalid': (f.cmbTipoDocumento.dirty || submitted) && f.cmbTipoDocumento.errors }">
+                        <option selected value="">--Seleccionar--</option>
+                        <option *ngFor="let item of listaTipDoc" value="{{item.val}}">{{item.desc}}</option>
+                    </select>
+                    <div *ngIf="(f.cmbTipoDocumento.dirty || submitted) && f.cmbTipoDocumento.errors" class="invalid-feedback">
+                        <div *ngIf="f.cmbTipoDocumento.errors.required">{{mensaje111.CUS14_EX04}}</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-6">N&uacute;mero</label>
+                <div class="col-sm-6">
+                    <input type="text" formControlName="ruc" class="form-control" name="txtRUC" placeholder="Ingresar"
+                        maxlength="{{tamanioNroDoc}}" [ngClass]="{ 'is-invalid': (f.ruc.dirty || submitted) && f.ruc.errors }"
+                        (blur)='NombreRazonSocial()' (input)="validarEspacio($event.target.value)" />
+                    <!--<div>{{txtRazSoc}}</div>-->
+                    <div *ngIf="(f.ruc.dirty || submitted) && f.ruc.errors" class="invalid-feedback">
+                        <div *ngIf="f.ruc.errors.required">{{mensaje111.CUS14_EX02}}</div>
+                        <div *ngIf="frmCasilla111.getError('{excepccion01}', 'ruc') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">Raz&oacute;n Social/Nombre</label>
+                <div class="col-sm-6">
+                    <input type="text" formControlName="txtRazSocc" class="form-control" name="txtRazSocc" placeholder={{placholder}} [ngClass]="{ 'is-invalid': (f.txtRazSocc.dirty || submitted) && f.txtRazSocc.errors }" />
+                    <div *ngIf="(f.txtRazSocc.dirty || submitted) && f.txtRazSocc.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtRazSocc.errors.required">{{mensaje111.CUS14_EX02}}</div>
+                        <div *ngIf="f.txtRazSocc.errors.pattern">{{mensaje111.CUS14_EX01}}</div>   
+                        <div *ngIf="frmCasilla111.getError('{excepccion01}', 'txtRazSocc') as error">
+                            {{error}}
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">Periodo</label>
+                <div class="input-group col-sm-6">
+                    <month-date-picker formControlName="periodo" name="periodo"
+                        [classValid]="(f.periodo.hasError('invalid') && dateSubmitted)" [minYear]='anio'
+                        [maxYear]='anio' [disabled]='disabled'></month-date-picker>
+                    <div *ngIf="(f.periodo.hasError('invalid') && dateSubmitted)">
+                        <div *ngIf="f.periodo.hasError('invalid')" class="date-invalid-feedback">
+                            {{mensaje111.CUS14_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-6">Remuneraci&oacute;n mensual percibida</label>
+                <div class="col-sm-6">
+                    <rentas-textbox formControlName="mensual" [maxlength]="11" [tipoFormato]="FORMATO_MONTO"
+                        [isDisabled]="f.mensual.disabled" [cantidadDecimales]="2"
+                        [isInvalid]="(f.mensual.dirty || submitted) && f.mensual.errors"></rentas-textbox>
+                    <div *ngIf="(f.mensual.dirty || submitted) && f.mensual.errors" class="error-message">
+                        <div *ngIf="f.mensual.errors.required">{{mensaje111.CUS14_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="metodo()">Guardar</button>
+</div>

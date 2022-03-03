@@ -1,0 +1,358 @@
+<div class="card border-0 mt-4">
+	<div class="card-body">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="form-group row">
+					<label for="cboEjercicio" class="col-sm-6 col-form-label">I. Estado de Situaci&oacute;n Financiera
+						(Balance General) - Valor Hist&oacute;rico
+						al 31 de Dic. {{anioEjercicio}} </label>
+					<div class="col-sm-6">
+						<button (click)="importar()" class="btn btn-primary">Importar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="card border-left-0 border-right-0 border-bottom-0 mt-2">
+	<div class="card-body">
+		<div class="row mt-6">
+			<div class="col-sm-12">
+				<p class="m-0 font-weight-bold">ACTIVOS</p>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group row mt-4 border-top">
+					<ul class="col-sm-12 list-group list-group-flush">
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla359.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla359" [(ngModel)]="fs.activoEmp.mtoCas359"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla360.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla360" [(ngModel)]="fs.activoEmp.mtoCas360"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla361.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla361" [(ngModel)]="fs.activoEmp.mtoCas361"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla362.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla362" [(ngModel)]="fs.activoEmp.mtoCas362"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla363.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla363" [(ngModel)]="fs.activoEmp.mtoCas363"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla364.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla364" [(ngModel)]="fs.activoEmp.mtoCas364"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla365.descripcion}} </label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla365" [(ngModel)]="fs.activoEmp.mtoCas365"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla366.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla366" [(ngModel)]="fs.activoEmp.mtoCas366"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla367.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla367" [(ngModel)]="fs.activoEmp.mtoCas367"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla368.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla368" [(ngModel)]="fs.activoEmp.mtoCas368"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla369.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla369" [(ngModel)]="fs.activoEmp.mtoCas369"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla370.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla370" [(ngModel)]="fs.activoEmp.mtoCas370"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla371.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla371" [(ngModel)]="fs.activoEmp.mtoCas371"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla372.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla372" [(ngModel)]="fs.activoEmp.mtoCas372"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla373.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla373" [(ngModel)]="fs.activoEmp.mtoCas373"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla374.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla374" [(ngModel)]="fs.activoEmp.mtoCas374"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group row mt-4 border-top">
+					<ul class="col-sm-12 list-group list-group-flush">
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla375.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla375" [(ngModel)]="fs.activoEmp.mtoCas375"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla376.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla376" [(ngModel)]="fs.activoEmp.mtoCas376"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla377.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla377" [(ngModel)]="fs.activoEmp.mtoCas377"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla378.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla378" [(ngModel)]="fs.activoEmp.mtoCas378"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla379.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla379" [(ngModel)]="fs.activoEmp.mtoCas379"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla380.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla380" [(ngModel)]="fs.activoEmp.mtoCas380"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla381.descripcion}} </label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla381" [(ngModel)]="fs.activoEmp.mtoCas381"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla382.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla382" [(ngModel)]="fs.activoEmp.mtoCas382"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla383.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla383" [(ngModel)]="fs.activoEmp.mtoCas383"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla384.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla384" [(ngModel)]="fs.activoEmp.mtoCas384"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla385.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla385" [(ngModel)]="fs.activoEmp.mtoCas385"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla386.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla386" [(ngModel)]="fs.activoEmp.mtoCas386"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla387.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla387" [(ngModel)]="fs.activoEmp.mtoCas387"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla388.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla388" [(ngModel)]="fs.activoEmp.mtoCas388"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">{{fs.casilla389.descripcion}}</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla389" [(ngModel)]="fs.activoEmp.mtoCas389"
+										(ngModelChange)="fs.calcularTotalActivoNeto()">
+									</rentas-textbox>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<label class="col-sm-7 col-form-label">
+									<p class="font-weight-bold">{{fs.casilla390.descripcion}}</p>
+								</label>
+								<div class="col-sm-5">
+									<rentas-textbox [dataCasilla]="fs.casilla390" [(ngModel)]="fs.activoEmp.mtoCas390"
+										[negativoPositivo]="fs.casilla390.indFormatoNegativo"> </rentas-textbox>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

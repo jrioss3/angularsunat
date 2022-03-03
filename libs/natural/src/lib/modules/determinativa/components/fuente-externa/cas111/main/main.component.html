@@ -1,0 +1,77 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title">Detalle de rentas de quinta categoría (casilla 111)</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <fieldset class="linea-caja">
+    <div class="card  border-0">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th>Tipo Documento</th>
+                <th>N&deg; Documento</th>
+                <th>Nombre/Raz&oacute;n Social pagador</th>
+                <th>Periodo</th>
+                <th>Remuneraci&oacute;n mensual percibida</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let casilla111 of listaCasilla111; let i = index">
+                <td>
+                  <a (click)="agregarOActualizar(casilla111, i)" title="Editar" class="text-dark">
+                    <i class="fas fa-pen"></i>
+                  </a>
+                </td>
+                <td>
+                  <a (click)="eliminar(i)" title="Eliminar" class="text-dark">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </td>
+                <td>{{ObtenerDoc(casilla111.codTipDoc)}}</td>
+                <td>{{casilla111.numDoc}}</td>
+                <td>{{casilla111.desRazSoc}}</td>
+                <td>{{obtenerPeriodo(casilla111.perServicio)}}</td>
+                <td class="column-right">{{casilla111.mtoPercibido | currency: 'S/ '}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <label class="label-contador"> Contador de Registros: </label>
+        <ul class="ul">
+          <li
+            *ngFor="let documento of documentosMap | keyvalue"
+          >
+          {{ documento?.key }}: {{ documento?.value }} registros
+          </li>
+        </ul>
+      </div>
+    </div>
+  </fieldset>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <button (click)="exportar()" class="btn btn-primary mb-2 mr-2">Exportar</button>
+      </div>
+      <label class="col-sm-9 col-form-label text-right">Total Remuneraci&oacute;n mensual percibida:
+        {{total | currency : "S/ " : true : ".0"}}</label>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary mb-2 mr-2"
+    (click)="activeModal.close('Close click')">Cancelar</button>
+  <button class="btn btn-primary mb-2 mr-2" (click)="agregarOActualizar()">Agregar</button>
+</div>

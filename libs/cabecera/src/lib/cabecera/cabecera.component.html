@@ -1,0 +1,40 @@
+<img src="./assets/img/logo.png">
+<div class="card text-white bg-primary cabecera">
+    <div class="card-header cabeceraRentaNoPadd">
+        <div class="row colBlanco margin-d-i-cero">
+            <div class="col-sm-6 textoFecha">
+                <span class="negrita">{{ fecha | date:'dd/MM/yyyy HH:mm' }}</span>
+            </div>
+            <div class="col-sm-3">
+                <div [ngClass]="{'textoContribuyente': true, 'textoContribuyenteOver': mouseOver}" (mouseover)="mouseOver=true" (mouseout)="mouseOver=false">
+                    <span class="negrita">Bienvenido, </span>
+                    <span class="negrita">{{ nombreContribuyente }}</span>
+                    <span class="caret"></span>
+                    <div *ngIf="mouseOver">
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header"><br><strong>{{ nombreContribuyente }}</strong></li>
+                            <li *ngIf="!no20" class="dropdown-header"><strong>DNI: {{ numDni }}</strong></li>
+                            <li *ngIf="no20" class="dropdown-header"><strong>RUC: {{ numRuc }}</strong></li>
+                            <li *ngIf="no20" class="dropdown-header"><strong>Usuario: {{ nombreUsuario }}</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="row">
+                    <div class="col-sm-7">
+                        <div class="textoContribuyente text-right">
+                            <span class="negrita">Domicilio: </span>
+                            <span class="negrita">{{ estadoDomicilio }}</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5 divBotonSalirContribuyente">
+                        <div class="text-center">
+                            <button id="btnSalir" class="btn btn-info" type="button" (click)="ejecutarMetodoSalir()">Salir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+.dtHorizontalExample {
+    height: 299px;
+    padding-bottom: 49px;
+}
+
+@media(min-width: 576px) {
+    .modal-dialog {
+        max-width: 550px !important;
+    }
+}
+
+.ul {
+    list-style-type: none;   
+    font-size: 100%;
+    padding-right: 10px;
+}
+
+.label-contador {    
+    font-size: 100%;
+    padding-right: 10px;
+}

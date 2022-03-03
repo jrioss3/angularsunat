@@ -1,0 +1,110 @@
+<div class="mt-4">
+  <form [formGroup]="registerForm" class="form-horizontal mt-2">
+    <div class="row">
+      <div class="col-sm-6">
+        <label class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;{{casilla5.descripcion}}</label>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="custom-control custom-radio custom-control-inline">
+            <label class="control-label" for="rdSiRectiSusti">
+              <input formControlName="rdRectiSusti" value="{{ORIGINAL.valor}}" type="radio" id="rdSiRectiSusti"
+                name="rdRectiSusti">{{ORIGINAL.desc}}
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="custom-control custom-radio custom-control-inline">
+            <label class="control-label" for="rdnoRectiSusti">
+              <input formControlName="rdRectiSusti" value="{{SUSTITUTORIA.valor}}" type="radio" id="rdnoRectiSusti"
+                name="rdRectiSusti">{{SUSTITUTORIA.desc}}
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 mt-4">
+      <p><strong><u>Tratamiento Especial</u></strong></p>
+      <fieldset class="linea-caja mt-4">
+        <legend class="text-primary">R&eacute;gimen de Renta</legend>
+        <div class="form-group row">
+          <label for="cboEjercicio" class="col-sm-6 col-form-label">{{casilla213.descripcion}}</label>
+          <div class="col-sm-3">
+            <rentas-combobox formControlName="cboEjercicio" [lista]="listaTipoRegimen" [isScrolling]="true"
+              (change)="cambiarTipoRegimen()" [isInvalid]="submitted && f.cboEjercicio.errors">
+            </rentas-combobox>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="linea-caja mt-4">
+        <legend class="text-primary">Exoneraci&oacute;n</legend>
+        <div class="form-group row">
+          <label for="cboEjercicio" class="col-sm-6 col-form-label">{{casilla803.descripcion}}</label>
+          <div class="col-sm-6">
+            <rentas-radiobutton [lista]="listaSINO" formControlName="rdExoneradoRenta" [name]="'rdExoneradoRenta'"
+              [valorSeleccionado]="f.rdExoneradoRenta.value" (selectedOptionChange)="changeExoneradaRenta($event)">
+            </rentas-radiobutton>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="cboEjercicio" class="col-sm-6 col-form-label">{{casilla210.descripcion}} </label>
+          <div class="col-sm-3">
+            <rentas-combobox formControlName="casilla210" [dataCasilla]="casilla210" [lista]="basesLegales"
+              [isScrolling]="true" (change)="cambiarBaseLegalExonerado()"
+              [isInvalid]="submitted && f.casilla210.errors">
+            </rentas-combobox>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="cboEjercicio" class="col-sm-6 col-form-label">{{casilla216.descripcion}}</label>
+          <div class="col-sm-3">
+            <rentas-textbox formControlName="casilla216" [tipoFormato]="formato_alfanumerico" [dataCasilla]="casilla216"
+              (change)="persistirPreDeclaracion()" [isInvalid]="submitted && f.casilla216.errors"></rentas-textbox>
+
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="linea-caja mt-4">
+        <legend class="text-primary">Inafectaci&oacute;n</legend>
+        <div class="form-group row">
+          <label for="cboEjercicio" class="col-sm-6 col-form-label">{{casilla217.descripcion}}</label>
+          <div class="col-sm-6">
+            <rentas-radiobutton [lista]="listaSINO" formControlName="rdInafectoRenta" [name]="'rdNoInafectoRenta'"
+              [valorSeleccionado]="f.rdInafectoRenta.value" (selectedOptionChange)="changeInafectoRenta($event)">
+            </rentas-radiobutton>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="cboEjercicio" class="col-sm-6 col-form-label">{{casilla221.descripcion}} </label>
+          <div class="col-sm-3">
+            <rentas-combobox formControlName="casilla221" [dataCasilla]="casilla221" [lista]="basesLegales2"
+              [isScrolling]="true" (change)="cambiarBaseLegalInafecto()" [isInvalid]="submitted && f.casilla221.errors">
+            </rentas-combobox>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="cboEjercicio" class="col-sm-6 col-form-label">{{casilla222.descripcion}}</label>
+          <div class="col-sm-3">
+            <rentas-textbox formControlName="casilla222" [dataCasilla]="casilla222" [tipoFormato]="formato_alfanumerico"
+              (change)="persistirPreDeclaracion()" [isInvalid]="submitted && f.casilla222.errors"></rentas-textbox>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="linea-caja mt-4">
+        <legend class="text-primary">Donaciones</legend>
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <app-idmain></app-idmain>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </form>
+</div>

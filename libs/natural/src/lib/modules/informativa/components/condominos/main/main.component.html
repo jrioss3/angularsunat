@@ -1,0 +1,92 @@
+<div class="row mt-4">
+    <div class="col-sm-12">
+        <div class="form-group row mt-4">
+            <label class="control-label col-sm-6">{{casilla559Desc.descripcion}}</label>
+            <div class="col-sm-6">
+                <!-- <div class="row">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <label class="control-label">
+                            <input type="radio" #ngModelinputSi="ngModel"
+                                (change)="cambioRbCondomino(1, ngModelinputSi)" [(ngModel)]="checkCondominos"
+                                value="1">Si
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <label class="control-label">
+                            <input type="radio" #ngModelinputNo="ngModel"
+                                (change)="cambioRbCondomino(0, ngModelinputNo)" [(ngModel)]="checkCondominos"
+                                value="0">No
+                        </label>
+                    </div>
+                </div> -->
+                <rentas-radiobutton [lista]="listaOpcionesSiNo" [(ngModel)]="checkCondominos" [name]="'checkCondominos'" [valorSeleccionado]="checkCondominos" (selectedOptionChange)="cambioRbCondomino($event)"></rentas-radiobutton>
+            </div>
+        </div>
+
+        <div class="form-group mt-4" [hidden]="hide">
+            <button type="button" id="btnImportar" (click)="abrirMensajeImportar(content)" class="btn btn-primary">Importar</button>
+            <button type="button" (click)="agreagarOActualizar()" class="btn btn-primary ml-2">Agregar</button>
+        </div>
+
+        <div class="row mt-3 form-group col-sm-12" [hidden]="hide">
+            <fieldset class="linea-caja w-100 p-0 mb-0">
+                <div class="card border-0" style="width: 100%;">
+                    <div class="card-body">
+                        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th>Tipo Documento</th>
+                                    <th>N&deg; Documento</th>
+                                    <th>Nombre o Raz&oacute;n Social</th>
+                                    <th>% Participaci&oacute;n</th>
+                                    <th>Partida Registral</th>
+                                    <th>Valor del Bien (Autoval&uacute;o {{numEj}})</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let condominio of listaCondominios; let i = index">
+                                    <td>
+                                        <a (click)="agreagarOActualizar(condominio, i)" title=" Editar" class="text-dark">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a (click)="eliminar(i)" title="Eliminar" class="text-dark">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                    <td>{{condominio | obtenerDescripcionTipoDocumento}}</td>
+                                    <td>{{condominio.numdocIdeDec}}</td>
+                                    <td>{{condominio.desRazSoc}}</td>
+                                    <td>{{condominio.porParticipa}}</td>
+                                    <td>{{condominio.desPartidaReg}}</td>
+                                    <td class="column-right">{{condominio.mtoValBien | currency: 'S/ ': true: '.0'}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+    </div>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="dateOfBirth">Si opta por importar la informaci&oacute;n de los Cond&oacute;minos se
+                eliminar&aacute;, de corresponder, toda la informaci&oacute;n
+                previamente registrada.</label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="modal.close()">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="importar()">Aceptar </button>
+    </div>
+</ng-template>

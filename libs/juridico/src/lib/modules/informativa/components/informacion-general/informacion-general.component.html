@@ -1,0 +1,183 @@
+<form [formGroup]="registerForm" class="form-horizontal mt-2">
+  <div class="row mt-4">
+    <div class="col-sm-6">
+      <fieldset class="linea-caja ">
+        <legend class="text-primary">Datos del Contador</legend>
+
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label">{{casilla687.descripcion}}:</label>
+          <div class="col-sm-7">
+            <div class="input-group">
+              <div class="input-group-prepend"><label class="input-group-text">687</label></div>
+              <select formControlName="tipoDocumento" class="form-control" (change)='changeTipoDocumentoContador()'
+                [ngClass]="{ 'is-invalid': submitted && f.tipoDocumento.errors }">
+                <option value="">--Seleccionar--</option>
+                <option *ngFor="let tipoDocumento of tipoDocumentos" [value]="tipoDocumento.val">
+                  {{tipoDocumento.desc}}
+                </option>
+              </select>
+              <div *ngIf="submitted && f.tipoDocumento.errors" class="invalid-feedback">
+                <div *ngIf="f.tipoDocumento.errors.required">{{mensaje.CUS4_EX12}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label">{{casilla208.descripcion}}:</label>
+          <div class="col-sm-7">
+            <div class="input-group">
+              <rentas-textbox formControlName="nroDocumento" [dataCasilla]="casilla208"
+                [tipoFormato]="FORMATO_ALFANUMERICO" (change)='obtenerDatosContador()'
+                [isInvalid]="submitted && f.nroDocumento.errors"></rentas-textbox>
+              <div *ngIf="submitted && f.nroDocumento.errors" class="error-message">
+                <div *ngIf="f.nroDocumento.errors.required">{{mensaje.CUS4_EX01}}</div>
+                <div *ngIf="registerForm.getError('excepccion01', 'nroDocumento') as error">
+                  {{error}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label">{{casilla815.descripcion}}:</label>
+          <div class="col-sm-7">
+            <div class="input-group "><input class="form-control" type="text" formControlName="nombre">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label">{{casilla211.descripcion}}:</label>
+          <div class="col-sm-7">
+            <div class="input-group">
+              <input formControlName="cpc" class="form-control" type="text"
+                [ngClass]="{ 'is-invalid': submitted && f.cpc.errors }" (change)='agregar()'>
+              <div *ngIf="submitted && f.cpc.errors" class="invalid-feedback">
+                <div *ngIf="f.cpc.errors">{{mensaje.CUS4_EX01}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label">{{casilla252.descripcion}}:</label>
+          <div class="col-sm-7">
+            <div class="input-group ">
+              <input type="text" formControlName="correo1" class="form-control" placeholder="Ingresar"
+                aria-describedby="basic-addon1" (change)="changecorreo1()"
+                [ngClass]="{ 'is-invalid': submitted && f.correo1.errors }">
+              <div *ngIf="submitted && f.correo1.errors" class="invalid-feedback">
+                <div *ngIf="f.correo1.errors.required">{{mensaje.CUS4_EX07}}</div>
+                <div *ngIf="registerForm.getError('{excepccion01}', 'correo1') as error">
+                  {{error}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label">{{casilla258.descripcion}}:</label>
+          <div class="col-sm-7">
+            <div class="input-group ">
+              <input type="text" formControlName="correo2" class="form-control" placeholder="Ingresar"
+                aria-describedby="basic-addon1" (change)="changecorreo2()"
+                [ngClass]="{ 'is-invalid': submitted && f.correo2.errors }">
+              <div *ngIf="submitted && f.correo2.errors" class="invalid-feedback">
+                <div *ngIf="registerForm.getError('{excepccion01}', 'correo2') as error">
+                  {{error}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label">{{casilla250.descripcion}}:</label>
+          <div class="col-sm-7">
+            <div class="input-group ">
+              <rentas-textbox formControlName="telefono" [tipoFormato]="FORMATO_ALFANUMERICO" [dataCasilla]="casilla250"
+                (change)='agregar()' [isInvalid]="submitted && f.telefono.errors"></rentas-textbox>
+              <div *ngIf="submitted && f.telefono.errors" class="error-message">
+                <div *ngIf="f.telefono.errors">{{mensaje.CUS4_EX04}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label">{{casilla251.descripcion}}:</label>
+          <div class="col-sm-7">
+            <div class="input-group ">
+              <rentas-textbox formControlName="celular" [tipoFormato]="FORMATO_ALFANUMERICO" [dataCasilla]="casilla251"
+                (change)='agregar()' [isInvalid]="submitted && f.celular.errors"></rentas-textbox>
+              <div *ngIf="submitted && f.celular.errors" class="error-message">
+                <div *ngIf="f.celular.errors">{{mensaje.CUS4_EX05}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="col-sm-6">
+      <fieldset class="linea-caja col-sm-12 ">
+        <legend class="text-primary">Datos del Representante Legal</legend>
+
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label">{{casilla225.descripcion}}:</label>
+          <div class="col-sm-7">
+            <rentas-combobox formControlName="tipoDocumento2" [dataCasilla]="casilla225" [lista]="tipoDocumentos2"
+              (change)='changeTipoDocumentoRepresentateLegal()'>
+            </rentas-combobox>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label">{{casilla226.descripcion}}:</label>
+          <div class="col-sm-7">
+            <div class="input-group ">
+              <rentas-textbox [tipoFormato]="FORMATO_ALFANUMERICO" formControlName="nroDocumento2"
+                [dataCasilla]="casilla226" (change)='obtenerDatosRepresentanteLegal()'
+                [isInvalid]="submitted && f.nroDocumento2.errors"></rentas-textbox>
+              <div *ngIf="submitted && f.nroDocumento2.errors" class="error-message">
+                <div *ngIf="f.nroDocumento2.errors.required">{{mensaje.CUS4_EX01}}</div>
+                <div *ngIf="registerForm.getError('excepccion01', 'nroDocumento2') as error">
+                  {{error}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label">{{casilla817.descripcion}}:</label>
+          <div class="col-sm-7">
+            <div class="input-group mb-3">
+              <input formControlName="nombre2" maxlength="30" class="form-control" type="text"
+                [ngClass]="{ 'is-invalid': submitted && f.nombre2.errors }" (change)='agregar()'>
+              <div *ngIf="submitted && f.nombre2.errors" class="invalid-feedback">
+                <div *ngIf="f.nombre2.errors.required">{{mensaje.CUS4_EX01}}</div>
+                <div *ngIf="f.nombre2.errors.pattern">{{mensaje.CUS4_EX01}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="f.cas782.enabled" class="form-group row">
+          <div class="col-sm-12 text-center">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="checkConfirma" [checked]="f.cas782.value === 1"
+                (change)="confirmarRepresentante($event)" />
+              <label class="form-check-label" for="checkConfirma">{{casilla782.descripcion}}</label>
+            </div>
+          </div>
+        </div>
+
+        <ngx-spinner bdColor="rgba(255,255,255,0.45)" color="rgba(28,27,27,0.64)"></ngx-spinner>
+      </fieldset>
+    </div>
+  </div>
+</form>

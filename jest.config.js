@@ -1,0 +1,22 @@
+module.exports = {
+  projects: [
+    '<rootDir>/apps/integrador',
+    '<rootDir>/libs/juridico',
+    '<rootDir>/libs/shared/assets',
+    '<rootDir>/libs/shared/environments',
+    '<rootDir>/libs/shared/styles',
+    '<rootDir>/libs/natural',
+    '<rootDir>/libs/cabecera',
+    '<rootDir>/libs/menu',
+    '<rootDir>/libs/shared/constantes',
+    '<rootDir>/libs/casillas',
+    '<rootDir>/libs/shared/types',
+    '<rootDir>/libs/shared/core',
+    '<rootDir>/libs/lista-errores',
+    '<rootDir>/libs/constancia',
+    '<rootDir>/libs/shared/utils',
+    '<rootDir>/libs/consultas',
+    '<rootDir>/libs/pasarela',
+    '<rootDir>/libs/shared/iu',
+  ],
+};

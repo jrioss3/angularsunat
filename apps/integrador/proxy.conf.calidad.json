@@ -1,0 +1,13 @@
+{
+  "/v1/recaudacion/declaracionespago/renta/*": {
+    "target": "https://e-renta.sunat.gob.pe",
+    "secure": false,
+    "changeOrigin": true
+  },
+
+  "/loader/recaudaciontributaria/declaracionpago/clientessol/oauth2/logout": {
+    "target": "https://e-renta.sunat.gob.pe",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

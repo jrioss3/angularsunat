@@ -1,0 +1,84 @@
+{
+  "npmScope": "rentas",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    ".eslintrc.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "integrador": {
+      "tags": []
+    },
+    "integrador-e2e": {
+      "tags": [],
+      "implicitDependencies": ["integrador"]
+    },
+    "juridico": {
+      "tags": [],
+      "implicitDependencies": ["shared-assets"]
+    },
+    "shared-assets": {
+      "tags": ["scope:shared", "type:assets"]
+    },
+    "shared-environments": {
+      "tags": ["scope:shared", "type:environments"]
+    },
+    "natural": {
+      "tags": [],
+      "implicitDependencies": ["shared-assets"]
+    },
+    "cabecera": {
+      "tags": []
+    },
+    "menu": {
+      "tags": []
+    },
+    "shared-constantes": {
+      "tags": ["scope:shared", "type:constantes"]
+    },
+    "casillas": {
+      "tags": []
+    },
+    "shared-types": {
+      "tags": ["scope:shared", "type:types"]
+    },
+    "shared-core": {
+      "tags": ["scope:shared", "type:service"]
+    },
+    "lista-errores": {
+      "tags": []
+    },
+    "constancia": {
+      "tags": []
+    },
+    "shared-utils": {
+      "tags": ["scope:shared", "type:utils"]
+    },
+    "consultas": {
+      "tags": []
+    },
+    "pasarela": {
+      "tags": []
+    },
+    "shared-iu": {
+      "tags": ["\"scope:shared", "type:iu\""]
+    }
+  }
+}

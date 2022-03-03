@@ -1,0 +1,13 @@
+div.check-buton {
+    padding-top: 19px;
+    /* height: 61px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p.css-format {
+    padding-bottom: 0px !important;
+    text-align: center;
+    margin-top: 10px;
+}

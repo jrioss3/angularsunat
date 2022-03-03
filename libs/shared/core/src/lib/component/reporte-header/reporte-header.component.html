@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col-md-12" style="text-align: center">
+    <p style="font-family:Helvetica;" *ngIf="!esPreliminar">REPORTE DEFINITIVO</p>
+    <p style="font-family:Helvetica;" *ngIf="esPreliminar">REPORTE PRELIMINAR - No se considera que
+      representa Constancia de Presentación</p>
+    <h4 style="font-family:Helvetica;"><label>FORMULARIO {{cabecera.numFormulario}} RENTA ANUAL
+        {{cabecera.numEjercicio}}</label></h4>
+    <h4 style="font-family:Helvetica;"><label>TERCERA CATEGORÍA E ITF</label></h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12" style="text-align: center">
+    <p style="font-family:Helvetica;">{{texto}}</p>
+  </div>
+</div>
+<div class="well-info"
+  style="border: 1px solid #000;font-family:Helvetica;font-size:12px;border-radius: 12px;padding: 10px 10px;margin-bottom: 20px;">
+
+  <div *ngIf="no20" class="form-group row" style="margin-bottom:0px;display: flex;flex-wrap: wrap">
+    <label class="col-md-3 control-label"
+      style="font-weight: bold;font-family:Helvetica;flex: 0 0 25%;max-width: 25%;">N&uacute;mero de
+      RUC:</label>
+    <div class="col-md-2 control-label" style="font-family:Helvetica;flex: 0 0 16%;max-width: 16%;">
+      {{numRuc == null? "" : numRuc}}</div>
+    <label class="col-md-2 control-label"
+      style="font-weight: bold;font-family:Helvetica;flex: 0 0 20%;max-width: 20%;">Raz&oacute;n
+      Social:</label>
+    <div class="col-md-5 control-label" style="font-family:Helvetica;flex: 0 0 37%;max-width: 37%;">
+      {{userData.nombreCompleto == null? "" : userData.nombreCompleto}}</div>
+  </div>
+
+  <div *ngIf="!no20" class="form-group row" style="margin-bottom:0px;display: flex;flex-wrap: wrap">
+    <label class="col-md-3 control-label"
+      style="font-weight: bold;font-family:Helvetica;flex: 0 0 25%;max-width: 25%;">N&uacute;mero de
+      DNI:</label>
+    <div class="col-md-2 control-label" style="font-family:Helvetica;flex: 0 0 16%;max-width: 16%;">
+      {{numDni == null? "" : numDni}}</div>
+    <label class="col-md-2 control-label"
+      style="font-weight: bold;font-family:Helvetica;flex: 0 0 20%;max-width: 20%;">Nombre
+      Contribuyente:</label>
+    <div class="col-md-5 control-label" style="font-family:Helvetica;flex: 0 0 37%;max-width: 37%;">
+      {{userData.nombreCompleto == null? "" : userData.nombreCompleto}}</div>
+  </div>
+
+  <div class="form-group row" style="margin-bottom:0px;display: flex;flex-wrap: wrap">
+    <label class="col-md-3 control-label"
+      style="font-weight: bold;font-family:Helvetica;flex: 0 0 25%;max-width: 25%;">Periodo
+      Tributario:</label>
+    <div class="col-md-2 control-label" style="font-family:Helvetica;flex: 0 0 16%;max-width: 16%;">
+      {{preDeclaracion.perTri == null? "" : preDeclaracion.perTri}}</div>
+
+    <ng-container *ngIf="!esPreliminar">
+      <label class="col-md-3 control-label "
+        style="font-weight: bold;font-family:Helvetica;flex: 0 0 25%;max-width: 21%;">Número de
+        Orden:</label>
+      <div class="col-md-2 control-label " style="font-family:Helvetica;flex: 0 0 16%;max-width: 16%;">
+        {{ numOrden }}</div>
+    </ng-container>
+
+  </div>
+
+  <div class="form-group row" style="margin-bottom:0px;display: flex;flex-wrap: wrap">
+    <label class="col-md-3 control-label"
+      style="font-weight: bold;font-family:Helvetica;flex: 0 0 25%;max-width: 25%;">N&uacute;mero de
+      Formulario:</label>
+    <div class="col-md-2 control-label" style="font-family:Helvetica;flex: 0 0 16%;max-width: 16%;">
+      {{cabecera.numFormulario}}</div>
+
+    <ng-container *ngIf="!esPreliminar">
+      <label class="col-md-3 control-label "
+        style="font-weight: bold;font-family:Helvetica;flex: 0 0 25%;max-width: 21%;">Fecha de
+        Presentación: </label>
+      <div class="col-md-2 control-label " style="font-family:Helvetica;flex: 0 0 16%;max-width: 20%;">
+        {{fechaPresentacion}}</div> <!-- si no es  esPreliminar fecRevision es fechaPresentacion -->
+    </ng-container>
+  </div>
+
+</div>

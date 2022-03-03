@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <rentas-sub-cabecera [mostrarBotones]="false" [paso]="1"></rentas-sub-cabecera>
+    <br>
+    <h4 class="nombre-f" style="margin:0">
+        {{ formularioPPNN?.descripcion }}
+    </h4>
+    <div class="card">
+        <div class="card-body">
+            <p class="text-justify">
+                Si desea presentar su declaración jurada debe seleccionar el ejercicio que va a declarar.
+            </p>
+            <form>
+                <div class="form-group row">
+                    <label for="cboEjercicio" class="col-sm-3 col-form-label">Ejercicio</label>
+                    <div class="col-sm-3 input-group input-group-sm">
+                        <select class="form-control" [(ngModel)]="cboEjercicio" name="cboEjercicio" (change)="cambiarEjercicio($event.target.value)">
+                            <option *ngFor="let item of listaAnioEjercicio" [value]="item.codigo"
+                                >
+                                {{item.valor}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <ngx-spinner bdColor="rgba(255,255,255,0.45)" color="rgba(28,27,27,0.64)"></ngx-spinner>
+
+    <br>
+
+    <div *ngIf="mostrarAlerta" class="center">
+        <div class="alert alert-primary" role="alert" style="float: left;">
+            <span style="color: black;">
+                <div [innerHTML]="mensajeInformativo"></div>
+            </span>
+        </div>
+    </div>
+
+</div>

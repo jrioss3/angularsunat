@@ -1,0 +1,53 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title">Casilla 359 - Impuesto retenido de Segunda Categor&iacute;a</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+    <fieldset class="linea-caja">
+        <form class="form-horizontal mt-2" [formGroup]="frmCasilla359">
+            <div class="form-group row">
+                <label class="control-label col-sm-6">RUC del agente de retenci&oacute;n</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" formControlName="txtRuc_" name="txtRuc_" maxlength="11" placeholder="Ingresar" (change)="obtenerRazonSocialContribuyente()" (input)="validarEspacio($event.target.value)" [ngClass]="{ 'is-invalid': (f.txtRuc_.dirty || submitted) && f.txtRuc_.errors}"
+                    />
+                    <div id="nameRazSoc">{{txtrazsoc}}</div>
+                    <div *ngIf="(f.txtRuc_.dirty || submitted) && f.txtRuc_.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtRuc_.errors.required">{{mensajeErrorCasilla359.CUS22_EX02}}</div>
+                        <div *ngIf="frmCasilla359.getError('{excepccion01}', 'txtRuc_') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-6">Periodo {{textoPeriodo}}</label>
+                <div class="input-group col-sm-6">
+                    <month-date-picker formControlName="txtPeriodo" [classValid]="(this.f.txtPeriodo.hasError('invalid') && submitted)" name="txtPeriodo" [disabled]="disabled" [minYear]='anio' [maxYear]='anio'></month-date-picker>
+                    <div *ngIf="(this.f.txtPeriodo.hasError('invalid') && submitted)">
+                        <div *ngIf="this.f.txtPeriodo.hasError('invalid')" class="date-invalid-feedback">
+                            {{mensajeErrorCasilla359.CUS22_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-6">Monto retenido</label>
+                <div class="col-sm-6">
+                    <rentas-textbox formControlName="txtIngresoAtri" [tipoFormato]="FORMATO_MONTO" [cantidadDecimales]="2" [maxlength]="11" [isDisabled]="f.txtIngresoAtri.disabled" [isInvalid]="(f.txtIngresoAtri.dirty || submitted) && f.txtIngresoAtri.errors"></rentas-textbox>
+                    <div *ngIf="(f.txtIngresoAtri.dirty || submitted) && f.txtIngresoAtri.errors" class="error-message">
+                        <div *ngIf="f.txtIngresoAtri.errors.required">{{mensajeErrorCasilla359.CUS22_EX01}}</div>
+                        <div *ngIf="frmCasilla359.getError('{excepccion01}', 'txtIngresoAtri') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+    <button type="button" (click)="grabar()" class="btn btn-primary">Guardar</button>
+</div>

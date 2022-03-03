@@ -1,0 +1,20 @@
+
+div.adapter {
+    padding-left: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* a.nav-link.active {
+    background-color: #0063ae !important;
+} */
+
+a#nps.active {
+    background-color: #0063ae;
+}
+
+a#rt.active {
+    background-color: #0063ae;
+}

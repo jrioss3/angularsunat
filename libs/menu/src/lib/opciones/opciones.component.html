@@ -1,0 +1,5 @@
+<tree-root [nodes]="nodes" (initialized)="onTreeLoad($event)" [options]="options">
+  <ng-template #treeNodeTemplate let-node let-index="index">
+    <div (click)="onEvent(node)" [ngClass]="node.data.classes">{{ node.data.name }}</div>
+  </ng-template>
+</tree-root>

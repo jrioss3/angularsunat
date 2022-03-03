@@ -1,0 +1,35 @@
+<div class="modal-header bg-primary text-white">
+    <button type="button" class="close text-white" aria-label="Close" (click)="cerrar()">
+      <span aria-hidden="true" style="color: black;">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    ¿Desea solicitar Fraccionamiento por las deudas que se generen en esta declaración anual?
+    Recuerde que de no acceder al presente enlace su solicitud deberá ser generada a partir del
+    sexto día hábil siguiente de presentada esta declaración.
+
+    <div class="row check-buton">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="inlineCheckbox1" [(ngModel)]="isChecked" [value]="1">
+        <label class="form-check-label" for="inlineCheckbox1">Si</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="inlineCheckbox2" [(ngModel)]="isChecked" [value]="2">
+        <label class="form-check-label" for="inlineCheckbox2">No</label>
+      </div>
+    </div>
+    <!-- <div class="row" *ngIf="isChecked === 1">
+      <div class="col">
+        <p class="css-format">
+          La solicitud de fraccionamiento por esta deuda será evaluada a partir del día siguiente de su vencimiento de la
+          Declaración Jurada de Regularización de Renta, a fin de no calcular intereses al no haber vencido su obligación
+        </p>
+      </div>
+  </div>
+  -->
+  </div>
+  <div class="modal-footer">
+    <button id="cancel" name="cancel" class="btn btn-outline-secondary" type="button" value="Cancela"
+      (click)="cerrar()">Cerrar</button>
+    <button (click)="aceptar()" class="btn btn-primary" type="button">Aceptar</button>
+  </div>

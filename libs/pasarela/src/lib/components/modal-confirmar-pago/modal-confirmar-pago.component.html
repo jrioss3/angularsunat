@@ -1,0 +1,13 @@
+<div class="modal-header bg-primary text-white">
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    {{mensaje}}
+</div>
+<div class="modal-footer">
+    <button id="cancel" name="cancel" class="btn btn-outline-secondary" type="button" value="Cancela"
+        (click)="cancelar()">Cancelar</button>
+    <button (click)="aceptar()" class="btn btn-primary" type="button">Aceptar</button>
+</div>

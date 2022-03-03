@@ -1,0 +1,77 @@
+
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title" id="modal-basic-title  ">Detalle de otras rentas de cuarta categor&iacute;a (casilla 108)</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="table-responsive mt-4">
+          <table datatable  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th>Tipo Documento</th>
+                <th>N&deg; Documento</th>
+                <th>Nombre/Raz&oacute;n Social</th>
+                <th>Periodo</th>
+                <th>Ingreso Atribuido</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let casilla108 of lista108 || []; let i = index">
+                <td>
+                  <a (click)="agregarOActualizar(casilla108, i)" title="Editar" class="text-dark">
+                    <i class="fas fa-pen"></i>
+                  </a>
+                </td>
+                <td>
+                  <a (click)="eliminar(i)" title="Eliminar" class="text-dark">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </td>
+                <td>{{ObtenerDescripcion(casilla108.tipDoc)}}</td>
+                <td>{{casilla108.numDoc}}</td>
+                <td>{{casilla108.desRazSoc}}</td>
+                <td>{{obtenerPeriodo(casilla108.perServicio)}}</td>
+                <td class="column-right">{{casilla108.mtoAtribuido | currency : 'S/ '}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <label class="label-contador"> Contador de Registros: </label>
+          <ul class="ul">
+            <li
+              *ngFor="let documento of documentosMap | keyvalue"
+            >
+            {{ documento?.key }}: {{ documento?.value }} registros
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-sm-6">
+          <button (click)="exportar()" class="btn btn-primary" >Exportar</button>
+        </div>
+        <div class="form-group col-sm-6">
+          <div class="text-right">
+            <label  class="control-label col-sm-6">Total Ingreso atribuido: </label>
+            <label class="control-label ml-1">{{total108 | currency : 'S/ ' : true : '.0'}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <div class=" text-center">
+    <button id="cancel" name="cancel" class="btn btn-outline-secondary" type="button" value="Cancelar" (click)="activeModal.close('Close click')">Cancelar</button>
+    <button (click)="agregarOActualizar()" class="btn btn-primary ml-3">Agregar</button>
+  </div>
+</div>

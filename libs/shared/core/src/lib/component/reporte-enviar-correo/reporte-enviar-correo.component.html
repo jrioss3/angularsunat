@@ -1,0 +1,35 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title" id="modal-basic-title"> {{obtenerTitulo()}}</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="modalService.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+
+    <div id="divReporteSimple" class="col-sm-12">
+
+        <div class="form-group row">
+            <label class="col-sm-5 col-form-label">Correo Electr&oacute;nico:</label>
+            <div class="col-sm-7">
+                <div class="input-group ">
+                    <input id="txtEmailReporte" type="text" [(ngModel)]="emailReporte" class="form-control"
+                        placeholder="ejemplo@correo.com" aria-describedby="basic-addon1" />
+                </div>
+                <div class="help-block m-1 text-success" *ngIf="emailValido">
+                    <small>{{emailMessage}}</small>
+                </div>
+                <div class="help-block m-1 text-warning" *ngIf="emailProceso">
+                    <small>{{emailSending}}</small>
+                </div>
+                <div class="help-block m-1 text-danger word-break" *ngIf="emailInvalido">
+                    <small>{{excepcion}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="cancelarEmail()">Cancelar</button>
+    <button type="button" class="btn btn-primary ml-2" (click)="validarEmail($event)">Aceptar</button>
+</div>

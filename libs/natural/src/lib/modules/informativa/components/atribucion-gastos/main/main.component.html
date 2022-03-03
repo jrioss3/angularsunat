@@ -1,0 +1,101 @@
+<ngb-tabset #t="ngbTabset">
+  <ngb-tab id="bgnTabIgeneral" title="Sociedad Conyugal">
+    <ng-template ngbTabContent>
+      <div class="card  border-0">
+        <fieldset class="linea-caja mt-4">
+          <legend class="text-primary">Atribuciones Realizadas:</legend>
+          <div style="margin-left: 190px"> Recuerde que sólo puede atribuir gastos si declara rentas de trabajo.
+          </div>
+          <div class="form-group mt-4">
+            <button (click)="agregar()" class="btn btn-primary ml-2">Agregar</button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Tipo de gasto</th>
+                    <th>Tipo de v&iacute;nculo</th>
+                    <th>Tipo documento del v&iacute;nculo</th>
+                    <th>Nro. documento del v&iacute;nculo</th>
+                    <th>Tipo documento</th>
+                    <th>Nro. documento</th>
+                    <th>Apellidos y Nombres</th>
+                    <th>Fecha inicio de relaci&oacute;n</th>
+                    <th>Porcentaje atribuci&oacute;n</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let casillaConyugal of listAtribRealizadas; let i = index">
+                    <td>
+                      <a (click)="actualizar(casillaConyugal, i)" title="Editar" class="text-dark">
+                        <i class="fas fa-pen"></i>
+                      </a>
+                    </td>
+                    <td>
+                      <a (click)="eliminar(i,1,casillaConyugal)" title="Eliminar" class="text-dark">
+                        <i class="fas fa-trash"></i>
+                      </a>
+                    </td>
+                    <td>{{ObtenerDescripcionTipoGasto(casillaConyugal.codTipoGasto)| uppercase}}</td>
+                    <td>{{ObtenerDescripcionTipoVinculo(casillaConyugal.codTipVin)| uppercase}}</td>
+                    <td>{{ObtenerDescripcionTipoDocumentoVinculo(casillaConyugal.codTipDocVin)| uppercase}}</td>
+                    <td>{{casillaConyugal.numDocVin}}</td>
+                    <td>{{ObtenerDescripcionTipoDocumento(casillaConyugal.codTipDoc) | uppercase}}</td>
+                    <td>{{casillaConyugal.numDoc}}</td>
+                    <td>{{casillaConyugal.desNomRazSoc}}</td>
+                    <td>{{casillaConyugal.fecIniRel | date:'dd/MM/yyyy'}}</td>
+                    <td>{{casillaConyugal.porAtribucion}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="linea-caja mt-4">
+          <legend class="text-primary">Atribuciones Recibidas</legend>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Tipo de gasto</th>
+                    <th>Tipo de v&iacute;nculo</th>
+                    <th>Tipo documento del v&iacute;nculo</th>
+                    <th>Nro. documento del v&iacute;nculo</th>
+                    <th>Tipo documento</th>
+                    <th>Nro. documento</th>
+                    <th>Apellidos y Nombres</th>
+                    <th>Fecha inicio de relaci&oacute;n</th>
+                    <th>Porcentaje atribuci&oacute;n</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let casillaConyugal of listAtribRecibidas; let i = index">
+                    <td>
+                      <a (click)="eliminar(i,2,casillaConyugal)" title="Eliminar" class="text-dark">
+                        <i class="fas fa-trash"></i>
+                      </a>
+                    </td>
+                    <td>{{ObtenerDescripcionTipoGasto(casillaConyugal.codTipoGasto)| uppercase}}</td>
+                    <td>{{ObtenerDescripcionTipoVinculo(casillaConyugal.codTipVin)| uppercase}}</td>
+                    <td>{{ObtenerDescripcionTipoDocumentoVinculo(casillaConyugal.codTipDocVin)| uppercase}}</td>
+                    <td>{{casillaConyugal.numDocVin}}</td>
+                    <td>{{ObtenerDescripcionTipoDocumento(casillaConyugal.codTipDoc) | uppercase}}</td>
+                    <td>{{casillaConyugal.numDoc}}</td>
+                    <td>{{casillaConyugal.desNomRazSoc}}</td>
+                    <td>{{casillaConyugal.fecIniRel | date:'dd/MM/yyyy'}}</td>
+                    <td>{{casillaConyugal.porAtribucion}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>

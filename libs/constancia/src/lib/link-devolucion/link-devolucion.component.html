@@ -1,0 +1,31 @@
+<ng-container *ngIf="tieneDevolucion">
+
+  <fieldset class="linea-caja" style="padding-bottom: 0px;padding-top: 5px;">
+    <legend class="text-primary">Devolución para el contribuyente</legend>
+
+    <label style="display: block;margin: 0px;" *ngIf="listaTributos.length == 1">
+      Si desea presentar la solicitud de devolución del saldo a favor declarado, haga clic en el siguiente botón:
+    </label>
+
+    <label style="display: block;margin: 0px;" *ngIf="listaTributos.length > 1">
+      Si desea presentar la(s) solicitud(es) de devolución del saldo a favor declarado(s), haga clic en el(los) siguiente(s) botón(es):
+    </label>
+    <div style="display: flex;flex-flow: row;">
+      <ng-container *ngFor="let item of listaTributos">
+        <div style="padding-top: 7px; padding-bottom: 7px; padding-right: 7px;">
+          <a class="btn btn-primary" aria-selected="true" aria-disabled="false" style="
+                  background-color: #007bff;
+                  margin-right: 7px;
+                  " (click)="clickEnLinkDevolucion(item)"> {{item.link}} </a>
+        </div>
+      </ng-container>
+    </div>
+
+    <p>
+      <strong> Nota: </strong> Le sugerimos que antes de ingresar al módulo de Solicitud de Devolución, imprima, guarde
+      una copia y/o envíe por correo electrónico la constacia de Presentación del presente formulario.
+    </p>
+
+  </fieldset>
+
+</ng-container>

@@ -1,0 +1,22 @@
+
+.liOpcion:hover, .nivelActivo{
+    background-color: #cfcfcf;
+    padding: 10px 10px;
+    cursor: pointer;
+    cursor: hand;
+}
+.nivel1{
+    font-size: 17px;
+    color:    #444 !important;/*mas oscuro*/
+    font-weight: bold;
+}
+.nivel2{
+    font-size: 15px;
+    color:    #444 !important;
+    font-weight: bold;
+}
+.nivel3{
+    font-size: 15px;
+    color:    #004586 !important;
+    font-weight: normal;
+}

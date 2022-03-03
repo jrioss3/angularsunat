@@ -1,0 +1,84 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title">Casilla 131 - Impuesto retenido de Quinta Categor&iacute;a</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="frmCasilla131" class="form-horizontal mt-2">
+        <fieldset class="linea-caja"><br>
+            <div class="form-group row">
+                <label class="control-label col-sm-6">RUC del agente de retenci&oacute;n</label>
+                <div class="col-sm-6">
+                    <input formControlName="numruc" name="numruc" (change)="obtenerRazonSocialContribuyente()" type="text" placeholder="Ingresar" class="form-control" (input)="validarEspacio($event.target.value)" maxlength="11" [ngClass]="{ 'is-invalid': (f.numruc.dirty || submitted) && f.numruc.errors }"
+                    />
+                    <div *ngIf="(f.numruc.dirty || submitted) && f.numruc.errors" class="invalid-feedback">
+                        <div *ngIf="f.numruc.errors.required">{{mensajeErrorCasilla131.CUS28_EX02}}</div>
+                        <div *ngIf="frmCasilla131.getError('{excepccion01}', 'numruc') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">Raz&oacute;n Social/Nombre</label>
+                <div class="col-sm-6">
+                    <input type="text" formControlName="txtRazSoc" class="form-control" name="txtRazSoc" readonly />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-6">Periodo</label>
+                <div class="input-group col-sm-6">
+                    <month-date-picker formControlName="periodo" name="periodo" [minYear]='anio' [classValid]="(this.f.periodo.hasError('invalid') && submitted)" [maxYear]='anio' (click)="verificarNumOrden()"></month-date-picker>
+                    <div *ngIf="(this.f.periodo.hasError('invalid') && submitted)">
+                        <div *ngIf="this.f.periodo.hasError('invalid')" class="date-invalid-feedback">
+                            {{mensajeErrorCasilla131.CUS28_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">Monto retenido</label>
+                <div class="col-sm-6">
+                    <rentas-textbox formControlName="mtoRetenido" [tipoFormato]="FORMATO_MONTO" [cantidadDecimales]="2" [maxlength]="11" [isDisabled]="f.mtoRetenido.disabled" [isInvalid]="(f.mtoRetenido.dirty || submitted) && f.mtoRetenido.errors"></rentas-textbox>
+                    <div *ngIf="(f.mtoRetenido.dirty || submitted) && f.mtoRetenido.errors" class="error-message">
+                        <div *ngIf="frmCasilla131.getError('{excepccion01}', 'mtoRetenido') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">Monto devuelto</label>
+                <div class="col-sm-6">
+                    <rentas-textbox formControlName="mtoDevol" [tipoFormato]="FORMATO_MONTO" [cantidadDecimales]="2" [maxlength]="11" [isDisabled]="f.mtoDevol.disabled" (change)="cambiosEnCamposDependientesDeMontoDevuelto()" [isInvalid]="(f.mtoDevol.dirty || submitted) && f.mtoDevol.errors"></rentas-textbox>
+                    <div *ngIf="(f.mtoDevol.dirty || submitted) && f.mtoDevol.errors" class="error-message">
+                        <div *ngIf="frmCasilla131.getError('{excepccion01}', 'mtoDevol') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-6">Formulario</label>
+                <div class="col-sm-6">
+                    <input formControlName="numform" name="numform" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.numform.errors }" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-6">N&deg; de Orden</label>
+                <div class="col-sm-6">
+                    <input formControlName="numOrden" name="numOrden" type="text" placeholder="{{placeholder}}" class="form-control" (blur)="changeNumeroDeOrden()" [ngClass]="{ 'is-invalid': (f.numOrden.dirty || submitted) && f.numOrden.errors }" />
+                    <div *ngIf="(f.numOrden.dirty || submitted) && f.numOrden.errors" class="invalid-feedback">
+                        <div *ngIf="frmCasilla131.getError('{excepccion01}', 'numOrden') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="metodo()">Guardar</button>
+        </div>
+    </form>
+</div>

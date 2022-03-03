@@ -1,0 +1,146 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title">Registrar Donaci&oacute;n</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <fieldset class="linea-caja">
+    <form [formGroup]="registerForm" class="form-horizontal mt-2">
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Tipo de donaci&oacute;n
+          <span *ngIf="submitted && f.codTipDonacion.errors">
+            <span style="color:red" *ngIf="f.codTipDonacion.errors.required">(*)</span>
+          </span>
+        </label>
+        <div class="form-group col-sm-6">
+          <select formControlName="codTipDonacion" name="codTipDonacion" class="form-control col-sm-12"
+            (change)="seleccionarTipoDonacion()" [ngClass]="{ 'is-invalid': submitted && f.codTipDonacion.errors }">
+            <option value="">--Seleccionar--</option>
+            <option *ngFor="let tipoDonacion of tipoDonaciones" [value]="tipoDonacion.val">
+              {{tipoDonacion.desc}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Modalidad de donaci&oacute;n
+          <span *ngIf="submitted && f.codModDonacion.errors">
+            <span style="color:red" *ngIf="f.codModDonacion.errors.required">(*)</span>
+          </span>
+        </label>
+        <div class="form-group col-sm-6">
+          <select formControlName="codModDonacion" name="codModDonacion" class="form-control col-sm-12"
+            (change)="validarCamposVacios()" [ngClass]="{ 'is-invalid': submitted && f.codModDonacion.errors }">
+            <option value="">--Seleccionar--</option>
+            <option *ngFor="let modalidadDonacion of modalidadDonaciones" [value]="modalidadDonacion.val">
+              {{modalidadDonacion.desc}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Tipo de documento de donatario
+          <span *ngIf="submitted && f.codTipDocDonat.errors">
+            <span style="color:red" *ngIf="f.codTipDocDonat.errors.required">(*)</span>
+          </span>
+        </label>
+        <div class="form-group col-sm-6">
+          <select formControlName="codTipDocDonat" name="codTipDocDonat" class="form-control col-sm-12"
+            (change)="seleccionarTipoDocumento()" [ngClass]="{ 'is-invalid': submitted && f.codTipDocDonat.errors }">
+            <option value="">--Seleccionar--</option>
+            <option *ngFor="let tipoDocumento of tipoDocumentos" [value]="tipoDocumento.val">
+              {{tipoDocumento.desc}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="" class="control-label col-sm-6">N&uacute;mero de identificaci&oacute;n del donatario
+          <span *ngIf="submitted && f.numDocDonat.errors">
+            <span style="color:red" *ngIf="f.numDocDonat.errors.required">(*)</span>
+          </span>
+        </label>
+        <div class="col-sm-6">
+          <input formControlName="numDocDonat" type="text" class="form-control" name="numDocDonat"
+            placeholder="Ingresar" (change)="obtenerNombre(1)" [maxLength]="max" (keypress)="keyPress($event)"
+            [ngClass]="{ 'is-invalid': submitted && f.numDocDonat.errors }" />
+          <div *ngIf="submitted && f.numDocDonat.errors" class="invalid-feedback">
+            <div *ngIf="registerForm.getError('excepccion01', 'numDocDonat') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="" class="control-label col-sm-6">Nombre o denominaci&oacute;n del donatario
+          <span *ngIf="submitted && f.desDocDonat.errors">
+            <span style="color:red" *ngIf="f.desDocDonat.errors.required">(*)</span>
+          </span>
+        </label>
+        <div class="col-sm-6">
+          <input formControlName="desDocDonat" maxlength="100" type="text" class="form-control" name="desDocDonat"
+            placeholder="Ingresar" (change)="validarCamposVacios()"
+            [ngClass]="{ 'is-invalid': submitted && f.desDocDonat.errors }" />
+          <div *ngIf="submitted && f.desDocDonat.errors" class="invalid-feedback">
+            <div *ngIf="f.desDocDonat.errors.pattern">{{excepciones.CUS18_EX07}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Fecha de la donaci&oacute;n
+          <span *ngIf="submitted && f.fecDonacionTxt.errors">
+            <span style="color:red" *ngIf="f.fecDonacionTxt.errors.required">(*)</span>
+          </span>
+        </label>
+        <div class="input-group col-sm-6">
+          <input formControlName="fecDonacionTxt" placeholder="DD/MM/AAAA" readonly class="form-control"
+            name="fecDonacionTxt" ngbDatepicker #d1="ngbDatepicker"
+            [ngClass]="{ 'is-invalid': submitted && f.fecDonacionTxt.errors }" />
+          <div class="input-group-append">
+            <button [disabled]="f.fecDonacionTxt.disabled" class="btn btn-outline-secondary calendar"
+              (click)="d1.toggle()" type="button"><i class="fas fa-calendar-alt"></i></button>
+          </div>
+          <div *ngIf="submitted && f.fecDonacionTxt.errors" class="invalid-feedback">
+            <div *ngIf="registerForm.getError('excepccion01', 'fecDonacionTxt') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="" class="control-label col-sm-6">Monto de la donaci&oacute;n
+          <span *ngIf="submitted && f.mtoDonacion.errors">
+            <span style="color:red" *ngIf="f.mtoDonacion.errors.required">(*)</span>
+          </span>
+        </label>
+        <div class="col-sm-6">
+          <rentas-textbox formControlName="mtoDonacion" [tipoFormato]="FORMATO_MONTO" (change)="validarCamposVacios()"
+            [cantidadDecimales]="2" [maxlength]="9" [isDisabled]="f.mtoDonacion.disabled"
+            [isInvalid]="submitted && f.mtoDonacion.errors">
+          </rentas-textbox>
+          <div *ngIf="submitted && f.mtoDonacion.errors" class="error-message">
+            <div *ngIf="f.mtoDonacion.errors.min">{{excepciones.CUS18_EX06}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-body" *ngIf="existenCamposVacios && submitted">
+        <div class="alert alert-danger" role="alert">{{excepciones.CUS18_EX04}}</div>
+      </div>
+
+    </form>
+  </fieldset>
+  <ngx-spinner bdColor="rgba(255,255,255,0.45)" color="rgba(28,27,27,0.64)"></ngx-spinner>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+  <button type="button" (click)="metodo()" class="btn btn-primary">Guardar</button>
+</div>

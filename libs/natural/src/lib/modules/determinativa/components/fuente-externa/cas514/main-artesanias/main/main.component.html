@@ -1,0 +1,67 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title">Detalle Artesanias y Turismo</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+    <div class="card  border-0">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table datatable class="table table-hover" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>Fecha emisi&oacute;n</th>
+                            <th>Nombre Emisor</th>
+                            <th>Monto comprobante</th>
+                            <th>Monto a deducir</th>
+                            <th>RUC Emisor comprobante</th>
+                            <th>Tipo comprobante</th>
+                            <th>Serie comprobante</th>
+                            <th>N&deg; comprobante</th>
+                            <th>Forma de Pago</th>
+                            <th *ngIf="habilitarCasItan()">Observaci&oacute;n</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of Artesanias514; let i = index">
+                            <td><a (click)="agregarOActualizar(item,i)" title="Editar" class="text-dark"><i class="fas fa-pen"></i></a>
+                            </td>
+                            <td><a (click)="eliminarArtesanias(i)" title="Eliminar" class="text-dark"><i class="fas fa-trash"></i></a>
+                            </td>
+                            <td *ngIf="item.indEstFormVirt == 1"><input type="checkbox" disabled checked/></td>
+                            <td *ngIf="item.indEstFormVirt == 0"><input type="checkbox" disabled/></td>
+                            <td>{{item.fecComprob | date : 'dd/MM/yyyy'}}</td>
+                            <td>{{item.desNomEmisor}}</td>
+                            <td class="column-right">{{item.mtoComprob | currency : 'S/ ' }}</td>
+                            <td class="column-right">{{item.mtoDeduccion | currency : 'S/ ' }}</td>
+                            <td>{{item.numDocEmisor}}</td>
+                            <td>{{ObtenerComprobante(item.codTipComprob) | uppercase}}</td>
+                            <td>{{item.numSerie}}</td>
+                            <td>{{item.numComprob}}</td>
+                            <td>{{ObtenerMedPag(item.codForPago) | uppercase}}</td>
+                            <td *ngIf="habilitarCasItan()">
+                                <div [innerHTML]="item | obtenerMotivoObservacion : lstParametriaObservaciones : anioEjercicio"> </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group col-sm-12">
+        <div class="form-group text-right pr-0">
+            <label class="control-label text-right">Total Monto a deducir:</label>
+            <label class="control-label ml-1">{{ArtesaniasTotalS | currency : 'S/ ' : true }}</label>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="agregarOActualizar()">Agregar</button>
+</div>

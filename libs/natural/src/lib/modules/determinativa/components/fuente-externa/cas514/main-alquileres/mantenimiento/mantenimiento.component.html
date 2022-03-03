@@ -1,0 +1,208 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title">{{modal.titulo}}</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="frmCasilla514" class="form-horizontal mt-2">
+    <fieldset class="linea-caja"><br>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">RUC del Emisor del Comprobante</label>
+        <div class="col-sm-6">
+          <input formControlName="numDocEmisor" name="numDocEmisor" type="text" class="form-control" maxlength="11"
+            placeholder="Ingresar"
+            [ngClass]="{ 'is-invalid': (f.numDocEmisor.dirty || submitted) && f.numDocEmisor.errors }"
+            (blur)="ObtenerEmisor()" (input)="validarEspacio($event.target.value)" />
+          <div *ngIf="(f.numDocEmisor.dirty || submitted) && f.numDocEmisor.errors" class="invalid-feedback">
+            <div *ngIf="f.numDocEmisor.errors.required">{{mensaje514.CUS32_EX02}}</div>
+            <div *ngIf="frmCasilla514.getError('{excepccion01}', 'numDocEmisor') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Nombre/Raz&oacute;n Comercial</label>
+        <div class="col-sm-6">
+          <input formControlName="desNomEmisor" name="desNomEmisor" type="text" class="form-control" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Tipo de comprobante</label>
+        <div class="form-group col-sm-6">
+          <select formControlName="codTipComprob" name="codTipComprob" class="form-control col-sm-12"
+            (change)="changeTipoComprobante()"
+            [ngClass]="{ 'is-invalid':(f.codTipComprob.dirty || submitted) && f.codTipComprob.errors }">
+            <option value="" selected>--Seleccionar--</option>
+            <option *ngFor="let item of listaTipoComprobante" value="{{item.val}}">{{item.desc}}</option>
+          </select>
+          <div *ngIf="(f.codTipComprob.dirty || submitted) && f.codTipComprob.errors" class="invalid-feedback">
+            <div *ngIf="f.codTipComprob.errors.required">{{mensaje514.CUS32_EX01}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Serie de comprobante</label>
+        <div class="col-sm-6">
+          <input type="text" maxlength="4" formControlName="numSerie" class="form-control" name="txtSerie"
+            placeholder="{{placeholder}}"
+            [ngClass]="{ 'is-invalid': (f.numSerie.touched || submitted) && f.numSerie.errors }" />
+          <div *ngIf="(f.numSerie.touched || submitted) && f.numSerie.errors" class="invalid-feedback">
+            <div *ngIf="f.numSerie.errors.required">{{mensaje514.CUS32_EX02}}</div>
+            <div *ngIf="frmCasilla514.getError('{excepccion01}', 'numSerie') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">N&uacute;mero de comprobante</label>
+        <div class="col-sm-6">
+          <input formControlName="numComprob" maxlength="50" type="text" class="form-control" name="numComprob"
+            placeholder="Ingresar"
+            [ngClass]="{ 'is-invalid': (f.numComprob.dirty || submitted) && f.numComprob.errors }"
+            (blur)="changeNumeroDeComprobante()" (input)="validarEspacioNumeroComprobante($event.target.value)" />
+          <div *ngIf="(f.numComprob.dirty || submitted) && f.numComprob.errors" class="invalid-feedback">
+            <div *ngIf="f.numComprob.errors.required">{{mensaje514.CUS32_EX02}}</div>
+            <div *ngIf="frmCasilla514.getError('{excepccion01}', 'numComprob') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Fecha de comprobante</label>
+        <div class="input-group col-sm-6">
+          <input formControlName="fecComprob" class="form-control" name="fecComprob" ngbDatepicker #d1="ngbDatepicker"
+            placeholder="DD/MM/AAAA"
+            [ngClass]="{ 'is-invalid': (f.fecComprob.dirty || submitted) && f.fecComprob.errors }" />
+          <div class="input-group-append">
+            <button class="btn btn-outline-dark calendar" (click)="d1.toggle()" type="button"
+              [disabled]='disabledFecha'>
+              <i class="far fa-calendar-alt"></i>
+            </button>
+          </div>
+          <div *ngIf="(f.fecComprob.dirty || submitted) && f.fecComprob.errors" class="invalid-feedback">
+            <div *ngIf="f.fecComprob.errors.required">{{mensaje514.CUS32_EX01}}</div>
+            <div *ngIf="frmCasilla514.getError('excepccion01', 'fecComprob') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Tipo de Bien</label>
+        <div class="form-group col-sm-6">
+          <select formControlName="codTipBien" name="codTipBien" class="form-control col-sm-12"
+            [ngClass]="{ 'is-invalid': (f.codTipBien.dirty || submitted) && f.codTipBien.errors }"
+            (change)="activarMonto()">
+            <option value="" selected>--Seleccionar--</option>
+            <option *ngFor="let item of listaTipoBien" value="{{item.val}}">{{item.desc}}</option>
+          </select>
+          <div *ngIf="(f.codTipBien.dirty || submitted) && f.codTipBien.errors" class="invalid-feedback">
+            <div *ngIf="f.codTipBien.errors.required">{{mensaje514.CUS32_EX01}}</div>
+            <div *ngIf="frmCasilla514.getError('{excepccion01}', 'codTipBien') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-6">Forma de Pago</label>
+        <div class="form-group col-sm-6">
+          <select formControlName="codForPago" (change)="activarObs()" name="codForPago" class="form-control col-sm-12"
+            [ngClass]="{ 'is-invalid': (f.codForPago.dirty || submitted) && f.codForPago.errors }" >
+            <option value="" selected>--Seleccionar--</option>
+            <option *ngFor="let item of listaFormaPago" value="{{item.val}}">{{item.desc}}</option>
+          </select>
+          <div *ngIf="(f.codForPago.dirty || submitted) && f.codForPago.errors" class="invalid-feedback">
+            <!--<div *ngIf="f.codForPago.errors.required">{{mensaje514.CUS32_EX01}}</div>-->
+            <div *ngIf="frmCasilla514.getError('{excepccion01}', 'codForPago') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="control-label col-sm-6">Monto del comprobante</label>
+        <div class="col-sm-6">
+          <input formControlName="mtoComprob" type="text" class="form-control text-right" name="mtoComprob"
+            placeholder="Ingresar"
+            [ngClass]="{ 'is-invalid': (f.mtoComprob.dirty || submitted) && f.mtoComprob.errors }"
+            (blur)="calculoMontoDeduccion()" />
+          <div *ngIf="(f.mtoComprob.dirty || submitted) && f.mtoComprob.errors" class="invalid-feedback">
+            <div *ngIf="f.mtoComprob.errors.required">{{mensaje514.CUS32_EX01}}</div>
+            <div *ngIf="frmCasilla514.getError('{excepccion01}', 'mtoComprob') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="control-label col-sm-6">% Deducci&oacute;n</label>
+        <div class="col-sm-6">
+          <input formControlName="porDeduccion" type="text" class="form-control text-right" name="porDeduccion"
+            placeholder="0.00" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="" class="control-label col-sm-6">% Atribuci&oacute;n</label>
+        <div class="col-sm-6">
+          <input formControlName="porAtribucion" type="text" class="form-control text-right" name="porAtribucion"
+            placeholder="0.00" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="control-label col-sm-6">Monto m&aacute;ximo a deducir</label>
+        <div class="col-sm-6">
+          <input formControlName="mtoOriginal" type="text" class="form-control text-right" name="mtoOriginal" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="control-label col-sm-6">Monto a deducir</label>
+        <div class="col-sm-6">
+          <input formControlName="mtoDeduccion" type="text" class="form-control text-right" name="mtoDeduccion"
+            placeholder="S/ 0.00"
+            [ngClass]="{ 'is-invalid': (f.mtoDeduccion.dirty || submitted) && f.mtoDeduccion.errors }" />
+          <div *ngIf="(f.mtoDeduccion.dirty || submitted) && f.mtoDeduccion.errors" class="invalid-feedback">
+            <div *ngIf="f.mtoDeduccion.errors.required">{{mensaje514.CUS32_EX01}}</div>
+            <div *ngIf="frmCasilla514.getError('{excepccion01}', 'mtoDeduccion') as error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="control-label col-sm-6">Tipo de v&iacute;nculo</label>
+        <div class="col-sm-6">
+          <input formControlName="codTipVinc" type="text" class="form-control text-right" name="codTipVinc"
+            [ngClass]="{ 'is-invalid': submitted && f.codTipVinc.errors }" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="control-label col-sm-6">Nombre del Titular</label>
+        <div class="col-sm-6">
+          <input formControlName="desNomTit" type="text" class="form-control text-right" name="desNomTit"
+            [ngClass]="{ 'is-invalid': submitted && f.desNomTit.errors }" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="control-label col-sm-6">Periodo del comprobante</label>
+        <div class="col-sm-6">
+          <input formControlName="periodo" type="text" class="form-control text-right" name="periodo"/>
+        </div>
+      </div>
+      <ngx-spinner bdColor="rgba(255,255,255,0.45)" color="rgba(28,27,27,0.64)"></ngx-spinner>
+      <div class="form-group row" *ngIf="isShowIncon">        
+        <div class="form-group col-sm-12" [innerHTML]="showHtml"></div>
+      </div>
+    </fieldset>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary"
+        (click)="activeModal.close('Close click')">Cancelar</button>
+      <button type="button" class="btn btn-primary" (click)="metodo()">Guardar</button>
+    </div>
+  </form>
+</div>

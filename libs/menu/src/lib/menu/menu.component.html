@@ -1,0 +1,14 @@
+<ng-sidebar-container>
+    <ng-sidebar [opened]="isOpen" [dock]="true" [dockedSize]="'35px'" mode="push" autoCollapseWidth="500" [animate]="true">
+        <div class="posicionar-izq-der">
+            <a href="" [routerLink]="[pathBienvenida]" style="color: #AB1440;"><i class="fas fa-home"></i> Ir al Inicio</a>
+            <p (click)="alternarBarraLateral()"><i [class]="classButton" style="font-size: 20px;"></i></p>
+        </div>
+        <br>
+        <rentas-cabecera></rentas-cabecera>
+        <rentas-opciones></rentas-opciones>
+    </ng-sidebar>
+    <div ng-sidebar-content>
+        <ng-content select="[menu-outlet]"></ng-content>
+    </div>
+</ng-sidebar-container>

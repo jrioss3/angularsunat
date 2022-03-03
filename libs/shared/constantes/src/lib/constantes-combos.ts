@@ -1,0 +1,26 @@
+export class ConstantesCombos {
+   static TIPO_DOCUMENTO = '044';
+   static BIEN_MUEBLES = '602';
+   static BIEN_INMUEBLES = '603';
+   static MODALIDAD_DONACION = '862';
+   static TIPO_DONACION = '863';
+   static BASES_LEGALES = '861';
+   static BASES_LEGALES2 = '832';
+   static PAISES = '394';
+   static SOCIOS = '841';
+   static UIT = '404';
+   static TIPO_BIEN = 'R01';
+   static TIPO_DOCUMENTO_ESPECIAL = 'R08';
+   static CANTIDAD_UITS = 'R09';
+   static PORCENTAJE_DEDUCIR = 'R10';
+   static TIPO_BIEN_514 = 'R12';
+   static FORMULARIOS = 'R13';
+   static VERSION_NAVEGADOR = 'R15';
+   static PORCENTAJE_CASILLA610 = 'R16';
+   static TIPOS_VALOR_CAS_297 = 'R27';
+   static ACOTACION_VALOR_CAS_297 = 'R28';
+   static FORMULARIOS_PAGOS_PREVIOS = 'R30';
+   static OBSERVACIONES_GASTOS_DEDUCIBES = 'B08';
+   static TIPOS_VALOR_COMPENSACION_CAS_297 = 'R32';
+   static TIPO_BIEN_514_v2 = 'R33';
+}

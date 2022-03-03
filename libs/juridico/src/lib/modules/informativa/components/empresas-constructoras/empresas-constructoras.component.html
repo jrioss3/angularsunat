@@ -1,0 +1,36 @@
+<div class="card-body">
+  <fieldset class="linea-caja mt-7">
+    <legend class="text-primary">Empresas Constructoras y Similares</legend>
+    <form [formGroup]="constructorasForm.getForm" class="form-horizontal mt-2">
+      <div class="form-group row">
+        <label for="cboEjercicio" class="col-sm-9 col-form-label">{{casilla293.descripcion}}:</label>
+        <div class="col-sm-12">
+          <div class="custom-control custom-radio ">
+            <input formControlName="respuesta" value="A" type="radio" id="rdMetodoRentaA" name="respuesta"
+              (click)="respuestaSeleccionada('A')">
+            <label class="control-label" for="rdMetodoRentaA">M&eacute;todo a)</label>
+          </div>
+          <div class="custom-control">
+            <p class="text-justify">
+              Asignar a cada ejercicio gravable la renta bruta que resulte de aplicar sobre los importes cobrados por
+              cada obra, durante el ejercicio comercial, el porcentaje de ganancia bruta calculado para el total de la
+              respectiva obra.
+            </p>
+          </div>
+          <div class="custom-control custom-radio ">
+            <input formControlName="respuesta" value="B" type="radio" id="rdMetodoRentaB" name="respuesta"
+              (click)="respuestaSeleccionada('B')">
+            <label class="control-label" for="rdMetodoRentaB">M&eacute;todo b)</label>
+          </div>
+          <div class="custom-control">
+            <p class="text-justify">
+              Asignar a cada ejercicio gravable la renta bruta que se establezca deduciendo del importe cobrado o por
+              cobrar por los trabajos ejecutados en cada obra durante el ejercicio comercial, los costos
+              correspondientes a tales trabajos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </fieldset>
+</div>

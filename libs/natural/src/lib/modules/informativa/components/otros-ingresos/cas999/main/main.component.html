@@ -1,0 +1,61 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title" id="modal-basic-title  ">Renta de Fuente Extranjera tributaci&oacute;n exclusiva en el
+    Pa&iacute;s de la
+    Fuente por aplicaci&oacute;n de convenio para evitar la doble imposici&oacute;n</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="table-responsive mt-4">
+          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th>Tipo de Renta</th>
+                <th>Pa&iacute;s</th>
+                <th>Renta Neta Percibida</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let extranjera of listaExtranjera; let i = index">
+                <td>
+                  <a (click)="agregaroActualizar(extranjera, i)" title="Editar" class="text-dark">
+                    <i class="fas fa-pen"></i>
+                  </a>
+                </td>
+                <td>
+                  <a (click)="Eliminar(i)" title="Eliminar" class="text-dark">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </td>
+                <td>{{extranjera.desTipRenta}}</td>
+                <td>{{extranjera.desPais}}</td>
+                <td class="column-right">{{extranjera.mtoImpuesto | currency: 'S/ '}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="col-sm-6"></div>
+          <div class="col-sm-6 text-right">
+            <label for="" class="control-label col-sm-6">Total: {{total | currency: 'S/ ' : true : '.0'}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button id="cancel" name="cancel" class="btn btn-outline-secondary" type="button" value="Cancelar"
+    (click)="activeModal.close()">Cancelar</button>
+  <button (click)="agregaroActualizar()" class="btn btn-primary">Agregar</button>
+</div>

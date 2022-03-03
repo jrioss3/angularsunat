@@ -1,0 +1,59 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title">Casilla 385 - Renta Neta de Fuente Extranjera por enajenación de valores mobiliarios</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body container-fluid">
+    <fieldset class="linea-caja">
+        <form [formGroup]="frmCasilla385" class="form-horizontal mt-2">
+            <div class="form-group row">
+                <label class="control-label col-sm-6">Fuente Renta</label>
+                <div class="form-group col-sm-6">
+                    <rentas-combobox 
+                        formControlName="cmbFuenteRenta" 
+                        [lista]="listTipFuenteRenta" 
+                        [isDisabled]="f.cmbFuenteRenta.disabled" 
+                        (change)="cambiarFuenteRenta()" 
+                        [isInvalid]="(f.cmbFuenteRenta.touched || submitted) && f.cmbFuenteRenta.errors" 
+                        [isScrolling]="true"></rentas-combobox>
+                    <div *ngIf="(f.cmbFuenteRenta.touched || submitted) && f.cmbFuenteRenta.errors" class="error-message">
+                        <div *ngIf="f.cmbFuenteRenta.errors.required ">{{error385.CUS31_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-6">País</label>
+                <div class="form-group col-sm-6">
+                    <rentas-combobox 
+                        formControlName="cmbPaises" 
+                        [lista]="listaPaisesPorFuente" 
+                        [isDisabled]="f.cmbPaises.disabled" 
+                        [isInvalid]="(f.cmbPaises.touched || submitted) && f.cmbPaises.errors" 
+                        [isScrolling]="true"
+                    ></rentas-combobox>
+                    <div *ngIf="(f.cmbPaises.touched || submitted) && f.cmbPaises.errors" class="error-message">
+                        <div *ngIf="f.cmbPaises.errors.required ">{{error385.CUS31_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">Monto Neto</label>
+                <div class="col-sm-6">
+                    <rentas-textbox formControlName="txtMonNeto" [tipoFormato]="FORMATO_MONTO" [maxlength]="11" [isInvalid]="(f.txtMonNeto.touched || submitted) && f.txtMonNeto.errors"></rentas-textbox>
+                    <!-- <input type="text" formControlName="txtMonNeto" maxlength="11" class="form-control text-right" name="txtMonNeto" placeholder="S/ 0" [ngClass]="{ 'is-invalid': submitted && f.txtMonNeto.errors }" /> -->
+                    <div *ngIf="(f.txtMonNeto.touched || submitted) && f.txtMonNeto.errors" class="error-message">
+                        <div *ngIf="f.txtMonNeto.errors.required ">{{error385.CUS31_EX01}}</div>
+                        <div *ngIf="f.txtMonNeto.errors.pattern && !f.txtMonNeto.errors.min ">{{error385.CUS31_EX01}}
+                        </div>
+                        <div *ngIf="f.txtMonNeto.errors.min ">{{error385.CUS31_EX02}}</div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+    <button type="button" (click)="guardarRegistro()" class="btn btn-primary">Guardar</button>
+</div>

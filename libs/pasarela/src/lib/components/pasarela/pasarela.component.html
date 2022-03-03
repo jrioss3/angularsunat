@@ -1,0 +1,46 @@
+<rentas-sub-cabecera [mostrarBotones]="false" [paso]="2"></rentas-sub-cabecera>
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+
+      <div class="col-sm-9">
+        <fieldset class="linea-caja" *ngFor="let medioPago of pasarelaRespuesta.mediosPago">
+          <legend class="text-primary">{{ medioPago.nomMedPag }}</legend>
+
+          <div class="class row mt-4 text-center">
+
+            <div *ngFor="let entidadFinanciera of medioPago.entidadFinanciera"
+              [ngClass]="{'col-sm-3': medioPago.entidadFinanciera.length > 1, 'col-sm-12': medioPago.entidadFinanciera.length === 1 }">
+              <div class="custom-control mb-4 alinear-al-certro">
+                <input type="radio" [(ngModel)]="entidadFinancieraSelected" [value]="entidadFinanciera">
+                <img [src]="entidadFinanciera.imgBase64" class="img-fluid rounded" alt="Responsive image"
+                  ngbPopover="{{entidadFinanciera.tituloAyuda}}: {{entidadFinanciera.descripcionAyuda}}"
+                  triggers="mouseenter:mouseleave">
+              </div>
+            </div>
+
+          </div>
+          <small class="text-muted">*{{ medioPago.desMedPag }}*</small>
+
+        </fieldset>
+
+      </div>
+
+      <div class="col-sm-3">
+        <div class="card" style="margin-top: 10px;">
+          <div class="card-header"><i class="fas fa-shopping-cart"></i> Importe Total
+          </div>
+          <div class="card-body">
+            <div class="text-center">
+              <h1 class="card-text text-info"> {{ montoApagar | currency: 'S/ ' }}</h1>
+              <button class="btn btn-info btn-lg btn-block mt-3" [disabled]="!!!entidadFinancieraSelected"
+                (click)="clickPresentarPagar()">Presente/Pague <i class="fas fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(255,255,255,0.45)" color="rgba(28,27,27,0.64)"></ngx-spinner>

@@ -1,0 +1,149 @@
+/* Inicio Formulario*/
+.div_centro{
+    /*width : 100%;*/
+    max-width: 160px    
+/*min-height: 260px;*/
+    /*max-height: 160px;*/
+    height: auto;
+    /*overflow: auto;*/
+    /*float:left;*/
+    margin-bottom: 200px;
+}
+
+
+.div_derecha{
+    float:right;
+}
+.div_formulario{
+    /*width: 600px;*/
+    width: auto;
+    margin: auto;
+    height: auto;
+
+
+}
+/*.div_formulario2{
+    width: 50%;
+    width: 50%;
+    margin: 50%;
+
+}
+*/
+.div_agrupador{
+    /*width: 100%;*/
+    width: auto;
+    height: auto;
+    float: left;
+}
+
+.div_control{
+    width: 50%;
+    height: auto;
+    float: left;
+}
+
+.table_control{
+    /*width: 50%;*/
+}
+
+.td_etiquetas{
+
+    width: 50%;
+    text-align: left;
+    color: #6E6E6E;
+    font-family: Arial; /*'Myriad Pro'*/
+    /*font-size: 0.8em;*/
+    
+    padding-left: 5px;
+}
+
+.input_tarjeta{
+    width: 80%; /*85% 09/01/2015*/
+    height: 30px;
+    margin-left: 5px;
+    
+    padding-top: 5px;
+    padding-left: 35px;
+
+    background-position: left center; 
+    /*background-image: url('../imagenes/tarjeta.png'); */
+    background-repeat: no-repeat; 
+
+    outline:none; /*quitar el focus ring from Webkit*/
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    behavior: url(../js/libs/pie/PIE.htc);
+    /*Ini 09/01/2015*/
+    float:left;
+    vertical-align:middle;
+    /*Fin 09/01/2015*/
+}
+
+.input_titular{
+    width: 80%;
+    height: 30px;
+    margin-left: 5px;
+        
+    padding-top: 5px;
+    padding-left: 35px;
+    vertical-align: middle;
+
+    background-position: left center; 
+    /*background-image: url('../imagenes/datos_titular.png'); */
+    background-repeat: no-repeat; 
+
+    outline:none; /*quitar el focus ring from Webkit*/
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    behavior: url(../js/libs/pie/PIE.htc);
+        float:left;
+    vertical-align:middle;
+}
+
+.input_correo{
+    width: 90%;
+    height: 30px;
+    margin-left: 5px;
+    
+    padding-top: 5px;
+    padding-left: 35px;
+
+    background-position: left center; 
+    /*background-image: url('../imagenes/correo.png'); */
+    background-repeat: no-repeat; 
+
+    outline:none; /*quitar el focus ring from Webkit*/
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    behavior: url(../js/libs/pie/PIE.htc);
+    float:left;
+    vertical-align:middle;
+}
+
+.border_control{
+    border: 1px solid #ececec;
+}
+
+/*
+.oculto{
+    display: none;
+}*/
+
+.select_fecha{
+    width: 45%;
+    height: 30px;
+    margin-left: 5px;
+    padding-top: 5px;
+    
+    font-family:Arial;
+    padding-left: 5px; /* IPR-9153 */
+
+    outline:none; /*quitar el focus ring from Webkit*/
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    behavior: url(../js/libs/pie/PIE.htc);
+}

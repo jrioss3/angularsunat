@@ -1,0 +1,61 @@
+.table-report {
+    margin: 20px 0;
+}
+
+.table-report td {
+    vertical-align: middle;
+}
+
+.table-report tr th {
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+.table-report td p {
+    margin-bottom: 0;
+}
+
+.table-report td.bold,
+.table-report th.bold {
+    font-weight: bold;
+}
+
+.table-report td.tcenter,
+.table-report th.tcenter {
+    text-align: center;
+}
+
+.table-report td.w200,
+.table-report th.w200 {
+    width: 200px;
+}
+
+.table-report td.tright,
+.table-report th.tright {
+    text-align: right;
+}
+
+.table td,
+.table th {
+    padding: 0.4rem !important;
+}
+
+table tr td,
+table tr th {
+    border: 2px solid #C0C0C0;
+}
+
+.black {
+    color: #000;
+    font-weight: 800 !important;
+}
+
+.w140 {
+    width: 140px;
+}
+
+@media (max-width: 991px) {
+    .text-marca-agua {
+        font-size: 50px;
+    }
+}

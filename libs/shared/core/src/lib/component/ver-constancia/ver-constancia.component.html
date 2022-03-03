@@ -1,0 +1,42 @@
+<!--Casilla 999-->
+
+<div class="modal-header bg-primary text-white fondo-blanco">
+
+  <p class="modal-title" id="modal-basic-title">
+    <button class="btn btn-primary btn-sm float-right ml-1" (click)="guardarConstancia()">
+      <i class="fa fa-download"></i> Guardar
+    </button>
+
+    <button class="btn btn-primary btn-sm float-right ml-1" printSectionId="print-section-constancia" ngxPrint>
+      <i class="fas fa-print"></i> Imprimir
+    </button>
+
+    <button class="btn btn-primary btn-sm float-right" (click)=enviarCorreo()>
+      <i class="fa fa-envelope"></i> Enviar
+    </button>
+
+  </p>
+
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true" style="color: black;">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div id="print-section-constancia">
+
+    <ng-container *ngIf="rowConstnacia.esBoleta">
+      <rentas-boleta [rowConstnacia]="rowConstnacia"></rentas-boleta>
+    </ng-container>
+
+    <ng-container *ngIf="!rowConstnacia.esBoleta">
+      <rentas-formulario [rowConstnacia]="rowConstnacia"></rentas-formulario>
+    </ng-container>
+
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button id="cancel" name="cancel" class="btn btn-outline-secondary" type="button" value="Cancelar"
+    (click)="activeModal.close()">Cerrar</button>
+</div>

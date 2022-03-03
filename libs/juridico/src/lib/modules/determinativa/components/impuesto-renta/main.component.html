@@ -1,0 +1,155 @@
+<div class="card border-left-0 border-0 mt-2">
+  <div class="card-body">
+    <div class="row mt-6">
+      <div class="col-sm-12">
+
+        <div class="form-group row mt-4">
+          <ul class="col-sm-12 list-group list-group-flush">
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6 col-form-label">{{fs.casilla100.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla100" [(ngModel)]="fs.impuestoRtaEmpresa.mtoCas100">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6 col-form-label">{{fs.casilla101.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla101" [(ngModel)]="fs.impuestoRtaEmpresa.mtoCas101">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6 col-form-label">{{fs.casilla103.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla103" [(ngModel)]="fs.impuestoRtaEmpresa.mtoCas103"
+                    (ngModelChange)="fs.calcularRentaNeta()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6 col-form-label">{{fs.casilla105.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla105" [(ngModel)]="fs.impuestoRtaEmpresa.mtoCas105"
+                    (ngModelChange)="fs.calcularRentaNeta()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6 col-form-label">{{fs.casilla106.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla106" [(ngModel)]="fs.impuestoRtaEmpresa.mtoCas106">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6 col-form-label">{{fs.casilla107.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla107" [(ngModel)]="fs.impuestoRtaEmpresa.mtoCas107">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6 col-form-label">{{fs.casilla120.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla120" [(ngModel)]="fs.impuestoRtaEmpresa.mtoCas120"
+                    (ngModelChange)="fs.calcularSaldoPerdidasNoCompensadas()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6 col-form-label">{{fs.casilla108.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox (abrirAsistente)="abrirCasilla108()" [dataCasilla]="fs.casilla108"
+                    [(ngModel)]="fs.impuestoRtaEmpresa.mtoCas108">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6 col-form-label">{{fs.casilla110.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla110" [(ngModel)]="fs.impuestoRtaEmpresa.mtoCas110">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6 col-form-label font-weight-bold">{{fs.casilla113.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla113" [(ngModel)]="fs.impuestoRtaEmpresa.mtoCas113">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6 col-form-label">{{fs.casilla111.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [dataCasilla]="fs.casilla111" [(ngModel)]="fs.impuestoRtaEmpresa.mtoCas111">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6 col-form-label">{{fs.casilla686.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [tipoFormato]="formato_numerico" [dataCasilla]="fs.casilla686"
+                    [(ngModel)]="fs.impuestoRtaEmpresa.mtoCas686" [cantidadDecimales]="4">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item border-top-0">
+              <div class="row">
+                <label class="col-sm-6 col-form-label">{{fs.casilla610.descripcion}}</label>
+                <div class="col-sm-3">
+                  <rentas-textbox [tipoFormato]="formato_porcentaje" [dataCasilla]="fs.casilla610"
+                    [(ngModel)]="fs.impuestoRtaEmpresa.mtoCas610" [cantidadDecimales]="2">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <br />
+
+        <div class="form-group row mt-4" [hidden]="!(fs.impuestoRtaEmpresa.mtoCas107 > 0 && fs.lista108.lisCasilla108.length === 0)">
+          <label class="col-sm-12 text-center col-form-label">Seleccione el Sistema de Arrastre de
+            P&eacute;rdidas para el ejercicio {{ anioejercicio }}</label>
+          <div class="col-sm-12 text-center">
+            <div class="custom-control custom-radio custom-control-inline col-sm-1">
+              <input [(ngModel)]="fs.impuestoRtaEmpresa.mtoCas880" type="radio" id="rbDetalleA" name="rbDetalleCas880"
+                class="custom-control-input" [value]="0" (change)="guardarOpcion()">
+              <label class="custom-control-label font-weight-bold" for="rbDetalleA">A</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input [(ngModel)]="fs.impuestoRtaEmpresa.mtoCas880" type="radio" id="rbDetalleB" name="rbDetalleCas880"
+                class="custom-control-input" [value]="1" (change)="guardarOpcion()">
+              <label class="custom-control-label font-weight-bold" for="rbDetalleB">B</label>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

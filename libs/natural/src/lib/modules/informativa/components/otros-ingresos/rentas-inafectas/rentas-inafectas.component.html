@@ -1,0 +1,155 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title ">Rentas Inafectas</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+
+    <fieldset class="linea-caja ">
+        <div class="card border-0 mt-4">
+            <div class="card-body pt-0">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group row">
+                            <ul class="col-sm-12 list-group list-group-flush">
+                                <li *ngIf="existeCodFilaAsistente(VALOR_A | lowercase)" class="list-group-item border-0 ">
+                                    <div class="row">
+                                        <!-- <label class="col-sm-8 col-form-label">a) Las indemnizaciones previstas por las
+                                            disposiciones
+                                            laborales vigentes. </label> -->
+                                        <label class="col-sm-8 col-form-label">{{getDescripcionFilaAsistente(VALOR_A | lowercase)}} </label>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <rentas-textbox [tipoFormato]="FORMATO_MONTO" [(ngModel)]="inafectA.mtoRtasExon" (ngModelChange)="sumRentasExoneradas()" [maxlength]="11">
+                                                </rentas-textbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li *ngIf="existeCodFilaAsistente(VALOR_B | lowercase)" class="list-group-item border-0 ">
+                                    <div class="row">
+                                        <!-- <label class="col-sm-8 col-form-label">b) Las indemnizaciones que se reciban por
+                                            causa de muerte o
+                                            incapacidad producidas por accidentes o enfermedades.
+                                        </label> -->
+                                        <label class="col-sm-8 col-form-label">{{getDescripcionFilaAsistente(VALOR_B | lowercase)}} </label>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <rentas-textbox [tipoFormato]="FORMATO_MONTO" [(ngModel)]="inafectB.mtoRtasExon" (ngModelChange)="sumRentasExoneradas()" [maxlength]="11">
+                                                </rentas-textbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li *ngIf="existeCodFilaAsistente(VALOR_C | lowercase)" class="list-group-item border-0 ">
+                                    <div class="row">
+                                        <!-- <label class="col-sm-8 col-form-label">c) Las compensaciones por tiempo de
+                                            servicios, previstas por
+                                            las disposiciones laborales vigentes. </label> -->
+                                        <label class="col-sm-8 col-form-label">{{getDescripcionFilaAsistente(VALOR_C | lowercase)}} </label>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <rentas-textbox [tipoFormato]="FORMATO_MONTO" [(ngModel)]="inafectC.mtoRtasExon" (ngModelChange)="sumRentasExoneradas()" [maxlength]="11">
+                                                </rentas-textbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li *ngIf="existeCodFilaAsistente(VALOR_D | lowercase)" class="list-group-item border-0 ">
+                                    <div class="row">
+                                        <!-- <label class="col-sm-8 col-form-label">d) Las rentas vitalicias y las pensiones
+                                            que tengan su origen
+                                            en el trabajo personal, tales como jubilaci&oacute;n,
+                                            montep&iacute;o e invalidez. </label> -->
+                                        <label class="col-sm-8 col-form-label">{{getDescripcionFilaAsistente(VALOR_D | lowercase)}} </label>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <rentas-textbox [tipoFormato]="FORMATO_MONTO" [(ngModel)]="inafectD.mtoRtasExon" (ngModelChange)="sumRentasExoneradas()" [maxlength]="11">
+                                                </rentas-textbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li *ngIf="existeCodFilaAsistente(VALOR_E | lowercase)" class="list-group-item border-0 ">
+                                    <div class="row">
+                                        <!-- <label class="col-sm-8 col-form-label">e) Enajenaci&oacute;n de bien inmueble no
+                                            calificada como
+                                            ganancia de capital de 2da categor&iacute;a
+                                        </label> -->
+                                        <label class="col-sm-8 col-form-label">{{getDescripcionFilaAsistente(VALOR_E | lowercase)}} </label>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <rentas-textbox [tipoFormato]="FORMATO_MONTO" [(ngModel)]="inafectE.mtoRtasExon" (ngModelChange)="sumRentasExoneradas()" [maxlength]="11">
+                                                </rentas-textbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li *ngIf="existeCodFilaAsistente(VALOR_F | lowercase)" class="list-group-item border-0 ">
+                                    <div class="row">
+                                        <!-- <label class="col-sm-8 col-form-label">f) Los subsidios por incapacidad
+                                            temporal, maternidad y
+                                            lactancia. </label> -->
+                                        <label class="col-sm-8 col-form-label">{{getDescripcionFilaAsistente(VALOR_F | lowercase)}} </label>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <rentas-textbox [tipoFormato]="FORMATO_MONTO" [(ngModel)]="inafectF.mtoRtasExon" (ngModelChange)="sumRentasExoneradas()" [maxlength]="11">
+                                                </rentas-textbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li *ngIf="existeCodFilaAsistente(VALOR_G | lowercase)" class="list-group-item border-0 ">
+                                    <div class="row">
+                                        <!-- <label class="col-sm-8 col-form-label">g) Las cantidades que se abonen de
+                                            producirse el cese del
+                                            trabajador, seg&uacute;n lo previsto en el
+                                            inciso b) del art&iacute;culo 88° y en el art&iacute;culo 147° del Decreto
+                                            Legislativo N° 728.
+                                        </label> -->
+                                        <label class="col-sm-8 col-form-label">{{getDescripcionFilaAsistente(VALOR_G | lowercase)}} </label>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <rentas-textbox [tipoFormato]="FORMATO_MONTO" [(ngModel)]="inafectG.mtoRtasExon" (ngModelChange)="sumRentasExoneradas()" [maxlength]="11">
+                                                </rentas-textbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li *ngIf="existeCodFilaAsistente(VALOR_H | lowercase)" class="list-group-item border-0 ">
+                                    <div class="row">
+                                        <!-- <label class="col-sm-8 col-form-label">h) Otras rentas inafectas </label> -->
+                                        <label class="col-sm-8 col-form-label">{{getDescripcionFilaAsistente(VALOR_H | lowercase)}} </label>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <rentas-textbox [tipoFormato]="FORMATO_MONTO" [(ngModel)]="inafectH.mtoRtasExon" (ngModelChange)="sumRentasExoneradas()" [maxlength]="11">
+                                                </rentas-textbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li *ngIf="existeCodFilaAsistente(VALOR_I)" class="list-group-item border-0 ">
+                                    <div class="row">
+                                        <!-- <label class="col-sm-8 col-form-label">Total Rentas Inafectas </label> -->
+                                        <label class="col-sm-8 col-form-label">{{getDescripcionFilaAsistente(VALOR_I)}} </label>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <rentas-textbox [tipoFormato]="FORMATO_MONTO" [(ngModel)]="sumatotal" [isDisabled]="true"> </rentas-textbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="guardar()">Guardar</button>
+</div>

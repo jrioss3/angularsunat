@@ -1,0 +1,37 @@
+html {
+    overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;
+}
+/*Barra navegaci�n*/        
+#divCabecera{
+    background-color: #fff; 
+}
+/*Footer*/
+#footerLinks{
+    background-color: #f6f6f4;
+    padding: 30px 0;
+}
+#footerPrincipal{
+    background-color: #0063AE;
+    padding: 20px 0 15px 0px;
+}
+.colBlanco{ 
+    color:    #fff !important;
+}
+.colRojo {
+    color:    #AB1440 !important;
+}
+.backAzul1{
+    background-color: #0063AE;
+}
+
+@media (max-width: 768px) {
+
+    #aHome{
+        height: 35px;
+    }
+    .text-centro{
+        text-align: center !important;
+        float: none !important;
+    }
+}

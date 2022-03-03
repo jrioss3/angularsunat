@@ -1,0 +1,60 @@
+<div class="input-group mb-1">
+  <div *ngIf="dataCasilla?.numCas; else noExisteDataCasilla" class="input-group-prepend">
+    <label class="input-group-text">{{ dataCasilla.numCas }}</label>
+  </div>
+
+  <ng-template #noExisteDataCasilla>
+    <div *ngIf="numCas" class="input-group-prepend">
+      <label class="input-group-text">{{ numCas }}</label>
+    </div>
+  </ng-template>
+
+  <ng-container *ngIf="!esFormatoAlfanumerico">
+    <input [placeholder]="placeHolder" class="someinput" [textMask]="{mask: mask}" [(ngModel)]="value"
+      [disabled]="setDisabled()" rentasDirectivaTemporal (click)="escucharEventoAsistente($event)"
+      (blur)="onBlur($event)" [appCasillaRentaTipo]="rentaTipo" [ngClass]="{ 'is-invalid': isInvalid }">
+  </ng-container>
+
+  <ng-container *ngIf="esFormatoAlfanumerico">
+    <input [placeholder]="placeHolder" class="someinput" [maxlength]="maxlength" [(ngModel)]="textValue"
+      [disabled]="setDisabled()" rentasDirectivaTemporal [ngClass]="{ 'is-invalid': isInvalid }">
+  </ng-container>
+
+  <div *ngIf="dataCasilla?.descAyuda" class="input-group-append">
+    <ng-template #popContent>
+      <div class="text-justify">
+        <div [innerHTML]="subTextoPopover"></div>
+        <span class="pointer" *ngIf="superaLimite" (click)="openScrollableContent(longContent)">...
+          <br />
+          <i class="fa fa-plus-circle"></i><span class="vermas">Ver mas</span>
+        </span>
+      </div>
+    </ng-template>
+    <button class="input-group-text" [ngbPopover]="popContent">
+      <i class="fas fa-question-circle"></i>
+    </button>
+  </div>
+</div>
+<ng-template #longContent let-modal>
+  <div class="modal-header bg-primary">
+    <h4 class="modal-title" id="modal-basic-title" class="modal-title">Ayuda Casilla {{ dataCasilla.numCas }}</h4>
+    <button type="button" class="close text-white" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-justify">
+    <div class="row">
+      <div class="col-md-12">
+        <div [innerHTML]="dataCasilla.descAyuda"></div>
+      </div>
+    </div>
+    <div class="row" *ngIf="dataCasilla.imagenAyuda">
+      <div class="col-md-12">
+        <img style="width: 100%;" [src]="dataCasilla.imagenAyuda" />
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.close('Close click')">Cerrar</button>
+  </div>
+</ng-template>

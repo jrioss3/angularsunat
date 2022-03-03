@@ -1,0 +1,203 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title">Datos del Arrendador</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="registerForm" class="form-horizontal mt-2">
+        <fieldset class="linea-caja"><br>
+            <div class="form-group row">
+                <label class="control-label col-sm-6">Tipo de documento</label>
+                <div class="form-group col-sm-6">
+                    <select formControlName="cmbTipoDocumento" name="cmbTipoDocumento" class="form-control col-sm-12" (change)='validarDocumento()' [ngClass]="{ 'is-invalid': submitted && f.cmbTipoDocumento.errors }">
+                        <option value="">--Seleccionar--</option>
+                        <option *ngFor="let tipdoc of listaTipoDoc" value="{{tipdoc.val}}">{{tipdoc.desc}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.cmbTipoDocumento.errors" class="invalid-feedback">
+                        <div *ngIf="f.cmbTipoDocumento.errors.required">{{mensajeArrendador.CUS04_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">N&uacute;mero de documento</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" formControlName="txtNumDoc" name="txtNumDoc" placeholder="Ingresar" 
+                    [maxLength]="tamanioDocumento" [ngClass]="{ 'is-invalid': (f.txtNumDoc.dirty || submitted) && f.txtNumDoc.errors }" 
+                    (blur)="obtenerNombre()" (input)="validarEspacio($event.target.value)"
+                    />
+                    <div *ngIf="(f.txtNumDoc.dirty || submitted) && f.txtNumDoc.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtNumDoc.errors.required">{{mensajeArrendador.CUS04_EX05}}</div>
+                        <div *ngIf="registerForm.getError('{excepccion01}', 'txtNumDoc') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">Nombre o Raz&oacute;n Social</label>
+                <div class="col-sm-6">
+                    <input type="text" formControlName="txtRazSoc" class="form-control" [disabled]="true" name="txtRazSoc" placeholder={{placholder}} 
+                    [ngClass]="{ 'is-invalid': (f.txtRazSoc.dirty || submitted) && f.txtRazSoc.errors }" />
+                    <div *ngIf="(f.txtRazSoc.dirty || submitted) && f.txtRazSoc.errors" class="invalid-feedback">
+                        <div *ngIf="f.txtRazSoc.errors.required">{{mensajeArrendador.CUS04_EX13}}</div>
+                        <div *ngIf="f.txtRazSoc.errors.pattern">{{mensajeArrendador.CUS04_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">Monto alquiler anual S/</label>
+                <div class="col-sm-6">
+                    <rentas-textbox formControlName="valorAlquiler" [tipoFormato]="FORMATO_MONTO" [maxlength]="11" [isInvalid]="submitted && f.valorAlquiler.errors"></rentas-textbox>
+                    <div *ngIf="submitted && f.valorAlquiler.errors" class="error-message">
+                        <div *ngIf="f.valorAlquiler.errors.required">{{mensajeArrendador.CUS04_EX04}}</div>
+                        <div *ngIf="registerForm.getError('{excepccion01}', 'valorAlquiler') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">N&uacute;mero de meses de alquiler</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" formControlName="mesAlquiler" name="mesAlquiler" placeholder="Ingresar" maxlength="2" [ngClass]="{ 'is-invalid': submitted && f.mesAlquiler.errors }" />
+                    <div *ngIf="f.mesAlquiler.errors" class="invalid-feedback">
+                        <div *ngIf="f.mesAlquiler.errors.required">{{mensajeArrendador.CUS04_EX01}}</div>
+                        <div *ngIf="registerForm.getError('{excepccion01}', 'mesAlquiler') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-sm-6">&iquest;Qu&eacute; tipo de bien ha alquilado?</label>
+                <div class="form-group col-sm-6">
+                    <div class="form-check">
+                        <input [value]="valorTipoBien" formControlName="options" class="form-check-input" type="radio" name="options" id="option3" (click)="rbBienInmueblePredios()" [ngClass]="{ 'is-invalid': submitted && f.options.errors }">
+                        <label for="option3" class="form-check-label">BIEN INMUEBLE (PREDIOS)</label>
+                    </div>
+                    <div class="form-check">
+                        <input [value]="valorTipoBien2" formControlName="options" class="form-check-input" type="radio" name="options" id="option4" (click)="rbBienInmuebleDistintoPredios()" [ngClass]="{ 'is-invalid': submitted && f.options.errors }">
+                        <label for="option4" class="form-check-label">BIEN INMUEBLE DISTINTOS DE PREDIOS</label>
+                    </div>
+                    <div class="form-check">
+                        <input [value]="valorTipoBien3" formControlName="options" class="form-check-input" type="radio" name="options" id="option5" (click)="rbBienMueble()" [ngClass]="{ 'is-invalid': submitted && f.options.errors }">
+                        <label for="option5" class="form-check-label">BIEN MUEBLE</label>
+                        <div *ngIf="submitted && f.options.errors" class="invalid-feedback">
+                            <div *ngIf="f.options.errors.required">{{mensajeArrendador.CUS04_EX09}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" *ngIf="!hide3">
+                <div class="form-group row">
+                    <label class="control-label col-sm-6">Seleccione el bien</label>
+                    <div class="col-sm-6">
+                        <select formControlName="cmbBienInmueble" name="cmbBienInmueble" (change)='validarOpcion()' class="form-control col-sm-12" [ngClass]="{ 'is-invalid': submitted && f.cmbBienInmueble.errors }">
+                            <option value="">--Seleccionar--</option>
+                            <option *ngFor="let bienM of listaBienMueble" value={{bienM.val}}>{{bienM.desc}}</option>
+                        </select>
+                        <div *ngIf="f.cmbBienInmueble.errors" class="invalid-feedback">
+                            <div *ngIf="f.cmbBienInmueble.errors.required">{{mensajeArrendador.CUS04_EX10}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-sm-6">{{texto}}</label>
+                    <div class="form-group col-sm-6">
+                        <input formControlName="adicional3" type="text" class="form-control" name="txtEscribir" (keypress)="keyPress($event)" placeholder="Ingresar" [maxLength]="tamanio" [ngClass]="{ 'is-invalid': submitted && f.adicional3.errors }" />
+                        <div *ngIf="f.adicional3.errors" class="invalid-feedback">
+                            <!-- <div *ngIf="f.adicional3.errors.required">{{mensajeArrendador.CUS04_EX11}}</div> -->
+                            <div *ngIf="registerForm.getError('{excepccion01}', 'adicional3') as error">
+                                {{error}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group" *ngIf="!hide2">
+                <div class="form-group row">
+                    <label class="control-label col-sm-6">Seleccione el bien</label>
+                    <div class="col-sm-6">
+                        <select formControlName="cmbBienInmueble" name="cmbBienInmueble" (change)='validarOpcion2()' class="form-control col-sm-12" [ngClass]="{ 'is-invalid': submitted && f.cmbBienInmueble.errors }">
+                            <option value="">--Seleccionar--</option>
+                            <option *ngFor="let bienI of listaBienInmueble" value={{bienI.val}}>{{bienI.desc}}</option>
+                        </select>
+                        <div *ngIf="f.cmbBienInmueble.errors" class="invalid-feedback">
+                            <div *ngIf="f.cmbBienInmueble.errors.required">{{mensajeArrendador.CUS04_EX10}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-sm-6">{{texto}}</label>
+                    <div class="form-group col-sm-6">
+                        <input formControlName="adicional3" type="text" class="form-control" name="txtEscribir" (keypress)="keyPress($event)" placeholder="Ingresar" [maxLength]="tamanio" [ngClass]="{ 'is-invalid': submitted && f.adicional3.errors }" />
+                        <div *ngIf="f.adicional3.errors" class="invalid-feedback">
+                            <!-- <div *ngIf="f.adicional3.errors.required">{{mensajeArrendador.CUS04_EX11}}</div> -->
+                            <div *ngIf="registerForm.getError('{excepccion01}', 'adicional3') as error">
+                                {{error}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" [hidden]="hide1">                
+                <div class="form-group mt-4">                     
+                    <button type="button" (click)="buscar()" class="btn btn-primary ml-2"  >Detalle</button>
+                </div>
+                <!--<div style="color: #dc3545;">{{error_buscar}}</div>-->
+                <fieldset class="linea-caja">
+                    <div class="row mt-3 form-group">
+                        <div class="card  border-0" style="width: 100%;">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+                                        <thead>
+                                            <tr>                                            
+                                                <th>Fecha comprobante</th>
+                                                <th>Nombre/Raz&oacute;n Comercial</th>
+                                                <th>Monto comprobante</th>
+                                                <th>Monto a deducir</th>
+                                                <th>Tipo de Bien</th>
+                                                <th>Forma de pago</th>
+                                                <th>RUC Emisor</th>
+                                                <th>Tipo comprobante</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of listaGastosAlquiler; let i = index">
+                                                <td>{{item.fecComprob.substring(0,10) | date : 'dd/MM/yyyy'}}</td>
+                                                <td>{{item.desNomEmisor}}</td>
+                                                <td class="column-right">{{item.mtoComprob | currency : 'S/ ' }}</td>
+                                                <td class="column-right">{{item.mtoDeduccion | currency : 'S/ ' }}</td>
+                                                <td>{{item.codTipBien ? (ObtenerTipBien(item.codTipBien) | uppercase) : ''}}</td>
+                                                <!-- <td>{{item | obtenerDecripcionTipoBien}}</td> -->
+                                                <td>{{ObtenerMedPag(item.codForPago) | uppercase}}</td>
+                                                <!-- <td>{{item | obtenerDescripcionMedioPago}}</td> -->
+                                                <td>{{item.numDocEmisor}}</td>
+                                                <td>{{ObtenerComprobante(item.codTipComprob)}}</td>
+                                            </tr>
+    
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                </fieldset>
+            </div>
+            <ngx-spinner bdColor="rgba(255,255,255,0.45)" color="rgba(28,27,27,0.64)"></ngx-spinner>
+        </fieldset>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+            <button type="button" (click)="metodo()" class="btn btn-primary">Guardar</button>
+        </div>
+    </form>
+</div>

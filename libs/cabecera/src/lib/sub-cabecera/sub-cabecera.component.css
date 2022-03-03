@@ -1,0 +1,246 @@
+div.colBlanco {
+    font-size: 14px !important;
+    font-family: 'Helvetica'
+  }
+  
+  button{
+    font-size: 14px !important;
+    font-family: 'Helvetica'
+  }
+  
+  img {
+    margin-top: 5px;
+  }
+  
+  .bg-primary{
+    background-color: #0063AE !important;
+  }
+  
+  .card {
+    border-radius: 0;
+  }
+  
+  .cabecera {
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+  
+  .textoContribuyente{
+    width:100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    padding-left: 15px !important;
+  }
+  
+  .divBotonSalirContribuyente{
+    padding-top: 8px !important;
+  }
+  
+  .negrita {
+    font-weight: bold !important;
+  }
+  .colBlanco {
+    color: #fff !important;
+    white-space: nowrap;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  
+  .btn-is-disabled {
+    pointer-events: none; /* Disables the button completely. Better than just cursor: default; */
+    @include opacity(0.7);
+  }
+  
+  @media (max-width: 768px) {
+      #Bread-Crumb-Pasos a {
+          padding: .7em 0.6em !important;
+      }
+  }
+  
+  ul {
+      display: block;
+      list-style-type: disc;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      padding-inline-start: 40px;
+      font-size: 14px !important;
+      font-family: 'Helvetica'
+  }
+  
+  .Bread-Crumb {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+  }
+  #Bread-Crumb-Pasos {
+      overflow: hidden;
+      width: 100%;
+  }
+  #Bread-Crumb-Pasos li {
+      float: left;
+      margin: 0 .5em 0 1em;
+  }
+  #Bread-Crumb-Pasos a {
+      background: #F4f4f4;
+      padding: .7em .5em;
+      float: left;
+      text-decoration: none;
+      color: #444 !important;
+      position: relative;
+  }
+  #Bread-Crumb-Pasos a:hover {
+      background: #00A6CC;
+      color: white;
+  }
+  #Bread-Crumb-Pasos a::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      margin-top: -1.5em;
+      border-width: 1.5em 0 1.5em 1em;
+      border-style: solid;
+      border-color: #F6F6F4 #F6F6F4 #F6F6F4 transparent;
+      left: -1em;
+  }
+  
+  #Bread-Crumb-Pasos a.current::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      margin-top: -1.5em;
+      border-width: 1.5em 0 1.5em 1em;
+      border-style: solid;
+      border-color: #00A6CC #00A6CC #00A6CC transparent !important;
+      left: -1em;
+  }
+  #Bread-Crumb-Pasos a.current::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      margin-top: -1.5em;
+      border-top: 1.5em solid transparent;
+      border-bottom: 1.5em solid transparent;
+      border-left: 1em solid #00A6CC !important;
+      right: -1em;
+  }
+  
+  #Bread-Crumb-Pasos a:hover::before {
+      border-color: #ddd #ddd #ddd transparent;
+  }
+  #Bread-Crumb-Pasos a::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      margin-top: -1.5em;
+      border-top: 1.5em solid transparent;
+      border-bottom: 1.5em solid transparent;
+      border-left: 1em solid #F6F6F4;
+      right: -1em;
+  }
+  #Bread-Crumb-Pasos a:hover::after {
+      border-left-color: #ddd;
+  }
+  #Bread-Crumb-Pasos .current {
+      background-color: #00A6CC !important;
+      color: white !important;
+      pointer-events: none;
+  }
+  #Bread-Crumb-Pasos a:hover {
+      background-color: #ddd;
+  }
+  #Bread-Crumb-Pasos .current::after,
+  #Bread-Crumb-Pasos .current::before {
+      content: normal;
+      pointer-events: none;
+  }
+  
+  /*DESPLIEGUE DE DATOS DE CONTRIBUYENTE*/
+  .cabeceraRentaNoPadd{
+    padding: 0 !important;
+  }
+  .textoContribuyenteOver{
+    background-color: #cfcfcf;
+    color: #0062AE !important;
+    cursor: pointer;
+  }
+  .textoFecha{
+    width:100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    padding-left: 29px !important;
+  }
+  .caret {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      margin-left: 2px;
+      vertical-align: middle;
+      border-top: 4px solid;
+      border-right: 4px solid transparent;
+      border-left: 4px solid transparent;
+  }
+  .dropdown-menu {
+      margin-top: -6px;
+      margin-left: -1px;
+      -webkit-border-radius: 0 0px 6px 6px;
+      -moz-border-radius: 0 0px 6px 6px;
+      border-radius: 0 0px 6px 6px;
+      padding-inline-start: 0px !important;
+      white-space: nowrap !important;
+      position:absolute;
+      top:56px;
+      left:15px;
+  }
+  .dropdown-header {
+      display: block;
+      padding: 3px 20px;
+      font-size: 12px;
+      line-height: 1.42857143;
+      color: #777;
+      white-space: nowrap !important;
+      text-overflow: ellipsis !important;
+  }
+  
+  .titulo-step {
+    font-size: 13px;
+    margin: 0;
+    padding: 7px 15px;
+  }
+  
+  .titulo-step > .tooltip > .tooltip-inner {
+    width: 100%;
+  }
+  
+  .navbar-fixed-bottom, .navbar-fixed-top{
+      z-index: 990;
+  }
+  
+  .box-float {
+      background-color: #F4F4F4;
+      padding: 4px;
+      top: 50px;
+      border-bottom: 1px solid #ddd;
+      border-top: 1px solid #ddd;
+  }
+  
+  .mt-4 {
+    margin-top: 1.0rem!important;
+  }
+  
+  .btn-bar {
+    line-height: 1 !important;
+  }
+  
+  .btn-primary{
+      color: #fff;
+      background-color: #0063AE !important;
+      border-color: #0062cc !important;
+      font-size: 12.25px !important;
+  }

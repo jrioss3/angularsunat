@@ -1,0 +1,114 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title ">Rentas Exoneradas</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <fieldset class="linea-caja ">
+        <div class="card border-0 mt-4">
+            <div class="card-body pt-0">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group row">
+                            <ul class="col-sm-12 list-group list-group-flush">
+                                <li *ngIf="existeCodFilaAsistente(VALOR_A | lowercase)" class="list-group-item border-0">
+                                    <div class="row">
+                                        <!-- <label class="col-sm-8 col-form-label">a) Las remuneraciones que perciban, por
+                                            el ejercicio de su
+                                            cargo en el pa&iacute;s, los funcionarios y empleados considerados como
+                                            tales dentro de la
+                                            estructura organizacional de los gobiernos extranjeros, instituciones
+                                            oficiales extranjeras y
+                                            organismos internacionales, siempre que los convenios constitutivos
+                                            as&iacute; lo establezcan.
+                                        </label> -->
+                                        <label class="col-sm-8 col-form-label">{{ getDescripcionFilaAsistente(VALOR_A | lowercase)}}
+                                        </label>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <rentas-textbox [tipoFormato]="FORMATO_MONTO" [(ngModel)]="inafectA.mtoRtasExon" (ngModelChange)="sumRentasExoneradas()" [maxlength]="11">
+                                                </rentas-textbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li *ngIf="existeCodFilaAsistente(VALOR_B | lowercase)" class="list-group-item border-0 ">
+                                    <div class="row">
+                                        <!-- <label class="col-sm-8 col-form-label">b) La diferencia entre el valor
+                                            actualizado de las primas o
+                                            cuotas pagadas por los asegurados y las sumas que los aseguradores les
+                                            entreguen al cumplirse el
+                                            plazo estipulado en los contratos dotales del seguro de vida y los
+                                            beneficios o participaciones en
+                                            seguros sobre la vida que obtengan los asegurados.</label> -->
+                                        <label class="col-sm-8 col-form-label">{{ getDescripcionFilaAsistente(VALOR_B | lowercase)}}
+                                        </label>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <rentas-textbox [tipoFormato]="FORMATO_MONTO" [(ngModel)]="inafectB.mtoRtasExon" (ngModelChange)="sumRentasExoneradas()" [maxlength]="11">
+                                                </rentas-textbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li *ngIf="existeCodFilaAsistente(VALOR_C | lowercase)" class="list-group-item border-0 ">
+                                    <div class="row">
+                                        <!-- <label class="col-sm-8 col-form-label">c) Cualquier tipo de inter&eacute;s de
+                                            tasa fija o variable,
+                                            en moneda nacional o extranjera, que se pague con ocasi&oacute;n de un
+                                            dep&oacute;sito conforme a
+                                            la Ley N° 26702, as&iacute; como los incrementos de capital por los
+                                            dep&oacute;sitos e
+                                            imposiciones en moneda nacional o extranjera, salvo que dichos ingresos
+                                            constituyan rentas de
+                                            tercera categor&iacute;a.</label> -->
+                                        <label class="col-sm-8 col-form-label">{{ getDescripcionFilaAsistente(VALOR_C | lowercase)}}
+                                        </label>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <rentas-textbox [tipoFormato]="FORMATO_MONTO" [(ngModel)]="inafectC.mtoRtasExon" (ngModelChange)="sumRentasExoneradas()" [maxlength]="11">
+                                                </rentas-textbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li *ngIf="existeCodFilaAsistente(VALOR_D | lowercase)" class="list-group-item border-0 ">
+                                    <div class="row">
+                                        <!-- <label class="col-sm-8 col-form-label">d) Otras Rentas exoneradas</label> -->
+                                        <label class="col-sm-8 col-form-label">{{ getDescripcionFilaAsistente(VALOR_D | lowercase)}}
+                                        </label>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <rentas-textbox [tipoFormato]="FORMATO_MONTO" [(ngModel)]="inafectD.mtoRtasExon" (ngModelChange)="sumRentasExoneradas()" [maxlength]="11">
+                                                </rentas-textbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li *ngIf="existeCodFilaAsistente(VALOR_E)" class="list-group-item border-0 ">
+                                    <div class="row">
+                                        <!-- <label class="col-sm-8 col-form-label">Total Rentas Exoneradas </label> -->
+                                        <label class="col-sm-8 col-form-label">{{ getDescripcionFilaAsistente(VALOR_E)}}
+                                        </label>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <rentas-textbox [tipoFormato]="FORMATO_MONTO" [(ngModel)]="sumatotal" [isDisabled]="true">
+                                                </rentas-textbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="guardar()">Guardar</button>
+</div>

@@ -1,0 +1,290 @@
+<div class="card border-0 mt-4">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group row">
+          <label for="cboEjercicio" class="col-sm-6 col-form-label">I. Estado de Situaci&oacute;n Financiera
+            (Balance General) - Valor Hist&oacute;rico
+            al 31 de Dic. {{anioEjercicio}} </label>
+          <div class="col-sm-6">
+            <button (click)="importar()" class="btn btn-primary">Importar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card border-left-0 border-right-0 border-bottom-0 mt-2">
+  <div class="card-body">
+    <div class="row mt-6">
+      <div class="col-sm-6">
+        <p class="font-weight-bold">PASIVO</p>
+        <div class="form-group row mt-4 border-top">
+          <ul class="col-sm-12 list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla401.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla401" [(ngModel)]="fs.pasivoPatrEmp.mtoCas401"
+                    (ngModelChange)="fs.calcularTotalPasivo()"></rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla402.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla402" [(ngModel)]="fs.pasivoPatrEmp.mtoCas402"
+                    (ngModelChange)="fs.calcularTotalPasivo()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla403.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla403" [(ngModel)]="fs.pasivoPatrEmp.mtoCas403"
+                    (ngModelChange)="fs.calcularTotalPasivo()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla404.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla404" [(ngModel)]="fs.pasivoPatrEmp.mtoCas404"
+                    (ngModelChange)="fs.calcularTotalPasivo()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla405.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla405" [(ngModel)]="fs.pasivoPatrEmp.mtoCas405"
+                    (ngModelChange)="fs.calcularTotalPasivo()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla406.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla406" [(ngModel)]="fs.pasivoPatrEmp.mtoCas406"
+                    (ngModelChange)="fs.calcularTotalPasivo()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla407.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla407" [(ngModel)]="fs.pasivoPatrEmp.mtoCas407"
+                    (ngModelChange)="fs.calcularTotalPasivo()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla408.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla408" [(ngModel)]="fs.pasivoPatrEmp.mtoCas408"
+                    (ngModelChange)="fs.calcularTotalPasivo()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla409.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla409" [(ngModel)]="fs.pasivoPatrEmp.mtoCas409"
+                    (ngModelChange)="fs.calcularTotalPasivo()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla410.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla410" [(ngModel)]="fs.pasivoPatrEmp.mtoCas410"
+                    (ngModelChange)="fs.calcularTotalPasivo()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla411.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla411" [(ngModel)]="fs.pasivoPatrEmp.mtoCas411"
+                    (ngModelChange)="fs.calcularTotalPasivo()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">
+                  <p class="font-weight-bold">{{fs.casilla412.descripcion}}</p>
+                </label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla412" [(ngModel)]="fs.pasivoPatrEmp.mtoCas412">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <p class="font-weight-bold">PATRIMONIO</p>
+        <div class="form-group row mt-4 border-top">
+          <ul class="col-sm-12 list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla414.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla414" [(ngModel)]="fs.pasivoPatrEmp.mtoCas414"
+                    (ngModelChange)="fs.calcularTotalPatrimonio()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla415.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla415" [(ngModel)]="fs.pasivoPatrEmp.mtoCas415"
+                    (ngModelChange)="fs.calcularTotalPatrimonio()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla416.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla416" [(ngModel)]="fs.pasivoPatrEmp.mtoCas416"
+                    (ngModelChange)="validarCampos416y417(fs.casilla416.numCas)">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla417.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla417" [(ngModel)]="fs.pasivoPatrEmp.mtoCas417"
+                    (ngModelChange)="validarCampos416y417(fs.casilla417.numCas)">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla418.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla418" [(ngModel)]="fs.pasivoPatrEmp.mtoCas418"
+                    (ngModelChange)="fs.calcularTotalPatrimonio()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla419.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla419" [(ngModel)]="fs.pasivoPatrEmp.mtoCas419"
+                    (ngModelChange)="fs.calcularTotalPatrimonio()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla420.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla420" [(ngModel)]="fs.pasivoPatrEmp.mtoCas420"
+                    (ngModelChange)="fs.calcularTotalPatrimonio()">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla421.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla421" [(ngModel)]="fs.pasivoPatrEmp.mtoCas421"
+                    (ngModelChange)="validarCampos421y422(fs.casilla421.numCas)">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla422.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla422" [(ngModel)]="fs.pasivoPatrEmp.mtoCas422"
+                    (ngModelChange)="validarCampos421y422(fs.casilla422.numCas)">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla423.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla423" [(ngModel)]="fs.pasivoPatrEmp.mtoCas423"
+                    (ngModelChange)="validarCampos423y424(fs.casilla423.numCas)">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">{{fs.casilla424.descripcion}}</label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla424" [(ngModel)]="fs.pasivoPatrEmp.mtoCas424"
+                    (ngModelChange)="validarCampos423y424(fs.casilla424.numCas)">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">
+                  <p class="font-weight-bold">{{fs.casilla425.descripcion}}</p>
+                </label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla425" [(ngModel)]="fs.pasivoPatrEmp.mtoCas425"
+                    [negativoPositivo]="fs.casilla425.indFormatoNegativo">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <label class="col-sm-7 col-form-label">
+                  <p class="font-weight-bold">{{fs.casilla426.descripcion}}</p>
+                </label>
+                <div class="col-sm-5">
+                  <rentas-textbox [dataCasilla]="fs.casilla426" [(ngModel)]="fs.pasivoPatrEmp.mtoCas426"
+                    [negativoPositivo]="fs.casilla426.indFormatoNegativo">
+                  </rentas-textbox>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+ul {
+    margin-bottom: 3px;
+}
+
+strong.li-con {
+    font-weight: 400;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+}

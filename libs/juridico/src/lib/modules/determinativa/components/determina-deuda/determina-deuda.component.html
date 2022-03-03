@@ -1,0 +1,95 @@
+<ul class="col-sm-12 list-group list-group-flush" style="padding-bottom: 25px;">
+  <li class="list-group-item border-top-0">
+    <div class="row">
+      <label class="col-sm-6 col-form-label font-weight-bold">DEUDA TRIBUTARIA
+      </label>
+    </div>
+  </li>
+  <li class="list-group-item border-top-0">
+    <div class="row">
+      <label class="col-sm-6 col-form-label font-weight-bold">SALDO POR REGULARIZAR
+      </label>
+    </div>
+  </li>
+  <li class="list-group-item border-top-0">
+    <div class="row">
+      <label class="col-sm-6 col-form-label">{{fs.casilla137.descripcion}}</label>
+      <div class="col-sm-3">
+        <rentas-combobox [dataCasilla]="fs.casilla137" [disabled]="!habilitarCas137()"
+          [lista]="listaOpcionesCas137" [(ngModel)]="fs.casDetDeudaPJ.mtoCas137" (change)="guardar137()">
+        </rentas-combobox>
+      </div>
+    </div>
+  </li>
+  <li class="list-group-item border-top-0">
+    <div class="row">
+      <label class="col-sm-6 col-form-label">{{ fs.casilla138.descripcion }}</label>
+      <div class="col-sm-3">
+        <rentas-textbox [dataCasilla]="fs.casilla138" [(ngModel)]="fs.casDetDeudaPJ.mtoCas138"></rentas-textbox>
+      </div>
+    </div>
+  </li>
+  <li class="list-group-item border-top-0">
+    <div class="row">
+      <label class="col-sm-6 col-form-label">{{ fs.casilla139.descripcion }}</label>
+      <div class="col-sm-3">
+        <rentas-textbox [dataCasilla]="fs.casilla139" [(ngModel)]="fs.casDetDeudaPJ.mtoCas139"></rentas-textbox>
+      </div>
+    </div>
+  </li>
+  <li class="list-group-item border-top-0">
+    <div class="row">
+      <label class="col-sm-6 col-form-label font-weight-bold">{{ fs.casilla505.descripcion }}</label>
+      <div class="col-sm-3">
+        <rentas-textbox [dataCasilla]="fs.casilla505" [(ngModel)]="fs.casDetDeudaPJ.mtoCas505"></rentas-textbox>
+      </div>
+    </div>
+  </li>
+  <li class="list-group-item border-top-0">
+    <div class="row">
+      <label class="col-sm-6 col-form-label">{{ fs.casilla141.descripcion }}</label>
+      <div class="col-sm-3">
+        <rentas-textbox [dataCasilla]="fs.casilla141" [(ngModel)]="fs.casDetDeudaPJ.mtoCas141"
+          (ngModelChange)="fs.calcularInteresMoratorio()">
+        </rentas-textbox>
+      </div>
+    </div>
+  </li>
+  <li class="list-group-item border-top-0">
+    <div class="row">
+      <label class="col-sm-6 col-form-label">{{ fs.casilla144.descripcion }}</label>
+      <div class="col-sm-3">
+        <rentas-textbox [dataCasilla]="fs.casilla144" [(ngModel)]="fs.casDetDeudaPJ.mtoCas144"
+          (abrirAsistente)="abrirCasilla144()"></rentas-textbox>
+      </div>
+    </div>
+  </li>
+  <li class="list-group-item border-top-0">
+    <div class="row">
+      <label class="col-sm-6 col-form-label">{{ fs.casilla145.descripcion }}</label>
+      <div class="col-sm-3">
+        <rentas-textbox [dataCasilla]="fs.casilla145" [(ngModel)]="fs.casDetDeudaPJ.mtoCas145"
+          (ngModelChange)="fs.calcularSaldoDeuda()">
+        </rentas-textbox>
+      </div>
+    </div>
+  </li>
+  <li class="list-group-item border-top-0">
+    <div class="row">
+      <label class="col-sm-6 col-form-label">{{ fs.casilla146.descripcion }}</label>
+      <div class="col-sm-3">
+        <rentas-textbox [dataCasilla]="fs.casilla146" [(ngModel)]="fs.casDetDeudaPJ.mtoCas146"></rentas-textbox>
+      </div>
+    </div>
+  </li>
+  <li class="list-group-item border-top-0">
+    <div class="row">
+      <label class="col-sm-6 col-form-label font-weight-bold">{{fs.casilla180.descripcion}}
+      </label>
+      <div class="col-sm-3">
+        <rentas-textbox [dataCasilla]="fs.casilla180" [(ngModel)]="fs.casDetDeudaPJ.mtoCas180" [sinCero]="true"
+          (ngModelChange)="fs.calcularSaldoDeuda()"></rentas-textbox>
+      </div>
+    </div>
+  </li>
+</ul>

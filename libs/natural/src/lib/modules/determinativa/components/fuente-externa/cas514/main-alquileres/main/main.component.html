@@ -1,0 +1,81 @@
+<div class="modal-header bg-primary text-white ancho-99">
+    <p class="modal-title">Detalle Alquiler de Bienes Inmuebles</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body ">
+    <div class="card border-0" style="width: 100%;">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table datatable class="table table-hover" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>Fecha comprobante</th>
+                            <th>Nombre/Raz&oacute;n Comercial</th>
+                            <th>Monto comprobante</th>
+                            <th>Monto a deducir</th>
+                            <th>Período del comprobante</th>
+                            <th>Tipo de Bien</th>
+                            <th>Forma de pago</th>
+                            <th>RUC Emisor</th>
+                            <th>Tipo comprobante</th>
+                            <th>Serie</th>
+                            <th>N&deg; comprobante</th>
+                            <th>% Deducci&oacute;n {{porcentaje}}</th>
+                            <th>% Atribuci&oacute;n</th>
+                            <th>Monto m&aacute;ximo a deducir</th>
+                            <th>Tipo V&iacute;nculo</th>
+                            <th>Nombre del Titular</th>
+                            <th *ngIf="habilitarCasItan()">Observaci&oacute;n</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of listaGastosAlquiler; let i = index">
+                            <td><a (click)="agregarOActualizar(item,i)" title="Editar" class="text-dark"><i class="fas fa-pen"></i></a>
+                            </td>
+                            <td><a (click)="eliminarBienes(i)" title="Eliminar" class="text-dark"><i class="fas fa-trash"></i></a>
+                            </td>
+                            <td *ngIf="item.indEstFormVirt == '1'"><input type="checkbox" disabled checked /></td>
+                            <td *ngIf="item.indEstFormVirt == '0'"><input type="checkbox" disabled /></td>
+                            <td>{{item.fecComprob.substring(0,10) | date : 'dd/MM/yyyy'}}</td>
+                            <td>{{item.desNomEmisor}}</td>
+                            <td class="column-right">{{item.mtoComprob | currency : 'S/ ' }}</td>
+                            <td class="column-right">{{item.mtoDeduccion | currency : 'S/ ' }}</td>
+                            <td>{{ item.numPartidaReg==null?"":item.numPartidaReg.substring(4,6) +"/"+item.numPartidaReg.substring(0, 4)}} </td>
+                            <td>{{item.codTipBien ? (ObtenerTipBien(item.codTipBien) | uppercase) : ''}}</td>
+                            <td>{{ObtenerMedPag(item.codForPago) | uppercase}}</td>
+                            <td>{{item.numDocEmisor}}</td>
+                            <td>{{ObtenerComprobante(item.codTipComprob)}}</td>
+                            <td>{{item.numSerie}}</td>
+                            <td>{{item.numComprob}}</td>
+                            <td class="column-right">{{item.porDeduccion}}</td>
+                            <td class="column-right">{{item.porAtribucion}}</td>
+                            <td class="column-right">{{item.mtoAtribuir | currency : 'S/ ' }}</td>
+                            <td>{{obtenerVinculo(item.codTipVinc) | uppercase }}</td>
+                            <td>{{item.desNomTit}}</td>
+                            <td *ngIf="habilitarCasItan()">
+                                <div [innerHTML]="item | obtenerMotivoObservacion : lstParametriaObservaciones : anioEjercicio"> </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="form-group col-sm-12">
+        <div class="form-group text-right pr-0">
+            <label class="control-label text-right">Total Monto a deducir:</label>
+            <label class="control-label ml-1">{{MontoTotalGastoAlquiler | currency : 'S/ '}}</label>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="close()">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="agregarOActualizar()">Agregar</button>
+</div>

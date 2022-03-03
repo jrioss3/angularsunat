@@ -1,0 +1,19 @@
+<div class="modal-header bg-primary text-white">
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    Sr. contribuyente,
+    el uso fraudalento de una tarjeta de crédito o de débito
+    es considerado un delito y se castiga conforme al
+    código penal. Por favor no cerrar la pantalla hasta
+    no recibir una respuesta, esto puede ocasionar que la
+    transacción quede incompleta o se cargue el pago en su
+    tarjeta, sin que usted se encuentre informado.
+</div>
+<div class="modal-footer">
+    <button id="cancel" name="cancel" class="btn btn-outline-secondary" type="button" value="Cancela"
+        (click)="cancelar()">Cancelar</button>
+    <button (click)="aceptar()" class="btn btn-primary" type="button">Aceptar</button>
+</div>

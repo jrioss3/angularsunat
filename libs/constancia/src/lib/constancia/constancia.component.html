@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <rentas-sub-cabecera 
+        [mostrarBotones]="true" 
+        [paso]="3" 
+        (eventoImprimir)="imprimir()"
+        (eventoEnviar)="enviarCorreo()"
+        (eventoGuardar)="guardarGeneral()" ></rentas-sub-cabecera>
+    <br>
+    <iframe class="imprimirGeneral" #imprimirGeneral style="display: none;"></iframe>
+    <ngb-tabset type="pills">
+
+        <ngb-tab title="Resumen de Transacciones" id='rt'>
+            <ng-template ngbTabContent>
+                <rentas-tab-resumen-transacciones></rentas-tab-resumen-transacciones>
+            </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Constancia NPS" id='nps' *ngIf="esNps">
+            <ng-template ngbTabContent>
+                <rentas-tab-nps></rentas-tab-nps>
+            </ng-template>
+        </ngb-tab>
+
+    </ngb-tabset>
+    <rentas-link-devolucion></rentas-link-devolucion>
+</div>
+<ngx-spinner bdColor="rgba(255,255,255,0.45)" color="rgba(28,27,27,0.64)"></ngx-spinner>

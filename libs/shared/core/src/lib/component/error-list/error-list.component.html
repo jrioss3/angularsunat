@@ -1,0 +1,14 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title" id="modal-basic-title"> {{modal.titulo}}</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+    <div class="{{estilo}}" *ngFor="let item of modal.errorList" role="alert">{{item}}</div>
+</div>
+
+<div class="modal-footer">
+
+    <button type="button" class="btn btn-primary" (click)="aceptar()">Aceptar</button>
+</div>

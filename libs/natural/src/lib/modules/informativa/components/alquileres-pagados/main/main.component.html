@@ -1,0 +1,72 @@
+<div class="row mt-4">
+    <div class="col-sm-12">
+        <div class="form-group row mt-4">
+            <div class="col-sm-6">
+                <label class="col-form-label">{{casilla602.descripcion}}</label>
+            </div>
+            <div class="col-sm-6">
+                <rentas-radiobutton [lista]="listaOpcionesSiNo" [(ngModel)]="checkAlquileres" [name]="'checkAlquileres'"
+                    [valorSeleccionado]="checkAlquileres" (selectedOptionChange)="changeRadio($event)">
+                </rentas-radiobutton>
+            </div>
+        </div>
+
+        <div class="form-group text-center alert alert-alquileres" [hidden]="!mostrarMensajeInformativo()">
+                <label class="col-form-label">Sr. Contribuyente, si modifica información que proviene de la casilla 514, deberá actualizar dicha casilla.</label>
+        </div>
+
+        <div class="form-group mt-4" [hidden]="hide">
+            <button (click)="agregarOActualizar()" class="btn btn-primary ml-2">Agregar</button>
+        </div>
+
+        <div class="row mt-3 form-group col-sm-12" [hidden]="hide">
+            <fieldset class="linea-caja w-100 p-0 mb-0">
+                <div class="card  border-0" style="width: 100%;">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th>Tipo Documento</th>
+                                        <th>N&deg; Documento</th>
+                                        <th>Nombre o Raz&oacute;n Social</th>
+                                        <th>Alquiler Anual</th>
+                                        <th>N&uacute;mero de Meses de Alquiler</th>
+                                        <th>Tipo de Bien</th>
+                                        <th>Otros Datos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let alquiler of listaAlquileres; let i = index">
+                                        <td>
+                                            <a (click)="agregarOActualizar(alquiler,i)" title="Editar"
+                                                class="text-dark">
+                                                <i class="fas fa-pen"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a (click)="eliminar(i)" title="Eliminar" class="text-dark">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </td>
+                                        <td>{{alquiler | obtenerTipoDocumento}}</td>
+                                        <td>{{alquiler.numDocIdeDec}}</td>
+                                        <td>{{alquiler.desRazSoc}}</td>
+                                        <td class="column-right">{{alquiler.mtoAlquiler | currency : 'S/ ' : true :
+                                            '.0'}}</td>
+                                        <td>{{alquiler.numMesesAlq}}</td>
+                                        <td>{{alquiler | obtenerTipoBien}}</td>
+                                        <td>{{alquiler | obtenerSubBien}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+    </div>
+</div>

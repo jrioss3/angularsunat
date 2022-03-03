@@ -1,0 +1,137 @@
+  <!-- Identificación de la Transacción -->
+  <div class="row">
+    <div class="col-sm-12">
+      <fieldset class="linea-caja" style="margin: 0px; padding-bottom:0px;">
+        <legend class="text-primary">Identificación de la Transacción:</legend>
+        <div class="form-group mt-2">
+          <label class="font-weight-bold mr-2"> Número de Formulario: </label>
+          <label> {{ rowConstnacia.codigoFormulario }}</label>
+          <br>
+          <label class="font-weight-bold mr-2">Número de Orden:
+          </label> {{rowConstnacia.numeroOrden}} <label>
+          </label> <br>
+          <label class="font-weight-bold mr-2">Fecha de presentación:</label>
+          <label>
+            {{rowConstnacia.resultado.fechaProcesoPresentacion}}
+          </label>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+
+  <!-- Datos de la Declaración: --->
+  <div class="row">
+    <div class="col-sm-12">
+      <fieldset class="linea-caja" style="margin: 0px; padding-bottom:0px; margin-top: 10px;">
+        <legend class="text-primary">Datos de la Declaración:</legend>
+        <div class="form-group mt-2">
+          <label class="font-weight-bold mr-2"> {{ getEtiquetaRuc() }} </label>
+          <label> {{ getValueRuc() }}</label>
+          <br>
+          <label class="font-weight-bold mr-2">{{getEtiquetaRazonSocial()}}</label>
+          <label>{{rowConstnacia.resultado.razonSocial}}</label>
+          <br>
+          <label class="font-weight-bold mr-2">Periodo:</label>
+          <label>
+            {{rowConstnacia.periodoTributario}}
+          </label>
+          <br>
+
+
+          <label class="font-weight-bold mr-2">Tipo de Declaración:</label>
+          <label>
+            {{ rowConstnacia.rectificatoria == '0' ? 'ORIGINAL' : 'SUSTITUTORIA / RECTIFICATORIA' }}
+          </label>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+
+  <!-- Detalle de atributos: --->
+
+  <div class="row">
+    <div class="col-sm-12">
+      <fieldset class="linea-caja" style="margin: 0px; padding-bottom:0px; margin-top: 10px;">
+        <legend class="text-primary">Detalle de Tributos:</legend>
+        <div class="table-responsive mt-4">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Tributo</th>
+                <th class="text-center">Total Deuda</th>
+                <th class="text-right">Monto Pago</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of (rowConstnacia.detalleTributos||[])">
+                <td>{{item.codigoTributo + ' - ' + item.descripcionTributo }}</td>
+                <td class="text-center"> {{item.totalDeuda | currency:'S/ '}} </td>
+                <td class="text-right"> {{ 0 | currency:'S/ '}} </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </fieldset>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="rowConstnacia.rectificatoria != '0'">
+    <!-- SOLO SI NO ES ORIGINAL -->
+    <div class="col-sm-12">
+      <fieldset class="linea-caja" style="margin: 0px; padding-bottom:0px; margin-top: 10px;">
+        <p class="mensaje-cont">
+          Sr. Contribuyente para su declaración jurada rectificatoria, de acuerdo al artículo 88 del
+          Código Tributario, si disminuye deuda o aumenta saldo a favor quedará pendiente de veredicto
+        </p>
+      </fieldset>
+
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!esPagoCeroSinDeuda()">
+    <div class="col-sm-12">
+      <fieldset class="linea-caja" style="margin: 0px; padding-bottom:0px; margin-top: 10px;">
+
+        <p class="mensaje-cont" *ngIf="esPagoCeroConDeuda()">
+          Usted no ha realizado el pago de la deuda, recuerde que deberá cancelar el saldo deudor de
+          la declaración presentada consignando los siguientes datos:
+        </p>
+
+        <p class="mensaje-cont" *ngIf="(esPagoTotal() || esPagoParcial()) && tieneBoleta()">
+          Sr. Contribuyente por el pago realizado se generaron Boletas.
+        </p>
+
+        <p class="mensaje-cont" *ngIf="esPagoParcial() && !rowConstnacia.esNps">
+          Usted ha realizado el pago parcial de la deuda, recuerde que deberá cancelar el saldo deudor
+          de la declaración presentada consignado los siguientes datos:
+        </p>
+
+        <p class="mensaje-cont" *ngIf="rowConstnacia.esNps">
+          Usted no ha realizado el pago de la deuda, recuerde que deberá cancelar el saldo deudor de
+          la declaración presentada consignado los siguientes datos:
+        </p>
+
+        <div class="table-responsive mt-4" *ngIf="!esPagoTotal() || rowConstnacia.esNps">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Período</th>
+                <th class="text-center">Tributos</th>
+                <th class="text-right">Deuda</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of (rowConstnacia.pagoPendientes||[])">
+                <td>{{item.periodo }}</td>
+                <td class="text-center"> {{item.tributo}} </td>
+                <td class="text-right"> {{item.deuda | currency:'S/ '}} </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </fieldset>
+
+    </div>
+  </div>

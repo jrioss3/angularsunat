@@ -1,0 +1,121 @@
+<div class="card border-0 mt-4">
+    <div class="card-body pt-0">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group row">
+                    <ul class="col-sm-12 list-group list-group-flush">
+                        <li class="list-group-item border-top-0">
+                            <div class="form-group row">
+                                <label class="col-sm-6 col-form-label">{{casilla560.descripcion}}</label>
+                                <div class="col-sm-6">
+                                    <!-- <div class="row">
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <label class="control-label" for="rdSiRectiSusti">
+                        <input type="radio" id="option1" name="options" value="1" [(ngModel)]="divRentasExoneradas"
+                          (change)="changeRadioExonerada(1)">Si
+                      </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <label class="control-label" for="rdnoRectiSusti">
+                        <input type="radio" id="option2" name="options" value="0" [(ngModel)]="divRentasExoneradas"
+                          (change)="changeRadioExonerada(0)">No
+                      </label>
+                                        </div>
+                                    </div> -->
+                                    <rentas-radiobutton [lista]="listaOpcionesSiNo" [(ngModel)]="divRentasExoneradas" [name]="'divRentasExoneradas'" [valorSeleccionado]="divRentasExoneradas" (selectedOptionChange)="changeRadioExonerada($event)"></rentas-radiobutton>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <label class="col-sm-6 col-form-label">{{casilla200.descripcion}}
+                </label>
+                                <div class="col-sm-3">
+                                    <rentas-textbox [dataCasilla]="casilla200" [(ngModel)]="montoCasilla200" (abrirAsistente)="RegistrarExo($event)"></rentas-textbox>
+                                    <!-- <rentas-textbox [tipo]="2" [(ngModel)]="montoCasilla200" (abrirAsistente)="RegistrarExo($event)" [numCasilla]="casilla200.numero">
+                                    </rentas-textbox> -->
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item ">
+                            <div class="row">
+                                <label class="col-sm-6 col-form-label">{{casilla561.descripcion}}</label>
+                                <div class="col-sm-6">
+                                    <!-- <div class="row">
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <label class="control-label" for="rdSiRectiSusti">
+                        <input type="radio" id="option1" name="Renoptions" value="1" [(ngModel)]="divRentasInafectas"
+                          (change)="changeRadioInafecta(1)">Si
+                      </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <label class="control-label" for="rdnoRectiSusti">
+                        <input type="radio" id="option2" name="Renoptions" value="0" [(ngModel)]="divRentasInafectas"
+                          (change)="changeRadioInafecta(0)">No
+                      </label>
+                                        </div>
+                                    </div> -->
+                                    <rentas-radiobutton [lista]="listaOpcionesSiNo" [(ngModel)]="divRentasInafectas" [name]="'divRentasInafectas'" [valorSeleccionado]="divRentasInafectas" (selectedOptionChange)="changeRadioInafecta($event)"></rentas-radiobutton>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <label class="col-sm-6 col-form-label">{{casilla201.descripcion}}
+                </label>
+                                <div class="col-sm-3">
+                                    <rentas-textbox [dataCasilla]="casilla201" [(ngModel)]="montoCasilla201" (abrirAsistente)="RegistrarInafec($event)"></rentas-textbox>
+                                    <!-- <rentas-textbox [tipo]="2" [(ngModel)]="montoCasilla201" (abrirAsistente)="RegistrarInafec($event)" [numCasilla]="casilla201.numero">
+                                    </rentas-textbox> -->
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item ">
+                            <div class="row">
+                                <label class="col-sm-6 col-form-label">{{casilla203.descripcion}}</label>
+                                <div class="col-sm-3">
+                                    <rentas-textbox [dataCasilla]="casilla203" [(ngModel)]="montoCasilla203" (ngModelChange)="totalEjercicio()"></rentas-textbox>
+                                    <!-- <rentas-textbox [tipo]="0" [(ngModel)]="montoCasilla203" [numCasilla]="casilla203.numero" [textoPopover]="casilla203.descripcionAyuda" [maxvalue]="casilla203.longitudMaxima" [minvalue]="casilla203.longitudMinima" (ngModelChange)="totalEjercicio()">
+                                    </rentas-textbox> -->
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item ">
+                            <div class="row">
+                                <label class="col-sm-6 col-form-label">{{casilla998.descripcion}}</label>
+                                <div class="col-sm-3">
+                                    <rentas-textbox [dataCasilla]="casilla998" [(ngModel)]="montoCasilla998" (abrirAsistente)="abrirCasilla998($event)"></rentas-textbox>
+                                    <!-- <rentas-textbox [tipo]="2" [(ngModel)]="montoCasilla998" (abrirAsistente)="abrirCasilla998($event)" [numCasilla]="casilla998.numero  " [textoPopover]="casilla998.descripcionAyuda"></rentas-textbox> -->
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item ">
+                            <div class="row">
+                                <label class="col-sm-6 col-form-label">{{casilla999.descripcion}}
+                </label>
+                                <div class="col-sm-3">
+                                    <rentas-textbox [dataCasilla]="casilla999" [(ngModel)]="montoCasilla999" (abrirAsistente)="abrirCasilla999($event)"></rentas-textbox>
+                                    <!-- <rentas-textbox [tipo]="2" [(ngModel)]="montoCasilla999" (abrirAsistente)="abrirCasilla999($event)" [numCasilla]="casilla999.numero" [textoPopover]="casilla999.descripcionAyuda"></rentas-textbox> -->
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item ">
+                            <div class="row">
+                                <label class="col-sm-6 col-form-label">{{casilla518.descripcion}}</label>
+                                <div class="col-sm-3">
+                                    <rentas-textbox [dataCasilla]="casilla518" [(ngModel)]="montoCasilla518"></rentas-textbox>
+                                    <!-- <rentas-textbox [tipo]="1" [(ngModel)]="montoCasilla518" [numCasilla]="casilla518.numero">
+                                    </rentas-textbox> -->
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

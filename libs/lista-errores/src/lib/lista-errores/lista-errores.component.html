@@ -1,0 +1,26 @@
+<div id="chatErrorId" class="chat-error__container" [ngStyle] = "{ display: !showErrorListComponent ? 'none' : 'block' }"> 
+    <div class="chat-error">
+        <div *ngIf="showErrorList" class="chat-error__list">
+            <div class="chat-error__title" (click)="openErrorList()">Lista de errores</div>
+            <div class="chat-error__close" (click)="closeErrorList()"><span aria-hidden="true">&times;</span></div>
+            <div class="chat-error__body">
+                <ul class="chat-error__item-container">
+                    <li class="chat-error__item" *ngFor="let item of listaErrores" role="alert">
+                        <a href="javascript:;" 
+                        (click)="redirectTab(item.redirectParentTabId,item.redirectTabId,item.url)"
+                        >
+                            {{item.descripcion || item.mensaje}}
+                        </a>
+                    </li>
+                    <!-- <li class="chat-error__item">Error #997</li>
+                    <li class="chat-error__item">Error #998</li>
+                    <li class="chat-error__item">Error #999</li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="chat-error__button" (click)="openErrorList()">
+            <i class="fa fa-exclamation-triangle"></i>
+            <span class="chat-error__error-quantity">{{cantidadErrores}}</span>
+        </div>
+    </div>
+</div>

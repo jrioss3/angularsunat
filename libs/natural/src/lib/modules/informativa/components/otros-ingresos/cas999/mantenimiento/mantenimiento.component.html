@@ -1,0 +1,47 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title">Identificaci&oacute;n de la Renta de Fuente Extranjera</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <fieldset class="linea-caja">
+        <form [formGroup]="frmCasilla999" class="form-horizontal mt-2">
+            <div class="form-group row">
+                <label class="control-label col-sm-6">Tipo de Renta</label>
+                <div class="form-group col-sm-6">
+                    <rentas-combobox formControlName="cmbTipoRenta" [lista]="listaTipoRenta" [isInvalid]="submitted && f.cmbTipoRenta.errors" [isScrolling]=true></rentas-combobox>
+                    <div *ngIf="submitted && f.cmbTipoRenta.errors" class="error-message">
+                        <div *ngIf="f.cmbTipoRenta.errors.required">{{mensajeCas999.CUS05_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">Pa&iacute;s</label>
+                <div class="form-group col-sm-6">
+                    <rentas-combobox formControlName="cmbPais" [lista]="listaPaises" [isInvalid]="submitted && f.cmbPais.errors"></rentas-combobox>
+                    <div *ngIf="submitted && f.cmbPais.errors" class="error-message">
+                        <div *ngIf="f.cmbPais.errors.required">{{mensajeCas999.CUS05_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-sm-6">Renta Neta Percibida</label>
+                <div class="col-sm-6">
+                    <rentas-textbox formControlName="txtRentaNetaPercibida" [tipoFormato]="FORMATO_MONTO" [maxlength]="11" [cantidadDecimales]="2" [isInvalid]="(f.txtRentaNetaPercibida.dirty || submitted) && f.txtRentaNetaPercibida.errors"></rentas-textbox>
+                    <div *ngIf="(f.txtRentaNetaPercibida.dirty || submitted) && f.txtRentaNetaPercibida.errors" class="error-message">
+                        <div *ngIf="f.txtRentaNetaPercibida.errors.required">{{mensajeCas999.CUS05_EX01}}</div>
+                        <div *ngIf="frmCasilla999.getError('{excepccion01}', 'txtRentaNetaPercibida') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+</div>
+
+<div class="modal-footer">
+    <button id="cancel" name="cancel" class="btn btn-outline-secondary" type="button" value="Cancelar" (click)="activeModal.close()">Cancelar</button>
+    <button (click)="metodo()" type="button" class="btn btn-primary">Guardar</button>
+</div>

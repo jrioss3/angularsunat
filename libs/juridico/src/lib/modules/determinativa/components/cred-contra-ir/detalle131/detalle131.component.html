@@ -1,0 +1,47 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title" id="modal-basic-title">Detalle de la Casilla 131</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="card">
+        <div class="card-body">
+            <h5>{{inputDataCasilla.descripcion}}</h5>
+            <div class="row form-group">
+                <label class="col-sm-6 col-form-label">Mes en el que se efectu&oacute; el pago</label>
+                <label class="col-sm-6 col-form-label">Monto Pagado</label>
+            </div>
+
+            <div class="row form-group" *ngFor="let cas of inputListaMontos131">
+                <label class="col-sm-6 col-form-label text-center">{{cas.desValLiteral | agregarSignoPeriodo: '-'}} </label>
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <rentas-textbox 
+                            [tipoFormato]="FORMATO_MONTO"
+                            [(ngModel)]="cas.mtoLiteral"
+                            [maxlength]="maxvalue" 
+                            [minlength]="minvalue"
+                            (ngModelChange)="calculo131()"
+                            ></rentas-textbox>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label class="col-sm-6 col-form-label text-center">Total casilla 131</label>
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <rentas-textbox [tipoFormato]="FORMATO_MONTO" [(ngModel)]="resultado131" [tipoRenta]="casillaCalculada"></rentas-textbox>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class=" text-center">
+        <button id="cancel" name="cancel" class="btn btn-outline-secondary" type="button" value="Cancelar" (click)="activeModal.close('Close click')">Cancelar</button>
+        <button type="button" (click)="guardar131()" class="btn btn-primary ml-3">Guardar</button>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title" id="modal-basic-title">Reporte Preliminar</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="modalService.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div id="divReporteInit" class="col-sm-12">
+        <div class="row">
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="mt4" id="rdReporteSimple" [checked]="rdRepSimpleChecked"
+                    (click)="selTipoReporte($event)" name="tipoReporteSelected" value="S" />
+                <label class="control-label" for="rdReporteSimple">
+                    Reporte Simple
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="mt4" id="rdReporteDetallado" [checked]="rdRepDetalladoChecked"
+                    (click)="selTipoReporte($event)" name="tipoReporteSelected" value="D" />
+                <label class="control-label" for="rdReporteDetallado">Reporte Detallado</label>
+            </div>
+        </div>
+        <hr>
+        <div class="text-right">
+            <button type="button" class="btn btn-outline-secondary" (click)="modalService.close('Close click')">Cancelar</button>
+            <button type="button" class="btn btn-primary ml-2" (click)="aceptarInit()">Aceptar</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title" id="modal-basic-title  ">Detalle de pago directo del Impuesto a la Renta de Primera
+        Categor&iacute;a(Casilla 100)</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body container-fuid">
+    <form>
+        <div class="form-group">
+            <fieldset class="linea-caja">
+                <div class="card  border-0">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover"
+                                id="">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th>Tipo Documento</th>
+                                        <th>N&deg; Documento</th>
+                                        <th>N&deg; Part. Registral</th>
+                                        <th>Nombre o Raz&oacute;n Social</th>
+                                        <th>Pago sin intereses</th>
+                                        <th>Monto gravado</th>
+                                        <th>Otros Datos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of listaCasilla100;let indice=index">
+                                        <td>
+                                            <a (click)="agreagaroActualizar(item,indice)" title="Editar"
+                                                class="text-dark">
+                                                <i class="fas fa-pen"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a (click)="eliminar(indice)" title="Eliminar" class="text-dark">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </td>
+                                        <td>{{obtenerDocumento(item.codTipDoc)}}</td>
+                                        <td>{{item.numDoc}}</td>
+                                        <td>{{item.desPartidaReg}}</td>
+                                        <td>{{item.desRazSoc}}</td>
+                                        <td class="column-right">
+                                            {{obtenerMontoPagSinInt(item) | currency: 'S/ ': true: '.0'}}</td>
+                                        <td class="column-right">
+                                            {{obtenerMontoGravado(item) | currency: 'S/ ': true: '.0'}}</td>
+                                        <td>{{item.numNro}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class=" text-left">
+
+                <button type="button" class="btn btn-primary" (click)="exportar()">Exportar</button>
+                <button type="button" class="btn btn-primary ml-2" (click)="abrirMensajeImportar(content)">
+                    Importar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <div class=" text-center">
+        <button id="cancel" name="cancel" class="btn btn-outline-secondary" type="button" value="Cancelar"
+            (click)="activeModal.close('Close click')">Cancelar</button>
+        <button (click)="agreagaroActualizar()" class="btn btn-primary ml-2">Agregar</button>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="dateOfBirth">Si opta por importar la informaci&oacute;n de alquileres se eliminar&aacute;
+                autom&aacute;ticamente,
+                de corresponder, toda la informaci&oacute;n previamente registrada. Le sugerimos usar la
+                informaci&oacute;n que SUNAT
+                tiene en sus sistemas usando la opci&oacute;n Exportar para que le facilite completar la
+                informaci&oacute;n.</label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="modal.close()">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="importar()">Aceptar </button>
+    </div>
+</ng-template>

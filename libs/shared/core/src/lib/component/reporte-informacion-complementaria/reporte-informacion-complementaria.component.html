@@ -1,0 +1,289 @@
+<div class="print-button">
+  <button [useExistingCss]="false" printSectionId="contentToConvert" class="btn btn-outline-secondary"
+    style="margin: 20px 0;top: -87px;position: absolute;" ngxPrint><i aria-hidden="true" class="fa fa-print"
+      style="margin-right: 10px;"></i>IMPRIMIR</button>
+</div>
+<div id="contentToConvert" style="font-family:Helvetica;">
+  <rentas-reporte-marca-agua [esPreliminar]="esPreliminar"></rentas-reporte-marca-agua>
+  <div style="position: relative;">
+    <div class="row">
+      <div class="col-md-12">
+        <p><img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAAArCAMAAADBjdN+AAAApVBMVEUAAAAAY60AY60AY60AY60AY60gWaAAY60AY60AY60AY60AY60AY60AY60AY60AY60AY62tDEEmVp0AY60AY60AY60AY60AY60AY60AY60AY62tDEEAY60AY60AY60AY60AY62tDEGtDEEAY60AY60AY60AY62tDEEAY62tDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEGtDEEAY62tDEHSoCIOAAAANXRSTlMA8SChwDAC/ECtN8sP49xaFfQF9tTqxpZRLAsLSBq5gGM2vo2EbiZNd+fXaEKqyH4sHxaVPz1ejGsAAAPMSURBVFjDzZfbeqIwFEY3CnI+FFQOgqKoY9vpcSa8/6ONkZCEBGa4me/Luilp0mblJ9lRkNi9tS+foDa7U9u2z0dQmbsj5kllS+youiV2VN0SO6puuXtvW9UtY5Ijs/wNyvHRijz9BMXYPbXqW/5o27mWXuWtYEgRA8+KDYjJI+uCIauFY+UFzOK1nWNZhMu1ie4kgX1zyPTXbYLQJqUyWXAfENT4sdncH/0L8F2mawDD2SBM2i1/r0n4IVB+t/+2jG8a4vFvjwTSruUAwX80NaxPBtbDLhsYLhli4cYFjeBLe1K2/EGHRFvEwQJY9tMQyEoAwCDDzGzQpQOlxG36uwaNQQeH0Uc7AbXcIwl7niQyrQlJvG72Im5jjhoQ6gBWp39YWoiw1l2/e0rymZJIM0YlS+ayB4DFBskcyNgbjmT36++WZyL2mK4KbRMlJcyVRJurKMmCZFEWC0xIdsCjEQH00zf45/HtacqSuWgVYLDnAuZLoqASJGmQLErCAj1Y8oUKn84LOT4/Pt5O7y/PouwXO8RIW4ZXWm7mS6K1J0qSIBOfRDktGT/mOIsX0PH1xEcpLFvbNmE0T5KxLZgkH+RlYZIopyQLm/ydzPGF1qFv3LbREL2OZ0t2FlFCJ2NBbor+PzgTkp6OOjKQ+X7GhvQ7T9yYYp0tZ0mudWF1g3JxoOP2gqRU+5I6nrornz+BcE2FGmFmTLKclDzE+zHJTj2JmIYxLmlysTRltYIBn9jx5Ys/Zc7FDvjNWVDJsB9idj2cJHiuIMmC1MIsy0gpssclt0IyfrDW7aYmxeULO36DSFQe6KQlLaAp6XXIO+YlIQokSR3JGKOSVYBGcR9v/9i27zuWYrgM6Z6oEc0v5K8fWO3ZFEwSFr4gaaERbEFSsJQ1r3hPnjhH/Fr9s9FtiYwdOC8hL+62iKNsy+x5Sci1oaSOxjAEyUlLdpH9eouBckbERbfTZa+SeKTMiwSxIAlOwktaaBR7XBKi9VSWq1f+IEmLoZdA5CMR0wJREkqTk9T7Qk7ol2DIktOWrKiwJGWW3SryjegYgiwJIZN0SN4shZRGySTnWKYwwFgmwoao+zkqe/gOHFJXSVxAuFCRjH1kJ5C7cYt9us4G5ljuQaDIGlfry6odFsDIz9uux3RTi+ZzCEy0sT2glve2puf4E4NvIj+NgVGvTZS41uPR9bXArmCO5RLGiHLHcnIPJFbV1cirGP4H05YZKIbnSo7rFaiGZKnloB6CpeaAiniu+o7YUn1HznKjriNAoXeOKp4Z3lJ9R4DCNteKOf4Bb3e5wdVmJREAAAAASUVORK5CYII=">
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <rentas-reporte-header 
+      [fechaPresentacion]="fechaPresentacion"
+      [numOrden]="numOrden"
+      [tipoReporte]="tipoReporte"
+      [preDeclaracion]="preDeclaracion"
+      [texto]="'IDENTIFICACIÓN COMPLEMENTARIA'">
+    </rentas-reporte-header>
+    <div><br></div>
+    <div>
+
+
+      <table style="width: 100%!important;" cellspacing="0">
+        <tbody style="width: 100%!important;" class="">
+          <tr class="" style="padding: 0;border:0">
+            <td class="col-md-12 text-center" colspan="3"
+              style="background-color:#969696;outline: none;color-adjust: exact;
+                            -webkit-print-color-adjust: exact;font-weight: 800;padding: 3px 5px;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;text-align:center">
+              <label style="margin-bottom:0;font-family:Helvetica;">INFORMACI&Oacute;N GENERAL</label>
+            </td>
+          </tr>
+          <tr style="padding: 0;border:0">
+            <td class="col-md-12" colspan="3"
+              style="background-color:#969696;outline: none;color-adjust: exact;
+                            -webkit-print-color-adjust: exact;font-weight: 800;padding: 3px 5px;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;">
+              <strong><label class="control-label" style="margin-bottom:0;font-family:Helvetica;">Datos
+                  del
+                  contador</label></strong>
+            </td>
+          </tr>
+          <tr style="padding: 0;border:0">
+            <td style="padding:0px;border-radius: 0!important;font-family:Helvetica;width:100%;border: 1px solid #000;"
+              colspan="3">
+              <table style="width:100%;" cellspacing="0">
+                <tr style="width:100%">
+                  <td style="width:65%;padding: 3px 5px"> Tipo Documento</td>
+                  <td style="font-weight:800;width:10%;border-left: 1px solid #000;text-align:center;padding: 3px 5px;background-color:#969696;outline: none;color-adjust: exact;
+                                        -webkit-print-color-adjust: exact;text-align:center">
+                    687
+                  </td>
+                  <td
+                    style="width:25%;padding:3px 5px;border-left: 1px solid #000;margin-left:20px;position: relative;flex: 1 1 auto;margin-bottom: 0; word-wrap: break-word;word-break: break-word;">
+                    {{obtenerValor(casInformativa.mtoCas687)}}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr style="padding: 0;border:0 ">
+            <td style="padding:0px;border-radius: 0!important;font-family:Helvetica;width:100%;border: 1px solid #000;"
+              colspan="3">
+              <table style="width:100%;" cellspacing="0">
+                <tr style="width:100%">
+                  <td style="width:65%;padding: 3px 5px"> RUC</td>
+                  <td style="font-weight:800;width:10%;border-left: 1px solid #000;text-align:center;padding: 3px 5px;background-color:#969696;outline: none;color-adjust: exact;
+                                        -webkit-print-color-adjust: exact;text-align:center">
+                    208</td>
+                  <td
+                    style="width:25%;padding:3px 5px;border-left: 1px solid #000;margin-left:20px;position: relative;flex: 1 1 auto;margin-bottom: 0; word-wrap: break-word;word-break: break-word;">
+                    {{casInformativa.mtoCas208 == null ? " " : casInformativa.mtoCas208}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr style="padding: 0;border:0 ">
+            <td style="padding:0px;border-radius: 0!important;font-family:Helvetica;width:100%;border: 1px solid #000;"
+              colspan="3">
+              <table style="width:100%;" cellspacing="0">
+                <tr style="width:100%">
+                  <td style="width:65%;padding: 3px 5px"> DNI</td>
+                  <td style="font-weight:800;width:10%;border-left: 1px solid #000;text-align:center;padding: 3px 5px;background-color:#969696;outline: none;color-adjust: exact;
+                                        -webkit-print-color-adjust: exact;text-align:center">
+                    207</td>
+                  <td
+                    style="width:25%;padding:3px 5px;border-left: 1px solid #000;margin-left:20px;position: relative;flex: 1 1 auto;margin-bottom: 0;word-wrap: break-word;word-break: break-word; ">
+                    {{casInformativa.mtoCas207 == null ? " " : casInformativa.mtoCas207}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr style="padding: 0;border:0">
+            <td style="padding:0px;border-radius: 0!important;font-family:Helvetica;width:100%;border: 1px solid #000;"
+              colspan="3">
+              <table style="width:100%;" cellspacing="0">
+                <tr style="width:100%">
+                  <td style="width:65%;padding: 3px 5px"> Apellidos y Nombres</td>
+                  <td
+                    style="width:35%;padding:3px 5px;border-left: 1px solid #000;margin-left:20px;position: relative;flex: 1 1 auto;margin-bottom: 0;word-wrap: break-word;word-break: break-word; ">
+                    {{nombre1}}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr style="padding: 0;border:0 ">
+            <td style="padding:0px;border-radius: 0!important;font-family:Helvetica;width:100%;border: 1px solid #000;"
+              colspan="3">
+              <table style="width:100%;" cellspacing="0">
+                <tr style="width:100%">
+                  <td style="width:65%;padding: 3px 5px"> Correo Electrónico 1</td>
+                  <td style="font-weight:800;width:10%;border-left: 1px solid #000;text-align:center;padding: 3px 5px;background-color:#969696;outline: none;color-adjust: exact;
+                                        -webkit-print-color-adjust: exact;text-align:center">
+                    252</td>
+                  <td
+                    style="width:25%;padding:3px 5px;border-left: 1px solid #000;margin-left:20px;position: relative;flex: 1 1 auto;margin-bottom: 0;word-wrap: break-word;word-break: break-word;">
+                    {{correo1 == null ? " " : correo1}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr style="padding: 0;border:0 ">
+            <td style="padding:0px;border-radius: 0!important;font-family:Helvetica;width:100%;border: 1px solid #000;"
+              colspan="3">
+              <table style="width:100%;" cellspacing="0">
+                <tr style="width:100%">
+                  <td style="width:65%;padding: 3px 5px"> Correo Electrónico 2</td>
+                  <td style="font-weight:800;width:10%;border-left: 1px solid #000;text-align:center;padding: 3px 5px;background-color:#969696;outline: none;color-adjust: exact;
+                                        -webkit-print-color-adjust: exact;text-align:center">
+                    258</td>
+                  <td
+                    style="width:25%;padding:3px 5px;border-left: 1px solid #000;margin-left:20px;position: relative;flex: 1 1 auto;margin-bottom: 0;word-wrap: break-word;word-break: break-word;">
+                    {{correo2 == null ? " " : correo2}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr style="padding: 0;border:0 ">
+            <td style="padding:0px;border-radius: 0!important;font-family:Helvetica;width:100%;border: 1px solid #000;"
+              colspan="3">
+              <table style="width:100%;" cellspacing="0">
+                <tr style="width:100%">
+                  <td style="width:65%;padding: 3px 5px"> Teléfono Fijo</td>
+                  <td style="font-weight:800;width:10%;border-left: 1px solid #000;text-align:center;padding: 3px 5px;background-color:#969696;outline: none;color-adjust: exact;
+                                        -webkit-print-color-adjust: exact;text-align:center">
+                    250</td>
+                  <td
+                    style="width:25%;padding:3px 5px;border-left: 1px solid #000;margin-left:20px;position: relative;flex: 1 1 auto;margin-bottom: 0; word-wrap: break-word;word-break: break-word;">
+                    {{casInformativa.mtoCas250 == null ? " " : casInformativa.mtoCas250}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr style="padding: 0;border:0 ">
+            <td style="padding:0px;border-radius: 0!important;font-family:Helvetica;width:100%;border: 1px solid #000;"
+              colspan="3">
+              <table style="width:100%;" cellspacing="0">
+                <tr style="width:100%">
+                  <td style="width:65%;padding: 3px 5px"> Celular</td>
+                  <td style="font-weight:800;width:10%;border-left: 1px solid #000;text-align:center;padding: 3px 5px;background-color:#969696;outline: none;color-adjust: exact;
+                                        -webkit-print-color-adjust: exact;text-align:center">
+                    251</td>
+                  <td
+                    style="width:25%;padding:3px 5px;border-left: 1px solid #000;margin-left:20px;position: relative;flex: 1 1 auto;margin-bottom: 0; word-wrap: break-word;word-break: break-word;">
+                    {{casInformativa.mtoCas251 == null ? " " : casInformativa.mtoCas251}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr style="padding: 0;border:0 ">
+            <td class="col-md-12 " colspan="3 "
+              style="background-color:#969696;outline: none;color-adjust: exact;-webkit-print-color-adjust: exact;font-weight: 800;padding: 3px 5px;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;">
+              <label class="control-label " style="margin-bottom:0">Datos Representante Legal</label>
+            </td>
+          </tr>
+          <tr style="padding: 0;border:0 ">
+            <td style="padding:0px;border-radius: 0!important;font-family:Helvetica;width:100%;border: 1px solid #000;"
+              colspan="3">
+              <table style="width:100%;" cellspacing="0">
+                <tr style="width:100%">
+                  <td style="width:65%;padding: 3px 5px"> Tipo Documento</td>
+                  <td style="font-weight:800;width:10%;border-left: 1px solid #000;text-align:center;padding: 3px 5px;background-color:#969696;outline: none;color-adjust: exact;
+                                        -webkit-print-color-adjust: exact;text-align:center">
+                    225</td>
+                  <td
+                    style="width:25%;padding:3px 5px;border-left: 1px solid #000;margin-left:20px;position: relative;flex: 1 1 auto;margin-bottom: 0; word-wrap: break-word;word-break: break-word;">
+                    {{obtenerValor(casInformativa.mtoCas225)}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr style="padding: 0;border:0 ">
+            <td style="padding:0px;border-radius: 0!important;font-family:Helvetica;width:100%;border: 1px solid #000;"
+              colspan="3">
+              <table style="width:100%;" cellspacing="0">
+                <tr style="width:100%">
+                  <td style="width:65%;padding: 3px 5px"> Doc. de Identidad</td>
+                  <td style="font-weight:800;width:10%;border-left: 1px solid #000;text-align:center;padding: 3px 5px;background-color:#969696;outline: none;color-adjust: exact;
+                                        -webkit-print-color-adjust: exact;text-align:center">
+                    226</td>
+                  <td
+                    style="width:25%;padding:3px 5px;border-left: 1px solid #000;margin-left:20px;position: relative;flex: 1 1 auto;margin-bottom: 0; word-wrap: break-word;word-break: break-word;">
+                    {{casInformativa.mtoCas226 == null ? " " : casInformativa.mtoCas226}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr style="padding: 0;border:0 ">
+            <td style="padding:0px;border-radius: 0!important;font-family:Helvetica;width:100%;border: 1px solid #000;"
+              colspan="3">
+              <table style="width:100%;" cellspacing="0">
+                <tr style="width:100%">
+                  <td style="width:65%;padding: 3px 5px"> Apellidos y Nombres</td>
+                  <td
+                    style="width:35%;padding:3px 5px;border-left: 1px solid #000;margin-left:20px;position: relative;flex: 1 1 auto;margin-bottom: 0; word-wrap: break-word;word-break: break-word;">
+                    {{nombre2}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <table style="position:relative" cellspacing="0">
+          <tbody>
+            <tr style="padding: 0;border:0">
+              <td class="col-md-12 " colspan="3 "
+                style="background-color:#969696;outline: none;color-adjust: exact;
+                                -webkit-print-color-adjust: exact;font-weight: 800;padding: 3px 5px;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;">
+                <label class="control-label " style="margin-bottom:0">Alquileres Pagados</label>
+              </td>
+            </tr>
+
+            <tr style="padding: 0;border:0 ">
+              <td style="padding:0;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;width:100%"
+                colspan="3">
+                <table style="width:100%" cellspacing="0">
+                  <tr style="padding:0px;width:100%">
+                    <td colspan="2"
+                      style="padding: 3px 5px;border-right: 1px solid #000;border-radius: 0!important;font-family:Helvetica;">
+                      ¿Ha pagado usted alquiler por algún bien mueble o inmueble durante el
+                      presente
+                      ejercicio?
+                    </td>
+                    <td
+                      style="padding: 3px 5px;border-left: 1px solid #000;border-radius: 0!important;font-family:Helvetica;width: 120px;text-align:center">
+                      <label class="control-label ">{{mtoCas829 == null ? " " : mtoCas829}}</label>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr style="padding: 0;border:0 ">
+              <td class="col-md-12 " colspan="3 "
+                style="background-color:#969696;outline: none;color-adjust: exact;
+                                -webkit-print-color-adjust: exact;font-weight: 800;padding: 3px 5px;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;">
+                <label class="control-label " style="margin-bottom:0">Empresas Constructoras y Similares</label>
+              </td>
+            </tr>
+
+            <tr style="padding: 0;border:0 ">
+              <td style="padding:0;border: 1px solid #000;border-radius: 0!important;font-family:Helvetica;width:100%"
+                colspan="3">
+                <table style="width:100%" cellspacing="0">
+                  <tr style="padding:0px;width:100%">
+                    <td colspan="2"
+                      style="padding: 3px 5px;border-right: 1px solid #000;border-radius: 0!important;font-family:Helvetica;">
+                      Método de la Determinación de la Renta Bruta Elegida
+                    </td>
+                    <td
+                      style="padding: 3px 5px;border-left: 1px solid #000;border-radius: 0!important;font-family:Helvetica;width: 120px;text-align:center">
+                      <label
+                        class="control-label ">{{casInformativa.mtoCas293 == null ? " " : casInformativa.mtoCas293}}</label>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>

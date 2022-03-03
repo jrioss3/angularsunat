@@ -1,0 +1,27 @@
+<div class="modal-header bg-primary text-white">
+  <p class="modal-title" id="modal-basic-title  ">Importar archivo de socios</p>
+  <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="input-group mb-3">
+      <div class="custom-file">
+        <input type="file" (change)="setFileUpload($event)" class="custom-file-input" id="" accept=".xlsx,.xls"
+          aria-describedby="Buscar">
+        <label class="custom-file-label" for="inputGroupFile01">{{nombreArchivo}}</label>
+      </div>
+    </div>
+  </form>
+</div>
+
+<ngx-spinner bdColor="rgba(255,255,255,0.45)" color="rgba(28,27,27,0.64)"></ngx-spinner>
+
+<div class="modal-footer">
+  <div class=" text-center">
+    <button id="cancel" name="cancel" class="btn btn-outline-secondary" type="button" value="Cancelar"
+      (click)="activeModal.close('Close click')">Cancelar</button>
+    <button type="button" (click)="importarExcel()" class="btn btn-primary ml-3">Aceptar</button>
+  </div>
+</div>

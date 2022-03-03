@@ -1,0 +1,47 @@
+<div class="modal-header bg-primary text-white">
+    <p class="modal-title">Casilla 122 - Cr&eacute;dito por Impuesto a la Renta de Fuente Extranjera</p>
+    <button type="button" class="close text-white" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="frmCasilla122" class="form-horizontal mt-2">
+        <fieldset class="linea-caja"><br>
+            <div class="form-group row">
+                <label for="TipoRenta" class="control-label col-sm-6">Tipo de Renta</label>
+                <div class="col-sm-6">
+                    <rentas-combobox formControlName="cmbTipoRenta" [lista]="listTipoRenta" [isDisabled]="f.cmbTipoRenta.disabled" [isInvalid]="(f.cmbTipoRenta.touched || submitted) && f.cmbTipoRenta.errors" [isScrolling]=true></rentas-combobox>
+                    <div *ngIf="(f.cmbTipoRenta.touched || submitted) && f.cmbTipoRenta.errors" class="error-message">
+                        <div *ngIf="f.cmbTipoRenta.errors.required">{{mensajeErrorCasilla122.CUS24_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="SelectPais" class="control-label col-sm-6">Pa&iacute;s</label>
+                <div class="col-sm-6">
+                    <rentas-combobox formControlName="cmbPais" [lista]="listPaises" [isDisabled]="f.cmbPais.disabled" [isInvalid]="(f.cmbPais.touched || submitted) && f.cmbPais.errors" [isScrolling]=true></rentas-combobox>
+                    <div *ngIf="(f.cmbPais.touched || submitted) && f.cmbPais.errors" class="error-message">
+                        <div *ngIf="f.cmbPais.errors.required">{{mensajeErrorCasilla122.CUS24_EX01}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-6">Monto del impuesto</label>
+                <div class="col-sm-6">
+                    <rentas-textbox formControlName="montoImpuesto" [tipoFormato]="FORMATO_MONTO" [cantidadDecimales]="2" [maxlength]="11" [isDisabled]="f.montoImpuesto.disabled" [isInvalid]="(f.montoImpuesto.touched || submitted) && f.montoImpuesto.errors"></rentas-textbox>
+                    <!-- <input formControlName="montoImpuesto" name="montoImpuesto" type="text" class="form-control text-right" placeholder="S/ 0" [ngClass]="{ 'is-invalid': submitted && f.montoImpuesto.errors }" /> -->
+                    <div *ngIf="(f.montoImpuesto.touched || submitted) && f.montoImpuesto.errors" class="error-message">
+                        <div *ngIf="f.montoImpuesto.errors.required">{{mensajeErrorCasilla122.CUS24_EX01}}</div>
+                        <div *ngIf="frmCasilla122.getError('{excepccion01}', 'montoImpuesto') as error">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="metodo()">Guardar</button>
+        </div>
+    </form>
+</div>

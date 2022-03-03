@@ -1,0 +1,6 @@
+<div class="form-check" *ngFor="let option of lista">
+
+    <input type="radio" class="form-check-input" [disabled]="setDisabled()" [name]="name" [(ngModel)]="valorSeleccionado" [value]="option.val" (ngModelChange)="changeValue($event)" />
+    <label>{{option.desc}}
+    </label>
+</div>
